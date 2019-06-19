@@ -1,0 +1,45 @@
+{
+  "BACK_BUTTON_TEXT": "Back",
+
+  "LOGIN_BUTTON": "Enter",
+  "DONE_BUTTON": "Done",
+  "SAVE_BUTTON": "Save",
+  "CANCEL_BUTTON": "Cancel",
+  "DELETE_BUTTON": "Delete",
+  "UPDATE_BUTTON": "Update",
+
+  "LOGIN_TITLE": "Login",
+  "LOGIN_ERROR_TITLE": "Login Error",
+  "LOGIN_ERROR_SUB_TITLE": " Wrong username and/or password!",
+
+  "PAGINA_COSTRUZIONE": "Page under construction!!!!!",
+
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
+  "USERNAME_REQUIRED": "Username required",
+  "PASSWORD_REQUIRED": "Password required",
+
+  "PROFILO_MENU": "Profile",
+  "LOGOUT_MENU": "Logout",
+
+  "PROFILO_TITOLO": "Profile",
+  "EMAIL": "Email",
+  "LANGUAGE": "Language",
+  "EMAIL_REQUIRED": "Email mandatory",
+
+  "DIARY": "DIARY",
+  "DIET": "DIET",
+  "FAVORITE": "FAVORITE",
+  "PROFILE": "PROFILE",
+  "STATS": "STATS",
+
+  "CALORIE": "CALORIE",
+  "PROTEINE": "PROTEINS",
+  "GRASSI": "FAT",
+  "CARBOIDRATI":"CARBOHYDRATES",
+  "COLAZIONE": "breakfast",
+  "PRANZO": "lunch",
+  "SNACKS": "snacks",
+  "CENA": "dinner"
+
+}

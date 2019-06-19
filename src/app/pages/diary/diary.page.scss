@@ -1,0 +1,118 @@
+
+/* Caratteristiche della data */
+
+.date{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Caratteristiche del bottone circolare */
+.divRoundButton{
+  display: flex;
+  justify-content: center;
+}
+
+.divRoundButton1{
+  position: absolute;
+  width: 35%;
+
+}
+
+.divRoundButton1:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+
+}
+
+.roundButton {
+  --color: white;
+  /* width: 120px;
+   height: 120px;*/
+  border: 4px solid white;
+  border-radius: 100%;
+  position: absolute;
+  margin: -45% auto;
+  z-index: 1001;
+
+
+  width: 100%;
+  height: 100%;
+
+}
+
+/* Caratteristiche dei bottoni rettangolari */
+.divSquareButton{
+  display: flex;
+  justify-content: space-around;
+  height: 50%;
+}
+.squareButton{
+  --color: white;
+  width: 50%;
+  height: 100%;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  z-index: 1000;
+}
+
+/* Caratteristiche del contenitore dei bottoni  */
+.box{
+  height: 60%;
+  position:relative;
+}
+
+/* Caratteristiche del contenitore delle statistiche */
+.stats{
+  height: 32%;
+}
+/* Caratteristiche delle barre di progresso */
+.colorBar{
+  --progress-background: var(--ion-color-dark-contrast);
+  --buffer-background: var(--ion-color-secondary-shade)
+}
+.calorieBar{
+  width: 80%;
+  border-radius: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -2%;
+}
+.valueBar{
+  border-radius: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.waterBar{
+  width: 60%;
+  height: 65%;
+  border-radius: 50px;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+/* Caratteristiche dei bottoni per aumentare e diminuire quantità d'acqua */
+.waterButton{
+  --color: white;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+/* Caratteristiche del contenitore della barra dell'acqua */
+.divWater{
+  display: flex;
+  justify-content: space-around;
+  height: 7%;
+}
+
+/* Caratteristiche immagini */
+.imageDimension{
+  height: 50%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
