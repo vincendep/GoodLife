@@ -11,25 +11,25 @@
 
     <ion-datetime displayFormat="DD/MMM/YYYY" value="2012-12-15" pickerFormat="DD MMM YYYY" class="date"></ion-datetime>
 
-    <div class="barPosition">{{ 'CALORIE' | translate }}</div>
-    <p id="calorie"></p>
-    <ion-progress-bar [value]="percentualeCalorieTot" class="calorieBar colorBar"></ion-progress-bar>
+    <div>{{ 'CALORIE' | translate }}</div>
+    <p id="calorie" class="space"></p>
+    <ion-progress-bar [value]="percentualeCalorieTot" class="calorieBar colorBar space"></ion-progress-bar>
 
-    <ion-grid fixed="true" text-center="true">
+    <ion-grid fixed="true" text-center="true" >
       <ion-row>
         <ion-col>{{ 'PROTEINE' | translate }}
-          <p id="proteine"></p>
-          <ion-progress-bar [value]="percentualeProteine" class="valueBar colorBar barPosition"></ion-progress-bar>
+          <p id="proteine" class="space"></p>
+          <ion-progress-bar [value]="percentualeProteine" class="valueBar colorBar space"></ion-progress-bar>
         </ion-col>
 
         <ion-col>{{ 'GRASSI' | translate }}
-          <p id="grassi"></p>
-          <ion-progress-bar [value]="percentualeGrassi" class="valueBar colorBar barPosition"></ion-progress-bar>
+          <p id="grassi" class="space"></p>
+          <ion-progress-bar [value]="percentualeGrassi" class="valueBar colorBar space"></ion-progress-bar>
         </ion-col>
 
         <ion-col>{{ 'CARBOIDRATI' | translate }}
-          <p id="carboidrati"></p>
-          <ion-progress-bar [value]="percentualeCarboidrati" class="valueBar colorBar barPosition"></ion-progress-bar>
+          <p id="carboidrati" class="space"></p>
+          <ion-progress-bar [value]="percentualeCarboidrati" class="valueBar colorBar space"></ion-progress-bar>
         </ion-col>
 
       </ion-row>
