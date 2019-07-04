@@ -7,5 +7,22 @@
 </ion-header>
 
 <ion-content>
-  {{'PAGINA_COSTRUZIONE' | translate}}
+  <form [formGroup]="profiloFormModel">
+    <ion-list>
+      <ion-item>
+        <ion-label position="fixed">{{ 'LANGUAGE' | translate }}</ion-label>
+        <ion-select formControlName="linguaPreferita" okText="{{ 'SAVE_BUTTON' | translate }}" cancelText="{{ 'CANCEL_BUTTON' | translate }}">
+          <ion-select-option *ngFor="let lingua of lingue" [value]="lingua.valore">{{lingua.etichetta}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <div margin-top="30px" align="center">
+      <ion-button icon-left size="medium" shape="round" color="primary" (click)="onSubmit()" [disabled]="!profiloFormModel.valid" tappable>
+        {{ 'SAVE_BUTTON' | translate }}
+      </ion-button>
+      <ion-button icon-left size="medium" shape="round" color="primary" (click)="cancel()" tappable>
+        {{ 'CANCEL_BUTTON' | translate }}
+      </ion-button>
+    </div>
+  </form>
 </ion-content>
