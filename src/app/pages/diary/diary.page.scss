@@ -90,14 +90,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-.waterBar{
-  width: 60%;
-  height: 65%;
-  border-radius: 50px;
-  display: block;
-  margin-top: auto;
-  margin-bottom: auto;
-}
+
 /* Caratteristiche dei bottoni per aumentare e diminuire quantità d'acqua */
 .waterButton{
   --color: white;
@@ -107,7 +100,7 @@
   margin-top: auto;
   margin-bottom: auto;
 }
-/* Caratteristiche del contenitore della barra dell'acqua */
+/* Caratteristiche del contenitore dell'acqua */
 .divWater{
   display: flex;
   justify-content: space-around;
@@ -120,4 +113,9 @@
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.labelSize{
+  text-align: center;
+  font-size: 2em;
 }

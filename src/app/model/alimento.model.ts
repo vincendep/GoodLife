@@ -19,7 +19,7 @@ export class Alimento {
     }
 
     set calorie(c: number) {
-        this._calorie= c;
+        this._calorie = c;
     }
 
     get proteine() {

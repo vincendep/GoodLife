@@ -38,9 +38,9 @@
 
   <div class="divWater">
     <ion-img src="assets/images/glass.png"></ion-img>
-    <ion-progress-bar value="0.5" class="waterBar" color="tertiary"> Pippo</ion-progress-bar>
-    <ion-button class="waterButton color" fill="clear"><ion-icon name="add"></ion-icon></ion-button>
-    <ion-button class="waterButton color" fill="clear"><ion-icon name="remove"></ion-icon></ion-button>
+    <ion-label color="tertiary" class="labelSize">{{nAcqua}}</ion-label>
+    <ion-button class="waterButton color" fill="clear" (click)="addAcqua()"><ion-icon name="add"></ion-icon></ion-button>
+    <ion-button class="waterButton color" fill="clear" (click)="removeAcqua()"><ion-icon name="remove"></ion-icon></ion-button>
   </div>
 
   <div class="box">
@@ -67,7 +67,7 @@
       <ion-button class="roundButton color" fill="clear">
         <div>
           <ion-img src="assets/images/attivita.png" class="imageDimension"></ion-img>
-          <ion-progress-bar value="0.5" class="valueBar colorBar"></ion-progress-bar>
+          <p id="attivita"></p>
         </div>
       </ion-button>
       </div>

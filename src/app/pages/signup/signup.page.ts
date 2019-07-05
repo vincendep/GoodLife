@@ -65,7 +65,7 @@ export class SignupPage implements OnInit {
             password: ['', Validators.required],
             passwordCheck: ['', Validators.required]
             }
-        )
+        );
         this.initTranslate();
     }
 

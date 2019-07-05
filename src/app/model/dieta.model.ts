@@ -1,7 +1,7 @@
 
 export class Dieta {
     private _obiettivo: Obiettivo;
-    private _calorieGiornaliere: number;
+    private _calorieGiornaliere: number[];
     private _carboidratiGiornalieri: number;
     private _proteineGiornaliere: number;
     private _grassiGiornalieri: number;
@@ -16,11 +16,11 @@ export class Dieta {
         this._obiettivo = value;
     }
 
-    get calorieGiornaliere(): number {
+    get calorieGiornaliere(): number[] {
         return this._calorieGiornaliere;
     }
 
-    set calorieGiornaliere(value: number) {
+    set calorieGiornaliere(value: number[]) {
         this._calorieGiornaliere = value;
     }
 
