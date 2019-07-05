@@ -11,7 +11,27 @@ import {TranslateModule} from '@ngx-translate/core';
 const routes: Routes = [
   {
     path: '',
-    component: FavoritePage
+    component: FavoritePage,
+    children: [
+      {
+        path: 'aliments',
+        children: [
+          {
+            path: '',
+            loadChildren: '../aliments/aliments.module#AlimentsPageModule'
+          }
+        ]
+      },
+      {
+        path: 'meals',
+        children: [
+          {
+            path: '',
+            loadChildren: '../meals/meals.module#MealsPageModule'
+          }
+        ]
+      }
+    ]
   }
 ];
 

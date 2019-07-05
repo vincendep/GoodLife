@@ -55,6 +55,7 @@
   "ACCEDI": "login",
 
   "SIGNUP_TITLE": "registration",
+  "TITLE_OBIETTIVO": "What is your goal?",
   "SIGNUP_ERROR_TITLE": "Signup failed",
   "SIGNUP_ERROR_MESSAGE": "Password and confirm password are different",
   "CONFERMA": "confirm",

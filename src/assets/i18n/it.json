@@ -55,6 +55,7 @@
   "ACCEDI": "accedi",
 
   "SIGNUP_TITLE": "registrazione",
+  "TITLE_OBIETTIVO": "Qual è il tuo obiettivo?",
   "SIGNUP_ERROR_TITLE": "Impossibile completare la registrazione",
   "SIGNUP_ERROR_MESSAGE": "I campi password e conferma password non coincidono",
   "CONFERMA": "conferma",
