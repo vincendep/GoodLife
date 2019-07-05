@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { FavoritePage } from './favorite.page';
 import {TranslateModule} from '@ngx-translate/core';
-import {TabsPage} from '../tabs/tabs.page';
 
 const routes: Routes = [
   {
