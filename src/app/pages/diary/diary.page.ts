@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Dieta, Obiettivo} from '../../model/dieta.model';
+import {Dieta} from '../../model/dieta.model';
 import {AlertController, NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {forEach} from '@angular-devkit/schematics';
+import {Diary} from '../../services/diario.service';
 
 @Component({
   selector: 'app-diary',
@@ -13,15 +14,11 @@ import {forEach} from '@angular-devkit/schematics';
 export class DiaryPage implements OnInit {
 
   private dieta: Dieta;
-  private calorie: number[];
+  diario: Diary;
   private calorieAttivita: number;
 
   private calorieTot: number;
   private calorieTotMax: number;
-
-  private proteine1: number;
-  private grassi1: number;
-  private carboidrati1: number;
 
   private showString: string;
 
@@ -33,49 +30,53 @@ export class DiaryPage implements OnInit {
 
   private nAcqua: number;
 
-  constructor() { }
+  constructor(private translateService: TranslateService,
+              private navController: NavController,
+              private alertController: AlertController) {
+    this.dieta = new Dieta();
+    this.diario = new Diary();
+  }
 
   ngOnInit() {
     // calorie[] è l'arrey che conserva i valori calorici degli alimenti mangiati nei vari pasti,
     // 0=colazione, 1=pranzo, 2=snacks, 3=cena
     this.nAcqua = 0;
-    this.calorie = [10, 4, 7, 50];
+    this.diario.calorie = [10, 4, 7, 50];
     this.dieta.calorieGiornaliere = [60, 100, 40, 120];
-    alert('1');
 
     this.calorieAttivita = 50;
     document.getElementById('attivita').innerText = String(this.calorieAttivita);
-    this.calorieTot = this.calorie.reduce(this.sum, 0);
+    this.calorieTot = this.diario.calorie.reduce(this.sum, 0);
     this.calorieTotMax = this.dieta.calorieGiornaliere.reduce(this.sum, 0);
 
-    this.proteine1 = 1;
+    this.diario.proteine = 1;
     this.dieta.proteineGiornaliere = 200;
-    this.grassi1 = 150;
+    this.diario.grassi = 150;
     this.dieta.grassiGiornalieri = 300;
-    this.carboidrati1 = 300;
+    this.diario.carboidrati = 300;
     this.dieta.carboidratiGiornalieri = 400;
 
     this.percentualeCalorieTot = this.calcoloPercentuale(this.calorieTot, this.calorieTotMax);
-    this.percentualeProteine = this.calcoloPercentuale(this.proteine1, this.dieta.proteineGiornaliere);
-    this.percentualeGrassi = this.calcoloPercentuale(this.grassi1, this.dieta.grassiGiornalieri);
-    this.percentualeCarboidrati = this.calcoloPercentuale(this.carboidrati1, this.dieta.carboidratiGiornalieri);
-    this.percentualeCalorie = this.calcoloPercentualeArray(this.calorie, this.dieta.calorieGiornaliere);
+    this.percentualeProteine = this.calcoloPercentuale(this.diario.proteine, this.dieta.proteineGiornaliere);
+    this.percentualeGrassi = this.calcoloPercentuale(this.diario.grassi, this.dieta.grassiGiornalieri);
+    this.percentualeCarboidrati = this.calcoloPercentuale(this.diario.carboidrati, this.dieta.carboidratiGiornalieri);
+    this.percentualeCalorie = this.calcoloPercentualeArray(this.diario.calorie, this.dieta.calorieGiornaliere);
 
-    this.completamento(this.calorie[0], this.dieta.calorieGiornaliere[0]);
+    this.completamento(this.diario.calorie[0], this.dieta.calorieGiornaliere[0]);
     document.getElementById('colazione').innerText = this.showString;
-    this.completamento(this.calorie[1], this.dieta.calorieGiornaliere[1]);
+    this.completamento(this.diario.calorie[1], this.dieta.calorieGiornaliere[1]);
     document.getElementById('pranzo').innerText = this.showString;
-    this.completamento(this.calorie[2], this.dieta.calorieGiornaliere[2]);
+    this.completamento(this.diario.calorie[2], this.dieta.calorieGiornaliere[2]);
     document.getElementById('snacks').innerText = this.showString;
-    this.completamento(this.calorie[3], this.dieta.calorieGiornaliere[3]);
+    this.completamento(this.diario.calorie[3], this.dieta.calorieGiornaliere[3]);
     document.getElementById('cena').innerText = this.showString;
     this.completamento(this.calorieTot, this.calorieTotMax);
     document.getElementById('calorie').innerText = this.showString;
-    this.completamento(this.proteine1, this.dieta.proteineGiornaliere);
+    this.completamento(this.diario.proteine, this.dieta.proteineGiornaliere);
     document.getElementById('proteine').innerText = this.showString;
-    this.completamento(this.grassi1, this.dieta.grassiGiornalieri);
+    this.completamento(this.diario.grassi, this.dieta.grassiGiornalieri);
     document.getElementById('grassi').innerText = this. showString;
-    this.completamento(this.carboidrati1, this.dieta.carboidratiGiornalieri);
+    this.completamento(this.diario.carboidrati, this.dieta.carboidratiGiornalieri);
     document.getElementById('carboidrati').innerText = this. showString;
   }
 
@@ -105,6 +106,9 @@ export class DiaryPage implements OnInit {
   }
   removeAcqua() {
     this.nAcqua -= 1;
+  }
+  onUpdate() {
+    this.navController.navigateRoot('inserisci-cibo');
   }
 }
 
