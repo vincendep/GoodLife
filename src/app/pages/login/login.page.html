@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color="light" text-center>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+    <ion-title color="dark" text-center>{{ 'LOGIN_TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -38,5 +38,10 @@
         </ion-button>
       </div>
     </form>
+    <div margin="auto" text-center>
+      <nav position="floating">
+        <a routerLink="/signup" routerLinkActive="active">{{ 'REGISTRATI' | translate }}</a>
+      </nav>
+    </div>
   </div>
 </ion-content>

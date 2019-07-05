@@ -18,6 +18,8 @@
   "PASSWORD": "Password",
   "USERNAME_REQUIRED": "Username required",
   "PASSWORD_REQUIRED": "Password required",
+  "OBBLIGATORIO": "required",
+  "OBBLIGATORIA": "required",
 
   "PROFILO_MENU": "Profile",
   "LOGOUT_MENU": "Logout",
@@ -40,6 +42,26 @@
   "COLAZIONE": "breakfast",
   "PRANZO": "lunch",
   "SNACKS": "snacks",
-  "CENA": "dinner"
+  "CENA": "dinner",
 
+  "ALTEZZA": "height",
+  "PESO": "weight",
+  "DATA_DI_NASCITA": "date of birth",
+  "SESSO": "gender",
+  "MASCHIO": "male",
+  "FEMMINA": "female",
+
+  "REGISTRATI": "signup",
+  "ACCEDI": "login",
+
+  "SIGNUP_TITLE": "registration",
+  "SIGNUP_ERROR_TITLE": "Signup failed",
+  "SIGNUP_ERROR_MESSAGE": "Password and confirm password are different",
+  "CONFERMA": "confirm",
+  "CREA_ACCOUNT": "create account",
+  "NOME": "name",
+  "COGNOME": "surname",
+  "EMAIL": "email",
+  "PASSWORD": "password",
+  "CONFERMA_PASSWORD": "confirm password"
 }

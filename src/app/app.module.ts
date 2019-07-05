@@ -1,17 +1,19 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {IonicStorageModule} from '@ionic/storage';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
+
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {IonicStorageModule} from '@ionic/storage';
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -22,7 +24,8 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [BrowserModule,
+    imports: [
+        BrowserModule,
         HttpClientModule,
         IonicModule.forRoot(),
         TranslateModule.forRoot({

@@ -9,7 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  private credenziali: {email: string, password: string} = {email: '', password: ''};
   private loginFormModel: FormGroup;
   private loginTitle: string;
   private loginSubTitle: string;

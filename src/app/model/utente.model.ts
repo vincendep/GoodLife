@@ -1,3 +1,4 @@
+import {Dieta} from './dieta.model';
 
 export class Utente {
     private _nome: string;
@@ -5,8 +6,13 @@ export class Utente {
     private _email: string;
     private _sesso: Sesso;
     private _dataDiNascita: string;
-    private _obiettivi: Array<{obiettivo: Obiettivo, data: Date}>;
+    private _diete: Array<Dieta>;
     private _informazioniFisiche: Array<{informazioniFisiche: InformazioniFisiche, dataInserimento: Date}>;
+
+    constructor() {
+        this._diete = new Array<Dieta>();
+        this._informazioniFisiche = new Array<{informazioniFisiche: InformazioniFisiche, dataInserimento: Date}>();
+    }
 
     get nome() {
         return this._nome;
@@ -48,12 +54,12 @@ export class Utente {
         this._dataDiNascita = dataDiNascita;
     }
 
-    get obiettivi(): Array<{ obiettivo: Obiettivo; data: Date }> {
-        return this._obiettivi;
+    get diete(): Array<Dieta> {
+        return this._diete;
     }
 
-    set obiettivi(value: Array<{ obiettivo: Obiettivo; data: Date }>) {
-        this._obiettivi = value;
+    set diete(value: Array<Dieta>) {
+        this._diete = value;
     }
 
     get informazioniFisiche(): Array<{ informazioniFisiche: InformazioniFisiche; dataInserimento: Date }> {
@@ -70,11 +76,6 @@ export enum Sesso {
     FEMMINA
 }
 
-export enum Obiettivo {
-    DIMAGRIRE,
-    MANGIARE_SANO,
-    MASSA_MUSCOLARE
-}
 
 export class InformazioniFisiche {
     private _altezza: number;

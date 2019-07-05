@@ -18,6 +18,8 @@
   "PASSWORD": "Password",
   "USERNAME_REQUIRED": "Username obbligatorio",
   "PASSWORD_REQUIRED": "Password obbligatorio",
+  "OBBLIGATORIO": "obbligatorio",
+  "OBBLIGATORIA": "obbligatoria",
 
   "PROFILO_MENU": "Profilo",
   "LOGOUT_MENU": "Esci",
@@ -40,6 +42,26 @@
   "COLAZIONE":"colazione",
   "PRANZO": "pranzo",
   "SNACKS": "snacks",
-  "CENA": "cena"
+  "CENA": "cena",
 
+  "ALTEZZA": "altezza",
+  "PESO": "peso",
+  "DATA_DI_NASCITA": "data di nascita",
+  "SESSO": "sesso",
+  "MASCHIO": "maschio",
+  "FEMMINA": "femmina",
+
+  "REGISTRATI": "registrati",
+  "ACCEDI": "accedi",
+
+  "SIGNUP_TITLE": "registrazione",
+  "SIGNUP_ERROR_TITLE": "Impossibile completare la registrazione",
+  "SIGNUP_ERROR_MESSAGE": "I campi password e conferma password non coincidono",
+  "CONFERMA": "conferma",
+  "CREA_ACCOUNT": "crea account",
+  "NOME": "nome",
+  "COGNOME": "cognome",
+  "EMAIL": "email",
+  "PASSWORD": "password",
+  "CONFERMA_PASSWORD": "conferma password"
 }

@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="dark" text-center>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn login auth-page">
+  <!-- aim choice -->
+  <ion-slides id="slider" pager="true" [options]="slideOpts">
+    <ion-slide>
+       <ion-item>
+        <ion-title>Qual è il tuo obiettivo?</ion-title>
+       </ion-item>
+        <img src="../../../assets/images/trophy.png"/>
+
+        <div ion-align-items-center>
+          <ion-button (click)="scegliObiettivo($event)" id="obiettivoDimagrimento" size="large" expand="block" shape="round" color="primary" >Dimagrire</ion-button>
+          <ion-button (click)="scegliObiettivo($event)" id="obiettivoMassa" size="large" expand="block" shape="round" color="primary" >Massa muscolare</ion-button>
+          <ion-button (click)="scegliObiettivo($event)" id="obiettivoSano" size="large" expand="block" shape="round" color="primary">Mangiare sano</ion-button>
+        </div>
+    </ion-slide>
+
+    <!-- personal info -->
+    <ion-slide>
+      <form [formGroup]="stepTwoForm" class="list-form">
+        <ion-list>
+          <ion-item no-padding class="animated fadeInUp">
+            <ion-label position="floating">
+              {{ 'ALTEZZA' | translate | titlecase }}</ion-label>
+            <ion-input color="secondary" type="number" inputmode="numeric" min="120" max="250" formControlName="altezza"></ion-input>
+          </ion-item>
+
+          <ion-item no-padding class="animated fadeInUp">
+            <ion-label position="floating">
+              {{ 'PESO' | translate | titlecase }}</ion-label>
+            <ion-input color="secondary" type="number" inputmode="numeric" min="30" max="200" formControlName="peso"></ion-input>
+          </ion-item>
+
+          <ion-item no-padding class="animated fadeInUp">
+            <ion-label position="floating">
+              {{ 'DATA_DI_NASCITA' | translate | titlecase }}</ion-label>
+            <ion-input color="secondary" type="date" formControlName="dataDiNascita"></ion-input>
+          </ion-item>
+
+          <ion-list>
+            <ion-radio-group formControlName="sesso">
+              <ion-list-header>
+                {{ 'SESSO' | translate | titlecase }}
+              </ion-list-header>
+              <ion-item>
+                <ion-label>{{ 'MASCHIO' | translate }}</ion-label>
+                <ion-radio value="maschio"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>{{ 'FEMMINA' | translate }}</ion-label>
+                <ion-radio value="femmina"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <p ion-text class="text08" *ngIf="stepTwoForm.get('sesso').touched && stepTwoForm.get('sesso').invalid">
+            <ion-text color="danger">{{ 'SESSO' | translate | titlecase }} {{ 'OBBLIGATORIO' | translate }}</ion-text>
+          </p>
+        </ion-list>
+        <div margin-top="20px">
+          <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onConfirm()" [disabled]="!stepTwoForm.valid" tappable>
+            <ion-icon name="arrow-round-forward"></ion-icon>
+            {{ 'CONFERMA' | translate }}
+          </ion-button>
+        </div>
+      </form>
+    </ion-slide>
+
+    <!-- account info -->
+    <ion-slide>
+      <form [formGroup]="stepThreeForm" class="list-form">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">{{'EMAIL' | translate | titlecase }}</ion-label>
+            <ion-input formControlName="email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">{{'NOME' | translate | titlecase }}</ion-label>
+            <ion-input formControlName="nome"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">{{'COGNOME' | translate | titlecase}}</ion-label>
+            <ion-input formControlName="cognome"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">{{'PASSWORD' | translate | titlecase }}</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">{{'CONFERMA_PASSWORD' | translate | titlecase }}</ion-label>
+            <ion-input formControlName="passwordCheck" type="password"></ion-input>
+          </ion-item>
+        </ion-list>
+        <div margin-top="20px">
+          <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onSignup()" [disabled]="!stepThreeForm.valid" tappable>
+            <ion-icon name="create"></ion-icon>
+            {{ 'CREA_ACCOUNT' | translate}}
+          </ion-button>
+        </div>
+      </form>
+    </ion-slide>
+  </ion-slides>
+
+  <nav position="floating" margin="auto" text-center>
+    <a routerLink="/login" routerLinkActive="active">{{ 'ACCEDI' | translate }}</a>
+  </nav>
+
+</ion-content>

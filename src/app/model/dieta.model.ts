@@ -1,11 +1,20 @@
 
 export class Dieta {
+    private _obiettivo: Obiettivo;
     private _calorieGiornaliere: number;
     private _carboidratiGiornalieri: number;
     private _proteineGiornaliere: number;
     private _grassiGiornalieri: number;
     private _dataInizioDieta: Date;
     private _dataFineDieta: Date;
+
+    get obiettivo(): Obiettivo {
+        return this._obiettivo;
+    }
+
+    set obiettivo(value: Obiettivo) {
+        this._obiettivo = value;
+    }
 
     get calorieGiornaliere(): number {
         return this._calorieGiornaliere;
@@ -54,4 +63,10 @@ export class Dieta {
     set dataFineDieta(value: Date) {
         this._dataFineDieta = value;
     }
+}
+
+export enum Obiettivo {
+    DIMAGRIRE,
+    MANGIARE_SANO,
+    MASSA_MUSCOLARE
 }
