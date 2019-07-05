@@ -7,11 +7,32 @@ import { IonicModule } from '@ionic/angular';
 
 import { FavoritePage } from './favorite.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {TabsPage} from '../tabs/tabs.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FavoritePage
+    component: FavoritePage,
+    children: [
+      {
+        path: 'aliments',
+        children: [
+          {
+            path: '',
+            loadChildren: '../aliments/aliments.module#AlimentsPageModule'
+          }
+        ]
+      },
+      {
+        path: 'meals',
+        children: [
+          {
+            path: '',
+            loadChildren: '../meals/meals.module#MealsPageModule'
+          }
+        ]
+      }
+    ]
   }
 ];
 
