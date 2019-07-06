@@ -30,6 +30,11 @@ const routes: Routes = [
             loadChildren: '../meals/meals.module#MealsPageModule'
           }
         ]
+      },
+      {
+        path: '',
+        redirectTo: '/tabs/favorite/aliments',
+        pathMatch: 'full'
       }
     ]
   }
