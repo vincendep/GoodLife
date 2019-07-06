@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>inserisciCibo</ion-title>
+    <ion-title>{{title | uppercase}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="updateDiary()">{{diario.calorie[0]}}</ion-button>
+  <ion-list>
+    <ion-item>
+      <ion-label>CARNE</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>PESCE</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -4,6 +4,7 @@ import {AlertController, NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {forEach} from '@angular-devkit/schematics';
 import {Diary} from '../../services/diario.service';
+import {NavigationExtras, Router} from '@angular/router';
 
 @Component({
   selector: 'app-diary',
@@ -14,7 +15,7 @@ import {Diary} from '../../services/diario.service';
 export class DiaryPage implements OnInit {
 
   private dieta: Dieta;
-  diario: Diary;
+  private diario: Diary;
   private calorieAttivita: number;
 
   private calorieTot: number;
@@ -32,7 +33,8 @@ export class DiaryPage implements OnInit {
 
   constructor(private translateService: TranslateService,
               private navController: NavController,
-              private alertController: AlertController) {
+              private alertController: AlertController,
+              private router: Router) {
     this.dieta = new Dieta();
     this.diario = new Diary();
   }
@@ -107,8 +109,14 @@ export class DiaryPage implements OnInit {
   removeAcqua() {
     this.nAcqua -= 1;
   }
-  onUpdate() {
-    this.navController.navigateRoot('inserisci-cibo');
+  addFood(event, a: string) {
+    const navigationExtra: NavigationExtras = {
+      state: {
+        diario: this.diario,
+        meal: a
+      }
+  };
+    this.router.navigate(['inserisci-cibo'], navigationExtra);
   }
 }
 
