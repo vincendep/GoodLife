@@ -9,7 +9,7 @@
 <ion-content>
   <div class="stats color" text-center="true">
 
-    <ion-datetime displayFormat="DD/MMM/YYYY" value="2012-12-15" pickerFormat="DD MMM YYYY" class="date"></ion-datetime>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [value]="date" pickerFormat="DD MMM YYYY" class="date"></ion-datetime>
 
     <div>{{ 'CALORIE' | translate }}</div>
     <p id="calorie" class="space"></p>
@@ -47,18 +47,18 @@
 
 
     <div class="divSquareButton">
-      <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood($event, 'colazione')">
+      <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood($event, colazione)">
         <div>{{ 'COLAZIONE' | translate }}
           <ion-img src="assets/images/colazione.png" class="imageDimension"></ion-img>
           <p id="colazione"></p>
-          <ion-progress-bar [value]="percentualeCalorie[0]" class="valueBar colorBar"></ion-progress-bar>
+          <ion-progress-bar [value]="percentualeCalorie[0]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div>
       </ion-button>
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood($event, 'pranzo')">
         <div>{{ 'PRANZO' | translate }}
           <ion-img src="assets/images/pranzo.png" class="imageDimension"></ion-img>
           <p id="pranzo"></p>
-          <ion-progress-bar [value]="percentualeCalorie[1]" class="valueBar colorBar"></ion-progress-bar>
+          <ion-progress-bar [value]="percentualeCalorie[1]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div></ion-button>
     </div>
 
@@ -79,11 +79,11 @@
         <div>{{ 'SNACKS' | translate }}
           <ion-img src="assets/images/snacks.png" class="imageDimension"></ion-img>
           <p id="snacks"></p>
-          <ion-progress-bar [value]="percentualeCalorie[2]" class="valueBar colorBar"></ion-progress-bar>
+          <ion-progress-bar [value]="percentualeCalorie[2]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div></ion-button>
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood($event, 'cena')">
         <div>{{ 'CENA' | translate }}
-          <ion-img src="assets/images/cena.png" class="imageDimension"></ion-img>
+          <ion-img src="assets/images/cena.png" class="imageDimension dimensionBar dimensionBar"></ion-img>
           <p id="cena"></p>
           <ion-progress-bar [value]="percentualeCalorie[3]" class="valueBar colorBar"></ion-progress-bar>
         </div></ion-button>

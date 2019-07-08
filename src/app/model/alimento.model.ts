@@ -6,6 +6,13 @@ export class Alimento {
     private _proteine: number;
     private _grassi: number;
 
+    get carboidrati(): number {
+        return this._carboidrati;
+    }
+
+    set carboidrati(value: number) {
+        this._carboidrati = value;
+    }
     get nome() {
         return this._nome;
     }

@@ -18,7 +18,7 @@ export class AlimentoService {
 
     const manzo: Alimento = new Alimento();
     manzo.nome = 'manzo';
-    manzo.calorie = 100;
+    manzo.calorie = 105;
     manzo.proteine = 70;
     manzo.grassi = 35;
     manzo.carboidrati = 15;

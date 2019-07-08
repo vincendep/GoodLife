@@ -1,9 +1,14 @@
 import {Alimento} from './alimento.model';
+import {forEach} from '@angular-devkit/schematics';
 
 export class Pasto {
     private _tipoPasto: TipoPasto;
     private _data: Date;
     private _alimenti: Array<{alimento: Alimento, dose: number}>;
+
+    constructor() {
+        this._alimenti = [];
+    }
 
     get alimenti() {
         return this._alimenti;
@@ -28,6 +33,42 @@ export class Pasto {
     set data(value: Date) {
         this._data = value;
     }
+
+    getTotCalorie(): number {
+        let sum = 0;
+        for (const value of this._alimenti) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        return sum;
+    }
+
+    getTotProteine(): number {
+        let sum = 0;
+        for (const value of this._alimenti) {
+
+            sum += (value.alimento.proteine * value.dose) / 100 ;
+        }
+        return sum;
+    }
+    getTotGrassi(): number {
+        let sum = 0;
+        for (const value of this._alimenti) {
+
+            sum += (value.alimento.grassi * value.dose) / 100 ;
+        }
+        return sum;
+    }
+
+    getTotCarboidrati(): number {
+        let sum = 0;
+        for (const value of this._alimenti) {
+
+            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+        }
+        return sum;
+    }
+
 }
 
 export enum TipoPasto {
