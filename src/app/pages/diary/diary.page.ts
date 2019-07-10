@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Dieta} from '../../model/dieta.model';
 import {AlertController, NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import {Pasto, TipoPasto} from '../../model/pasto.model';
 import {AlimentoService} from '../../services/alimento.service';
+import {DataService} from '../../services/data.service';
 
 
 @Component({
@@ -46,7 +47,7 @@ export class DiaryPage implements OnInit {
               private navController: NavController,
               private alertController: AlertController,
               private router: Router,
-              private route: ActivatedRoute,
+              private dataService: DataService,
               private alimentntoService: AlimentoService) {
 
     this.dieta = new Dieta();
@@ -61,16 +62,21 @@ export class DiaryPage implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.setData(0, this.colazione);
+    this.dataService.setData(1, this.pranzo);
+    this.dataService.setData(2, this.snacks);
+    this.dataService.setData(3, this.cena);
     // calorie[] è l'arrey che conserva i valori calorici degli alimenti mangiati nei vari pasti,
     // 0=colazione, 1=pranzo, 2=snacks, 3=cena
     this.nAcqua = 0;
 
-    this.colazione.alimenti.push({ alimento: this.alimentntoService.getAll()[0], dose: Math.floor(Math.random() * 101)});
+   /* this.colazione.alimenti.push({ alimento: this.alimentntoService.getAll()[0], dose: Math.floor(Math.random() * 101)});
     this.colazione.alimenti.push({ alimento: this.alimentntoService.getAll()[1], dose: Math.floor(Math.random() * 101)});
 
     this.pranzo.alimenti.push({ alimento: this.alimentntoService.getAll()[0], dose: Math.floor(Math.random() * 101)});
     this.snacks.alimenti.push({ alimento: this.alimentntoService.getAll()[1], dose: Math.floor(Math.random() * 101)});
     this.cena.alimenti.push({ alimento: this.alimentntoService.getAll()[0], dose: Math.floor(Math.random() * 101)});
+    */
 
     this.dieta.calorieGiornaliere = [60, 100, 40, 120];
 
@@ -137,13 +143,7 @@ export class DiaryPage implements OnInit {
   }
 
   addFood(a: Pasto) {
-    alert(a.tipoPasto);
-    const navigationExtra: NavigationExtras = {
-      state: {
-        meal: a
-      }
-    };
-    this.router.navigate(['tabs/inserisci-cibo'], navigationExtra);
+    this.router.navigateByUrl('tabs/diary/' + a.tipoPasto);
   }
 
 }

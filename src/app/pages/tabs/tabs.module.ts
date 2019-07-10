@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { TabsPage } from './tabs.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {DataResolverService} from '../../services/data-resolver.service';
 
 const routes: Routes = [
   {
@@ -58,14 +59,11 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'inserisci-cibo',
-        children: [
-        {
-        path: '',
-        loadChildren: '../inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'
-        }
-        ]
+      {path: 'diary/:id',
+        resolve: {
+          special: DataResolverService
+        },
+        loadChildren: './pages/inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'
       },
       {
         path: '',

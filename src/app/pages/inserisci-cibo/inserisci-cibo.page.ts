@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {NavigationExtras, Router} from '@angular/router';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {Pasto, TipoPasto} from '../../model/pasto.model';
 import {AlimentoService} from '../../services/alimento.service';
 
@@ -18,15 +18,15 @@ export class InserisciCiboPage implements OnInit {
   private title: string;
   constructor(private translateService: TranslateService,
               private router: Router,
+              private route: ActivatedRoute,
               private alimentntoService: AlimentoService) {
-    alert();
-    if (this.router.getCurrentNavigation().extras.state) {
-      this.meal1 = this.router.getCurrentNavigation().extras.state.meal;
-    }
     this.temp = new Pasto();
   }
 
   ngOnInit() {
+    if (this.route.snapshot.data['special']) {
+          this.meal1 = this.route.snapshot.data['special'];
+    }
     switch (this.meal1.tipoPasto) {
        case 0: {
         this.title = this.translateService.instant('COLAZIONE');

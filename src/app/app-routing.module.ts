@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {DataResolverService} from './services/data-resolver.service';
 
 
 const routes: Routes = [
