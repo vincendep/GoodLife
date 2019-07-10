@@ -59,6 +59,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'inserisci-cibo',
+        children: [
+        {
+        path: '',
+        loadChildren: '../inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'
+        }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/diary',
         pathMatch: 'full'

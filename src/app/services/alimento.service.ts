@@ -10,7 +10,7 @@ export class AlimentoService {
 
   constructor() {
     const riso: Alimento = new Alimento();
-    riso.nome = 'riso';
+    riso.nome = 'orata';
     riso.calorie = 100;
     riso.carboidrati = 50;
     riso.grassi = 15;

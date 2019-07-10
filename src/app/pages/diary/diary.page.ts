@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Dieta} from '../../model/dieta.model';
 import {AlertController, NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {NavigationExtras, Router} from '@angular/router';
+import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {Pasto, TipoPasto} from '../../model/pasto.model';
 import {AlimentoService} from '../../services/alimento.service';
 
@@ -46,13 +46,18 @@ export class DiaryPage implements OnInit {
               private navController: NavController,
               private alertController: AlertController,
               private router: Router,
+              private route: ActivatedRoute,
               private alimentntoService: AlimentoService) {
+
     this.dieta = new Dieta();
     this.colazione = new Pasto();
     this.colazione.tipoPasto = TipoPasto.COLAZIONE;
     this.pranzo = new Pasto();
+    this.pranzo.tipoPasto = TipoPasto.PRANZO;
     this.snacks = new Pasto();
+    this.snacks.tipoPasto = TipoPasto.SNACK;
     this.cena = new Pasto();
+    this.cena.tipoPasto = TipoPasto.CENA;
   }
 
   ngOnInit() {
@@ -74,25 +79,27 @@ export class DiaryPage implements OnInit {
 
     this.calorieAttivita = 50;
     document.getElementById('attivita').innerText = String(this.calorieAttivita);
-    this.calorieTot = this.pranzo.getTotCalorie() + this.colazione.getTotCalorie() + this.snacks.getTotCalorie() + this.cena.getTotCalorie();
-    this.calorieTotMax = this.dieta.calorieGiornaliere.reduce(this.sum, 0);
 
-    this.proteineTot = this.pranzo.getTotProteine() + this.colazione.getTotProteine() + this.snacks.getTotProteine() + this.cena.getTotProteine();
+    this.calorieTotMax = this.dieta.calorieGiornaliere.reduce(this.sum, 0);
     this.dieta.proteineGiornaliere = 200;
-    this.grassiTot = this.pranzo.getTotGrassi() + this.colazione.getTotGrassi() + this.snacks.getTotGrassi() + this.cena.getTotGrassi();
     this.dieta.grassiGiornalieri = 300;
-    this.carboidratiTot = this.pranzo.getTotCarboidrati() + this.colazione.getTotCarboidrati() + this.snacks.getTotCarboidrati() + this.cena.getTotCarboidrati();
     this.dieta.carboidratiGiornalieri = 400;
 
+  }
+
+  ionViewWillEnter() {
+    this.calorieTot = this.pranzo.getTotCalorie() + this.colazione.getTotCalorie() + this.snacks.getTotCalorie() + this.cena.getTotCalorie();
+    this.proteineTot = this.pranzo.getTotProteine() + this.colazione.getTotProteine() + this.snacks.getTotProteine() + this.cena.getTotProteine();
+    this.grassiTot = this.pranzo.getTotGrassi() + this.colazione.getTotGrassi() + this.snacks.getTotGrassi() + this.cena.getTotGrassi();
+    this.carboidratiTot = this.pranzo.getTotCarboidrati() + this.colazione.getTotCarboidrati() + this.snacks.getTotCarboidrati() + this.cena.getTotCarboidrati();
     this.percentualeCalorieTot = this.calcoloPercentuale(this.calorieTot, this.calorieTotMax);
     this.percentualeProteine = this.calcoloPercentuale(this.proteineTot, this.dieta.proteineGiornaliere);
     this.percentualeGrassi = this.calcoloPercentuale(this.grassiTot, this.dieta.grassiGiornalieri);
     this.percentualeCarboidrati = this.calcoloPercentuale(this.carboidratiTot, this.dieta.carboidratiGiornalieri);
-    this.percentualeCalorie[0] = this.calcoloPercentuale(this.colazione.getTotCalorie(), this.dieta.calorieGiornaliere[0]);;
+    this.percentualeCalorie[0] = this.calcoloPercentuale(this.colazione.getTotCalorie(), this.dieta.calorieGiornaliere[0]);
     this.percentualeCalorie[1] = this.calcoloPercentuale(this.pranzo.getTotCalorie(), this.dieta.calorieGiornaliere[1]);
     this.percentualeCalorie[2] = this.calcoloPercentuale(this.snacks.getTotCalorie(), this.dieta.calorieGiornaliere[2]);
     this.percentualeCalorie[3] = this.calcoloPercentuale(this.cena.getTotCalorie(), this.dieta.calorieGiornaliere[3]);
-
     this.completamento(Math.round(this.colazione.getTotCalorie()), this.dieta.calorieGiornaliere[0]);
     document.getElementById('colazione').innerText = this.showString;
     this.completamento(Math.round(this.pranzo.getTotCalorie()), this.dieta.calorieGiornaliere[1]);
@@ -128,13 +135,16 @@ export class DiaryPage implements OnInit {
   removeAcqua() {
     this.nAcqua -= 1;
   }
-  addFood(event, a: Pasto) {
+
+  addFood(a: Pasto) {
+    alert(a.tipoPasto);
     const navigationExtra: NavigationExtras = {
       state: {
         meal: a
       }
-  };
-    this.router.navigate(['inserisci-cibo'], navigationExtra);
+    };
+    this.router.navigate(['tabs/inserisci-cibo'], navigationExtra);
   }
+
 }
 

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {NavController} from '@ionic/angular';
-import {ActivatedRoute, Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
+import {Pasto, TipoPasto} from '../../model/pasto.model';
+import {AlimentoService} from '../../services/alimento.service';
+
+
 
 @Component({
   selector: 'app-inserisci-cibo',
@@ -10,43 +13,45 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 
 export class InserisciCiboPage implements OnInit {
-  private meal1: string;
+  private meal1: Pasto;
+  private temp: Pasto;
   private title: string;
-  private flag: number;
   constructor(private translateService: TranslateService,
-              private route: ActivatedRoute,
-              private router: Router) {
-    /*
+              private router: Router,
+              private alimentntoService: AlimentoService) {
+    alert();
     if (this.router.getCurrentNavigation().extras.state) {
-      this.diario1 = this.router.getCurrentNavigation().extras.state.diario;
       this.meal1 = this.router.getCurrentNavigation().extras.state.meal;
-    }*/
+    }
+    this.temp = new Pasto();
   }
 
   ngOnInit() {
-   /*  switch (this.meal1) {
-       case 'colazione': {
+    switch (this.meal1.tipoPasto) {
+       case 0: {
         this.title = this.translateService.instant('COLAZIONE');
-        this.flag = 0;
         break;
        }
-       case 'pranzo': {
+       case 1: {
          this.title = this.translateService.instant('PRANZO');
-         this.flag = 1;
          break;
        }
-       case 'snacks': {
+       case 2: {
          this.title = this.translateService.instant('SNACKS');
-         this.flag = 2;
          break;
        }
-       case 'cena': {
+       case 3: {
          this.title = this.translateService.instant('CENA');
-         this.flag = 3;
          break;
        }
-     }
-*/
+    }
   }
 
+  onClick(): void {
+    this.temp.alimenti.push({alimento: this.alimentntoService.getAll()[1],  dose: Math.floor(Math.random() * 101)});
+}
+  onUpdate() {
+    this.meal1.alimenti = this.meal1.alimenti.concat(this.temp.alimenti);
+    this.router.navigateByUrl('tabs/diary');
+  }
 }

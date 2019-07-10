@@ -1,12 +1,15 @@
 import {NgModule} from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'signup',  loadChildren: './pages/signup/signup.module#SignupPageModule'},
-  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
-  { path: 'inserisci-cibo', loadChildren: './pages/inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule' }
+  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule'},
+ // { path: 'inserisci-cibo', loadChildren: './pages/inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'},
+  { path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
+
 
 ];
 
