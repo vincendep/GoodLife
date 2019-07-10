@@ -107,21 +107,21 @@ export class DiaryPage implements OnInit {
     this.percentualeCalorie[2] = this.calcoloPercentuale(this.snacks.getTotCalorie(), this.dieta.calorieGiornaliere[2]);
     this.percentualeCalorie[3] = this.calcoloPercentuale(this.cena.getTotCalorie(), this.dieta.calorieGiornaliere[3]);
     this.completamento(Math.round(this.colazione.getTotCalorie()), this.dieta.calorieGiornaliere[0]);
-    document.getElementById('colazione').innerText = this.showString;
+    document.getElementById('colazione').innerText = this.showString + ' kcal';
     this.completamento(Math.round(this.pranzo.getTotCalorie()), this.dieta.calorieGiornaliere[1]);
-    document.getElementById('pranzo').innerText = this.showString;
+    document.getElementById('pranzo').innerText = this.showString + ' kcal';
     this.completamento(Math.round(this.snacks.getTotCalorie()), this.dieta.calorieGiornaliere[2]);
-    document.getElementById('snacks').innerText = this.showString;
+    document.getElementById('snacks').innerText = this.showString + ' kcal';
     this.completamento(Math.round(this.cena.getTotCalorie()), this.dieta.calorieGiornaliere[3]);
-    document.getElementById('cena').innerText = this.showString;
+    document.getElementById('cena').innerText = this.showString + ' kcal';
     this.completamento(Math.round(this.calorieTot), this.calorieTotMax);
-    document.getElementById('calorie').innerText = this.showString;
+    document.getElementById('calorie').innerText = this.showString + ' kcal';
     this.completamento(Math.round(this.proteineTot), this.dieta.proteineGiornaliere);
-    document.getElementById('proteine').innerText = this.showString;
+    document.getElementById('proteine').innerText = this.showString  + ' g';
     this.completamento(Math.round(this.grassiTot), this.dieta.grassiGiornalieri);
-    document.getElementById('grassi').innerText = this. showString;
+    document.getElementById('grassi').innerText = this. showString + ' g';
     this.completamento(Math.round(this.carboidratiTot), this.dieta.carboidratiGiornalieri);
-    document.getElementById('carboidrati').innerText = this. showString;
+    document.getElementById('carboidrati').innerText = this. showString + ' g';
   }
 
   completamento(a: number, b: number) {

@@ -63,7 +63,7 @@ const routes: Routes = [
         resolve: {
           special: DataResolverService
         },
-        loadChildren: './pages/inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'
+        loadChildren: '../inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'
       },
       {
         path: '',

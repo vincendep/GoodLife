@@ -31,6 +31,14 @@ export class AlimentoService {
     return this.alimenti;
   }
 
+  getCarne(): Alimento {
+    return this.alimenti[1];
+  }
+
+  getPesce(): Alimento {
+    return this.alimenti[0];
+  }
+
   add(a: Alimento) {
     this.alimenti.push(a);
   }

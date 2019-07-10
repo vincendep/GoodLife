@@ -9,8 +9,6 @@ const routes: Routes = [
   { path: 'signup',  loadChildren: './pages/signup/signup.module#SignupPageModule'},
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule'},
  // { path: 'inserisci-cibo', loadChildren: './pages/inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'},
-  { path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
-
 
 ];
 

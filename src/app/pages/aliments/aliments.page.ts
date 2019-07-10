@@ -35,7 +35,16 @@ export class AlimentsPage implements OnInit {
     const alert = await this.alertController.create({
       header: this.deleteTitle,
       message: this.deleteMessage + ' ' + alimento.nome + '?',
-      buttons: ['OK', 'CANCEL']
+      buttons: [{
+        text: 'OK',
+        handler: (data) => {
+          let index = this.alimenti.indexOf(alimento);
+          if (index > -1) {
+            this.alimenti.splice(index, 1);
+          }
+        }
+      }
+          , 'CANCEL']
     });
     await alert.present();
   }
