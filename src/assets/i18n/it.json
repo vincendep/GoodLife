@@ -35,6 +35,12 @@
   "PROFILE": "PROFILO",
   "STATS": "STATISTICHE",
 
+  "PASTO": "pasto",
+  "PASTI": "pasti",
+  "CIBO": "cibo",
+  "CIBI": "cibi",
+  "ALIMENTO": "alimento",
+  "ALIMENTI": "alimenti",
   "CALORIE": "CALORIE",
   "PROTEINE": "PROTEINE",
   "GRASSI": "GRASSI",
@@ -62,7 +68,7 @@
   "CREA_ACCOUNT": "crea account",
   "NOME": "nome",
   "COGNOME": "cognome",
-  "EMAIL": "email",
-  "PASSWORD": "password",
-  "CONFERMA_PASSWORD": "conferma password"
+  "CONFERMA_PASSWORD": "conferma password",
+  "DELETE_TITLE": "Sei sicuro?",
+  "DELETE_MESSAGE": "Vuoi eliminare"
 }

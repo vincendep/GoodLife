@@ -9,22 +9,23 @@
   <ion-slides id="slider" pager="true" [options]="slideOpts">
     <ion-slide>
       <div>
-       <ion-item>
-        <ion-title>{{'TITLE_OBIETTIVO' | translate }}</ion-title>
-       </ion-item>
-
+        <div margin="10px">
+          <ion-text>{{'TITLE_OBIETTIVO' | translate }}</ion-text>
+        </div>
         <ion-img src="../../../assets/images/trophy.png" class="img-dim"></ion-img>
 
-
-          <ion-button (click)="scegliObiettivo($event)" id="obiettivoDimagrimento" size="large" expand="block" shape="round" color="primary" >Dimagrire</ion-button>
-          <ion-button (click)="scegliObiettivo($event)" id="obiettivoMassa" size="large" expand="block" shape="round" color="primary" >Massa muscolare</ion-button>
-          <ion-button (click)="scegliObiettivo($event)" id="obiettivoSano" size="large" expand="block" shape="round" color="primary">Mangiare sano</ion-button>
-        </div>
-
+          <div margin="20px">
+            <ion-button (click)="scegliObiettivo($event)" id="obiettivoDimagrimento" size="large" expand="block" shape="round" color="primary" >Dimagrire</ion-button>
+            <ion-button (click)="scegliObiettivo($event)" id="obiettivoMassa" size="large" expand="block" shape="round" color="primary" >Massa muscolare</ion-button>
+            <ion-button (click)="scegliObiettivo($event)" id="obiettivoSano" size="large" expand="block" shape="round" color="primary">Mangiare sano</ion-button>
+          </div>
+      </div>
     </ion-slide>
 
     <!-- personal info -->
     <ion-slide>
+      <ion-grid>
+        <ion-col>
       <form [formGroup]="stepTwoForm" class="list-form">
         <ion-list>
           <ion-item no-padding class="animated fadeInUp">
@@ -42,27 +43,15 @@
           <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">
               {{ 'DATA_DI_NASCITA' | translate | titlecase }}</ion-label>
-            <ion-input color="secondary" type="date" formControlName="dataDiNascita"></ion-input>
+            <ion-input color="secondary" type="date" formControlName="dataDiNascita" placeholder=""></ion-input>
           </ion-item>
-
-          <ion-list>
-            <ion-radio-group formControlName="sesso">
-              <ion-list-header>
-                {{ 'SESSO' | translate | titlecase }}
-              </ion-list-header>
-              <ion-item>
-                <ion-label>{{ 'MASCHIO' | translate }}</ion-label>
-                <ion-radio value="maschio"></ion-radio>
-              </ion-item>
-              <ion-item>
-                <ion-label>{{ 'FEMMINA' | translate }}</ion-label>
-                <ion-radio value="femmina"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-          <p ion-text class="text08" *ngIf="stepTwoForm.get('sesso').touched && stepTwoForm.get('sesso').invalid">
-            <ion-text color="danger">{{ 'SESSO' | translate | titlecase }} {{ 'OBBLIGATORIO' | translate }}</ion-text>
-          </p>
+          <ion-item no-padding class="animated fadeInUp">
+            <ion-label>{{'SESSO' | translate | titlecase}}</ion-label>
+            <ion-select formControlName="sesso">
+              <ion-select-option value="maschio">{{'MASCHIO' | translate}}</ion-select-option>
+              <ion-select-option value="femmina">{{'FEMMINA' | translate}}</ion-select-option>
+            </ion-select>
+          </ion-item>
         </ion-list>
         <div margin-top="20px">
           <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onConfirm()" [disabled]="!stepTwoForm.valid" tappable>
@@ -71,10 +60,14 @@
           </ion-button>
         </div>
       </form>
+        </ion-col>
+      </ion-grid>
     </ion-slide>
 
     <!-- account info -->
     <ion-slide>
+      <ion-grid>
+        <ion-col>
       <form [formGroup]="stepThreeForm" class="list-form">
         <ion-list>
           <ion-item>
@@ -109,12 +102,12 @@
           </ion-button>
         </div>
       </form>
+      </ion-col>
+      </ion-grid>
     </ion-slide>
   </ion-slides>
-
-  <nav position="floating" margin="auto" text-center>
+  <nav position="absolute" margin="auto" text-center>
     <a routerLink="/login" routerLinkActive="active">{{ 'ACCEDI' | translate }}</a>
   </nav>
-
 </ion-content>
 

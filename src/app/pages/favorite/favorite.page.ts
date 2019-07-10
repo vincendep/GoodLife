@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {IonTabs} from '@ionic/angular';
 
 @Component({
   selector: 'app-favorite',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorite.page.scss'],
 })
 export class FavoritePage implements OnInit {
+  private currentTab: string;
+  @ViewChild(IonTabs) tabs: IonTabs;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  getSelectedTab(): void {
+    this.currentTab = this.tabs.getSelected() === 'aliments' ? 'ALIMENTI' : 'PASTI';
+  }
 }
