@@ -5,7 +5,6 @@ import {Pasto, TipoPasto} from '../../model/pasto.model';
 import {AlimentoService} from '../../services/alimento.service';
 import {Alimento} from '../../model/alimento.model';
 import {AlertController} from '@ionic/angular';
-import {branch} from '@angular-devkit/schematics/src/tree/static';
 
 
 @Component({
@@ -21,7 +20,6 @@ export class InserisciCiboPage implements OnInit {
   private deleteTitle: string;
   private deleteMessage: string;
   private hideMe = [false, false];
-  private dose1 = 0;
   constructor(private translateService: TranslateService,
               private router: Router,
               private route: ActivatedRoute,
@@ -71,7 +69,11 @@ export class InserisciCiboPage implements OnInit {
   async selezionaDose(a: Alimento) {
       const alert = await this.alertController.create({
           header: a.nome,
-          message: 'calorie: ' + a.calorie.toString() + ' kcal <br/>proteine: ' + a.proteine + ' g <br/>grassi: ' + a.grassi + ' g <br/>carboidrati: ' +  a.carboidrati + ' g',
+          message: this.translateService.instant('CALORIE') +
+                ': ' + a.calorie.toString() + ' kcal <br/>' + this.translateService.instant('PROTEINE') +
+                ': ' + a.proteine + ' g <br/>' + this.translateService.instant('GRASSI') +
+                ': ' + a.grassi + ' g <br/>' + this.translateService.instant('CARBOIDRATI') +
+                ': ' +  a.carboidrati + ' g',
           cssClass: 'alertDimension',
           inputs: [
               {
@@ -82,13 +84,13 @@ export class InserisciCiboPage implements OnInit {
           ],
           buttons: [
               {
-                  text: 'CANCEL',
+                  text: this.translateService.instant('CANCEL_BUTTON'),
                   role: 'cancel',
               },
               {
                   text: 'OK',
                   handler: (data) => {
-                      if (data.dose) {
+                      if (data.dose > 0) {
                           this.temp.alimenti.push({alimento: a, dose: data.dose});
                       }
                   }
@@ -118,7 +120,7 @@ export class InserisciCiboPage implements OnInit {
                         this.temp.alimenti.splice(index, 1);
                     }
                 }
-            }, 'CANCEL']
+            }, this.translateService.instant('CANCEL_BUTTON')]
         });
         await alert.present();
     }
@@ -132,10 +134,6 @@ export class InserisciCiboPage implements OnInit {
     }
 
     hide(a: number) {
-      if (this.hideMe[a]) {
-          this.hideMe[a] = false;
-      } else {
-          this.hideMe[a] = true;
-      }
+      this.hideMe[a] = !this.hideMe[a];
     }
 }

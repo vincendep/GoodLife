@@ -59,6 +59,12 @@ const routes: Routes = [
           }
         ]
       },
+      {path: 'diary/4',
+        resolve: {
+          special: DataResolverService
+        },
+        loadChildren: '../inserisci-attivita/inserisci-attivita.module#InserisciAttivitaPageModule'
+      },
       {path: 'diary/:id',
         resolve: {
           special: DataResolverService

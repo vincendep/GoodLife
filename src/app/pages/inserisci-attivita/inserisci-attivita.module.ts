@@ -5,13 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InserisciCiboPage } from './inserisci-cibo.page';
+import { InserisciAttivitaPage } from './inserisci-attivita.page';
 import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {
     path: '',
-    component: InserisciCiboPage
+    component: InserisciAttivitaPage
   }
 ];
 
@@ -23,6 +23,6 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         TranslateModule.forChild()
     ],
-  declarations: [InserisciCiboPage]
+  declarations: [InserisciAttivitaPage]
 })
-export class InserisciCiboPageModule {}
+export class InserisciAttivitaPageModule {}

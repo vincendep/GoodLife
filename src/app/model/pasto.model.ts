@@ -1,5 +1,4 @@
 import {Alimento} from './alimento.model';
-import {forEach} from '@angular-devkit/schematics';
 
 export class Pasto {
     private _tipoPasto: TipoPasto;

@@ -44,7 +44,7 @@ export class AlimentsPage implements OnInit {
           }
         }
       }
-          , 'CANCEL']
+          , this.translateService.instant('CANCEL_BUTTON')]
     });
     await alert.present();
   }

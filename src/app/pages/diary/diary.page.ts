@@ -6,6 +6,7 @@ import {NavigationExtras, Router} from '@angular/router';
 import {Pasto, TipoPasto} from '../../model/pasto.model';
 import {AlimentoService} from '../../services/alimento.service';
 import {DataService} from '../../services/data.service';
+import {AttivitaFisica} from '../../model/attivita-fisica.model';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class DiaryPage implements OnInit {
   private pranzo: Pasto;
   private snacks: Pasto;
   private cena: Pasto;
+
+  private attivita: AttivitaFisica;
 
   private calorieAttivita: number;
 
@@ -59,6 +62,7 @@ export class DiaryPage implements OnInit {
     this.snacks.tipoPasto = TipoPasto.SNACK;
     this.cena = new Pasto();
     this.cena.tipoPasto = TipoPasto.CENA;
+    this.attivita = new AttivitaFisica();
   }
 
   ngOnInit() {
@@ -66,6 +70,8 @@ export class DiaryPage implements OnInit {
     this.dataService.setData(1, this.pranzo);
     this.dataService.setData(2, this.snacks);
     this.dataService.setData(3, this.cena);
+    this.dataService.setData(4, this.attivita);
+
     // calorie[] è l'arrey che conserva i valori calorici degli alimenti mangiati nei vari pasti,
     // 0=colazione, 1=pranzo, 2=snacks, 3=cena
     this.nAcqua = 0;
@@ -81,10 +87,6 @@ export class DiaryPage implements OnInit {
     this.dieta.calorieGiornaliere = [60, 100, 40, 120];
 
     this.date = new Date().toDateString();
-
-
-    this.calorieAttivita = 50;
-    document.getElementById('attivita').innerText = String(this.calorieAttivita);
 
     this.calorieTotMax = this.dieta.calorieGiornaliere.reduce(this.sum, 0);
     this.dieta.proteineGiornaliere = 200;
@@ -122,6 +124,8 @@ export class DiaryPage implements OnInit {
     document.getElementById('grassi').innerText = this. showString + ' g';
     this.completamento(Math.round(this.carboidratiTot), this.dieta.carboidratiGiornalieri);
     document.getElementById('carboidrati').innerText = this. showString + ' g';
+    this.calorieAttivita = this.attivita.consumoTotale();
+    document.getElementById('attivita').innerText = String(this.calorieAttivita);
   }
 
   completamento(a: number, b: number) {
@@ -144,6 +148,10 @@ export class DiaryPage implements OnInit {
 
   addFood(a: Pasto) {
     this.router.navigateByUrl('tabs/diary/' + a.tipoPasto);
+  }
+
+  addAttivita() {
+    this.router.navigateByUrl('tabs/diary/' + 4);
   }
 
 }
