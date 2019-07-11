@@ -19,7 +19,7 @@ export class InserisciCiboPage implements OnInit {
   private title: string;
   private deleteTitle: string;
   private deleteMessage: string;
-  private hideMe = [false, false];
+  private hideMe = [false, false, false];
   constructor(private translateService: TranslateService,
               private router: Router,
               private route: ActivatedRoute,
@@ -53,17 +53,8 @@ export class InserisciCiboPage implements OnInit {
     }
   }
 
-  onClick(a: number): void {
-    switch (a) {
-        case 0: {
-            this.selezionaDose(this.alimentoService.getCarne());
-            break;
-        }
-        case 1: {
-            this.selezionaDose(this.alimentoService.getPesce());
-            break;
-        }
-    }
+  onClick(element: Alimento): void {
+            this.selezionaDose(element);
   }
 
   async selezionaDose(a: Alimento) {

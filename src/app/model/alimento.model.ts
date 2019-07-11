@@ -5,6 +5,7 @@ export class Alimento {
     private _carboidrati: number;
     private _proteine: number;
     private _grassi: number;
+    private _categoria: Categorie;
 
     get carboidrati(): number {
         return this._carboidrati;
@@ -44,4 +45,18 @@ export class Alimento {
     set grassi(g: number) {
         this._grassi = g;
     }
+
+    get categoria(): Categorie {
+        return this._categoria;
+    }
+
+    set categoria(value: Categorie) {
+        this._categoria = value;
+    }
+}
+
+export enum Categorie {
+    PREFERITI,
+    CARNE,
+    PESCE,
 }

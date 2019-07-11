@@ -63,8 +63,11 @@
   "REGISTRATI": "registrati",
   "ACCEDI": "accedi",
 
-  "SIGNUP_TITLE": "registrazione",
+  "SIGNUP_TITLE": "REGISTRAZIONE",
   "TITLE_OBIETTIVO": "Qual è il tuo obiettivo?",
+  "DIMAGRIRE":"Dimagrire",
+  "MASSA": "Massa muscolare",
+  "SANO": "Mangiare sano",
   "SIGNUP_ERROR_TITLE": "Impossibile completare la registrazione",
   "SIGNUP_ERROR_MESSAGE": "I campi password e conferma password non coincidono",
   "CONFERMA": "conferma",
@@ -73,5 +76,8 @@
   "COGNOME": "cognome",
   "CONFERMA_PASSWORD": "conferma password",
   "DELETE_TITLE": "Sei sicuro?",
-  "DELETE_MESSAGE": "Vuoi eliminare"
+  "DELETE_MESSAGE": "Vuoi eliminare",
+
+  "CARNE": "CARNE",
+  "PESCE": "PESCE"
 }

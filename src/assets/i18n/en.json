@@ -63,8 +63,11 @@
   "REGISTRATI": "signup",
   "ACCEDI": "login",
 
-  "SIGNUP_TITLE": "registration",
+  "SIGNUP_TITLE": "SIGNUP",
   "TITLE_OBIETTIVO": "What is your goal?",
+  "DIMAGRIRE":"Lose weight",
+  "MASSA": "Muscle mass",
+  "SANO": "Eat healthy",
   "SIGNUP_ERROR_TITLE": "Signup failed",
   "SIGNUP_ERROR_MESSAGE": "Password and confirm password are different",
   "CONFERMA": "confirm",
@@ -73,5 +76,8 @@
   "COGNOME": "surname",
   "CONFERMA_PASSWORD": "confirm password",
   "DELETE_TITLE": "Are you sure?",
-  "DELETE_MESSAGE": "Do you want to delete"
+  "DELETE_MESSAGE": "Do you want to delete",
+
+  "CARNE": "MEAT",
+  "PESCE": "FISH"
 }

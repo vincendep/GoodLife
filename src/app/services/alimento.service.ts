@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import {Alimento} from '../model/alimento.model';
-import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Alimento, Categorie} from '../model/alimento.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +8,13 @@ export class AlimentoService {
   alimenti: Alimento[] = [];
 
   constructor() {
-    const riso: Alimento = new Alimento();
-    riso.nome = 'orata';
-    riso.calorie = 100;
-    riso.carboidrati = 50;
-    riso.grassi = 15;
-    riso.proteine = 15;
+    const orata: Alimento = new Alimento();
+    orata.nome = 'orata';
+    orata.calorie = 100;
+    orata.carboidrati = 50;
+    orata.grassi = 15;
+    orata.proteine = 15;
+    orata.categoria = Categorie.PESCE;
 
     const manzo: Alimento = new Alimento();
     manzo.nome = 'manzo';
@@ -22,21 +22,44 @@ export class AlimentoService {
     manzo.proteine = 70;
     manzo.grassi = 35;
     manzo.carboidrati = 15;
+    manzo.categoria = Categorie.CARNE;
 
 
-    this.alimenti.push(riso, manzo);
+    this.alimenti.push(orata, manzo);
   }
 
   getAll(): Alimento[] {
     return this.alimenti;
   }
 
-  getCarne(): Alimento {
-    return this.alimenti[1];
+  getPreferiti(): Alimento[] {
+    const a = [];
+    for (const value of this.alimenti) {
+      if (value.categoria === Categorie.PREFERITI) {
+        a.push(value);
+      }
+    }
+    return a;
   }
 
-  getPesce(): Alimento {
-    return this.alimenti[0];
+  getCarne(): Alimento[] {
+    const a = [];
+    for (const value of this.alimenti) {
+      if (value.categoria === Categorie.CARNE) {
+        a.push(value);
+      }
+    }
+    return a;
+  }
+
+  getPesce(): Alimento[] {
+    const a = [];
+    for (const value of this.alimenti) {
+      if (value.categoria === Categorie.PESCE) {
+        a.push(value);
+      }
+    }
+    return a;
   }
 
   add(a: Alimento) {

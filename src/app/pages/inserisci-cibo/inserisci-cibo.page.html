@@ -18,19 +18,27 @@
     </ion-list>
   <ion-list>
     <ion-item button=true (click)="hide(0)" color="primary">
-      <ion-label>CARNE</ion-label>
+      <ion-label>{{ 'CARNE' | translate }}</ion-label>
     </ion-item>
       <ion-list *ngIf="hideMe[0]">
-          <ion-item lines="full" (click)="onClick(0)" button=true>
-              <ion-text>{{alimentoService.getCarne().nome}}</ion-text>
+          <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of alimentoService.getCarne()"  button=true>
+              <ion-text>{{element.nome}}</ion-text>
           </ion-item>
       </ion-list>
     <ion-item button=true (click)="hide(1)" color="primary">
-      <ion-label>PESCE</ion-label>
+      <ion-label>{{ 'PESCE' | translate }}</ion-label>
     </ion-item>
       <ion-list *ngIf="hideMe[1]">
-          <ion-item lines="full" (click)="onClick(1)" button=true>
-              <ion-text>{{alimentoService.getPesce().nome}}</ion-text>
+          <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of alimentoService.getPesce()" button=true>
+              <ion-text>{{element.nome}}</ion-text>
+          </ion-item>
+      </ion-list>
+      <ion-item button=true (click)="hide(2)" color="primary">
+          <ion-label>{{ 'FAVORITE' | translate }}</ion-label>
+      </ion-item>
+      <ion-list *ngIf="hideMe[2]">
+          <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of alimentoService.getPreferiti()" button=true>
+              <ion-text>{{element.nome}}</ion-text>
           </ion-item>
       </ion-list>
   </ion-list>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Alimento} from '../../model/alimento.model';
 import {AlimentoService} from '../../services/alimento.service';
-import {AlertController} from '@ionic/angular';
+import {AlertController, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -18,12 +18,19 @@ export class AlimentsPage implements OnInit {
 
   constructor(private alimentoService: AlimentoService,
               private alertController: AlertController,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private modalController: ModalController) {
   }
 
   ngOnInit() {
     this.initTranslate();
     this.alimenti = this.alimentoService.getAll();
+  }
+
+  async showModal() {
+   /* const modal = await this.modalController.create({
+      component: SettingCom
+    })*/
   }
 
   eliminaAlimento(alimento: Alimento) {
