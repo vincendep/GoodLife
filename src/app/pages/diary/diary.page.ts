@@ -70,7 +70,6 @@ export class DiaryPage implements OnInit {
     this.dataService.setData(1, this.pranzo);
     this.dataService.setData(2, this.snacks);
     this.dataService.setData(3, this.cena);
-    this.dataService.setData(4, this.attivita);
 
     // calorie[] è l'arrey che conserva i valori calorici degli alimenti mangiati nei vari pasti,
     // 0=colazione, 1=pranzo, 2=snacks, 3=cena
@@ -151,7 +150,12 @@ export class DiaryPage implements OnInit {
   }
 
   addAttivita() {
-    this.router.navigateByUrl('tabs/diary/' + 4);
+    let navigationExtras: NavigationExtras = {
+      state: {
+        user: this.attivita
+      }
+    };
+    this.router.navigate(['tabs/diary/4'], navigationExtras);
   }
 
 }

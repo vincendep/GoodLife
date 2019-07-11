@@ -11,7 +11,7 @@ export class EsercizioFisico {
     }
 
     get consumoPerMinuto() {
-        return this.consumoPerMinuto;
+        return this._consumoPerMinuto;
     }
 
     set consumoPerMinuto(cpm: number) {

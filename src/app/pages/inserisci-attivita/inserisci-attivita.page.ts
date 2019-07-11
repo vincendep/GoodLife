@@ -19,19 +19,17 @@ export class InserisciAttivitaPage implements OnInit {
   private deleteMessage: string;
   constructor(private translateService: TranslateService,
               private router: Router,
-              private route1: ActivatedRoute,
+              private route: ActivatedRoute,
               private alertController: AlertController,
               private esercizioService: EsercizioService) {
+
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.attivita1 = this.router.getCurrentNavigation().extras.state.user;
+    }
   }
 
   ngOnInit() {
     this.temp = new AttivitaFisica();
-    alert();
-    if (this.route1.snapshot.data['special']) {
-      alert();
-      this.attivita1 = this.route1.snapshot.data['special'];
-    }
-    alert(this.attivita1.consumoTotale());
     this.temp = this.attivita1;
   }
 
@@ -63,6 +61,43 @@ export class InserisciAttivitaPage implements OnInit {
       this.deleteMessage = data;
     });
   }
-  onClick(esercizio: EsercizioFisico) {}
-  onUpdate() {}
+  onClick(a: EsercizioFisico): void {
+    this.selezionaDurata(a);
+  }
+
+  async selezionaDurata(a: EsercizioFisico) {
+    const alert = await this.alertController.create({
+      header: a.nome,
+      message: this.translateService.instant('CALMIN') + ': ' + a.consumoPerMinuto + ' kcal',
+      cssClass: 'alertDimension',
+      inputs: [
+        {
+          name: 'durata',
+          type: 'number',
+          value: 0,
+        }
+      ],
+      buttons: [
+        {
+          text: this.translateService.instant('CANCEL_BUTTON'),
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          handler: (data) => {
+            if (data.durata > 0) {
+              this.temp.attivita.push({esercizio: a, durata: data.durata});
+            }
+          }
+        }
+      ],
+    });
+    await alert.present();
+  }
+
+
+  onUpdate() {
+    this.attivita1.attivita = this.temp.attivita;
+    this.router.navigateByUrl('tabs/diary');
+  }
 }
