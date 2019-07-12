@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Dieta} from '../../model/dieta.model';
-import {AlertController, NavController} from '@ionic/angular';
+import {NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {NavigationExtras, Router} from '@angular/router';
 import {Pasto, TipoPasto} from '../../model/pasto.model';
-import {AlimentoService} from '../../services/alimento.service';
 import {DataService} from '../../services/data.service';
 import {AttivitaFisica} from '../../model/attivita-fisica.model';
 
@@ -48,10 +47,8 @@ export class DiaryPage implements OnInit {
 
   constructor(private translateService: TranslateService,
               private navController: NavController,
-              private alertController: AlertController,
               private router: Router,
-              private dataService: DataService,
-              private alimentntoService: AlimentoService) {
+              private dataService: DataService) {
 
     this.dieta = new Dieta();
     this.colazione = new Pasto();

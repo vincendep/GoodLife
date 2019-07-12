@@ -20,6 +20,7 @@ export class InserisciCiboPage implements OnInit {
   private deleteTitle: string;
   private deleteMessage: string;
   private hideMe = [false, false, false];
+  private flag = false;
   constructor(private translateService: TranslateService,
               private router: Router,
               private route: ActivatedRoute,
@@ -28,9 +29,10 @@ export class InserisciCiboPage implements OnInit {
   }
 
   ngOnInit() {
+    this.flag = false;
     this.temp = new Pasto();
     if (this.route.snapshot.data['special']) {
-          this.meal1 = this.route.snapshot.data['special'];
+        this.meal1 = this.route.snapshot.data['special'];
     }
     this.temp = this.meal1;
     switch (this.meal1.tipoPasto) {
@@ -50,6 +52,11 @@ export class InserisciCiboPage implements OnInit {
          this.title = this.translateService.instant('CENA');
          break;
        }
+        default: {
+            this.title = this.translateService.instant('CREA_PASTO');
+            this.flag = true;
+            break;
+        }
     }
   }
 
@@ -92,7 +99,11 @@ export class InserisciCiboPage implements OnInit {
 
   onUpdate() {
     this.meal1.alimenti = this.temp.alimenti;
-    this.router.navigateByUrl('tabs/diary');
+    if (this.flag) {
+        this.router.navigateByUrl('tabs/favorite/meals/crea-pasto');
+    } else {
+        this.router.navigateByUrl('tabs/diary');
+    }
   }
     eliminaAlimento(alimento: any) {
         this.showDeleteAlert(alimento);

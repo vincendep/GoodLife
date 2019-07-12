@@ -79,6 +79,8 @@
   "DELETE_MESSAGE": "Vuoi eliminare",
   "CREA_ALIMENTO": "Crea un nuovo alimento",
   "CREA_PASTO": "Crea un nuovo pasto",
+  "NUOVO-NOME": "Inserisci un nome",
+  "ALIMENTI_AGGIUNTI": "Alimenti aggiunti",
 
   "CARNE": "CARNE",
   "PESCE": "PESCE"

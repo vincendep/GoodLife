@@ -15,7 +15,7 @@ export class CreaAlimentoPage implements OnInit {
   private form: FormGroup;
 
   constructor(private alimentoService: AlimentoService, private modalController: ModalController, private formBuilder: FormBuilder) {
-    this.alimento = new Alimento()
+    this.alimento = new Alimento();
   }
 
   ngOnInit() {

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { FavoritePage } from './favorite.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {DataResolverService} from '../../services/data-resolver.service';
 
 const routes: Routes = [
   {
@@ -30,6 +31,17 @@ const routes: Routes = [
             loadChildren: '../meals/meals.module#MealsPageModule'
           }
         ]
+      },
+      {
+        path: 'meals/crea-pasto',
+        loadChildren: '../crea-pasto/crea-pasto.module#CreaPastoPageModule'
+      },
+      {
+        path: 'meals/crea-pasto/:id',
+        resolve: {
+          special: DataResolverService
+        },
+        loadChildren: '../inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'
       },
       {
         path: '',

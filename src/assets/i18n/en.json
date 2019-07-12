@@ -79,6 +79,8 @@
   "DELETE_MESSAGE": "Do you want to delete",
   "CREA_ALIMENTO": "Create new aliment",
   "CREA_PASTO": "Create new meal",
+  "NUOVO-NOME": "Insert name",
+  "ALIMENTI_AGGIUNTI": "Added aliments",
 
   "CARNE": "MEAT",
   "PESCE": "FISH"
