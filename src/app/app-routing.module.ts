@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'signup',  loadChildren: './pages/signup/signup.module#SignupPageModule'},
-  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule'},
+  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule'},  { path: 'crea-alimento', loadChildren: './pages/crea-alimento/crea-alimento.module#CreaAlimentoPageModule' },
+
   // { path: 'inserisci-attivita', loadChildren: './pages/inserisci-attivita/inserisci-attivita.module#InserisciAttivitaPageModule' },
 
  // { path: 'inserisci-cibo', loadChildren: './pages/inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'},

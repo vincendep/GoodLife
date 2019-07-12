@@ -4,6 +4,7 @@ import {Alimento} from '../../model/alimento.model';
 import {AlimentoService} from '../../services/alimento.service';
 import {AlertController, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {CreaAlimentoPage} from '../crea-alimento/crea-alimento.page';
 
 @Component({
   selector: 'app-aliments',
@@ -24,13 +25,16 @@ export class AlimentsPage implements OnInit {
 
   ngOnInit() {
     this.initTranslate();
+  }
+  ionViewWillEnter() {
     this.alimenti = this.alimentoService.getAll();
   }
 
   async showModal() {
-   /* const modal = await this.modalController.create({
-      component: SettingCom
-    })*/
+    const modal = await this.modalController.create({
+      component: CreaAlimentoPage,
+    });
+    modal.present();
   }
 
   eliminaAlimento(alimento: Alimento) {

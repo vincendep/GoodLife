@@ -13,6 +13,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {CreaAlimentoPageModule} from './pages/crea-alimento/crea-alimento.module';
 
 
 // The translate loader needs to know where to load i18n files
@@ -39,7 +40,8 @@ export function createTranslateLoader(http: HttpClient) {
             name: 'myunivaq__db',
             driverOrder: ['indexeddb', 'sqlite', 'websql']
         }),
-        AppRoutingModule],
+        AppRoutingModule,
+        CreaAlimentoPageModule],
     providers: [
         StatusBar,
         SplashScreen,

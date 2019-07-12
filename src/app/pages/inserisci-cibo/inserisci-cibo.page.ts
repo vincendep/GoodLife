@@ -65,12 +65,11 @@ export class InserisciCiboPage implements OnInit {
                 ': ' + a.proteine + ' g <br/>' + this.translateService.instant('GRASSI') +
                 ': ' + a.grassi + ' g <br/>' + this.translateService.instant('CARBOIDRATI') +
                 ': ' +  a.carboidrati + ' g',
-          cssClass: 'alertDimension',
           inputs: [
               {
                   name: 'dose',
                   type: 'number',
-                  value: 0,
+                  placeholder: '0 g',
               }
           ],
           buttons: [

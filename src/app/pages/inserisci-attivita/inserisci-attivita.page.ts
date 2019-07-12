@@ -69,12 +69,11 @@ export class InserisciAttivitaPage implements OnInit {
     const alert = await this.alertController.create({
       header: a.nome,
       message: this.translateService.instant('CALMIN') + ': ' + a.consumoPerMinuto + ' kcal',
-      cssClass: 'alertDimension',
       inputs: [
         {
           name: 'durata',
           type: 'number',
-          value: 0,
+          placeholder: '0 min',
         }
       ],
       buttons: [
@@ -97,7 +96,6 @@ export class InserisciAttivitaPage implements OnInit {
 
 
   onUpdate() {
-    alert(this.attivita1.consumoTotale())
     this.attivita1.attivita = this.temp.attivita;
     this.router.navigateByUrl('tabs/diary');
   }
