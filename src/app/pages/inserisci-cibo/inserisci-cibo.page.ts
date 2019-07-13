@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {Pasto, TipoPasto} from '../../model/pasto.model';
 import {AlimentoService} from '../../services/alimento.service';
 import {Alimento} from '../../model/alimento.model';
-import {AlertController} from '@ionic/angular';
+import {AlertController, IonSlides} from '@ionic/angular';
+import {PastoService} from '../../services/pasto.service';
 
 
 @Component({
@@ -21,14 +22,21 @@ export class InserisciCiboPage implements OnInit {
   private deleteMessage: string;
   private hideMe = [false, false, false];
   private flag = false;
+    @ViewChild(IonSlides) slides: IonSlides;
+    slideOpts = {
+        initialSlide: 0,
+        speed: 400
+    };
   constructor(private translateService: TranslateService,
               private router: Router,
               private route: ActivatedRoute,
               private alimentoService: AlimentoService,
-              private alertController: AlertController) {
+              private alertController: AlertController,
+              private pastoService: PastoService) {
   }
 
   ngOnInit() {
+    this.slides.lockSwipes(true);
     this.flag = false;
     this.temp = new Pasto();
     if (this.route.snapshot.data['special']) {
@@ -96,6 +104,9 @@ export class InserisciCiboPage implements OnInit {
       });
       await alert.present();
   }
+  onClickPasto(pasto: Pasto) {
+      this.temp.alimenti = this.temp.alimenti.concat(pasto.alimenti);
+  }
 
   onUpdate() {
     this.meal1.alimenti = this.temp.alimenti;
@@ -125,6 +136,28 @@ export class InserisciCiboPage implements OnInit {
         });
         await alert.present();
     }
+    eliminaPasto(pasto: { nome: string; pasto: Pasto }) {
+        this.showDeleteAlertPasto(pasto);
+    }
+
+    async showDeleteAlertPasto(pasto: { nome: string; pasto: Pasto }) {
+        this.initTranslate();
+        const alert = await this.alertController.create({
+            header: this.deleteTitle,
+            message: this.deleteMessage + ' ' + pasto.nome + '?',
+            buttons: [{
+                text: 'OK',
+                handler: (data) => {
+                    let index = this.pastoService.getPasti().indexOf(pasto);
+                    if (index > -1) {
+                        this.pastoService.getPasti().splice(index, 1);
+                    }
+                }
+            }
+                , this.translateService.instant('CANCEL_BUTTON')]
+        });
+        await alert.present();
+    }
     initTranslate() {
         this.translateService.get('DELETE_TITLE').subscribe((data) => {
             this.deleteTitle = data;
@@ -136,5 +169,17 @@ export class InserisciCiboPage implements OnInit {
 
     hide(a: number) {
       this.hideMe[a] = !this.hideMe[a];
+    }
+
+    avanti() {
+        this.slides.lockSwipes(false);
+        this.slides.slideNext();
+        this.slides.lockSwipes(true);
+    }
+
+    indietro() {
+        this.slides.lockSwipes(false);
+        this.slides.slidePrev();
+        this.slides.lockSwipes(true);
     }
 }
