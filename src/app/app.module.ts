@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CreaAlimentoPageModule} from './pages/crea-alimento/crea-alimento.module';
+import {httpInterceptorProviders} from './interceptors';
 
 
 // The translate loader needs to know where to load i18n files
@@ -37,7 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
             }
         }),
         IonicStorageModule.forRoot({
-            name: 'myunivaq__db',
+            name: 'goodlife',
             driverOrder: ['indexeddb', 'sqlite', 'websql']
         }),
         AppRoutingModule,
@@ -45,7 +46,8 @@ export function createTranslateLoader(http: HttpClient) {
     providers: [
         StatusBar,
         SplashScreen,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+        httpInterceptorProviders
     ],
     bootstrap: [AppComponent]
 })

@@ -6,6 +6,7 @@ import {AlimentoService} from '../../services/alimento.service';
 import {Alimento} from '../../model/alimento.model';
 import {AlertController, IonSlides} from '@ionic/angular';
 import {PastoService} from '../../services/pasto.service';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -15,6 +16,9 @@ import {PastoService} from '../../services/pasto.service';
 })
 
 export class InserisciCiboPage implements OnInit {
+
+   // private carne$: Observable<Alimento[]>;
+
   private meal1: Pasto;
   private temp: Pasto;
   private title: string;
@@ -31,11 +35,15 @@ export class InserisciCiboPage implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private alimentoService: AlimentoService,
+              // private alimentoService1: AlimentoService1,
               private alertController: AlertController,
               private pastoService: PastoService) {
   }
 
   ngOnInit() {
+
+    // this.carne$ = this.alimentoService1.listCarne();
+
     this.slides.lockSwipes(true);
     this.flag = false;
     this.temp = new Pasto();

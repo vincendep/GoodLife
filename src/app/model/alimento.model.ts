@@ -1,5 +1,6 @@
 
 export class Alimento {
+    id: number;
     private _nome: string;
     private _calorie: number;
     private _carboidrati: number;

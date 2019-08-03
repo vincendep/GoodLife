@@ -1,9 +1,25 @@
 import {Injectable} from '@angular/core';
 import {Alimento, Categorie} from '../model/alimento.model';
+import {HttpClient} from '@angular/common/http';
+import {URL} from '../constants';
+import {Observable} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
+/*export class AlimentoService1 {
+
+  constructor(private http: HttpClient) {
+  }
+
+  listCarne(): Observable<Alimento[]> {
+    return this.http.get<Alimento[]>(URL.ALIMENTI + '/4');
+  }
+}*/
+
+
+
 export class AlimentoService {
   alimenti: Alimento[] = [];
 

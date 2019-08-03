@@ -17,7 +17,7 @@
     <form [formGroup]="loginFormModel" class="list-form">
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
-          <ion-icon name="contact" item-start></ion-icon>{{ 'USERNAME' | translate }}</ion-label>
+          <ion-icon name="contact" item-start></ion-icon>{{ 'EMAIL' | translate }}</ion-label>
         <ion-input color="secondary" type="email" formControlName="username"></ion-input>
       </ion-item>
       <p ion-text class="text08" *ngIf="loginFormModel.get('username').touched && loginFormModel.get('username').invalid">
