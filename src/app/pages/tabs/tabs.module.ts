@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { TabsPage } from './tabs.page';
 import {TranslateModule} from '@ngx-translate/core';
 import {DataResolverService} from '../../services/data-resolver.service';
+import {AuthGuard} from '../../guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -46,7 +47,8 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../profile/profile.module#ProfilePageModule'
+            loadChildren: '../profile/profile.module#ProfilePageModule',
+            canActivateChild: [AuthGuard]
           }
         ]
       },

@@ -5,25 +5,31 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
 import {LinguaService} from './services/lingua.service';
+import {Utente} from './model/utente.model';
+import {BehaviorSubject} from 'rxjs';
+import {UtenteService} from './services/utente.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
+    private utente$: BehaviorSubject<Utente>;
     constructor(private platform: Platform,
                 private splashScreen: SplashScreen,
                 private statusBar: StatusBar,
                 private translate: TranslateService,
                 private navController: NavController,
-                private linguaService: LinguaService
+                private linguaService: LinguaService,
+                private utenteService: UtenteService,
     ) {
         this.initializeApp();
     }
 
 
     ngOnInit(): void {
-        this.navController.navigateRoot('login');
+        this.utente$ = this.utenteService.getUtente();
+        this.navController.navigateRoot('tabs');
     }
 
     initializeApp() {

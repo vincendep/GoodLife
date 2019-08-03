@@ -1,10 +1,11 @@
-import {HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {UtenteService} from '../services/utente.service';
 import {X_AUTH} from '../constants';
 import {AlertController, NavController} from '@ionic/angular';
 import {catchError} from 'rxjs/operators';
 import {EMPTY} from 'rxjs';
+import {Storage} from '@ionic/storage';
 
 
 @Injectable()
@@ -12,7 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     constructor(private navController: NavController,
                 private alertController: AlertController,
-                private utenteService: UtenteService) {
+                private utenteService: UtenteService, private storage: Storage) {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {

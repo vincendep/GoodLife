@@ -45,4 +45,9 @@ export class ProfilePage implements OnInit {
   cancel() {
     this.navController.back();
   }
+
+  logout() {
+    this.utenteService.logout();
+    this.navController.navigateRoot('login');
+  }
 }
