@@ -1,6 +1,8 @@
 import {Dieta} from './dieta.model';
 
 export class Utente {
+
+    private _id: number;
     private _nome: string;
     private _cognome: string;
     private _email: string;
@@ -12,6 +14,14 @@ export class Utente {
     constructor() {
         this._diete = new Array<Dieta>();
         this._informazioniFisiche = new Array<{informazioniFisiche: InformazioniFisiche, dataInserimento: Date}>();
+    }
+
+    get id(): number {
+        return this._id;
+    }
+
+    set id(value: number) {
+        this._id = value;
     }
 
     get nome() {

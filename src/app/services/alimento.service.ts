@@ -3,22 +3,30 @@ import {Alimento, Categorie} from '../model/alimento.model';
 import {HttpClient} from '@angular/common/http';
 import {URL} from '../constants';
 import {Observable} from 'rxjs';
+import {UtenteService} from './utente.service';
+import {Utente} from '../model/utente.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-/*export class AlimentoService1 {
+export class AlimentoService1 {
 
-  constructor(private http: HttpClient) {
+  private utente: Utente;
+
+  constructor(private http: HttpClient, private utenteService: UtenteService) {
+    this.utenteService.getUtente().subscribe((utente) => {this.utente = utente;
+    });
   }
 
-  listCarne(): Observable<Alimento[]> {
-    return this.http.get<Alimento[]>(URL.ALIMENTI + '/4');
+  list(categoria: string): Observable<Alimento[]> {
+    return this.http.get<Alimento[]>(URL.ALIMENTI + '?categoria=' + categoria);
   }
-}*/
 
-
+  listPreferiti(): Observable<Alimento[]> {
+    return this.http.get<Alimento[]>(URL.ALIMENTI + '/' + this.utente.id);
+  }
+}
 
 export class AlimentoService {
   alimenti: Alimento[] = [];
@@ -46,16 +54,6 @@ export class AlimentoService {
 
   getAll(): Alimento[] {
     return this.alimenti;
-  }
-
-  getPreferiti(): Alimento[] {
-    const a = [];
-    for (const value of this.alimenti) {
-      if (value.categoria === Categorie.PREFERITI) {
-        a.push(value);
-      }
-    }
-    return a;
   }
 
   getCarne(): Alimento[] {

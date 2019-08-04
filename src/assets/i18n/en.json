@@ -84,5 +84,13 @@
   "TIPO_DIETA": "Type of diet",
 
   "CARNE": "MEAT",
-  "PESCE": "FISH"
+  "PESCE": "FISH",
+  "ALCOOL": "ALCOHOL",
+  "VERDURA": "VEGETABLE",
+  "LATTICINI": "MILK PRODUCTS",
+  "LEGUMI": "LEGUMES",
+  "CEREALI": "CEREAL",
+  "CONDIMENTO": "SEASONING",
+  "UOVA": "EGG",
+  "DOLCE": "DESSERT"
 }

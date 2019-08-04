@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {Pasto, TipoPasto} from '../../model/pasto.model';
-import {AlimentoService} from '../../services/alimento.service';
+import { AlimentoService1} from '../../services/alimento.service';
 import {Alimento} from '../../model/alimento.model';
 import {AlertController, IonSlides} from '@ionic/angular';
 import {PastoService} from '../../services/pasto.service';
@@ -17,14 +17,25 @@ import {Observable} from 'rxjs';
 
 export class InserisciCiboPage implements OnInit {
 
-   // private carne$: Observable<Alimento[]>;
+    private carne$: Observable<Alimento[]>;
+    private pesce$: Observable<Alimento[]>;
+    private alcool$: Observable<Alimento[]>;
+    private frutta$: Observable<Alimento[]>;
+    private verdura$: Observable<Alimento[]>;
+    private latticini$: Observable<Alimento[]>;
+    private cereali$: Observable<Alimento[]>;
+    private legumi$: Observable<Alimento[]>;
+    private condimento$: Observable<Alimento[]>;
+    private uova$: Observable<Alimento[]>;
+    private dolce$: Observable<Alimento[]>;
+    private preferiti$: Observable<Alimento[]>;
 
   private meal1: Pasto;
   private temp: Pasto;
   private title: string;
   private deleteTitle: string;
   private deleteMessage: string;
-  private hideMe = [false, false, false];
+  private hideMe = [false, false, false, false, false, false, false, false, false, false, false, false];
   private flag = false;
     @ViewChild(IonSlides) slides: IonSlides;
     slideOpts = {
@@ -34,15 +45,26 @@ export class InserisciCiboPage implements OnInit {
   constructor(private translateService: TranslateService,
               private router: Router,
               private route: ActivatedRoute,
-              private alimentoService: AlimentoService,
-              // private alimentoService1: AlimentoService1,
+              //private alimentoService: AlimentoService,
+              private alimentoService1: AlimentoService1,
               private alertController: AlertController,
               private pastoService: PastoService) {
+
+      this.carne$ = this.alimentoService1.list('CARNE');
+      this.pesce$ = this.alimentoService1.list('PESCE');
+      this.alcool$ = this.alimentoService1.list('ALCOOL');
+      this.frutta$ = this.alimentoService1.list('FRUTTA');
+      this.verdura$ = this.alimentoService1.list('VERDURA');
+      this.latticini$ = this.alimentoService1.list('LATTICINI');
+      this.legumi$ = this.alimentoService1.list('LEGUMI');
+      this.cereali$ = this.alimentoService1.list('CEREALI');
+      this.condimento$ = this.alimentoService1.list('CONDIMENTO');
+      this.uova$ = this.alimentoService1.list('UOVA');
+      this.dolce$ = this.alimentoService1.list('DOLCE');
+      this.preferiti$ = this.alimentoService1.listPreferiti();
   }
 
   ngOnInit() {
-
-    // this.carne$ = this.alimentoService1.listCarne();
 
     this.slides.lockSwipes(true);
     this.flag = false;
@@ -84,7 +106,7 @@ export class InserisciCiboPage implements OnInit {
       const alert = await this.alertController.create({
           header: a.nome,
           message: this.translateService.instant('CALORIE') +
-                ': ' + a.calorie.toString() + ' kcal <br/>' + this.translateService.instant('PROTEINE') +
+                ': ' + a.calorie + ' kcal <br/>' + this.translateService.instant('PROTEINE') +
                 ': ' + a.proteine + ' g <br/>' + this.translateService.instant('GRASSI') +
                 ': ' + a.grassi + ' g <br/>' + this.translateService.instant('CARBOIDRATI') +
                 ': ' +  a.carboidrati + ' g',
@@ -190,4 +212,6 @@ export class InserisciCiboPage implements OnInit {
         this.slides.slidePrev();
         this.slides.lockSwipes(true);
     }
+
+
 }

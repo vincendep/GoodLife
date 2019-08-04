@@ -84,5 +84,14 @@
   "TIPO_DIETA": "Tipo di dieta",
 
   "CARNE": "CARNE",
-  "PESCE": "PESCE"
+  "PESCE": "PESCE",
+  "ALCOOL": "ALCOOL",
+  "VERDURA": "VERDURA",
+  "LATTICINI": "LATTICINI",
+  "LEGUMI": "LEGUMI",
+  "CEREALI": "CEREALI",
+  "CONDIMENTO": "CONDIMENTO",
+  "UOVA": "UOVA",
+  "DOLCE": "DOLCE"
+
 }

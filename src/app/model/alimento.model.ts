@@ -57,7 +57,16 @@ export class Alimento {
 }
 
 export enum Categorie {
-    PREFERITI,
+    ALCOOL,
+    FRUTTA,
+    VERDURA,
     CARNE,
     PESCE,
+    LATTICINI,
+    LEGUMI,
+    CEREALI,
+    CONDIMENTO,
+    UOVA,
+    DOLCE,
+    ERROR
 }

@@ -54,7 +54,7 @@ export class CreaAlimentoPage implements OnInit {
     this.alimento.carboidrati = this.form.get('carboidrati').value;
     this.alimento.grassi = this.form.get('grassi').value;
     this.alimento.proteine = this.form.get('proteine').value;
-    this.alimento.categoria = Categorie.PREFERITI;
+    // this.alimento.categoria = Categorie.PREFERITI;
     this.alimentoService.add(this.alimento);
     this.modalController.dismiss();
   }
