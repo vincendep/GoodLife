@@ -65,4 +65,127 @@ export class DiarioAlimentare {
     set eserciziFisici(value: Array<{ esercizio: EsercizioFisico; durata: number }>) {
         this._eserciziFisici = value;
     }
+
+    getCalorieColazione(): number {
+        let sum = 0;
+        for (const value of this._alimentiColazione) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        return sum;
+    }
+    getCaloriePranzo(): number {
+        let sum = 0;
+        for (const value of this._alimentiPranzo) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        return sum;
+    }
+    getCalorieSnack(): number {
+        let sum = 0;
+        for (const value of this._alimentiSnack) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        return sum;
+    }
+    getCalorieCena(): number {
+        let sum = 0;
+        for (const value of this._alimentiCena) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        return sum;
+    }
+
+    getTotCalorie(): number {
+        let sum = 0;
+        for (const value of this._alimentiColazione) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiPranzo) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiSnack) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiCena) {
+
+            sum += (value.alimento.calorie * value.dose) / 100 ;
+        }
+        return sum;
+    }
+    getTotProteine(): number {
+        let sum = 0;
+        for (const value of this._alimentiColazione) {
+
+            sum += (value.alimento.proteine * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiPranzo) {
+
+            sum += (value.alimento.proteine * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiSnack) {
+
+            sum += (value.alimento.proteine * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiCena) {
+
+            sum += (value.alimento.proteine * value.dose) / 100 ;
+        }
+        return sum;
+    }
+    getTotGrassi(): number {
+        let sum = 0;
+        for (const value of this._alimentiColazione) {
+
+            sum += (value.alimento.grassi * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiPranzo) {
+
+            sum += (value.alimento.grassi * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiSnack) {
+
+            sum += (value.alimento.grassi * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiCena) {
+
+            sum += (value.alimento.grassi * value.dose) / 100 ;
+        }
+        return sum;
+    }
+    getTotCarboidrati(): number {
+        let sum = 0;
+        for (const value of this._alimentiColazione) {
+
+            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+        }
+        alert(sum);
+        for (const value of this._alimentiPranzo) {
+
+            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiSnack) {
+
+            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+        }
+        for (const value of this._alimentiCena) {
+
+            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+        }
+        return sum;
+    }
+    public consumoTotale(): number {
+        let sum = 0;
+        for (const value of this._eserciziFisici) {
+
+            sum += (value.esercizio.consumoPerMinuto * value.durata);
+        }
+        return sum;
+    }
 }

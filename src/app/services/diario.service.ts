@@ -26,4 +26,8 @@ export class DiarioService {
         return this.http.get<DiarioAlimentare>(URL.DIARIO + '/' + this.utente.id + '?data=' + data);
     }
 
+    updateAcqua(data: string, acqua: number) {
+        return this.http.post<DiarioAlimentare>(URL.DIARIO + '/' + this.utente.id + '/acqua' + '?data=' + data , acqua);
+    }
+
 }

@@ -7,58 +7,58 @@
 </ion-header>
 
 <ion-content>
-  <div class="stats color" text-center="true">
+  <div class="stats color" text-center="true" *ngIf="(diarioAlimentare$ | async) as element">
 
     <ion-datetime displayFormat="DD/MMM/YYYY" [value]="date" [(ngModel)]="date" pickerFormat="DD MMM YYYY" class="date" (ionChange)="changeDay()"></ion-datetime>
 
     <div>{{ 'CALORIE' | translate }}</div>
-    <p id="calorie" class="space"></p>
-    <ion-progress-bar [value]="percentualeCalorieTot" class="calorieBar colorBar space"></ion-progress-bar>
+    <p class="space"> {{element.getTotCalorie}} /{{calorieTotMax}} kcal</p>
+    <ion-progress-bar [value]="element.getTotCalorie/calorieTotMax" class="calorieBar colorBar space"></ion-progress-bar>
 
     <ion-grid fixed="true" text-center="true" >
       <ion-row>
         <ion-col>{{ 'PROTEINE' | translate }}
-          <p id="proteine" class="space"></p>
-          <ion-progress-bar [value]="percentualeProteine" class="valueBar colorBar space"></ion-progress-bar>
+          <p class="space">{{element.getTotProteine}} /{{dieta.proteineGiornaliere}} g</p>
+          <ion-progress-bar [value]="element.getTotProteine/dieta.proteineGiornaliere" class="valueBar colorBar space"></ion-progress-bar>
         </ion-col>
 
         <ion-col>{{ 'GRASSI' | translate }}
-          <p id="grassi" class="space"></p>
-          <ion-progress-bar [value]="percentualeGrassi" class="valueBar colorBar space"></ion-progress-bar>
+          <p class="space">{{element.getTotGrassi}} /{{dieta.grassiGiornalieri}} g</p>
+          <ion-progress-bar [value]="element.getTotGrassi /dieta.grassiGiornalieri" class="valueBar colorBar space"></ion-progress-bar>
         </ion-col>
 
         <ion-col>{{ 'CARBOIDRATI' | translate }}
-          <p id="carboidrati" class="space"></p>
-          <ion-progress-bar [value]="percentualeCarboidrati" class="valueBar colorBar space"></ion-progress-bar>
+          <p  class="space"> {{element.getTotCarboidrati}} /{{dieta.carboidratiGiornalieri}} g</p>
+          <ion-progress-bar [value]="element.getTotCarboidrati /dieta.carboidratiGiornalieri" class="valueBar colorBar space"></ion-progress-bar>
         </ion-col>
 
       </ion-row>
     </ion-grid>
   </div>
 
-  <div class="divWater">
+  <div class="divWater" *ngIf="(diarioAlimentare$ | async) as element">
     <ion-img src="assets/images/glass.png"></ion-img>
-    <ion-label color="tertiary" class="labelSize">{{nAcqua}}</ion-label>
-    <ion-button class="waterButton color" fill="clear" (click)="addAcqua()"><ion-icon name="add"></ion-icon></ion-button>
-    <ion-button class="waterButton color" fill="clear" (click)="removeAcqua()"><ion-icon name="remove"></ion-icon></ion-button>
+    <ion-label color="tertiary" class="labelSize" >{{element.acqua}}</ion-label>
+    <ion-button class="waterButton color" fill="clear" (click)="addAcqua(element.acqua)"><ion-icon name="add"></ion-icon></ion-button>
+    <ion-button class="waterButton color" fill="clear" (click)="removeAcqua(element.acqua)"><ion-icon name="remove"></ion-icon></ion-button>
   </div>
 
-  <div class="box">
+  <div class="box" *ngIf="(diarioAlimentare$ | async) as element">
 
 
     <div class="divSquareButton">
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood(colazione)">
         <div>{{ 'COLAZIONE' | translate }}
           <ion-img src="assets/images/colazione.png" class="imageDimension"></ion-img>
-          <p id="colazione"></p>
-          <ion-progress-bar [value]="percentualeCalorie[0]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
+          <p>{{element.getCalorieColazione}} /{{dieta.calorieGiornaliere[0]}} kcal</p>
+          <ion-progress-bar [value]="element.getCalorieColazione/dieta.calorieGiornaliere[0]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div>
       </ion-button>
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood(pranzo)">
         <div>{{ 'PRANZO' | translate }}
           <ion-img src="assets/images/pranzo.png" class="imageDimension"></ion-img>
-          <p id="pranzo"></p>
-          <ion-progress-bar [value]="percentualeCalorie[1]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
+          <p>{{element.getCaloriePranzo}} /{{dieta.calorieGiornaliere[1]}} kcal</p>
+          <ion-progress-bar [value]="element.getCaloriePranzo/dieta.calorieGiornaliere[1]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div></ion-button>
     </div>
 
@@ -67,7 +67,7 @@
       <ion-button class="roundButton color" fill="clear" (click)="addAttivita()">
         <div>
           <ion-img src="assets/images/attivita.png" class="imageDimension"></ion-img>
-          <p id="attivita"></p>
+          <p>{{element.consumoTotale}}</p>
         </div>
       </ion-button>
       </div>
@@ -78,14 +78,14 @@
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood(snacks)">
         <div>{{ 'SNACKS' | translate }}
           <ion-img src="assets/images/snacks.png" class="imageDimension"></ion-img>
-          <p id="snacks"></p>
-          <ion-progress-bar [value]="percentualeCalorie[2]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
+          <p>{{element.getCalorieSnack}} /{{dieta.calorieGiornaliere[2]}} kcal</p>
+          <ion-progress-bar [value]="element.getCalorieSnack /dieta.calorieGiornaliere[2]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div></ion-button>
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood(cena)">
         <div>{{ 'CENA' | translate }}
           <ion-img src="assets/images/cena.png" class="imageDimension dimensionBar dimensionBar"></ion-img>
-          <p id="cena"></p>
-          <ion-progress-bar [value]="percentualeCalorie[3]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
+          <p>{{element.getCalorieCena}} /{{dieta.calorieGiornaliere[3]}} kcal</p>
+          <ion-progress-bar [value]="element.getCalorieCena /dieta.calorieGiornaliere[3]" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div></ion-button>
     </div>
   </div>
