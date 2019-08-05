@@ -41,6 +41,7 @@ export class DiaryPage implements OnInit {
     this.date = new Date().toISOString();
 
     this.diarioAlimentare$ = this.diarioService.getDiario(this.date.slice(0, 10));
+
     this.dieta = new Dieta();
     this.colazione = new Pasto();
     this.colazione.tipoPasto = TipoPasto.COLAZIONE;
@@ -53,7 +54,7 @@ export class DiaryPage implements OnInit {
     this.attivita = new AttivitaFisica();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.dataService.setData(0, this.colazione);
     this.dataService.setData(1, this.pranzo);
     this.dataService.setData(2, this.snacks);
@@ -72,13 +73,13 @@ export class DiaryPage implements OnInit {
     return a + b;
   }
 
-  addAcqua(a: number) {
-    a += 1;
-    this.diarioAlimentare$ = this.diarioService.updateAcqua(this.date.slice(0, 10), a);
+  addAcqua(a: DiarioAlimentare) {
+    a.acqua += 1;
+    this.diarioService.updateAcqua(this.date.slice(0, 10), a.acqua).subscribe();
   }
-  removeAcqua(a: number) {
-    a -= 1;
-    this.diarioAlimentare$ = this.diarioService.updateAcqua(this.date.slice(0, 10), a);
+  removeAcqua(a: DiarioAlimentare) {
+    a.acqua -= 1;
+    this.diarioService.updateAcqua(this.date.slice(0, 10), a.acqua).subscribe();
   }
 
   addFood(a: Pasto) {

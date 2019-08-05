@@ -6,8 +6,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="stats color" text-center="true" *ngIf="(diarioAlimentare$ | async) as element">
+<ion-content *ngIf="(diarioAlimentare$ | async) as element">
+  <div class="stats color" text-center="true" >
 
     <ion-datetime displayFormat="DD/MMM/YYYY" [value]="date" [(ngModel)]="date" pickerFormat="DD MMM YYYY" class="date" (ionChange)="changeDay()"></ion-datetime>
 
@@ -36,14 +36,14 @@
     </ion-grid>
   </div>
 
-  <div class="divWater" *ngIf="(diarioAlimentare$ | async) as element">
+  <div class="divWater">
     <ion-img src="assets/images/glass.png"></ion-img>
     <ion-label color="tertiary" class="labelSize" >{{element.acqua}}</ion-label>
-    <ion-button class="waterButton color" fill="clear" (click)="addAcqua(element.acqua)"><ion-icon name="add"></ion-icon></ion-button>
-    <ion-button class="waterButton color" fill="clear" (click)="removeAcqua(element.acqua)"><ion-icon name="remove"></ion-icon></ion-button>
+    <ion-button class="waterButton color" fill="clear" (click)="addAcqua(element)"><ion-icon name="add"></ion-icon></ion-button>
+    <ion-button class="waterButton color" fill="clear" (click)="removeAcqua(element)"><ion-icon name="remove"></ion-icon></ion-button>
   </div>
 
-  <div class="box" *ngIf="(diarioAlimentare$ | async) as element">
+  <div class="box">
 
 
     <div class="divSquareButton">
