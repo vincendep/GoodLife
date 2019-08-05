@@ -9,7 +9,7 @@
 <ion-content>
   <div class="stats color" text-center="true">
 
-    <ion-datetime displayFormat="DD/MMM/YYYY" [value]="date" pickerFormat="DD MMM YYYY" class="date"></ion-datetime>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [value]="date" [(ngModel)]="date" pickerFormat="DD MMM YYYY" class="date" (ionChange)="changeDay()"></ion-datetime>
 
     <div>{{ 'CALORIE' | translate }}</div>
     <p id="calorie" class="space"></p>

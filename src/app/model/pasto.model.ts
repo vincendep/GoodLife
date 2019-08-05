@@ -2,7 +2,6 @@ import {Alimento} from './alimento.model';
 
 export class Pasto {
     private _tipoPasto: TipoPasto;
-    private _data: Date;
     private _alimenti: Array<{alimento: Alimento, dose: number}>;
 
     constructor() {
@@ -23,14 +22,6 @@ export class Pasto {
 
     set tipoPasto(value: TipoPasto) {
         this._tipoPasto = value;
-    }
-
-    get data(): Date {
-        return this._data;
-    }
-
-    set data(value: Date) {
-        this._data = value;
     }
 
     getTotCalorie(): number {

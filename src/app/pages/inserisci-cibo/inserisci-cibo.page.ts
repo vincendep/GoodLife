@@ -45,7 +45,6 @@ export class InserisciCiboPage implements OnInit {
   constructor(private translateService: TranslateService,
               private router: Router,
               private route: ActivatedRoute,
-              //private alimentoService: AlimentoService,
               private alimentoService1: AlimentoService1,
               private alertController: AlertController,
               private pastoService: PastoService) {
@@ -60,7 +59,7 @@ export class InserisciCiboPage implements OnInit {
       this.cereali$ = this.alimentoService1.list('CEREALI');
       this.condimento$ = this.alimentoService1.list('CONDIMENTO');
       this.uova$ = this.alimentoService1.list('UOVA');
-      this.dolce$ = this.alimentoService1.list('DOLCE');
+      this.dolce$ = this.alimentoService1.list('DOLCI');
       this.preferiti$ = this.alimentoService1.listPreferiti();
   }
 
