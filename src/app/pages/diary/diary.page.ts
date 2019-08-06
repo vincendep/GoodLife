@@ -5,6 +5,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {NavigationExtras, Router} from '@angular/router';
 import {DiarioService} from '../../services/diario.service';
 import {DiarioAlimentare} from '../../model/diario.model';
+import {Utility} from '../../utility/utility';
 
 @Component({
   selector: 'app-diary',
@@ -14,7 +15,7 @@ import {DiarioAlimentare} from '../../model/diario.model';
 
 export class DiaryPage implements OnInit {
 
-  private data: Date;
+  private dataString: string;
   private diarioAlimentare: DiarioAlimentare;
   private dieta: Dieta;
 
@@ -24,11 +25,8 @@ export class DiaryPage implements OnInit {
               private diarioService: DiarioService) {
 
     this.diarioAlimentare = new DiarioAlimentare();
-    this.data = new Date();
-
-    // this.diarioService.getDiario(this.data).subscribe((diario: DiarioAlimentare) => {
-    //   this.diarioAlimentare = diario;
-    // });
+    this.dataString = Utility.toIsoDate(new Date());
+    this.getDiario();
   }
 
   ngOnInit() {
@@ -52,7 +50,17 @@ export class DiaryPage implements OnInit {
 
   getDiario() {
     this.updateDiario();
-    this.diarioService.getDiario(this.data);
+    this.diarioService.getDiario(this.dataString).subscribe((response: DiarioAlimentare) => {
+      this.diarioAlimentare.idDiarioAlimentare = response.idDiarioAlimentare;
+      this.diarioAlimentare.data = new Date(response.data);
+      this.diarioAlimentare.acqua = response.acqua;
+      this.diarioAlimentare.alimentiColazione = response.alimentiColazione;
+      this.diarioAlimentare.alimentiPranzo = response.alimentiPranzo;
+      this.diarioAlimentare.alimentiColazione = response.alimentiSnack;
+      this.diarioAlimentare.alimentiColazione = response.alimentiCena;
+      this.diarioAlimentare.eserciziFisici = response.eserciziFisici;
+      this.dataString = Utility.toIsoDate(response.data);
+    });
   }
 }
 

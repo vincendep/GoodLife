@@ -22,8 +22,8 @@ export class DiarioService {
         });
     }
 
-    getDiario(data: Date): Observable<DiarioAlimentare> {
-        return this.http.get<DiarioAlimentare>(URL.DIARIO + '/' + this.utente.id + '?data=' + Utility.toIsoDate(data));
+    getDiario(data: string): Observable<DiarioAlimentare> {
+        return this.http.get<DiarioAlimentare>(URL.DIARIO + '/' + this.utente.id + '?data=' + data);
     }
 
     updateDiario(diario: DiarioAlimentare) {

@@ -3,6 +3,7 @@ import {EsercizioFisico} from './esercizio-fisico.model';
 
 export class DiarioAlimentare {
 
+    private _idDiarioAlimentare: number;
     private _data: Date;
     private _acqua: number;
     private _alimentiColazione: Array<{alimento: Alimento, dose: number}>;
@@ -13,6 +14,7 @@ export class DiarioAlimentare {
 
 
     constructor() {
+        this.idDiarioAlimentare = 0;
         this.data = new Date();
         this.acqua = 0;
         this._alimentiColazione = [];
@@ -20,6 +22,14 @@ export class DiarioAlimentare {
         this._alimentiCena = [];
         this._alimentiSnack = [];
         this._eserciziFisici = [];
+    }
+
+    get idDiarioAlimentare(): number {
+        return this._idDiarioAlimentare;
+    }
+
+    set idDiarioAlimentare(value: number) {
+        this._idDiarioAlimentare = value;
     }
 
     get data(): Date {

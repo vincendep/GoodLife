@@ -9,11 +9,11 @@
 <ion-content>
   <div class="stats color" text-center="true" >
 
-    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.data" pickerFormat="DD MMM YYYY" class="date" ></ion-datetime>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [value]="dataString" pickerFormat="DD MMM YYYY" class="date" (ionChange)="getDiario()"></ion-datetime>
 
     <div>{{ 'CALORIE' | translate }}</div>
-    <p class="space"> {{this.diarioAlimentare.getTotCalorie()}} /{{this.dieta.calorieGiornaliere}} kcal</p>
-    <ion-progress-bar [value]="this.diarioAlimentare.getTotCalorie()/this.dieta.calorieGiornaliere" class="calorieBar colorBar space"></ion-progress-bar>
+    <p class="space"> {{this.diarioAlimentare.getTotCalorie()}}/{{this.dieta.calorieGiornaliere()}} kcal</p>
+    <ion-progress-bar [value]="this.diarioAlimentare.getTotCalorie()/this.dieta.calorieGiornaliere()" class="calorieBar colorBar space"></ion-progress-bar>
 
     <ion-grid fixed="true" text-center="true" >
       <ion-row>
@@ -51,7 +51,7 @@
         <div>{{ 'COLAZIONE' | translate }}
           <ion-img src="assets/images/colazione.png" class="imageDimension"></ion-img>
           <p>{{this.diarioAlimentare.getCalorieColazione()}}/{{dieta.calorieColazione}} kcal</p>
-          <ion-progress-bar [value]="this.diarioAlimentare.getCalorieColazione()/dieta.calorieGiornaliere" class="valueBar colorBar dimensionBar"></ion-progress-bar>
+          <ion-progress-bar [value]="this.diarioAlimentare.getCalorieColazione()/dieta.calorieColazione" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div>
       </ion-button>
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood()">
@@ -78,14 +78,14 @@
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood()">
         <div>{{ 'SNACKS' | translate }}
           <ion-img src="assets/images/snacks.png" class="imageDimension"></ion-img>
-          <p>{{this.diarioAlimentare.getCalorieSnack}}/{{dieta.calorieSnack}} kcal</p>
-          <ion-progress-bar [value]="this.diarioAlimentare.getCalorieSnack /dieta.calorieSnack" class="valueBar colorBar dimensionBar"></ion-progress-bar>
+          <p>{{this.diarioAlimentare.getCalorieSnack()}}/{{dieta.calorieSnack}} kcal</p>
+          <ion-progress-bar [value]="this.diarioAlimentare.getCalorieSnack() /dieta.calorieSnack" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div></ion-button>
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood()">
         <div>{{ 'CENA' | translate }}
           <ion-img src="assets/images/cena.png" class="imageDimension dimensionBar dimensionBar"></ion-img>
-          <p>{{this.diarioAlimentare.getCalorieCena}}/{{dieta.calorieCena}} kcal</p>
-          <ion-progress-bar [value]="this.diarioAlimentare.getCalorieCena /dieta.calorieCena" class="valueBar colorBar dimensionBar"></ion-progress-bar>
+          <p>{{this.diarioAlimentare.getCalorieCena()}}/{{dieta.calorieCena}} kcal</p>
+          <ion-progress-bar [value]="this.diarioAlimentare.getCalorieCena() /dieta.calorieCena" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div></ion-button>
     </div>
   </div>
