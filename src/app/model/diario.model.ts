@@ -1,10 +1,11 @@
 import {Alimento} from './alimento.model';
 import {EsercizioFisico} from './esercizio-fisico.model';
+import {DateUtility} from '../utility/date-utility';
 
 export class DiarioAlimentare {
 
     private _idDiarioAlimentare: number;
-    private _data: Date;
+    private _data: string;
     private _acqua: number;
     private _alimentiColazione: Array<{alimento: Alimento, dose: number}>;
     private _alimentiPranzo: Array<{alimento: Alimento, dose: number}>;
@@ -15,7 +16,7 @@ export class DiarioAlimentare {
 
     constructor() {
         this.idDiarioAlimentare = 0;
-        this.data = new Date();
+        this.data = DateUtility.fromDatetoIsoDateString(new Date());
         this.acqua = 0;
         this._alimentiColazione = [];
         this._alimentiPranzo = [];
@@ -32,11 +33,11 @@ export class DiarioAlimentare {
         this._idDiarioAlimentare = value;
     }
 
-    get data(): Date {
+    get data(): string {
         return this._data;
     }
 
-    set data(value: Date) {
+    set data(value: string) {
         this._data = value;
     }
 

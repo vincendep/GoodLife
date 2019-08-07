@@ -5,7 +5,6 @@ import {Utente} from '../model/utente.model';
 import {URL} from '../constants';
 import {Observable} from 'rxjs';
 import {DiarioAlimentare} from '../model/diario.model';
-import {Utility} from '../utility/utility';
 
 @Injectable({
     providedIn: 'root'
@@ -22,13 +21,12 @@ export class DiarioService {
         });
     }
 
-    getDiario(data: string): Observable<DiarioAlimentare> {
+    getDiarioByDate(data: string): Observable<DiarioAlimentare> {
         return this.http.get<DiarioAlimentare>(URL.DIARIO + '/' + this.utente.id + '?data=' + data);
     }
 
     updateDiario(diario: DiarioAlimentare) {
-        return this.http.post<DiarioAlimentare>(
-            URL.DIARIO + '/' + this.utente.id + '?data=' + Utility.toIsoDate(diario.data) , diario);
+        return this.http.post(URL.DIARIO + '/' + this.utente.id, diario);
     }
 
 }

@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Dieta} from '../../model/dieta.model';
 import {NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {NavigationExtras, Router} from '@angular/router';
 import {DiarioService} from '../../services/diario.service';
 import {DiarioAlimentare} from '../../model/diario.model';
-import {Utility} from '../../utility/utility';
 
 @Component({
   selector: 'app-diary',
@@ -13,9 +12,8 @@ import {Utility} from '../../utility/utility';
   styleUrls: ['./diary.page.scss'],
 })
 
-export class DiaryPage implements OnInit {
+export class DiaryPage implements OnInit, OnDestroy {
 
-  private dataString: string;
   private diarioAlimentare: DiarioAlimentare;
   private dieta: Dieta;
 
@@ -25,13 +23,14 @@ export class DiaryPage implements OnInit {
               private diarioService: DiarioService) {
 
     this.diarioAlimentare = new DiarioAlimentare();
-    this.dataString = Utility.toIsoDate(new Date());
-    this.getDiario();
+    alert(this.diarioAlimentare.data);
+    this.dieta = new Dieta();
   }
 
   ngOnInit() {
+    this.getDiario();
+
     // TODO dietaService
-    this.dieta = new Dieta();
     this.dieta.calorieColazione = 60;
     this.dieta.caloriePranzo = 100;
     this.dieta.calorieSnack = 40;
@@ -41,25 +40,26 @@ export class DiaryPage implements OnInit {
     this.dieta.carboidratiGiornalieri = 400;
   }
 
+  ngOnDestroy() {
+    this.updateDiario();
+  }
+
   // debug
   addFood() {}
 
   updateDiario() {
-    this.diarioService.updateDiario(this.diarioAlimentare);
+    this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
   }
 
   getDiario() {
-    this.updateDiario();
-    this.diarioService.getDiario(this.dataString).subscribe((response: DiarioAlimentare) => {
+    this.diarioService.getDiarioByDate(this.diarioAlimentare.data).subscribe((response: DiarioAlimentare) => {
       this.diarioAlimentare.idDiarioAlimentare = response.idDiarioAlimentare;
-      this.diarioAlimentare.data = new Date(response.data);
       this.diarioAlimentare.acqua = response.acqua;
       this.diarioAlimentare.alimentiColazione = response.alimentiColazione;
       this.diarioAlimentare.alimentiPranzo = response.alimentiPranzo;
       this.diarioAlimentare.alimentiColazione = response.alimentiSnack;
       this.diarioAlimentare.alimentiColazione = response.alimentiCena;
       this.diarioAlimentare.eserciziFisici = response.eserciziFisici;
-      this.dataString = Utility.toIsoDate(response.data);
     });
   }
 }
