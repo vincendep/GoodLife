@@ -69,10 +69,18 @@ export class DiaryPage implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.setData(0, this.diarioAlimentare.alimentiColazione);
+    this.dataService.setData(0, this.colazione);
     this.dataService.setData(1, this.pranzo);
     this.dataService.setData(2, this.snacks);
     this.dataService.setData(3, this.cena);
+  }
+
+  ionViewWillEnter() {
+    this.diarioAlimentare.alimentiColazione = this.colazione.alimenti;
+    this.diarioAlimentare.alimentiPranzo = this.pranzo.alimenti;
+    this.diarioAlimentare.alimentiSnack = this.snacks.alimenti;
+    this.diarioAlimentare.alimentiCena = this.cena.alimenti;
+    this.diarioAlimentare.eserciziFisici = this.attivita.attivita;
   }
 
   addAcqua() {
@@ -85,7 +93,6 @@ export class DiaryPage implements OnInit {
   }
 
   async changeDay() {
-    alert(this.diarioAlimentare.idDiarioAlimentare);
     this.diarioService.update(this.diarioAlimentare).subscribe();
     this.getDiario();
   }

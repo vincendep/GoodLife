@@ -38,6 +38,7 @@ export class InserisciCiboPage implements OnInit {
   private deleteMessage: string;
   private hideMe = [false, false, false, false, false, false, false, false, false, false, false, false];
   private flag = false;
+  private flag2 = false;
     @ViewChild(IonSlides) slides: IonSlides;
     slideOpts = {
         initialSlide: 0,
@@ -73,7 +74,6 @@ export class InserisciCiboPage implements OnInit {
     if (this.route.snapshot.data['special']) {
         this.meal1 = this.route.snapshot.data['special'];
     }
-    this.temp = this.meal1;
     switch (this.meal1.tipoPasto) {
        case 0: {
         this.title = this.translateService.instant('COLAZIONE');
@@ -140,14 +140,15 @@ export class InserisciCiboPage implements OnInit {
   }
 
   onUpdate() {
-    this.meal1.alimenti = this.temp.alimenti;
     if (this.flag) {
         this.router.navigateByUrl('tabs/favorite/meals/crea-pasto');
     } else {
-       // this.diarioService.update(this.diarioAlimentare.data, this.diarioAlimentare);
         this.router.navigateByUrl('tabs/diary');
     }
+    this.meal1.alimenti = this.meal1.alimenti.concat(this.temp.alimenti);
+    this.temp.alimenti = [];
   }
+
     eliminaAlimento(alimento: any) {
         this.showDeleteAlert(alimento);
     }

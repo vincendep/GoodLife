@@ -1,5 +1,6 @@
 import {Alimento} from './alimento.model';
 
+// TODO modify
 export class Pasto {
     private _tipoPasto: TipoPasto;
     private _alimenti: Array<{alimento: Alimento, dose: number}>;
