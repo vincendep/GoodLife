@@ -1,5 +1,6 @@
 import {EsercizioFisico} from './esercizio-fisico.model';
 
+// TODO refactor
 export class AttivitaFisica {
     private _attivita: Array<{esercizio: EsercizioFisico, durata: number}>;
 

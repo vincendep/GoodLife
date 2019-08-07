@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de1ad8f2-7bf2-4c3e-b218-d2dfba5fc4df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/app/model/diario.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/diario.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/diary/diary.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/diary/diary.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/diary/diary.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/diary/diary.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/alimento.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/alimento.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/attivita-fisica.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/attivita-fisica.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/dieta.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/dieta.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/esercizio-fisico.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/esercizio-fisico.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/pasto.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/pasto.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/utente.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/utente.model.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/pages/diary/diary.page.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-634">
+            <state relative-caret-position="-508">
               <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
@@ -32,13 +35,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/services/utente.service.ts">
+        <entry file="file://$PROJECT_DIR$/src/app/model/alimento.model.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#62#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="42">
+              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/model/attivita-fisica.model.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -46,8 +55,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/model/dieta.model.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            <state relative-caret-position="143">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/model/esercizio-fisico.model.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/model/pasto.model.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/model/utente.model.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -65,28 +101,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/services/alimento.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/services/pasto.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/pages/diary/diary.page.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
@@ -95,10 +109,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/model/diario.model.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2982">
+            <state relative-caret-position="2289">
               <caret line="142" column="33" lean-forward="true" selection-start-line="142" selection-start-column="33" selection-end-line="142" selection-end-column="33" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -120,16 +134,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/model/utente.model.ts" />
         <option value="$PROJECT_DIR$/src/app/pages/profile/profile.module.ts" />
         <option value="$PROJECT_DIR$/src/app/pages/profile/profile.page.ts" />
         <option value="$PROJECT_DIR$/src/app/pages/profile/profile.page.html" />
-        <option value="$PROJECT_DIR$/src/app/model/dieta.model.ts" />
         <option value="$PROJECT_DIR$/src/app/utility/utility.ts" />
         <option value="$PROJECT_DIR$/src/app/services/diario.service.ts" />
         <option value="$PROJECT_DIR$/src/app/pages/diary/diary.page.html" />
         <option value="$PROJECT_DIR$/src/app/pages/diary/diary.page.ts" />
         <option value="$PROJECT_DIR$/src/app/model/diario.model.ts" />
+        <option value="$PROJECT_DIR$/src/app/model/alimento.model.ts" />
+        <option value="$PROJECT_DIR$/src/app/model/attivita-fisica.model.ts" />
+        <option value="$PROJECT_DIR$/src/app/model/dieta.model.ts" />
+        <option value="$PROJECT_DIR$/src/app/model/esercizio-fisico.model.ts" />
+        <option value="$PROJECT_DIR$/src/app/model/pasto.model.ts" />
+        <option value="$PROJECT_DIR$/src/app/model/utente.model.ts" />
       </list>
     </option>
   </component>
@@ -168,28 +186,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GoodLife_client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GoodLife_client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GoodLife_client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GoodLife_client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="diary" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GoodLife_client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GoodLife_client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -243,7 +239,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41092000" />
+    <option name="totallyTimeSpent" value="41718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -295,19 +291,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/model/esercizio-fisico.model.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/model/utente.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/model/alimento.model.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/pages/profile/profile.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -445,13 +428,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/model/dieta.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/utility/date-utility.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -478,7 +454,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/pages/diary/diary.page.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-634">
+        <state relative-caret-position="-508">
           <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
@@ -486,13 +462,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/alimento.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/attivita-fisica.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/model/diario.model.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2982">
+        <state relative-caret-position="2289">
           <caret line="142" column="33" lean-forward="true" selection-start-line="142" selection-start-column="33" selection-end-line="142" selection-end-column="33" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/dieta.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/esercizio-fisico.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/pasto.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/utente.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
         </state>
       </provider>
     </entry>
