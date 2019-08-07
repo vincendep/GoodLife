@@ -1,7 +1,10 @@
 
 export class Dieta {
     private _obiettivo: Obiettivo;
-    private _calorieGiornaliere: number[];
+    private _calorieColazione: number;
+    private _caloriePranzo: number;
+    private _calorieSnack: number;
+    private _calorieCena: number;
     private _carboidratiGiornalieri: number;
     private _proteineGiornaliere: number;
     private _grassiGiornalieri: number;
@@ -16,12 +19,40 @@ export class Dieta {
         this._obiettivo = value;
     }
 
-    get calorieGiornaliere(): number[] {
-        return this._calorieGiornaliere;
+    public calorieGiornaliere(): number {
+        return this.calorieColazione + this.caloriePranzo + this.calorieSnack + this.calorieCena;
     }
 
-    set calorieGiornaliere(value: number[]) {
-        this._calorieGiornaliere = value;
+    get calorieColazione(): number {
+        return this._calorieColazione;
+    }
+
+    set calorieColazione(value: number) {
+        this._calorieColazione = value;
+    }
+
+    get caloriePranzo(): number {
+        return this._caloriePranzo;
+    }
+
+    set caloriePranzo(value: number) {
+        this._caloriePranzo = value;
+    }
+
+    get calorieSnack(): number {
+        return this._calorieSnack;
+    }
+
+    set calorieSnack(value: number) {
+        this._calorieSnack = value;
+    }
+
+    get calorieCena(): number {
+        return this._calorieCena;
+    }
+
+    set calorieCena(value: number) {
+        this._calorieCena = value;
     }
 
     get carboidratiGiornalieri(): number {

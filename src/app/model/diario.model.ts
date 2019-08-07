@@ -3,29 +3,41 @@ import {EsercizioFisico} from './esercizio-fisico.model';
 
 export class DiarioAlimentare {
 
+    private _idDiarioAlimentare: number;
     private _acqua: number;
     private _alimentiColazione: Array<{alimento: Alimento, dose: number}>;
     private _alimentiPranzo: Array<{alimento: Alimento, dose: number}>;
     private _alimentiSnack: Array<{alimento: Alimento, dose: number}>;
     private _alimentiCena: Array<{alimento: Alimento, dose: number}>;
     private _eserciziFisici: Array<{esercizio: EsercizioFisico, durata: number}>;
-
-    private _calorieColazione: number;
-    private _caloriePranzo: number;
-    private _calorieSnack: number;
-    private _calorieCena: number;
-    private _totCalorie: number;
-    private _totProteine: number;
-    private _totCatboidrati: number;
-    private _totGrassi: number;
+    private _data: Date;
 
 
     constructor() {
+        this.idDiarioAlimentare = 0;
+        this.data = new Date();
+        this.acqua = 0;
         this._alimentiColazione = [];
         this._alimentiPranzo = [];
         this._alimentiCena = [];
         this._alimentiSnack = [];
         this._eserciziFisici = [];
+    }
+
+    get idDiarioAlimentare(): number {
+        return this._idDiarioAlimentare;
+    }
+
+    set idDiarioAlimentare(value: number) {
+        this._idDiarioAlimentare = value;
+    }
+
+    get data(): Date {
+        return this._data;
+    }
+
+    set data(value: Date) {
+        this._data = value;
     }
 
     get acqua(): number {
@@ -110,24 +122,7 @@ export class DiarioAlimentare {
     }
 
      getTotCalorie(): number {
-        let sum = 0;
-        for (const value of this._alimentiColazione) {
-
-            sum += (value.alimento.calorie * value.dose) / 100 ;
-        }
-        for (const value of this._alimentiPranzo) {
-
-            sum += (value.alimento.calorie * value.dose) / 100 ;
-        }
-        for (const value of this._alimentiSnack) {
-
-            sum += (value.alimento.calorie * value.dose) / 100 ;
-        }
-        for (const value of this._alimentiCena) {
-
-            sum += (value.alimento.calorie * value.dose) / 100 ;
-        }
-        return sum;
+         return this.getCalorieColazione() + this.getCaloriePranzo() + this.getCalorieSnack() + this.getCalorieCena();
     }
      getTotProteine(): number {
         let sum = 0;
@@ -175,7 +170,6 @@ export class DiarioAlimentare {
 
             sum += (value.alimento.carboidrati * value.dose) / 100 ;
         }
-        alert(sum);
         for (const value of this._alimentiPranzo) {
 
             sum += (value.alimento.carboidrati * value.dose) / 100 ;
@@ -190,12 +184,21 @@ export class DiarioAlimentare {
         }
         return sum;
     }
-     consumoTotale(): number {
+     getConsumoTotale(): number {
         let sum = 0;
         for (const value of this._eserciziFisici) {
 
             sum += (value.esercizio.consumoPerMinuto * value.durata);
         }
         return sum;
+    }
+    public incrementAcqua() {
+        this.acqua++;
+    }
+
+    public decrementAcqua() {
+        if (this.acqua > 0) {
+            this.acqua--;
+        }
     }
 }

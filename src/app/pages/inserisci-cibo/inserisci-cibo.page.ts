@@ -7,6 +7,7 @@ import {Alimento} from '../../model/alimento.model';
 import {AlertController, IonSlides} from '@ionic/angular';
 import {PastoService} from '../../services/pasto.service';
 import {Observable} from 'rxjs';
+import {DiarioService} from '../../services/diario.service';
 
 
 @Component({
@@ -47,7 +48,8 @@ export class InserisciCiboPage implements OnInit {
               private route: ActivatedRoute,
               private alimentoService1: AlimentoService1,
               private alertController: AlertController,
-              private pastoService: PastoService) {
+              private pastoService: PastoService,
+              private diarioService: DiarioService) {
 
       this.carne$ = this.alimentoService1.list('CARNE');
       this.pesce$ = this.alimentoService1.list('PESCE');
@@ -142,6 +144,7 @@ export class InserisciCiboPage implements OnInit {
     if (this.flag) {
         this.router.navigateByUrl('tabs/favorite/meals/crea-pasto');
     } else {
+       // this.diarioService.update(this.diarioAlimentare.data, this.diarioAlimentare);
         this.router.navigateByUrl('tabs/diary');
     }
   }

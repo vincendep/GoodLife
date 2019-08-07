@@ -10,6 +10,7 @@ import {DiarioService} from '../../services/diario.service';
 import {Observable} from 'rxjs';
 import {DiarioAlimentare} from '../../model/diario.model';
 import set = Reflect.set;
+import {DateUtility} from '../../utility/utility';
 
 
 @Component({
@@ -20,7 +21,7 @@ import set = Reflect.set;
 
 export class DiaryPage implements OnInit {
 
-  private diarioAlimentare$: Observable<DiarioAlimentare>;
+  private diarioAlimentare: DiarioAlimentare;
   private date: string;
   private dieta: Dieta;
 
@@ -31,55 +32,74 @@ export class DiaryPage implements OnInit {
 
   private attivita: AttivitaFisica;
 
-  private calorieTotMax: number;
-
   constructor(private translateService: TranslateService,
               private navController: NavController,
               private router: Router,
               private dataService: DataService,
               private diarioService: DiarioService) {
-    this.date = new Date().toISOString();
 
-    this.diarioAlimentare$ = this.diarioService.getDiario(this.date.slice(0, 10));
+    this.diarioAlimentare = new DiarioAlimentare();
+    this.date = DateUtility.toIsoDate(new Date());
+    this.getDiario();
 
     this.dieta = new Dieta();
     this.colazione = new Pasto();
+    this.colazione.alimenti = this.diarioAlimentare.alimentiColazione;
     this.colazione.tipoPasto = TipoPasto.COLAZIONE;
     this.pranzo = new Pasto();
+    this.pranzo.alimenti = this.diarioAlimentare.alimentiPranzo;
     this.pranzo.tipoPasto = TipoPasto.PRANZO;
     this.snacks = new Pasto();
+    this.snacks.alimenti = this.diarioAlimentare.alimentiSnack;
     this.snacks.tipoPasto = TipoPasto.SNACK;
     this.cena = new Pasto();
+    this.cena.alimenti = this.diarioAlimentare.alimentiCena;
     this.cena.tipoPasto = TipoPasto.CENA;
     this.attivita = new AttivitaFisica();
-  }
+    this.attivita.attivita = this.diarioAlimentare.eserciziFisici;
 
-  async ngOnInit() {
-    this.dataService.setData(0, this.colazione);
-    this.dataService.setData(1, this.pranzo);
-    this.dataService.setData(2, this.snacks);
-    this.dataService.setData(3, this.cena);
-
-    this.dieta.calorieGiornaliere = [60, 100, 40, 120];
-
-    this.calorieTotMax = this.dieta.calorieGiornaliere.reduce(this.sum, 0);
+    this.dieta = new Dieta();
+    this.dieta.calorieColazione = 60;
+    this.dieta.caloriePranzo = 100;
+    this.dieta.calorieSnack = 40;
+    this.dieta.calorieCena = 120;
     this.dieta.proteineGiornaliere = 200;
     this.dieta.grassiGiornalieri = 300;
     this.dieta.carboidratiGiornalieri = 400;
-
   }
 
-  sum(a: number, b: number): number {
-    return a + b;
+  ngOnInit() {
+    this.dataService.setData(0, this.diarioAlimentare.alimentiColazione);
+    this.dataService.setData(1, this.pranzo);
+    this.dataService.setData(2, this.snacks);
+    this.dataService.setData(3, this.cena);
   }
 
-  addAcqua(a: DiarioAlimentare) {
-    a.acqua += 1;
-    this.diarioService.updateAcqua(this.date.slice(0, 10), a.acqua).subscribe();
+  addAcqua() {
+    // a.acqua += 1;
+    // this.diarioService.updateAcqua(this.date.slice(0, 10), a.acqua).subscribe();
   }
-  removeAcqua(a: DiarioAlimentare) {
-    a.acqua -= 1;
-    this.diarioService.updateAcqua(this.date.slice(0, 10), a.acqua).subscribe();
+  removeAcqua() {
+   // a.acqua -= 1;
+    // this.diarioService.updateAcqua(this.date.slice(0, 10), a.acqua).subscribe();
+  }
+
+  async changeDay() {
+    alert(this.diarioAlimentare.idDiarioAlimentare);
+    this.diarioService.update(this.diarioAlimentare).subscribe();
+    this.getDiario();
+  }
+  getDiario() {
+    this.diarioService.getDiario(this.date.slice(0, 10)).subscribe((response: DiarioAlimentare) => {
+      this.diarioAlimentare.idDiarioAlimentare = response.idDiarioAlimentare;
+      this.diarioAlimentare.data = new Date(response.data);
+      this.diarioAlimentare.acqua = response.acqua;
+      this.diarioAlimentare.alimentiColazione = response.alimentiColazione;
+      this.diarioAlimentare.alimentiPranzo = response.alimentiPranzo;
+      this.diarioAlimentare.alimentiColazione = response.alimentiSnack;
+      this.diarioAlimentare.alimentiColazione = response.alimentiCena;
+      this.diarioAlimentare.eserciziFisici = response.eserciziFisici;
+    });
   }
 
   addFood(a: Pasto) {
@@ -95,8 +115,5 @@ export class DiaryPage implements OnInit {
     this.router.navigate(['tabs/diary/4'], navigationExtras);
   }
 
-  async changeDay() {
-    this.diarioAlimentare$ = this.diarioService.getDiario(this.date.slice(0, 10));
-  }
 }
 

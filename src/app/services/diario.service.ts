@@ -29,5 +29,8 @@ export class DiarioService {
     updateAcqua(data: string, acqua: number) {
         return this.http.post<DiarioAlimentare>(URL.DIARIO + '/' + this.utente.id + '/acqua' + '?data=' + data , acqua);
     }
+    update(a: DiarioAlimentare) {
+        return this.http.post<DiarioAlimentare>(URL.DIARIO + '/' + this.utente.id, a);
+    }
 
 }
