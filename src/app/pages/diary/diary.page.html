@@ -9,7 +9,7 @@
 <ion-content>
   <div class="stats color" text-center="true" >
 
-    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.diarioAlimentare.data" pickerFormat="DD MMM YYYY" class="date" (ionFocus)="updateDiario()" ) (ionChange)="getDiario()"></ion-datetime>
+    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.diarioAlimentare.data" pickerFormat="DD MMM YYYY" class="date" (ionFocus)="updateDiario()" (ionChange)="getDiario()"></ion-datetime>
 
     <div>{{ 'CALORIE' | translate }}</div>
     <p class="space"> {{this.diarioAlimentare.getTotCalorie()}}/{{this.dieta.calorieGiornaliere()}} kcal</p>

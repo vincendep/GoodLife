@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Dieta} from '../../model/dieta.model';
 import {NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {NavigationExtras, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {DiarioService} from '../../services/diario.service';
 import {DiarioAlimentare} from '../../model/diario.model';
 
@@ -23,7 +23,6 @@ export class DiaryPage implements OnInit, OnDestroy {
               private diarioService: DiarioService) {
 
     this.diarioAlimentare = new DiarioAlimentare();
-    alert(this.diarioAlimentare.data);
     this.dieta = new Dieta();
   }
 
