@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Lingua, LinguaService} from '../../services/lingua.service';
 import {UtenteService} from '../../services/utente.service';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Utente} from '../../model/utente.model';
 import {NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
@@ -16,13 +16,16 @@ export class ProfilePage implements OnInit {
 
   private lingue: Lingua[];
   private profiloFormModel: FormGroup;
-  private utente: Utente;
+  private utente$: Observable<Utente>;
 
   constructor(private formBuilder: FormBuilder,
               private translateService: TranslateService,
               private linguaService: LinguaService,
               private utenteService: UtenteService,
-              private navController: NavController) { }
+              private navController: NavController) {
+
+    this.utente$ = this.utenteService.getUtente();
+  }
 
   ngOnInit() {
     this.lingue = this.linguaService.getLingue();
