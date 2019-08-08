@@ -1,15 +1,16 @@
 import {Alimento} from './alimento.model';
 import {EsercizioFisico} from './esercizio-fisico.model';
+import {of} from 'rxjs';
 
 export class DiarioAlimentare {
 
     idDiarioAlimentare: number;
     data: Date;
     acqua: number;
-    alimentiColazione: Array<{alimento: Alimento, dose: number}>;
-    alimentiPranzo: Array<{alimento: Alimento, dose: number}>;
-    alimentiSnack: Array<{alimento: Alimento, dose: number}>;
-    alimentiCena: Array<{alimento: Alimento, dose: number}>;
+    alimentiColazione: Array<{alimento: Alimento, quantita: number}>;
+    alimentiPranzo: Array<{alimento: Alimento, quantita: number}>;
+    alimentiSnack: Array<{alimento: Alimento, quantita: number}>;
+    alimentiCena: Array<{alimento: Alimento, quantita: number}>;
     eserciziFisici: Array<{esercizio: EsercizioFisico, durata: number}>;
 
 
@@ -34,11 +35,61 @@ export class DiarioAlimentare {
         }
     }
 
+    public addAlimentoColazione(alimento: {alimento: Alimento; quantita: number}) {
+        this.alimentiColazione.push(alimento);
+    }
+
+    public addAllAlimentiColazione(alimenti: Array<{alimento: Alimento; quantita: number}>) {
+        for (const alimento of alimenti) {
+            this.addAlimentoColazione(alimento);
+        }
+    }
+
+    public addAlimentoPranzo(alimento: {alimento: Alimento; quantita: number}) {
+        this.alimentiPranzo.push(alimento);
+    }
+
+    public addAllAlimentiPranzo(alimenti: Array<{alimento: Alimento; quantita: number}>) {
+        for (const alimento of alimenti) {
+            this.addAlimentoPranzo(alimento);
+        }
+    }
+
+    public addAlimentoSnack(alimento: {alimento: Alimento; quantita: number}) {
+        this.alimentiSnack.push(alimento);
+    }
+
+    public addAllAlimentiSnack(alimenti: Array<{alimento: Alimento; quantita: number}>) {
+        for (const alimento of alimenti) {
+            this.addAlimentoPranzo(alimento);
+        }
+    }
+
+    public addAlimentoCena(alimento: {alimento: Alimento; quantita: number}) {
+        this.alimentiCena.push(alimento);
+    }
+
+    public addAllAlimentiCena(alimenti: Array<{alimento: Alimento; quantita: number}>) {
+        for (const alimento of alimenti) {
+            this.addAlimentoColazione(alimento);
+        }
+    }
+
+    public addEsercizioFisico(esercizio: {esercizio: EsercizioFisico; durata: number}) {
+        this.eserciziFisici.push(esercizio);
+    }
+
+    public addAllEserciziFisici(esercizi: Array<{esercizio: EsercizioFisico; durata: number}>) {
+        for (const esercizio of esercizi) {
+            this.addEsercizioFisico(esercizio);
+        }
+    }
+
     public getCalorieColazione(): number {
         let sum = 0;
         for (const value of this.alimentiColazione) {
 
-            sum += (value.alimento.calorie * value.dose) / 100 ;
+            sum += (value.alimento.calorie * value.quantita) / 100 ;
         }
         return sum;
     }
@@ -47,7 +98,7 @@ export class DiarioAlimentare {
         let sum = 0;
         for (const value of this.alimentiPranzo) {
 
-            sum += (value.alimento.calorie * value.dose) / 100 ;
+            sum += (value.alimento.calorie * value.quantita) / 100 ;
         }
         return sum;
     }
@@ -56,7 +107,7 @@ export class DiarioAlimentare {
         let sum = 0;
         for (const value of this.alimentiSnack) {
 
-            sum += (value.alimento.calorie * value.dose) / 100 ;
+            sum += (value.alimento.calorie * value.quantita) / 100 ;
         }
         return sum;
     }
@@ -65,7 +116,7 @@ export class DiarioAlimentare {
         let sum = 0;
         for (const value of this.alimentiCena) {
 
-            sum += (value.alimento.calorie * value.dose) / 100 ;
+            sum += (value.alimento.calorie * value.quantita) / 100 ;
         }
         return sum;
     }
@@ -78,19 +129,19 @@ export class DiarioAlimentare {
         let sum = 0;
         for (const value of this.alimentiColazione) {
 
-            sum += (value.alimento.proteine * value.dose) / 100 ;
+            sum += (value.alimento.proteine * value.quantita) / 100 ;
         }
         for (const value of this.alimentiPranzo) {
 
-            sum += (value.alimento.proteine * value.dose) / 100 ;
+            sum += (value.alimento.proteine * value.quantita) / 100 ;
         }
         for (const value of this.alimentiSnack) {
 
-            sum += (value.alimento.proteine * value.dose) / 100 ;
+            sum += (value.alimento.proteine * value.quantita) / 100 ;
         }
         for (const value of this.alimentiCena) {
 
-            sum += (value.alimento.proteine * value.dose) / 100 ;
+            sum += (value.alimento.proteine * value.quantita) / 100 ;
         }
         return sum;
     }
@@ -99,19 +150,19 @@ export class DiarioAlimentare {
         let sum = 0;
         for (const value of this.alimentiColazione) {
 
-            sum += (value.alimento.grassi * value.dose) / 100 ;
+            sum += (value.alimento.grassi * value.quantita) / 100 ;
         }
         for (const value of this.alimentiPranzo) {
 
-            sum += (value.alimento.grassi * value.dose) / 100 ;
+            sum += (value.alimento.grassi * value.quantita) / 100 ;
         }
         for (const value of this.alimentiSnack) {
 
-            sum += (value.alimento.grassi * value.dose) / 100 ;
+            sum += (value.alimento.grassi * value.quantita) / 100 ;
         }
         for (const value of this.alimentiCena) {
 
-            sum += (value.alimento.grassi * value.dose) / 100 ;
+            sum += (value.alimento.grassi * value.quantita) / 100 ;
         }
         return sum;
     }
@@ -120,19 +171,19 @@ export class DiarioAlimentare {
         let sum = 0;
         for (const value of this.alimentiColazione) {
 
-            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+            sum += (value.alimento.carboidrati * value.quantita) / 100 ;
         }
         for (const value of this.alimentiPranzo) {
 
-            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+            sum += (value.alimento.carboidrati * value.quantita) / 100 ;
         }
         for (const value of this.alimentiSnack) {
 
-            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+            sum += (value.alimento.carboidrati * value.quantita) / 100 ;
         }
         for (const value of this.alimentiCena) {
 
-            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+            sum += (value.alimento.carboidrati * value.quantita) / 100 ;
         }
         return sum;
     }

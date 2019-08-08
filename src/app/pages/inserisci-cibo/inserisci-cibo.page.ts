@@ -113,7 +113,7 @@ export class InserisciCiboPage implements OnInit {
                 ': ' +  a.carboidrati + ' g',
           inputs: [
               {
-                  name: 'dose',
+                  name: 'quantita',
                   type: 'number',
                   placeholder: '0 g',
               }
@@ -126,8 +126,8 @@ export class InserisciCiboPage implements OnInit {
               {
                   text: 'OK',
                   handler: (data) => {
-                      if (data.dose > 0) {
-                          this.temp.alimenti.push({alimento: a, dose: data.dose});
+                      if (data.quantita > 0) {
+                          this.temp.alimenti.push({alimento: a, quantita: data.quantita});
                       }
                   }
               }

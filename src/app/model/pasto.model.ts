@@ -2,60 +2,44 @@ import {Alimento} from './alimento.model';
 
 // TODO modify
 export class Pasto {
-    private _tipoPasto: TipoPasto;
-    private _alimenti: Array<{alimento: Alimento, dose: number}>;
+    tipoPasto: TipoPasto;
+    alimenti: Array<{alimento: Alimento, quantita: number}>;
 
     constructor() {
-        this._alimenti = [];
-    }
-
-    get alimenti() {
-        return this._alimenti;
-    }
-
-    set alimenti(a: Array<{alimento: Alimento, dose: number}>) {
-        this._alimenti = a;
-    }
-
-    get tipoPasto(): TipoPasto {
-        return this._tipoPasto;
-    }
-
-    set tipoPasto(value: TipoPasto) {
-        this._tipoPasto = value;
+        this.alimenti = [];
     }
 
     getTotCalorie(): number {
         let sum = 0;
-        for (const value of this._alimenti) {
+        for (const value of this.alimenti) {
 
-            sum += (value.alimento.calorie * value.dose) / 100 ;
+            sum += (value.alimento.calorie * value.quantita) / 100 ;
         }
         return sum;
     }
 
     getTotProteine(): number {
         let sum = 0;
-        for (const value of this._alimenti) {
+        for (const value of this.alimenti) {
 
-            sum += (value.alimento.proteine * value.dose) / 100 ;
+            sum += (value.alimento.proteine * value.quantita) / 100 ;
         }
         return sum;
     }
     getTotGrassi(): number {
         let sum = 0;
-        for (const value of this._alimenti) {
+        for (const value of this.alimenti) {
 
-            sum += (value.alimento.grassi * value.dose) / 100 ;
+            sum += (value.alimento.grassi * value.quantita) / 100 ;
         }
         return sum;
     }
 
     getTotCarboidrati(): number {
         let sum = 0;
-        for (const value of this._alimenti) {
+        for (const value of this.alimenti) {
 
-            sum += (value.alimento.carboidrati * value.dose) / 100 ;
+            sum += (value.alimento.carboidrati * value.quantita) / 100 ;
         }
         return sum;
     }
