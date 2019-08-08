@@ -4,8 +4,8 @@
     <list default="true" id="de1ad8f2-7bf2-4c3e-b218-d2dfba5fc4df" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/model/diario.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/diario.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/pasto.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/pasto.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/diary/diary.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/diary/diary.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/pages/diary/diary.page.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+            <state relative-caret-position="343">
+              <caret line="108" column="74" selection-start-line="108" selection-start-column="74" selection-end-line="108" selection-end-column="74" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -35,15 +35,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/pages/diary/diary.page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-63" />
+            <state relative-caret-position="-126" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="122" column="71" lean-forward="true" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
+            <state relative-caret-position="-1632">
+              <caret line="122" column="71" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -52,22 +52,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/model/diario.model.ts">
+        <entry file="file://$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="83" selection-start-line="83" selection-end-line="84" />
-              <folding>
-                <element signature="e#0#42#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-57">
+              <caret line="27" selection-start-line="27" selection-end-line="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/model/pasto.model.ts">
+        <entry file="file://$PROJECT_DIR$/src/app/model/diario.model.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="38" column="20" lean-forward="true" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+            <state relative-caret-position="1197">
+              <caret line="57" column="79" lean-forward="true" selection-start-line="57" selection-start-column="79" selection-end-line="57" selection-end-column="79" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,6 +133,8 @@
         <option value="$PROJECT_DIR$/src/app/model/pasto.model.ts" />
         <option value="$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.ts" />
         <option value="$PROJECT_DIR$/src/app/model/diario.model.ts" />
+        <option value="$PROJECT_DIR$/src/app/pages/diary/diary.page.ts" />
+        <option value="$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.html" />
       </list>
     </option>
   </component>
@@ -150,10 +152,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1939" />
+    <option name="height" value="1049" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -275,12 +277,13 @@
       <updated>1562185138226</updated>
       <workItem from="1562185139597" duration="664000" />
       <workItem from="1562252924599" duration="4913000" />
-      <workItem from="1565219254889" duration="3044000" />
+      <workItem from="1565219254889" duration="4443000" />
+      <workItem from="1565254976249" duration="2289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8621000" />
+    <option name="totallyTimeSpent" value="12309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -362,6 +365,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/pasto.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/model/dieta.model.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/services/lingua.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -395,48 +408,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/pages/diary/diary.page.html">
+    <entry file="file://$PROJECT_DIR$/src/app/model/diario.model.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-63" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/model/dieta.model.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/model/pasto.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="38" column="20" lean-forward="true" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="122" column="71" lean-forward="true" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
+        <state relative-caret-position="1197">
+          <caret line="57" column="79" lean-forward="true" selection-start-line="57" selection-start-column="79" selection-end-line="57" selection-end-column="79" />
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/pages/diary/diary.page.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+        <state relative-caret-position="343">
+          <caret line="108" column="74" selection-start-line="108" selection-start-column="74" selection-end-line="108" selection-end-column="74" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/model/diario.model.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="83" selection-start-line="83" selection-end-line="84" />
+        <state relative-caret-position="-1632">
+          <caret line="122" column="71" selection-start-line="122" selection-start-column="71" selection-end-line="122" selection-end-column="71" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/diary/diary.page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-126" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/pages/inserisci-cibo/inserisci-cibo.page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="27" selection-start-line="27" selection-end-line="28" />
         </state>
       </provider>
     </entry>

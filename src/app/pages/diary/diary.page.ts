@@ -101,11 +101,12 @@ export class DiaryPage implements OnInit {
       this.diarioAlimentare.idDiarioAlimentare = response.idDiarioAlimentare;
       this.diarioAlimentare.data = new Date(response.data);
       this.diarioAlimentare.acqua = response.acqua;
-      this.diarioAlimentare.alimentiColazione = response.alimentiColazione;
-      this.diarioAlimentare.alimentiPranzo = response.alimentiPranzo;
-      this.diarioAlimentare.alimentiColazione = response.alimentiSnack;
-      this.diarioAlimentare.alimentiColazione = response.alimentiCena;
-      this.diarioAlimentare.eserciziFisici = response.eserciziFisici;
+      // TODO doesn't work
+      this.diarioAlimentare.addAllAlimentiColazione(response.alimentiColazione);
+      this.diarioAlimentare.addAllAlimentiPranzo(response.alimentiPranzo);
+      this.diarioAlimentare.addAllAlimentiSnack(response.alimentiSnack);
+      this.diarioAlimentare.addAllAlimentiCena(response.alimentiCena);
+      this.diarioAlimentare.addAllEserciziFisici(response.eserciziFisici);
     });
   }
 

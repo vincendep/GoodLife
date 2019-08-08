@@ -1,5 +1,6 @@
 import {Alimento} from './alimento.model';
 import {EsercizioFisico} from './esercizio-fisico.model';
+import {of} from 'rxjs';
 
 export class DiarioAlimentare {
 
@@ -31,6 +32,56 @@ export class DiarioAlimentare {
     public decrementAcqua() {
         if (this.acqua > 0) {
             this.acqua--;
+        }
+    }
+
+    public addAlimentoColazione(alimento: {alimento: Alimento; quantita: number}) {
+        this.alimentiColazione.push(alimento);
+    }
+
+    public addAllAlimentiColazione(alimenti: Array<{alimento: Alimento; quantita: number}>) {
+        for (const alimento of alimenti) {
+            this.addAlimentoColazione(alimento);
+        }
+    }
+
+    public addAlimentoPranzo(alimento: {alimento: Alimento; quantita: number}) {
+        this.alimentiPranzo.push(alimento);
+    }
+
+    public addAllAlimentiPranzo(alimenti: Array<{alimento: Alimento; quantita: number}>) {
+        for (const alimento of alimenti) {
+            this.addAlimentoPranzo(alimento);
+        }
+    }
+
+    public addAlimentoSnack(alimento: {alimento: Alimento; quantita: number}) {
+        this.alimentiSnack.push(alimento);
+    }
+
+    public addAllAlimentiSnack(alimenti: Array<{alimento: Alimento; quantita: number}>) {
+        for (const alimento of alimenti) {
+            this.addAlimentoPranzo(alimento);
+        }
+    }
+
+    public addAlimentoCena(alimento: {alimento: Alimento; quantita: number}) {
+        this.alimentiCena.push(alimento);
+    }
+
+    public addAllAlimentiCena(alimenti: Array<{alimento: Alimento; quantita: number}>) {
+        for (const alimento of alimenti) {
+            this.addAlimentoColazione(alimento);
+        }
+    }
+
+    public addEsercizioFisico(esercizio: {esercizio: EsercizioFisico; durata: number}) {
+        this.eserciziFisici.push(esercizio);
+    }
+
+    public addAllEserciziFisici(esercizi: Array<{esercizio: EsercizioFisico; durata: number}>) {
+        for (const esercizio of esercizi) {
+            this.addEsercizioFisico(esercizio);
         }
     }
 
