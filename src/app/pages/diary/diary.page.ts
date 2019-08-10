@@ -83,15 +83,6 @@ export class DiaryPage implements OnInit {
     this.diarioAlimentare.eserciziFisici = this.attivita.attivita;
   }
 
-  addAcqua() {
-    // a.acqua += 1;
-    // this.diarioService.updateAcqua(this.date.slice(0, 10), a.acqua).subscribe();
-  }
-  removeAcqua() {
-   // a.acqua -= 1;
-    // this.diarioService.updateAcqua(this.date.slice(0, 10), a.acqua).subscribe();
-  }
-
   async changeDay() {
     this.diarioService.update(this.diarioAlimentare).subscribe();
     this.getDiario();

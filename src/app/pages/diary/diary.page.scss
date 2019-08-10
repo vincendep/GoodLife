@@ -72,29 +72,6 @@
   margin-bottom: 1%;
 }
 
-/* Caratteristiche delle barre di progresso */
-.colorBar{
-  --progress-background: var(--ion-color-dark-contrast);
-  --buffer-background: var(--ion-color-secondary-shade)
-}
-.calorieBar{
-  width: 80%;
-  border-radius: 50px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.valueBar{
-  border-radius: 50px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.dimensionBar{
-  width: 60%;
-}
-
 /* Caratteristiche dei bottoni per aumentare e diminuire quantità d'acqua */
 .waterButton{
   --color: white;

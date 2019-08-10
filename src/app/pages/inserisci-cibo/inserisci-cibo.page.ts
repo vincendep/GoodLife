@@ -164,6 +164,10 @@ export class InserisciCiboPage implements OnInit {
                     if (index > -1) {
                         this.temp.alimenti.splice(index, 1);
                     }
+                    index = this.meal1.alimenti.indexOf(alimento);
+                    if (index > -1) {
+                        this.meal1.alimenti.splice(index, 1);
+                    }
                 }
             }, this.translateService.instant('CANCEL_BUTTON')]
         });
