@@ -37,7 +37,7 @@ export class DettagliPastoPage implements OnInit {
   }
 
   addFood() {
-    this.router.navigateByUrl('tabs/preferiti/pasti/crea-pasto/inserisci-cibo');
+    this.router.navigateByUrl('tabs/preferiti/pasti/dettagli-pasto/inserisci-cibo');
   }
 
   onCancel() {

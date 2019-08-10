@@ -19,7 +19,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../alimenyi/alimenti.module#AlimentiPageModule'
+            loadChildren: '../alimenti/alimenti.module#AlimentiPageModule'
           }
         ]
       },
@@ -33,11 +33,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'pasti/crea-pasto',
-        loadChildren: '../crea-pasto/crea-pasto.module#CreaPastoPageModule'
+        path: 'pasti/dettagli-pasto',
+        loadChildren: '../dettagli-pasto/dettagli-pasto.module#DettagliPastoPageModule'
       },
       {
-        path: 'pasti/crea-pasto/:id',
+        path: 'pasti/dettagli-pasto/:id',
         resolve: {
           special: DataResolverService
         },

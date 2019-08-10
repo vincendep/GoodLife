@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: 'signup',  loadChildren: './pages/signup/signup.module#SignupPageModule'},
   { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule', canActivateChild: [AuthGuard]},
   { path: 'dettagli-alimento', loadChildren: './pages/dettagli-alimento/dettagli-alimento.module#DettagliAlimentoPageModule' }
- // { path: 'crea-pasto', loadChildren: './pages/crea-pasto/crea-pasto.module#CreaPastoPageModule' },
 ];
 
 @NgModule({
