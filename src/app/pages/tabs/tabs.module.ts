@@ -16,58 +16,59 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'diary',
+        path: 'diario',
         children: [
           {
             path: '',
-            loadChildren: '../diary/diary.module#DiaryPageModule'
+            loadChildren: '../diario/diario.module#DiarioPageModule'
           }
         ]
       },
       {
-        path: 'diet',
+        path: 'dieta',
         children: [
           {
             path: '',
-            loadChildren: '../diet/diet.module#DietPageModule'
+            loadChildren: '../dieta/dieta.module#DietaPageModule'
           }
         ]
       },
       {
-        path: 'favorite',
+        path: 'preferiti',
         children: [
           {
             path: '',
-            loadChildren: '../favorite/favorite.module#FavoritePageModule'
+            loadChildren: '../preferiti/preferiti.module#PreferitiPageModule'
           }
         ]
       },
       {
-        path: 'profile',
+        path: 'profilo',
         children: [
           {
             path: '',
-            loadChildren: '../profile/profile.module#ProfilePageModule',
+            loadChildren: '../profilo/profilo.module#ProfiloPageModule',
             canActivateChild: [AuthGuard]
           }
         ]
       },
       {
-        path: 'stats',
+        path: 'statistiche',
         children: [
           {
             path: '',
-            loadChildren: '../stats/stats.module#StatsPageModule'
+            loadChildren: '../statistiche/statistiche.module#StatistichePageModule'
           }
         ]
       },
-      {path: 'diary/4',
+        // TODO ma che è sta robba?!
+      {path: 'diario/4',
         resolve: {
           special: DataResolverService
         },
         loadChildren: '../inserisci-attivita/inserisci-attivita.module#InserisciAttivitaPageModule'
       },
-      {path: 'diary/:id',
+      {path: 'diario/:id',
         resolve: {
           special: DataResolverService
         },

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'CREA_ALIMENTO' | translate | titlecase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div padding-horizontal="2px">
+    <form [formGroup]="form" class="list-form">
+      <ion-list>
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating">
+            {{ 'NOME' | translate | titlecase }}</ion-label>
+          <ion-input color="secondary" type="text" inputmode="text" formControlName="nome"></ion-input>
+        </ion-item>
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating">
+            {{ 'CALORIE' | translate | titlecase }}/ 100 g</ion-label>
+          <ion-input color="secondary" type="number" inputmode="numeric" formControlName="calorie" placeholder="0 kcal" min="0" max="2000"></ion-input>
+        </ion-item>
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating">
+            {{ 'PROTEINE' | translate | titlecase }}/ 100 g</ion-label>
+          <ion-input color="secondary" type="number" inputmode="numeric" formControlName="proteine" placeholder="0 g" min="0" max="100"></ion-input>
+        </ion-item>
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating">
+            {{ 'GRASSI' | translate | titlecase }} / 100 g</ion-label>
+          <ion-input color="secondary" type="number" inputmode="numeric" formControlName="grassi" placeholder="0 g" min="0" max="100"></ion-input>
+        </ion-item>
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating">
+            {{ 'CARBOIDRATI' | translate | titlecase }} / 100 g</ion-label>
+          <ion-input color="secondary" type="number" inputmode="numeric" formControlName="carboidrati" placeholder="0 g" min="0" max="100"></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar align="center">
+    <ion-button fill="clear" size="large" color="dark" class="dimension" (click)="closeModal()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
+    <ion-button fill="clear" size="large" color="dark" class="dimension" [disabled]="!form.valid" (click)="saveModal()">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
+  </ion-toolbar>
+</ion-footer>

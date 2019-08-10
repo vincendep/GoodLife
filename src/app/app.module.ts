@@ -13,7 +13,6 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {CreaAlimentoPageModule} from './pages/crea-alimento/crea-alimento.module';
 import {httpInterceptorProviders} from './interceptors';
 
 
@@ -41,8 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
             name: 'goodlife',
             driverOrder: ['indexeddb', 'sqlite', 'websql']
         }),
-        AppRoutingModule,
-        CreaAlimentoPageModule],
+        AppRoutingModule],
     providers: [
         StatusBar,
         SplashScreen,
