@@ -76,7 +76,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/diary',
+        redirectTo: '/tabs/diario',
         pathMatch: 'full'
       }
     ]

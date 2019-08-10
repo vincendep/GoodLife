@@ -97,6 +97,6 @@ export class InserisciAttivitaPage implements OnInit {
 
   onUpdate() {
     this.attivita1.attivita = this.temp.attivita;
-    this.router.navigateByUrl('tabs/diary');
+    this.router.navigateByUrl('tabs/diario');
   }
 }

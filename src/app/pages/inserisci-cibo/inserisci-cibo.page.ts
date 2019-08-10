@@ -140,9 +140,9 @@ export class InserisciCiboPage implements OnInit {
   onUpdate() {
     this.meal1.alimenti = this.temp.alimenti;
     if (this.flag) {
-        this.router.navigateByUrl('tabs/favorite/meals/crea-pasto');
+        this.router.navigateByUrl('tabs/diario/pasti/crea-pasto');
     } else {
-        this.router.navigateByUrl('tabs/diary');
+        this.router.navigateByUrl('tabs/diario');
     }
   }
     eliminaAlimento(alimento: any) {

@@ -37,15 +37,15 @@ export class DettagliPastoPage implements OnInit {
   }
 
   addFood() {
-    this.router.navigateByUrl('tabs/favorite/meals/crea-pasto/inserisci-cibo');
+    this.router.navigateByUrl('tabs/preferiti/pasti/crea-pasto/inserisci-cibo');
   }
 
   onCancel() {
-    this.router.navigateByUrl('tabs/favorite/meals');
+    this.router.navigateByUrl('tabs/preferiti/pasti');
   }
   onUpdate() {
     this.pastoService.addPasto(this.form.get('nome').value, this.newPasto);
-    this.router.navigateByUrl('tabs/favorite/meals');
+    this.router.navigateByUrl('tabs/preferiti/pasti');
   }
 
   eliminaAlimento(alimento: any) {

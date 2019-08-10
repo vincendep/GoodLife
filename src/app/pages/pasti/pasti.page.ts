@@ -24,7 +24,7 @@ export class PastiPage implements OnInit {
   }
 
   addPasto() {
-    this.router.navigateByUrl('tabs/favorite/meals/crea-pasto');
+    this.router.navigateByUrl('tabs/preferiti/pasti/crea-pasto');
   }
 
   eliminaPasto(pasto: { nome: string; pasto: Pasto }) {
