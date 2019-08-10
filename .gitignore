@@ -60,5 +60,10 @@ typings/
 # next.js build output
 .next
 
+<<<<<<< HEAD
 # aggiunto
 .idea/
+=======
+#aggiunto
+.idea/
+>>>>>>> fb84ced7706f65a11c78abb3a5e02f9b759249f2
