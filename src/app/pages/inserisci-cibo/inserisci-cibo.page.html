@@ -6,11 +6,12 @@
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+
+<ion-content >
     <ion-item>
         <ion-label>Categoria alimentare</ion-label>
         <ion-select [(ngModel)]="categoriaSelezionata" interface="popover">
-            <ion-select-option value="CARNE" selected>Carne</ion-select-option>
+            <ion-select-option value="CARNE">Carne</ion-select-option>
             <ion-select-option value="LATTICINI">Latticini</ion-select-option>
             <ion-select-option value="FRUTTA">Frutta</ion-select-option>
             <ion-select-option value="LEGUMI">Legumi</ion-select-option>
@@ -23,11 +24,13 @@
             <ion-select-option value="DOLCE">Dolci</ion-select-option>
         </ion-select>
     </ion-item>
-    <ion-list *ngIf="alimenti$ | async as alimenti">
-        <ng-container *ngFor="let alimento of alimenti">
-            <ion-card *ngIf="alimento.categoria === this.categoriaSelezionata" >
-                <ion-card-header>{{alimento.nome}}</ion-card-header>
-            </ion-card>
-        </ng-container>
+    <ion-content>
+    <ion-list>
+        <div *ngFor="let alimento of alimenti$ | async">
+        <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata" (click)="onClick(alimento)">
+            {{alimento.nome}}
+        </ion-item>
+        </div>
     </ion-list>
+    </ion-content>
 </ion-content>

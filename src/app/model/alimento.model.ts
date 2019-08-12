@@ -6,5 +6,5 @@ export class Alimento {
     proteine: number;
     carboidrati: number;
     grassi: number;
-    categoria: string;
+    categoriaAlimentare: string;
 }
