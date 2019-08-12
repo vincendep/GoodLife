@@ -24,20 +24,20 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'pasti',
+        path: 'ricette',
         children: [
           {
             path: '',
-            loadChildren: '../pasti/pasti.module#PastiPageModule'
+            loadChildren: '../ricette/ricette.module#RicettePageModule'
           }
         ]
       },
       {
-        path: 'pasti/dettagli-pasto',
-        loadChildren: '../dettagli-pasto/dettagli-pasto.module#DettagliPastoPageModule'
+        path: 'ricette/dettagli-ricetta',
+        loadChildren: '../dettagli-ricetta/dettagli-ricetta.module#DettagliRicettaPageModule'
       },
       {
-        path: 'pasti/dettagli-pasto/:id',
+        path: 'pasti/dettagli-ricetta/:id',
         resolve: {
           special: DataResolverService
         },
@@ -45,7 +45,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/preferiti/pasti',
+        redirectTo: '/tabs/preferiti/ricette',
         pathMatch: 'full'
       }
     ]

@@ -2,23 +2,26 @@ import {EsercizioFisico} from './esercizio-fisico.model';
 
 // TODO refactor
 export class AttivitaFisica {
-    private _attivita: Array<{esercizio: EsercizioFisico, durata: number}>;
+    esercizi: Array<{esercizio: EsercizioFisico, durata: number}>;
 
     constructor() {
-        this._attivita = [];
+        this.esercizi = new Array<{esercizio: EsercizioFisico, durata: number}>();
     }
 
-    get attivita() {
-        return this._attivita;
+    addAll(attivita: AttivitaFisica) {
+        for (const esercizio of attivita.esercizi) {
+            this.esercizi.push(esercizio);
+        }
     }
 
-    set attivita(a: Array<{esercizio: EsercizioFisico, durata: number}>) {
-        this._attivita = a;
+    replaceAll(attivita: AttivitaFisica) {
+        this.esercizi = new Array<{esercizio: EsercizioFisico, durata: number}>();
+        this.addAll(attivita);
     }
 
     public consumoTotale(): number {
         let sum = 0;
-        for (const value of this._attivita) {
+        for (const value of this.esercizi) {
 
             sum += (value.esercizio.consumoPerMinuto * value.durata);
         }

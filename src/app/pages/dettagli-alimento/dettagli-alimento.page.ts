@@ -55,7 +55,7 @@ export class DettagliAlimentoPage implements OnInit {
     this.alimento.grassi = this.form.get('grassi').value;
     this.alimento.proteine = this.form.get('proteine').value;
     // this.alimento.categoria = Categorie.PREFERITI;
-    this.alimentoService.add(this.alimento);
+    this.alimentoService.createAlimento(this.alimento);
     this.modalController.dismiss();
   }
 }

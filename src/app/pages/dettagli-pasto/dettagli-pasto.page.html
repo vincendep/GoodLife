@@ -1,62 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{'CREA_PASTO' | translate}}</ion-title>
+    <ion-title>dettagli-pasto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="form" class="list-form">
-    <ion-item no-padding class="animated fadeInUp">
-      <ion-label position="floating">
-        {{ 'NOME' | translate | titlecase }}</ion-label>
-      <ion-input color="secondary" type="text" inputmode="text" [placeholder]=a formControlName="nome"></ion-input>
-    </ion-item>
-  </form>
-  <ion-grid fixed="true" text-center="true">
-    <ion-row>
-      <ion-col>{{'CALORIE' | translate}}</ion-col>
-      <ion-col>{{ newPasto.getTotCalorie()}} kcal</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>{{'PROTEINE' | translate}}</ion-col>
-      <ion-col>{{newPasto.getTotProteine()}} g</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>{{'GRASSI' | translate}}</ion-col>
-      <ion-col>{{newPasto.getTotGrassi()}} g</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>{{'CARBOIDRATI' | translate}}</ion-col>
-      <ion-col>{{newPasto.getTotCarboidrati()}} g</ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-item color="primary">
-    <ion-label>{{ 'ALIMENTI_AGGIUNTI' | translate | titlecase }}</ion-label>
-  </ion-item>
-
+  <h2 *ngIf="pasto.length == 0" text-center>INSERISCI UN ALIMENTO</h2>
   <ion-list>
-    <ion-item *ngFor="let element of newPasto.alimenti" lines="full">
-      <ion-grid fixed="true" text-center="true">
-        <ion-row>
-          <ion-col><ion-text>{{element.alimento.nome}}</ion-text></ion-col>
-          <ion-col><ion-text>{{element.dose}} g</ion-text></ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-icon slot="end" name="close" (click)="eliminaAlimento(element)"></ion-icon>
-    </ion-item>
+    <ion-card *ngFor="let alimento of this.pasto">
+      <ion-card-header>
+        <h2>{{alimento.alimento}}</h2>
+        <p>{{alimento.quantita}}</p>
+      </ion-card-header>
+    </ion-card>
   </ion-list>
-
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="addFood()">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onAdd()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 </ion-content>
-<ion-footer>
-  <ion-toolbar align="center">
-    <ion-button fill="clear" size="medium" color="dark" class="dimension" (click)="onCancel()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
-    <ion-button fill="clear" size="medium" color="dark" class="dimension" (click)="onUpdate()" [disabled]="!form.valid">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
-  </ion-toolbar>
-</ion-footer>

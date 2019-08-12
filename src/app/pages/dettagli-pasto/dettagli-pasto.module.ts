@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
 import { DettagliPastoPage } from './dettagli-pasto.page';
-import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -18,10 +17,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
+    FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    TranslateModule.forChild()
+    RouterModule.forChild(routes)
   ],
   declarations: [DettagliPastoPage]
 })

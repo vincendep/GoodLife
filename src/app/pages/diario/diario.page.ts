@@ -5,13 +5,15 @@ import {TranslateService} from '@ngx-translate/core';
 import {NavController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {DiarioService} from '../../services/diario.service';
+import {PastoService} from '../../services/pasto.service';
+import {Alimento} from '../../model/alimento.model';
 
 @Component({
   selector: 'app-diario',
   templateUrl: './diario.page.html',
   styleUrls: ['./diario.page.scss'],
 })
-export class DiarioPage implements OnInit, OnDestroy {
+export class DiarioPage implements OnInit {
 
   private diarioAlimentare: DiarioAlimentare;
   private dieta: Dieta;
@@ -19,7 +21,8 @@ export class DiarioPage implements OnInit, OnDestroy {
   constructor(private translateService: TranslateService,
               private navController: NavController,
               private router: Router,
-              private diarioService: DiarioService) {
+              private diarioService: DiarioService,
+              private pastoService: PastoService) {
 
     this.diarioAlimentare = new DiarioAlimentare();
     this.dieta = new Dieta();
@@ -29,6 +32,7 @@ export class DiarioPage implements OnInit, OnDestroy {
     this.getDiario();
 
     // TODO dietaService
+    this.dieta = new Dieta();
     this.dieta.calorieColazione = 60;
     this.dieta.caloriePranzo = 100;
     this.dieta.calorieSnack = 40;
@@ -38,26 +42,42 @@ export class DiarioPage implements OnInit, OnDestroy {
     this.dieta.carboidratiGiornalieri = 400;
   }
 
-  ngOnDestroy() {
+  incrementAcqua() {
+    this.diarioAlimentare.incrementAcqua();
     this.updateDiario();
   }
 
-  // debug
-  addFood() {}
+  decrementAcqua() {
+    this.diarioAlimentare.decrementAcqua();
+    this.updateDiario();
+  }
+
+  goToDettagliPasto(pastoSelezionato: Array<{alimento: Alimento, quantita: number}>, tipoPasto: string) {
+    this.pastoService.setTipoPasto(tipoPasto);
+    this.pastoService.setPasto(pastoSelezionato);
+    this.diarioService.setDiario(this.diarioAlimentare);
+    this.navController.navigateForward('dettagli-pasto');
+  }
+
+  goToDettagliAttivitaFisica() {
+    this.diarioService.setDiario(this.diarioAlimentare);
+    this.navController.navigateForward('dettagli-attivita-fisica');
+  }
 
   updateDiario() {
     this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
   }
 
   getDiario() {
-    this.diarioService.getDiarioByDate(this.diarioAlimentare.data).subscribe((response: DiarioAlimentare) => {
-      this.diarioAlimentare.idDiarioAlimentare = response.idDiarioAlimentare;
+    const o = this.diarioService.getDiarioByDate(this.diarioAlimentare.data).subscribe((response: DiarioAlimentare) => {
+      this.diarioAlimentare.id = response.id;
       this.diarioAlimentare.acqua = response.acqua;
-      this.diarioAlimentare.alimentiColazione = response.alimentiColazione;
-      this.diarioAlimentare.alimentiPranzo = response.alimentiPranzo;
       this.diarioAlimentare.alimentiColazione = response.alimentiSnack;
       this.diarioAlimentare.alimentiColazione = response.alimentiCena;
       this.diarioAlimentare.eserciziFisici = response.eserciziFisici;
+      this.diarioAlimentare.alimentiColazione = response.alimentiColazione;
+      this.diarioAlimentare.alimentiPranzo = response.alimentiPranzo;
+      o.unsubscribe();
     });
   }
 }

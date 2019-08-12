@@ -7,16 +7,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-tabs (ionTabsWillChange)="getSelectedTab()">
+  <ion-tabs (ionTabsWillChange)="changeCurrentTab()">
     <ion-tab-bar slot="top">
       <ion-tab-button tab="preferiti/alimenti">
         <ion-icon name="calendar"></ion-icon>
         <ion-label>{{'ALIMENTI' | translate | titlecase}}</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="preferiti/pasti">
+      <ion-tab-button tab="preferiti/ricette">
         <ion-icon name="contacts"></ion-icon>
-        <ion-label>{{'PASTI' | translate | titlecase}}</ion-label>
+        <ion-label>{{'RICETTE' | translate | titlecase}}</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>

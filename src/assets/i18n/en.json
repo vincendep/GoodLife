@@ -74,7 +74,7 @@
   "CREA_ACCOUNT": "create account",
   "NOME": "name",
   "COGNOME": "surname",
-  "CONFERMA_PASSWORD": "confirm password",
+  "CONFERMA_PASSWORD": "onfirm password",
   "DELETE_TITLE": "Are you sure?",
   "DELETE_MESSAGE": "Do you want to delete",
   "CREA_ALIMENTO": "Create new aliment",
@@ -92,5 +92,7 @@
   "CEREALI": "CEREAL",
   "CONDIMENTO": "SEASONING",
   "UOVA": "EGG",
-  "DOLCE": "DESSERT"
+  "DOLCE": "DESSERT",
+  "RICETTA": "Recipe",
+  "RICETTE": "Recipes"
 }

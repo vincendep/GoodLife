@@ -11,6 +11,10 @@ export class Dieta {
     dataInizioDieta: Date;
     dataFineDieta: Date;
 
+    constructor() {
+        this.dataInizioDieta = new Date();
+    }
+
     public calorieGiornaliere(): number {
         return this.calorieColazione + this.caloriePranzo + this.calorieSnack + this.calorieCena;
     }

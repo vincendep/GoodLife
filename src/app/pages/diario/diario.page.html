@@ -39,22 +39,22 @@
   <div class="divWater">
     <ion-img src="assets/images/glass.png"></ion-img>
     <ion-label color="tertiary" class="labelSize" >{{this.diarioAlimentare.acqua}}</ion-label>
-    <ion-button class="waterButton color" fill="clear" (click)="this.diarioAlimentare.incrementAcqua()"><ion-icon name="add"></ion-icon></ion-button>
-    <ion-button class="waterButton color" fill="clear" (click)="this.diarioAlimentare.decrementAcqua()"><ion-icon name="remove"></ion-icon></ion-button>
+    <ion-button class="waterButton color" fill="clear" (click)="this.incrementAcqua()"><ion-icon name="add"></ion-icon></ion-button>
+    <ion-button class="waterButton color" fill="clear" (click)="this.decrementAcqua()"><ion-icon name="remove"></ion-icon></ion-button>
   </div>
 
   <div class="box">
 
 
     <div class="divSquareButton">
-      <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood()">
+      <ion-button expand="full" class="squareButton color" fill="clear" (click)="goToDettagliPasto(this.diarioAlimentare.alimentiColazione, 'colazione')">
         <div>{{ 'COLAZIONE' | translate }}
           <ion-img src="assets/images/colazione.png" class="imageDimension"></ion-img>
           <p>{{this.diarioAlimentare.getCalorieColazione()}}/{{dieta.calorieColazione}} kcal</p>
           <ion-progress-bar [value]="this.diarioAlimentare.getCalorieColazione()/dieta.calorieColazione" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div>
       </ion-button>
-      <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood()">
+      <ion-button expand="full" class="squareButton color" fill="clear" (click)="goToDettagliPasto(this.diarioAlimentare.alimentiPranzo, 'pranzo')">
         <div>{{ 'PRANZO' | translate }}
           <ion-img src="assets/images/pranzo.png" class="imageDimension"></ion-img>
           <p>{{this.diarioAlimentare.getCaloriePranzo()}}/{{dieta.caloriePranzo}} kcal</p>
@@ -64,7 +64,7 @@
 
     <div class="divRoundButton">
       <div class="divRoundButton1">
-        <ion-button class="roundButton color" fill="clear" (click)="addFood()">
+        <ion-button class="roundButton color" fill="clear" (click)="goToDettagliAttivitaFisica()">
           <div>
             <ion-img src="assets/images/attivita.png" class="imageDimension"></ion-img>
             <p>{{this.diarioAlimentare.getConsumoTotale()}}</p>
@@ -75,13 +75,13 @@
 
 
     <div class="divSquareButton">
-      <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood()">
+      <ion-button expand="full" class="squareButton color" fill="clear" (click)="goToDettagliPasto(this.diarioAlimentare.alimentiSnack, 'snack')">
         <div>{{ 'SNACKS' | translate }}
           <ion-img src="assets/images/snacks.png" class="imageDimension"></ion-img>
           <p>{{this.diarioAlimentare.getCalorieSnack()}}/{{dieta.calorieSnack}} kcal</p>
           <ion-progress-bar [value]="this.diarioAlimentare.getCalorieSnack() /dieta.calorieSnack" class="valueBar colorBar dimensionBar"></ion-progress-bar>
         </div></ion-button>
-      <ion-button expand="full" class="squareButton color" fill="clear" (click)="addFood()">
+      <ion-button expand="full" class="squareButton color" fill="clear" (click)="goToDettagliPasto(this.diarioAlimentare.alimentiCena, 'snack')">
         <div>{{ 'CENA' | translate }}
           <ion-img src="assets/images/cena.png" class="imageDimension dimensionBar dimensionBar"></ion-img>
           <p>{{this.diarioAlimentare.getCalorieCena()}}/{{dieta.calorieCena}} kcal</p>

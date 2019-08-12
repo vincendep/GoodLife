@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Pasto} from '../../model/pasto.model';
+import {DiarioAlimentare} from '../../model/diario.model';
 import {TranslateService} from '@ngx-translate/core';
-import {PastoService} from '../../services/pasto.service';
+import {NavController} from '@ionic/angular';
 import {Router} from '@angular/router';
-import {DataService} from '../../services/data.service';
-import {AlertController} from '@ionic/angular';
+import {DiarioService} from '../../services/diario.service';
+import {Alimento} from '../../model/alimento.model';
+import {PastoService} from '../../services/pasto.service';
 
 @Component({
   selector: 'app-dettagli-pasto',
@@ -13,69 +13,27 @@ import {AlertController} from '@ionic/angular';
   styleUrls: ['./dettagli-pasto.page.scss'],
 })
 export class DettagliPastoPage implements OnInit {
-  private form: FormGroup;
-  private newPasto: Pasto;
-  private a: string;
-  private deleteTitle: string;
-  private deleteMessage: string;
+
+  diarioAlimentare: DiarioAlimentare;
+  tipoPasto: string;
+  pasto: Array<{alimento: Alimento, quantita: number}>;
+
   constructor(private translateService: TranslateService,
-              private pastoService: PastoService,
+              private navController: NavController,
               private router: Router,
-              private dataService: DataService,
-              private alertController: AlertController,
-              private formBuilder: FormBuilder) {
+              private diarioService: DiarioService,
+              private pastoService: PastoService) {
 
-    this.newPasto = new Pasto();
-
+    this.diarioAlimentare = new DiarioAlimentare();
+    this.pasto = new Array<{alimento: Alimento, quantita: number}>();
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      nome: ['', Validators.required], });
-    this.a = this.translateService.instant('NUOVO-NOME');
-    this.dataService.setData('inserisci-cibo', this.newPasto);
+    this.diarioAlimentare = this.diarioService.getDiario();
+    this.pasto = this.pastoService.getPasto();
   }
 
-  addFood() {
-    this.router.navigateByUrl('tabs/preferiti/pasti/dettagli-pasto/inserisci-cibo');
+  onAdd() {
+    this.navController.navigateForward('inserisci-cibo');
   }
-
-  onCancel() {
-    this.router.navigateByUrl('tabs/preferiti/pasti');
-  }
-  onUpdate() {
-    this.pastoService.addPasto(this.form.get('nome').value, this.newPasto);
-    this.router.navigateByUrl('tabs/preferiti/pasti');
-  }
-
-  eliminaAlimento(alimento: any) {
-    this.showDeleteAlert(alimento);
-  }
-
-  async showDeleteAlert(alimento: any) {
-    this.initTranslate();
-    const alert = await this.alertController.create({
-      header: this.deleteTitle,
-      message: this.deleteMessage + ' ' + alimento.alimento.nome + '?',
-      buttons: [{
-        text: 'OK',
-        handler: (data) => {
-          let index = this.newPasto.alimenti.indexOf(alimento);
-          if (index > -1) {
-            this.newPasto.alimenti.splice(index, 1);
-          }
-        }
-      }, this.translateService.instant('CANCEL_BUTTON')]
-    });
-    await alert.present();
-  }
-  initTranslate() {
-    this.translateService.get('DELETE_TITLE').subscribe((data) => {
-      this.deleteTitle = data;
-    });
-    this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
-      this.deleteMessage = data;
-    });
-  }
-
 }

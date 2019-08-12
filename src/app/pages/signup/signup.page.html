@@ -15,9 +15,9 @@
         <ion-img src="../../../assets/images/trophy.png" class="img-dim"></ion-img>
 
           <div margin="20px">
-            <ion-button (click)="scegliObiettivo($event)" id="obiettivoDimagrimento" size="large" expand="block" shape="round" color="primary" >{{ 'DIMAGRIRE' | translate }}</ion-button>
-            <ion-button (click)="scegliObiettivo($event)" id="obiettivoMassa" size="large" expand="block" shape="round" color="primary" >{{ 'MASSA' | translate }}</ion-button>
-            <ion-button (click)="scegliObiettivo($event)" id="obiettivoSano" size="large" expand="block" shape="round" color="primary">{{ 'SANO' | translate }}</ion-button>
+            <ion-button (click)="onConfirmStepOne($event)" id="obiettivoDimagrimento" size="large" expand="block" shape="round" color="primary" >{{ 'DIMAGRIRE' | translate }}</ion-button>
+            <ion-button (click)="onConfirmStepOne($event)" id="obiettivoMassa" size="large" expand="block" shape="round" color="primary" >{{ 'MASSA' | translate }}</ion-button>
+            <ion-button (click)="onConfirmStepOne($event)" id="obiettivoSano" size="large" expand="block" shape="round" color="primary">{{ 'SANO' | translate }}</ion-button>
           </div>
       </div>
     </ion-slide>
@@ -54,7 +54,7 @@
           </ion-item>
         </ion-list>
         <div margin-top="20px">
-          <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onConfirm()" [disabled]="!stepTwoForm.valid" tappable>
+          <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onConfirmStepTwo()" [disabled]="!stepTwoForm.valid" tappable>
             <ion-icon name="arrow-round-forward"></ion-icon>
             {{ 'CONFERMA' | translate }}
           </ion-button>
@@ -96,7 +96,7 @@
           </ion-item>
         </ion-list>
         <div margin-top="20px">
-          <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onSignup()" [disabled]="!stepThreeForm.valid" tappable>
+          <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onConfirmStepThree()" [disabled]="!stepThreeForm.valid" tappable>
             <ion-icon name="create"></ion-icon>
             {{ 'CREA_ACCOUNT' | translate}}
           </ion-button>

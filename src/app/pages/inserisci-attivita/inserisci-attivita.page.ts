@@ -44,9 +44,9 @@ export class InserisciAttivitaPage implements OnInit {
       buttons: [{
         text: 'OK',
         handler: (data) => {
-          let index = this.temp.attivita.indexOf(esercizio);
+          let index = this.temp.esercizi.indexOf(esercizio);
           if (index > -1) {
-            this.temp.attivita.splice(index, 1);
+            this.temp.esercizi.splice(index, 1);
           }
         }
       }, this.translateService.instant('CANCEL_BUTTON')]
@@ -85,7 +85,7 @@ export class InserisciAttivitaPage implements OnInit {
           text: 'OK',
           handler: (data) => {
             if (data.durata > 0) {
-              this.temp.attivita.push({esercizio: a, durata: data.durata});
+              this.temp.esercizi.push({esercizio: a, durata: data.durata});
             }
           }
         }
@@ -96,7 +96,7 @@ export class InserisciAttivitaPage implements OnInit {
 
 
   onUpdate() {
-    this.attivita1.attivita = this.temp.attivita;
+    this.attivita1.esercizi = this.temp.esercizi;
     this.router.navigateByUrl('tabs/diario');
   }
 }

@@ -1,146 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{title | uppercase}}</ion-title>
+      <ion-title>inserisci cibo</ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button color="dark"></ion-back-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-toolbar color="secondary" align="center">
-    <ion-button fill="clear" size="medium" color="dark" class="dimension" (click)="indietro()">{{'ALIMENTI' | translate | uppercase}}</ion-button>
-    <ion-button fill="clear" size="medium" color="dark" class="dimension" (click)="avanti()">{{'PASTI' | translate | uppercase}}</ion-button>
-</ion-toolbar>
-
-
 <ion-content>
-    <ion-list>
-        <ion-item *ngFor="let element of temp.alimenti" lines="full">
-            <ion-grid fixed="true" text-center="true">
-                <ion-row>
-                    <ion-col><ion-text>{{element.alimento.nome}}</ion-text></ion-col>
-                    <ion-col><ion-text>{{element.dose}} g</ion-text></ion-col>
-                </ion-row>
-            </ion-grid>
-            <ion-icon slot="end" name="close" (click)="eliminaAlimento(element)"></ion-icon>
-        </ion-item>
+    <ion-item>
+        <ion-label>Categoria alimentare</ion-label>
+        <ion-select [(ngModel)]="categoriaSelezionata" interface="popover">
+            <ion-select-option value="CARNE" selected>Carne</ion-select-option>
+            <ion-select-option value="LATTICINI">Latticini</ion-select-option>
+            <ion-select-option value="FRUTTA">Frutta</ion-select-option>
+            <ion-select-option value="LEGUMI">Legumi</ion-select-option>
+            <ion-select-option value="CEREALI">Cereali</ion-select-option>
+            <ion-select-option value="ALCOOL">Alcool</ion-select-option>
+            <ion-select-option value="CONDIMENTO">Condimenti</ion-select-option>
+            <ion-select-option value="VERDURA">Verdura</ion-select-option>
+            <ion-select-option value="PESCE">Pesce</ion-select-option>
+            <ion-select-option value="UOVA">Uova</ion-select-option>
+            <ion-select-option value="DOLCE">Dolci</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-list *ngIf="alimenti$ | async as alimenti">
+        <ng-container *ngFor="let alimento of alimenti">
+            <ion-card *ngIf="alimento.categoria === this.categoriaSelezionata" >
+                <ion-card-header>{{alimento.nome}}</ion-card-header>
+            </ion-card>
+        </ng-container>
     </ion-list>
-
-
-    <ion-slides id="slider">
-
-        <ion-slide>
-            <ion-content>
-            <ion-list class="slideWidth">
-                <ion-item button=true (click)="hide(0)" color="primary">
-                    <ion-label>{{ 'ALCHOOL' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[0]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of alcool$ | async"  button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(1)" color="primary">
-                    <ion-label>{{ 'CEREALI' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[1]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of cereali$ | async" button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(2)" color="primary">
-                    <ion-label>{{ 'CARNE' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[2]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of carne$ | async"  button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(3)" color="primary">
-                    <ion-label>{{ 'PESCE' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[3]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of pesce$ | async" button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(4)" color="primary">
-                    <ion-label>{{ 'FRUTTA' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[4]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of frutta$ | async"  button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(5)" color="primary">
-                    <ion-label>{{ 'VERDURA' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[5]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of verdura$ | async" button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(6)" color="primary">
-                    <ion-label>{{ 'LATTICINI' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[6]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of latticini$ | async"  button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(7)" color="primary">
-                    <ion-label>{{ 'LEGUMI' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[7]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of legumi$ | async" button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(8)" color="primary">
-                    <ion-label>{{ 'UOVA' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[8]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of uova$ | async" button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(9)" color="primary">
-                    <ion-label>{{ 'DOLCE' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[9]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of dolce$ | async" button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(10)" color="primary">
-                    <ion-label>{{ 'CONDIMENTO' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[10]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of condimento$ | async" button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-                <ion-item button=true (click)="hide(11)" color="primary">
-                    <ion-label>{{ 'FAVORITE' | translate }}</ion-label>
-                </ion-item>
-                <ion-list *ngIf="hideMe[11]">
-                    <ion-item lines="full" (click)="onClick(element)" *ngFor="let element of preferiti$ | async" button=true>
-                        <ion-text>{{element.nome}}</ion-text>
-                    </ion-item>
-                </ion-list>
-            </ion-list>
-            </ion-content>
-        </ion-slide>
-        <ion-slide>
-            <ion-list class="slideWidth">
-                <ion-item lines="full" *ngFor="let pasto of pastoService.getPasti()" button=true (click)="onClickPasto(pasto.pasto)">
-                    <ion-grid fixed="true" text-center="true">
-                        <ion-row>
-                            <ion-col><ion-text>{{pasto.nome}}</ion-text></ion-col>
-                            <ion-col><ion-text>{{pasto.pasto.getTotCalorie()}} kcal</ion-text></ion-col>
-                        </ion-row>
-                    </ion-grid>
-                    <ion-icon slot="end" name="close" (click)="eliminaPasto(pasto)"></ion-icon>
-                </ion-item>
-            </ion-list>
-        </ion-slide>
-    </ion-slides>
 </ion-content>
-<ion-button (click)="onUpdate()" size="medium" shape="round" color="primary" expand="full"> {{ 'SAVE_BUTTON' | translate }} </ion-button>

@@ -24,9 +24,7 @@ export class AlimentiPage implements OnInit {
 
   ngOnInit() {
     this.initTranslate();
-  }
-  ionViewWillEnter() {
-    this.alimenti = this.alimentoService.getAll();
+    this.alimentoService.listAlimenti();
   }
 
   async showModal() {

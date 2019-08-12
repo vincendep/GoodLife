@@ -69,7 +69,7 @@ export class SignupPage implements OnInit {
         this.initTranslate();
     }
 
-    scegliObiettivo(event) {
+    onConfirmStepOne(event) {
         const dieta: Dieta = new Dieta();
         dieta.dataInizioDieta = new Date();
         switch (event.srcElement.id) {
@@ -83,32 +83,23 @@ export class SignupPage implements OnInit {
             dieta.obiettivo = Obiettivo.MANGIARE_SANO;
         }
         this.nuovoUtente.diete.push(dieta);
-        this.nextStep();
-      }
-
-    nextStep() {
-        this.slides.lockSwipes(false);
-        this.slides.slideNext();
-        this.slides.lockSwipes(true);
+        this.goToNextStep();
     }
 
-    prevStep() {
-        this.slides.lockSwipes(false);
-        this.slides.slidePrev();
-        this.slides.lockSwipes(true);
-
-    }
-
-    onConfirm() {
+    onConfirmStepTwo() {
         this.informazioni.altezza = this.stepTwoForm.get('altezza').value;
         this.informazioni.peso = this.stepTwoForm.get('peso').value;
         this.nuovoUtente.dataDiNascita = this.stepTwoForm.get('dataDiNascita').value;
         this.nuovoUtente.sesso = this.stepTwoForm.get('sesso').value === 'maschio' ? Sesso.MASCHIO : Sesso.FEMMINA;
-        this.nextStep();
+        this.goToNextStep();
+    }
+
+    onConfirmStepThree() {
+        this.signup();
     }
 
     // TODO utente service call
-    onSignup() {
+    signup() {
         if (this.stepThreeForm.get('password').value === this.stepThreeForm.get('passwordCheck').value) {
             this.nuovoUtente.email = this.stepThreeForm.get('email').value;
             this.nuovoUtente.nome = this.stepThreeForm.get('nome').value;
@@ -139,6 +130,18 @@ export class SignupPage implements OnInit {
         this.translateService.get('SIGNUP_ERROR_MESSAGE').subscribe((data) => {
             this.signupErrorMessage = data;
         });
+    }
+
+    goToNextStep() {
+        this.slides.lockSwipes(false);
+        this.slides.slideNext();
+        this.slides.lockSwipes(true);
+    }
+
+    goToPreviousStep() {
+        this.slides.lockSwipes(false);
+        this.slides.slidePrev();
+        this.slides.lockSwipes(true);
     }
 }
 
