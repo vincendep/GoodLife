@@ -24,7 +24,8 @@
             <ion-select-option value="DOLCE">Dolci</ion-select-option>
         </ion-select>
     </ion-item>
-    <ion-content>
+    <ion-content class="slideHeight">
+        <div >
     <ion-list>
         <div *ngFor="let alimento of alimenti$ | async">
         <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata" (click)="onClick(alimento)">
@@ -32,5 +33,6 @@
         </ion-item>
         </div>
     </ion-list>
+        </div>
     </ion-content>
 </ion-content>

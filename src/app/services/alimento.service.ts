@@ -25,7 +25,7 @@ export class AlimentoService {
   }
 
   public deleteAlimento(alimento: Alimento) {
-    // return this.http.delete<Alimento>(URL.ALIMENTI, alimento);
+     return this.http.delete<Alimento>(URL.ALIMENTI + '/' + alimento.id);
 }
 }
 

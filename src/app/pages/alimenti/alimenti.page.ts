@@ -53,13 +53,13 @@ export class AlimentiPage implements OnInit {
       buttons: [{
         text: 'OK',
         handler: (data) => {
-          let index = this.alimenti.indexOf(alimento);
-          if (index > -1) {
-            this.alimenti.splice(index, 1);
-          }
+          this.alimentoService.deleteAlimento(alimento).subscribe();
         }
       }
         , this.translateService.instant('CANCEL_BUTTON')]
+    });
+    alert.onDidDismiss().then(() => {
+      this.alimenti$ = this.alimentoService.listAlimentiCreati();
     });
     await alert.present();
   }
