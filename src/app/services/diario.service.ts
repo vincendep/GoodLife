@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {URL} from '../constants';
 import {Observable} from 'rxjs';
 import {DiarioAlimentare} from '../model/diario.model';
-import {Pasto} from '../model/pasto.model';
 import {Alimento} from '../model/alimento.model';
 
 @Injectable({
