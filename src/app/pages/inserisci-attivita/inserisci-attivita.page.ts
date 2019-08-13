@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {AttivitaFisica} from '../../model/attivita-fisica.model';
 import {TranslateService} from '@ngx-translate/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AlertController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {EsercizioService} from '../../services/esercizio.service';
 import {EsercizioFisico} from '../../model/esercizio-fisico.model';
+import {Observable} from 'rxjs';
+import {DiarioAlimentare} from '../../model/diario.model';
+import {DiarioService} from '../../services/diario.service';
+import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
 
 @Component({
   selector: 'app-inserisci-attivita',
@@ -13,62 +15,37 @@ import {EsercizioFisico} from '../../model/esercizio-fisico.model';
 })
 export class InserisciAttivitaPage implements OnInit {
 
-  private attivita1: AttivitaFisica;
-  private temp: AttivitaFisica;
+  private esercizi: Observable<EsercizioFisico[]>;
+  private diarioAlimentare: DiarioAlimentare;
+  private attivitaFisica: Array<{esercizio: EsercizioFisico, durata: number}>;
   private deleteTitle: string;
   private deleteMessage: string;
-  constructor(private translateService: TranslateService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private alertController: AlertController,
-              private esercizioService: EsercizioService) {
 
-    if (this.router.getCurrentNavigation().extras.state) {
-      this.attivita1 = this.router.getCurrentNavigation().extras.state.user;
-    }
+  constructor(private translateService: TranslateService,
+              private diarioService: DiarioService,
+              private attivitaFisicaService: AttivitaFisicaService,
+              private alertController: AlertController,
+              private esercizioService: EsercizioService,
+              private navController: NavController) {
+
+    this.diarioAlimentare = new DiarioAlimentare();
+    this.attivitaFisica = new Array<{esercizio: EsercizioFisico, durata: number}>();
   }
 
   ngOnInit() {
-    this.temp = new AttivitaFisica();
-    this.temp = this.attivita1;
+    this.esercizi = this.esercizioService.listEsercizi();
+    this.diarioAlimentare = this.diarioService.getDiario();
+    this.attivitaFisica = this.attivitaFisicaService.getAttivitaFisica();
   }
 
-  eliminaEsercizio(esercizio: any) {
-    this.showDeleteAlert(esercizio);
-  }
-  async showDeleteAlert(esercizio: any) {
-    this.initTranslate();
-    const alert = await this.alertController.create({
-      header: this.deleteTitle,
-      message: this.deleteMessage + ' ' + esercizio.esercizio.nome + '?',
-      buttons: [{
-        text: 'OK',
-        handler: (data) => {
-          let index = this.temp.esercizi.indexOf(esercizio);
-          if (index > -1) {
-            this.temp.esercizi.splice(index, 1);
-          }
-        }
-      }, this.translateService.instant('CANCEL_BUTTON')]
-    });
-    await alert.present();
-  }
-  initTranslate() {
-    this.translateService.get('DELETE_TITLE').subscribe((data) => {
-      this.deleteTitle = data;
-    });
-    this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
-      this.deleteMessage = data;
-    });
-  }
-  onClick(a: EsercizioFisico): void {
-    this.selezionaDurata(a);
+  onClick(esercizioFisico: EsercizioFisico): void {
+    this.selezionaDurata(esercizioFisico);
   }
 
-  async selezionaDurata(a: EsercizioFisico) {
+  async selezionaDurata(esercizioFisico: EsercizioFisico) {
     const alert = await this.alertController.create({
-      header: a.nome,
-      message: this.translateService.instant('CALMIN') + ': ' + a.consumoPerMinuto + ' kcal',
+      header: esercizioFisico.nome,
+      message: this.translateService.instant('CALMIN') + ': ' + esercizioFisico.consumoPerMinuto + ' kcal',
       inputs: [
         {
           name: 'durata',
@@ -85,7 +62,9 @@ export class InserisciAttivitaPage implements OnInit {
           text: 'OK',
           handler: (data) => {
             if (data.durata > 0) {
-              this.temp.esercizi.push({esercizio: a, durata: data.durata});
+              this.attivitaFisica.push({esercizio: esercizioFisico, durata: data.durata});
+              this.diarioService.updateDiario(this.diarioAlimentare);
+              this.navController.back();
             }
           }
         }
@@ -94,9 +73,34 @@ export class InserisciAttivitaPage implements OnInit {
     await alert.present();
   }
 
+  // eliminaEsercizio(esercizio: any) {
+  //   this.showDeleteAlert(esercizio);
+  // }
+  //
+  // async showDeleteAlert(esercizio: any) {
+  //   this.initTranslate();
+  //   const alert = await this.alertController.create({
+  //     header: this.deleteTitle,
+  //     message: this.deleteMessage + ' ' + esercizio.esercizio.nome + '?',
+  //     buttons: [{
+  //       text: 'OK',
+  //       handler: (data) => {
+  //         let index = this.temp.esercizi.indexOf(esercizio);
+  //         if (index > -1) {
+  //           this.temp.esercizi.splice(index, 1);
+  //         }
+  //       }
+  //     }, this.translateService.instant('CANCEL_BUTTON')]
+  //   });
+  //   await alert.present();
+  // }
 
-  onUpdate() {
-    this.attivita1.esercizi = this.temp.esercizi;
-    this.router.navigateByUrl('tabs/diario');
+  initTranslate() {
+    this.translateService.get('DELETE_TITLE').subscribe((data) => {
+      this.deleteTitle = data;
+    });
+    this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
+      this.deleteMessage = data;
+    });
   }
 }

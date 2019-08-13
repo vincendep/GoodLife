@@ -1,9 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>dettagli-attivita-fisica</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <h2 *ngIf="attivitaFisica.length == 0" text-center>INSERISCI UN ESERCIZIO</h2>
+    <ion-list>
+        <ion-card *ngFor="let attivita of this.attivitaFisica">
+            <ion-card-header>
+                <h2>{{attivita.esercizio.nome}}</h2>
+                <p>{{attivita.durata}}</p>
+            </ion-card-header>
+        </ion-card>
+    </ion-list>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="onAdd()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

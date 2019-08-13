@@ -45,8 +45,8 @@ export class InserisciCiboPage implements OnInit {
         console.log(this.alimenti$);
     }
 
-    onClick(element: Alimento): void {
-        this.selezionaDose(element);
+    onClick(alimento: Alimento): void {
+        this.selezionaDose(alimento);
     }
 
     async selezionaDose(a: Alimento) {

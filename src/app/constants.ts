@@ -7,7 +7,7 @@ export const URL = {
     LOGOUT: URL_BASE + '/logout',
     UPDATE_PROFILO: URL_BASE + '/utente/updateprofilo',
     ALIMENTI: URL_BASE + '/alimenti',
-    ESERCIZI: URL_BASE + 'esercizi',
+    ESERCIZI: URL_BASE + '/esercizi',
     DIARIO: URL_BASE + '/diario'
 };
 

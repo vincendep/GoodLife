@@ -6,6 +6,7 @@ import {NavController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {DiarioService} from '../../services/diario.service';
 import {PastoService} from '../../services/pasto.service';
+import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
 import {Alimento} from '../../model/alimento.model';
 
 @Component({
@@ -22,7 +23,8 @@ export class DiarioPage implements OnInit {
               private navController: NavController,
               private router: Router,
               private diarioService: DiarioService,
-              private pastoService: PastoService) {
+              private pastoService: PastoService,
+              private attivitaFisicaService: AttivitaFisicaService) {
 
     this.diarioAlimentare = new DiarioAlimentare();
     this.dieta = new Dieta();
@@ -61,6 +63,7 @@ export class DiarioPage implements OnInit {
 
   goToDettagliAttivitaFisica() {
     this.diarioService.setDiario(this.diarioAlimentare);
+    this.attivitaFisicaService.setAttivitaFisica(this.diarioAlimentare.eserciziFisici);
     this.navController.navigateForward('dettagli-attivita-fisica');
   }
 
