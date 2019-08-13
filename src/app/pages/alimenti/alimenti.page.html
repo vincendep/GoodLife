@@ -1,6 +1,6 @@
 <ion-content>
   <ion-list>
-    <ion-item lines="full" *ngFor="let alimento of alimenti" button=true>
+    <ion-item lines="full" *ngFor="let alimento of alimenti$ | async" button=true>
       <ion-grid fixed="true" text-center="true">
         <ion-row>
           <ion-col><ion-text>{{alimento.nome}}</ion-text></ion-col>
@@ -11,7 +11,7 @@
     </ion-item>
   </ion-list>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="showModal()">
+    <ion-fab-button (click)="creaAlimento()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

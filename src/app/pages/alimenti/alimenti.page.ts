@@ -4,6 +4,7 @@ import {AlimentoService} from '../../services/alimento.service';
 import {AlertController, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {DettagliAlimentoPage} from '../dettagli-alimento/dettagli-alimento.page';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-alimenti',
@@ -12,6 +13,7 @@ import {DettagliAlimentoPage} from '../dettagli-alimento/dettagli-alimento.page'
 })
 export class AlimentiPage implements OnInit {
 
+  private alimenti$: Observable<Alimento[]>
   private alimenti: Alimento[];
   private deleteTitle: string;
   private deleteMessage: string;
@@ -20,16 +22,21 @@ export class AlimentiPage implements OnInit {
               private alertController: AlertController,
               private translateService: TranslateService,
               private modalController: ModalController) {
+    this.alimenti$ = new Observable<Alimento[]>();
   }
 
   ngOnInit() {
+    this.alimenti$ = this.alimentoService.listAlimentiCreati();
     this.initTranslate();
-    this.alimentoService.listAlimenti();
   }
 
-  async showModal() {
+  async creaAlimento() {
+    // TODO provare come il prof
     const modal = await this.modalController.create({
       component: DettagliAlimentoPage,
+    });
+    modal.onDidDismiss().then(() => {
+      this.alimenti$ = this.alimentoService.listAlimentiCreati();
     });
     modal.present();
   }

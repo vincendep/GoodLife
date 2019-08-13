@@ -41,21 +41,22 @@ export class DettagliAlimentoPage implements OnInit {
         Validators.min(0),
         Validators.max(100)
       ])],
+      categoriaAlimentare: ['', Validators.required]
     });
   }
 
-  closeModal() {
-    this.modalController.dismiss();
+  async closeModal() {
+    await this.modalController.dismiss();
   }
 
-  saveModal() {
+  async saveModal() {
     this.alimento.nome = this.form.get('nome').value;
     this.alimento.calorie = this.form.get('calorie').value;
     this.alimento.carboidrati = this.form.get('carboidrati').value;
     this.alimento.grassi = this.form.get('grassi').value;
     this.alimento.proteine = this.form.get('proteine').value;
-    // this.alimento.categoria = Categorie.PREFERITI;
-    this.alimentoService.createAlimento(this.alimento);
-    this.modalController.dismiss();
+    this.alimento.categoriaAlimentare = this.form.get('categoriaAlimentare').value;
+    this.alimentoService.createAlimento(this.alimento).subscribe();
+    await this.modalController.dismiss();
   }
 }

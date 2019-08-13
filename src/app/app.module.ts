@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {httpInterceptorProviders} from './interceptors';
+import {DettagliAlimentoPageModule} from './pages/dettagli-alimento/dettagli-alimento.module';
 
 
 // The translate loader needs to know where to load i18n files
@@ -40,7 +41,8 @@ export function createTranslateLoader(http: HttpClient) {
             name: 'goodlife',
             driverOrder: ['indexeddb', 'sqlite', 'websql']
         }),
-        AppRoutingModule],
+        AppRoutingModule,
+        DettagliAlimentoPageModule],
     providers: [
         StatusBar,
         SplashScreen,

@@ -19,6 +19,14 @@ export class AlimentoService {
   public createAlimento(alimento: Alimento) {
     return this.http.post<Alimento>(URL.ALIMENTI, alimento);
   }
+
+  public listAlimentiCreati(): Observable<Alimento[]> {
+    return this.http.get<Alimento[]>(URL.ALIMENTI + '/creati');
+  }
+
+  public deleteAlimento(alimento: Alimento) {
+    // return this.http.delete<Alimento>(URL.ALIMENTI, alimento);
+}
 }
 
 
