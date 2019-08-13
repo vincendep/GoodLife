@@ -2,8 +2,9 @@
 /* Caratteristiche della data */
 
 .date{
-  margin-left: auto;
-  margin-right: auto;
+//margin-left: auto;
+  //margin-right: auto;
+  //background-color: var(--ion-color-secondary);
 }
 
 /* Caratteristiche del bottone circolare */
@@ -45,7 +46,7 @@
 .divSquareButton{
   display: flex;
   justify-content: space-around;
-  height: 50%;
+  height: 48%;
 }
 .squareButton{
   --color: white;
@@ -99,15 +100,26 @@
 .waterButton{
   --color: white;
   border-radius: 100%;
-  width: 40px;
-  height: 40px;
-  margin-top: auto;
-  margin-bottom: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
+
+.divWater1{
+  position: absolute;
+  width: 10%;
+}
+
+.divWater1:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
 /* Caratteristiche del contenitore dell'acqua */
 .divWater{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   height: 7%;
 }
 
@@ -123,3 +135,16 @@
   text-align: center;
   font-size: 2em;
 }
+.calendar{
+  display: flex;
+  justify-content: center;
+}
+
+.calendar1{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background-color: white;
+  width: 40%
+}
+

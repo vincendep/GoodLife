@@ -8,9 +8,12 @@
 
 <ion-content>
   <div class="stats color" text-center="true" >
-
-    <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.diarioAlimentare.data" pickerFormat="DD MMM YYYY" class="date" (ionFocus)="updateDiario()" (ionChange)="getDiario()"></ion-datetime>
-
+    <div class="calendar">
+      <ion-card class="calendar1">
+      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.diarioAlimentare.data" pickerFormat="DD MMM YYYY" class="date" (ionChange)="getDiario()"></ion-datetime>
+      <ion-icon name="calendar" size="large"></ion-icon>
+      </ion-card>
+    </div>
     <div>{{ 'CALORIE' | translate }}</div>
     <p class="space"> {{this.diarioAlimentare.getTotCalorie().toFixed(0)}}/{{this.dieta.calorieGiornaliere()}} kcal</p>
 
@@ -35,13 +38,23 @@
   <div class="divWater">
     <ion-img src="assets/images/glass.png"></ion-img>
     <ion-label color="tertiary" class="labelSize" >{{this.diarioAlimentare.acqua}}</ion-label>
-    <ion-button class="waterButton color" fill="clear" (click)="this.incrementAcqua()"><ion-icon name="add"></ion-icon></ion-button>
-    <ion-button class="waterButton color" fill="clear" (click)="this.decrementAcqua()"><ion-icon name="remove"></ion-icon></ion-button>
+      <div>
+        <div class="divWater1">
+          <ion-button class="waterButton color" fill="clear" (click)="this.incrementAcqua()">
+            <p><ion-icon name="add" size="large"></ion-icon></p>
+          </ion-button>
+        </div>
+      </div>
+      <div>
+        <div class="divWater1">
+          <ion-button class="waterButton color" fill="clear" (click)="this.decrementAcqua()">
+            <p><ion-icon name="remove" size="large"></ion-icon></p>
+          </ion-button>
+        </div>
+      </div>
   </div>
 
   <div class="box">
-
-
     <div class="divSquareButton">
       <ion-button expand="full" class="squareButton color" fill="clear" (click)="goToDettagliPasto(this.diarioAlimentare.alimentiColazione, 'colazione')">
         <div>{{ 'COLAZIONE' | translate }}
