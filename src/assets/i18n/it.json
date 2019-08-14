@@ -70,7 +70,7 @@
   "SANO": "Mangiare sano",
   "SIGNUP_ERROR_TITLE": "Impossibile completare la registrazione",
   "SIGNUP_ERROR_PASSWORD": "I campi password e conferma password non coincidono",
-  "SIGNUP_ERROR_EMAIL:": "L'email è già stata registrata",
+  "SIGNUP_ERROR_EMAIL": "L'email è già stata registrata",
   "CONFERMA": "conferma",
   "CREA_ACCOUNT": "crea account",
   "NOME": "nome",
