@@ -62,6 +62,10 @@ export class UtenteService {
         // Per gestirlo si dovrebbe fare lato server una blacklist.
     }
 
+    signup(utente: Utente): Observable<Utente> {
+        return this.http.post<Utente>(URL.SIGNUP, utente);
+    }
+
     getUtente(): BehaviorSubject<Utente> {
         return this.utente$;
     }

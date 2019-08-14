@@ -6,14 +6,15 @@ export class Utente {
     nome: string;
     cognome: string;
     email: string;
+    password: string;
     sesso: Sesso;
     dataDiNascita: string;
     diete: Array<Dieta>;
-    informazioniFisiche: Array<{informazioniFisiche: InformazioniFisiche, dataInserimento: Date}>;
+    informazioniFisiche: Array<InformazioniFisiche>;
 
     constructor() {
         this.diete = new Array<Dieta>();
-        this.informazioniFisiche = new Array<{informazioniFisiche: InformazioniFisiche, dataInserimento: Date}>();
+        this.informazioniFisiche = new Array<InformazioniFisiche>();
     }
 }
 

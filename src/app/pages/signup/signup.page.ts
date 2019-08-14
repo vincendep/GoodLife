@@ -6,6 +6,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {AlertController, IonSlides, NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {Account, UtenteService} from '../../services/utente.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -23,15 +25,17 @@ export class SignupPage implements OnInit {
     nuovoUtente: Utente;
     informazioni: InformazioniFisiche;
     signupErrorTitle: string;
-    signupErrorMessage: string;
+    signupErrorEmail: string;
+    signupErrorPassword: string;
 
     constructor(private formBuilder: FormBuilder,
                 private translateService: TranslateService,
                 private navController: NavController,
-                private alertController: AlertController) {
+                private alertController: AlertController,
+                private utenteService: UtenteService) {
         this.nuovoUtente = new Utente();
         this.informazioni = new InformazioniFisiche();
-        this.nuovoUtente.informazioniFisiche.push({informazioniFisiche: this.informazioni, dataInserimento: new Date()});
+        this.nuovoUtente.informazioniFisiche.push(this.informazioni);
     }
 
     ngOnInit() {
@@ -95,31 +99,53 @@ export class SignupPage implements OnInit {
     }
 
     onConfirmStepThree() {
-        this.signup();
-    }
-
-    // TODO utente service call
-    signup() {
         if (this.stepThreeForm.get('password').value === this.stepThreeForm.get('passwordCheck').value) {
             this.nuovoUtente.email = this.stepThreeForm.get('email').value;
+            this.nuovoUtente.password = this.stepThreeForm.get('password').value;
             this.nuovoUtente.nome = this.stepThreeForm.get('nome').value;
             this.nuovoUtente.cognome = this.stepThreeForm.get('cognome').value;
-            this.navController.navigateRoot('tabs');
+            this.signup();
         } else {
-            this.showPasswordErrorMessage();
+            this.showErrorPassword();
             this.stepThreeForm.get('password').setValue('');
             this.stepThreeForm.get('passwordCheck').setValue('');
         }
-
     }
 
-    async showPasswordErrorMessage() {
+    // TODO refactor
+    signup() {
+        this.utenteService.signup(this.nuovoUtente).subscribe((utente: Utente) => {
+                const account: Account = {
+                    username: this.stepThreeForm.get('email').value,
+                    password: this.stepThreeForm.get('password').value};
+                this.utenteService.login(account).subscribe((u: Utente) => {
+                   this.navController.navigateRoot('tabs');
+                }); }
+           ,
+            (err: HttpErrorResponse) => {
+                if (err.status === 500) {
+                    console.error('login request error: ' + err.status);
+                    this.stepThreeForm.reset();
+                    this.showErrorEmail();
+                }
+            });
+    }
+
+    async showErrorPassword() {
         const alert = await this.alertController.create({
             header: this.signupErrorTitle,
-            message: this.signupErrorMessage,
+            message: this.signupErrorPassword,
             buttons: ['OK']
         });
+        await alert.present();
+    }
 
+    async showErrorEmail() {
+        const alert = await this.alertController.create({
+            header: this.signupErrorTitle,
+            message: this.signupErrorEmail,
+            buttons: ['OK']
+        });
         await alert.present();
     }
 
@@ -127,8 +153,11 @@ export class SignupPage implements OnInit {
         this.translateService.get('SIGNUP_ERROR_TITLE').subscribe((data) => {
             this.signupErrorTitle = data;
         });
-        this.translateService.get('SIGNUP_ERROR_MESSAGE').subscribe((data) => {
-            this.signupErrorMessage = data;
+        this.translateService.get('SIGNUP_ERROR_PASSWORD').subscribe((data) => {
+            this.signupErrorPassword = data;
+        });
+        this.translateService.get('SIGNUP_ERROR_EMAIL').subscribe((data) => {
+            this.signupErrorEmail = data;
         });
     }
 
