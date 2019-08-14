@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Pasto} from '../../model/pasto.model';
 import {TranslateService} from '@ngx-translate/core';
 import {PastoService} from '../../services/pasto.service';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {AlertController} from '@ionic/angular';
+import {Ricetta} from '../../model/ricetta.model';
+import {RicettaService} from '../../services/ricetta.service';
 
 @Component({
   selector: 'app-dettagli-ricetta',
@@ -13,7 +14,7 @@ import {AlertController} from '@ionic/angular';
   styleUrls: ['./dettagli-ricetta.page.scss'],
 })
 export class DettagliRicettaPage implements OnInit {private form: FormGroup;
-  private newPasto: Pasto;
+  private newRicetta: Ricetta;
   private a: string;
   private deleteTitle: string;
   private deleteMessage: string;
@@ -22,9 +23,10 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
               private router: Router,
               private dataService: DataService,
               private alertController: AlertController,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private ricettaService: RicettaService) {
 
-    this.newPasto = new Pasto();
+    this.newRicetta = new Ricetta();
 
   }
 
@@ -32,18 +34,22 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
     this.form = this.formBuilder.group({
       nome: ['', Validators.required], });
     this.a = this.translateService.instant('NUOVO-NOME');
-    this.dataService.setData('inserisci-cibo', this.newPasto);
   }
 
   addFood() {
-    this.router.navigateByUrl('tabs/preferiti/pasti/dettagli-pasto/inserisci-cibo');
+    this.pastoService.setTipoPasto('nuovaRicetta');
+    this.pastoService.setPasto(this.newRicetta.ingredienti);
+    this.router.navigateByUrl('tabs/preferiti/ricette/dettagli-ricetta/inserisci-cibo');
   }
 
   onCancel() {
-    this.router.navigateByUrl('tabs/preferiti/pasti');
+    this.router.navigateByUrl('tabs/preferiti/ricette');
   }
   onUpdate() {
-
+    alert(this.newRicetta.ingredienti[0].quantita);
+    this.newRicetta.nome = this.form.get('nome').value;
+    this.ricettaService.createRicetta(this.newRicetta).subscribe();
+    this.router.navigateByUrl('tabs/preferiti/ricette');
   }
 
   eliminaAlimento(alimento: any) {
@@ -58,9 +64,9 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
       buttons: [{
         text: 'OK',
         handler: (data) => {
-          let index = this.newPasto.alimenti.indexOf(alimento);
+          let index = this.newRicetta.ingredienti.indexOf(alimento);
           if (index > -1) {
-            this.newPasto.alimenti.splice(index, 1);
+            this.newRicetta.ingredienti.splice(index, 1);
           }
         }
       }, this.translateService.instant('CANCEL_BUTTON')]

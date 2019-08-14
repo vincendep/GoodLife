@@ -9,7 +9,8 @@ export const URL = {
     UPDATE_PROFILO: URL_BASE + '/utente/updateprofilo',
     ALIMENTI: URL_BASE + '/alimenti',
     ESERCIZI: URL_BASE + '/esercizi',
-    DIARIO: URL_BASE + '/diario'
+    DIARIO: URL_BASE + '/diario',
+    RICETTE: URL_BASE + '/ricette'
 };
 
 export const X_AUTH = 'X-Auth';

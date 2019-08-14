@@ -74,8 +74,12 @@ export class InserisciCiboPage implements OnInit {
                     handler: (data) => {
                         if (data.quantita > 0) {
                             this.pasto.push({alimento: a, quantita: data.quantita});
+                            if (this.pastoService.tipoPasto === 'nuovaRicetta') {
+                                this.navController.back();
+                            } else {
                             this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
                             this.navController.back();
+                            }
                         }
                     }
                 }

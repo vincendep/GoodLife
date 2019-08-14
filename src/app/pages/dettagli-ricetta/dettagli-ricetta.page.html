@@ -15,19 +15,19 @@
   <ion-grid fixed="true" text-center="true">
     <ion-row>
       <ion-col>{{'CALORIE' | translate}}</ion-col>
-      <ion-col>{{ newPasto.getTotCalorie()}} kcal</ion-col>
+      <ion-col>{{ newRicetta.getTotCalorie()}} kcal</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>{{'PROTEINE' | translate}}</ion-col>
-      <ion-col>{{newPasto.getTotProteine()}} g</ion-col>
+      <ion-col>{{newRicetta.getTotProteine()}} g</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>{{'GRASSI' | translate}}</ion-col>
-      <ion-col>{{newPasto.getTotGrassi()}} g</ion-col>
+      <ion-col>{{newRicetta.getTotGrassi()}} g</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>{{'CARBOIDRATI' | translate}}</ion-col>
-      <ion-col>{{newPasto.getTotCarboidrati()}} g</ion-col>
+      <ion-col>{{newRicetta.getTotCarboidrati()}} g</ion-col>
     </ion-row>
   </ion-grid>
 
@@ -36,11 +36,11 @@
   </ion-item>
 
   <ion-list>
-    <ion-item *ngFor="let element of newPasto.alimenti" lines="full">
+      <ion-item *ngFor="let element of newRicetta.ingredienti" lines="full">
       <ion-grid fixed="true" text-center="true">
         <ion-row>
           <ion-col><ion-text>{{element.alimento.nome}}</ion-text></ion-col>
-          <ion-col><ion-text>{{element.dose}} g</ion-text></ion-col>
+          <ion-col><ion-text>{{element.quantita}} g</ion-text></ion-col>
         </ion-row>
       </ion-grid>
       <ion-icon slot="end" name="close" (click)="eliminaAlimento(element)"></ion-icon>

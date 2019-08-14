@@ -4,6 +4,9 @@ import {PastoService} from '../../services/pasto.service';
 import {AlertController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {Pasto} from '../../model/pasto.model';
+import {Ricetta} from '../../model/ricetta.model';
+import {Observable} from 'rxjs';
+import {RicettaService} from '../../services/ricetta.service';
 
 @Component({
   selector: 'ricette',
@@ -12,41 +15,45 @@ import {Pasto} from '../../model/pasto.model';
 })
 export class RicettePage implements OnInit {private deleteTitle: string;
   private deleteMessage: string;
+  private ricette$: Observable<Ricetta[]>;
 
   constructor(private translateService: TranslateService,
               private pastoService: PastoService,
               private alertController: AlertController,
-              private router: Router) {
+              private router: Router,
+              private ricettaService: RicettaService) {
+    this.ricette$ = this.ricettaService.listRicette();
   }
 
   ngOnInit() {
   }
 
+
   addPasto() {
-    this.router.navigateByUrl('tabs/preferiti/pasti/dettagli-pasto');
+    this.router.navigateByUrl('tabs/preferiti/ricette/dettagli-ricetta');
   }
 
-  eliminaPasto(pasto: { nome: string; pasto: Pasto }) {
-    this.showDeleteAlert(pasto);
+  eliminaPasto(ricetta: Ricetta) {
+    this.showDeleteAlert(ricetta);
   }
 
-  async showDeleteAlert(pasto: { nome: string; pasto: Pasto }) {
+  async showDeleteAlert(ricetta: Ricetta) {
     this.initTranslate();
-    // const alert = await this.alertController.create({
-    //   header: this.deleteTitle,
-    //   message: this.deleteMessage + ' ' + pasto.nome + '?',
-    //   buttons: [{
-    //     text: 'OK',
-    //     handler: (data) => {
-    //       let index = this.pastoService.getPasto().indexOf(pasto);
-    //       if (index > -1) {
-    //         this.pastoService.getPasto().splice(index, 1);
-    //       }
-    //     }
-    //   }
-    //     , this.translateService.instant('CANCEL_BUTTON')]
-    // });
-    // await alert.present();
+    const alert = await this.alertController.create({
+      header: this.deleteTitle,
+       message: this.deleteMessage + ' ' + ricetta.nome + '?',
+       buttons: [{
+         text: 'OK',
+         handler: (data) => {
+             this.ricettaService.deleteRicetta(ricetta).subscribe();
+        }
+       }
+         , this.translateService.instant('CANCEL_BUTTON')]
+     });
+    alert.onDidDismiss().then(() => {
+      this.ricette$ = this.ricettaService.listRicette();
+    });
+    await alert.present();
   }
 
   initTranslate() {
