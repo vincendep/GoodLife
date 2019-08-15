@@ -4,7 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {PastoService} from '../../services/pasto.service';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
-import {AlertController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {Ricetta} from '../../model/ricetta.model';
 import {RicettaService} from '../../services/ricetta.service';
 
@@ -24,7 +24,8 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
               private dataService: DataService,
               private alertController: AlertController,
               private formBuilder: FormBuilder,
-              private ricettaService: RicettaService) {
+              private ricettaService: RicettaService,
+              private navController: NavController) {
 
     this.newRicetta = new Ricetta();
 
@@ -39,17 +40,16 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
   addFood() {
     this.pastoService.setTipoPasto('nuovaRicetta');
     this.pastoService.setPasto(this.newRicetta.ingredienti);
-    this.router.navigateByUrl('tabs/preferiti/ricette/dettagli-ricetta/inserisci-cibo');
+    this.navController.navigateForward('inserisci-cibo');
   }
 
   onCancel() {
-    this.router.navigateByUrl('tabs/preferiti/ricette');
+    this.navController.navigateBack('tabs/preferiti/ricette');
   }
   onUpdate() {
-    alert(this.newRicetta.ingredienti[0].quantita);
     this.newRicetta.nome = this.form.get('nome').value;
     this.ricettaService.createRicetta(this.newRicetta).subscribe();
-    this.router.navigateByUrl('tabs/preferiti/ricette');
+    this.navController.navigateBack('tabs/preferiti/ricette');
   }
 
   eliminaAlimento(alimento: any) {

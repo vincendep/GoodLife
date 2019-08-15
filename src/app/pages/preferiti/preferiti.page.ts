@@ -15,6 +15,6 @@ export class PreferitiPage implements OnInit {
   ngOnInit() {}
 
   changeCurrentTab(): void {
-    this.currentTab = this.tabs.getSelected() === 'alimenti' ? 'ALIMENTI' : 'PASTI';
+    this.currentTab = this.tabs.getSelected() === 'alimenti' ? 'ALIMENTI' : 'RICETTE';
   }
 }

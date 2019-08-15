@@ -37,13 +37,6 @@ const routes: Routes = [
         loadChildren: '../dettagli-ricetta/dettagli-ricetta.module#DettagliRicettaPageModule'
       },
       {
-        path: 'ricette/dettagli-ricetta/:id',
-        resolve: {
-          special: DataResolverService
-        },
-        loadChildren: '../inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'
-      },
-      {
         path: '',
         redirectTo: '/tabs/preferiti/alimenti',
         pathMatch: 'full'

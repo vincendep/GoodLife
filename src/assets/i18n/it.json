@@ -83,7 +83,10 @@
   "NUOVO-NOME": "Inserisci un nome",
   "ALIMENTI_AGGIUNTI": "Alimenti aggiunti",
   "TIPO_DIETA": "Tipo di dieta",
+  "INSERISCI_ALIMENTO": "Inserisci un alimento",
+  "INSERISCI_ESERCIZIO": "Inserisci un esercizio",
 
+  "CATEGORIA_ALIMENTARE": "Categoria alimentare",
   "CARNE": "CARNE",
   "PESCE": "PESCE",
   "ALCOOL": "ALCOOL",

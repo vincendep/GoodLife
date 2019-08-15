@@ -25,8 +25,6 @@ export class InserisciCiboPage implements OnInit {
     private categoriaSelezionata: string;
 
     constructor(private translateService: TranslateService,
-                // private router: Router,
-                // private route: ActivatedRoute,
                 private diarioService: DiarioService,
                 private alimentoService: AlimentoService,
                 private pastoService: PastoService,

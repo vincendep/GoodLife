@@ -3,7 +3,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {PastoService} from '../../services/pasto.service';
 import {AlertController} from '@ionic/angular';
 import {Router} from '@angular/router';
-import {Pasto} from '../../model/pasto.model';
 import {Ricetta} from '../../model/ricetta.model';
 import {Observable} from 'rxjs';
 import {RicettaService} from '../../services/ricetta.service';
@@ -22,11 +21,13 @@ export class RicettePage implements OnInit {private deleteTitle: string;
               private alertController: AlertController,
               private router: Router,
               private ricettaService: RicettaService) {
-    this.ricette$ = this.ricettaService.listRicette();
   }
 
   ngOnInit() {
+    console.log(1);
+    this.ricette$ = this.ricettaService.listRicette();
   }
+
 
 
   addPasto() {
