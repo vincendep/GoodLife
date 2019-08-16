@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title color="light">
+    <ion-title color="dark">
       {{ 'PROFILE' | translate }}
     </ion-title>
   </ion-toolbar>
@@ -41,27 +41,18 @@
       <ion-label color="secondary">{{'ALTEZZA' | translate | titlecase}}</ion-label>
       <ion-label>PLACE HOLDER</ion-label>
     </ion-item>
-  </ion-list>
-  <form [formGroup]="profiloFormModel">
-    <ion-list>
+    <form [formGroup]="profiloFormModel">
       <ion-item>
         <ion-label position="fixed" color="secondary">{{ 'LANGUAGE' | translate }}</ion-label>
-        <ion-select formControlName="linguaPreferita" okText="{{ 'SAVE_BUTTON' | translate }}" cancelText="{{ 'CANCEL_BUTTON' | translate }}">
+        <ion-select formControlName="linguaPreferita" okText="{{ 'SAVE_BUTTON' | translate }}" cancelText="{{ 'CANCEL_BUTTON' | translate }}" (ionChange)="this.onChangeLanguage()" >
           <ion-select-option *ngFor="let lingua of lingue" [value]="lingua.valore">{{lingua.etichetta}}</ion-select-option>
         </ion-select>
       </ion-item>
-    </ion-list>
-    <div margin-top="30px" align="center">
-      <ion-button icon-left size="medium" shape="round" color="primary" (click)="onSubmit()" [disabled]="!profiloFormModel.valid" tappable>
-        {{ 'SAVE_BUTTON' | translate }}
-      </ion-button>
-      <ion-button icon-left size="medium" shape="round" color="primary" (click)="cancel()" tappable>
-        {{ 'CANCEL_BUTTON' | translate }}
-      </ion-button>
-    </div>
-  </form>
-  <div align="center">
+    </form>
+  </ion-list>
+  <div align="center" margin="10px">
     <ion-button icon-left size="medium" shape="round" color="primary"  (click)="logout()" tappable>
+      <ion-icon slot="start" name="exit"></ion-icon>
       {{ 'LOGOUT_MENU' | translate }}
     </ion-button></div>
 </ion-content>

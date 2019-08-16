@@ -40,13 +40,9 @@ export class ProfiloPage implements OnInit {
     });
   }
 
-  onSubmit(): void {
+  onChangeLanguage(): void {
     this.translateService.use(this.profiloFormModel.value.linguaPreferita);
     this.linguaService.updateLingua(this.profiloFormModel.value.linguaPreferita);
-  }
-
-  cancel() {
-    this.navController.back();
   }
 
   logout() {
