@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
         const linguaPreferita = this.linguaService.getLinguaPreferita();
         this.translate.setDefaultLang(linguaPreferita);
         this.linguaService.getLinguaAttuale().subscribe((lingua: string) => {
-            if (lingua != null) {
+            if (lingua != null && lingua != '') {
                 this.translate.use(lingua);
             } else {
                 this.translate.use(linguaPreferita);

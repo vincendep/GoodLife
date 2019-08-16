@@ -17,7 +17,8 @@ export class Lingua {
 export class LinguaService {
 
   italiano: Lingua = {etichetta: 'Italiano', valore: 'it'};
-  lingue: Lingua[] = [this.italiano, {etichetta: 'English', valore: 'en'}];
+  inglese: Lingua = {etichetta: 'English', valore: 'en'};
+  lingue: Lingua[] = [this.italiano, this.inglese];
 
   constructor(private storage: Storage) {
 
@@ -38,5 +39,4 @@ export class LinguaService {
   updateLingua(nuovaLingua: string) {
     this.storage.set(LINGUA, nuovaLingua);
   }
-
 }
