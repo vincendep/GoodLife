@@ -39,9 +39,9 @@ export class DiarioPage implements OnInit {
     this.dieta.caloriePranzo = 100;
     this.dieta.calorieSnack = 40;
     this.dieta.calorieCena = 120;
-    this.dieta.proteineGiornaliere = 200;
-    this.dieta.grassiGiornalieri = 300;
-    this.dieta.carboidratiGiornalieri = 400;
+    this.dieta.proteine = 200;
+    this.dieta.grassi = 300;
+    this.dieta.carboidrati = 400;
   }
 
   incrementAcqua() {
@@ -75,8 +75,8 @@ export class DiarioPage implements OnInit {
     const o = this.diarioService.getDiarioByDate(this.diarioAlimentare.data).subscribe((response: DiarioAlimentare) => {
       this.diarioAlimentare.id = response.id;
       this.diarioAlimentare.acqua = response.acqua;
-      this.diarioAlimentare.alimentiColazione = response.alimentiSnack;
-      this.diarioAlimentare.alimentiColazione = response.alimentiCena;
+      this.diarioAlimentare.alimentiSnack = response.alimentiSnack;
+      this.diarioAlimentare.alimentiCena = response.alimentiCena;
       this.diarioAlimentare.eserciziFisici = response.eserciziFisici;
       this.diarioAlimentare.alimentiColazione = response.alimentiColazione;
       this.diarioAlimentare.alimentiPranzo = response.alimentiPranzo;

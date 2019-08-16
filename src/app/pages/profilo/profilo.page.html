@@ -7,39 +7,39 @@
 </ion-header>
 
 <ion-content>
-  <ion-list align="center" *ngIf="(utente$ | async) as element">
+  <ion-list align="center">
     <ion-icon name="contact" class="iocon"  color="secondary"></ion-icon>
     <ion-item>
       <ion-label color="secondary">{{'NOME' | translate | titlecase}}</ion-label>
-      <ion-label>{{element.nome}}</ion-label>
+      <ion-label>{{utente.nome}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'COGNOME' | translate | titlecase}}</ion-label>
-      <ion-label>{{element.cognome}}</ion-label>
+      <ion-label>{{utente.cognome}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'EMAIL' | translate | titlecase}}</ion-label>
-      <ion-label>{{element.email}}</ion-label>
+      <ion-label>{{utente.email}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'DATA_DI_NASCITA' | translate | titlecase}}</ion-label>
-      <ion-label>{{element.dataDiNascita}}</ion-label>
+      <ion-label>{{utente.dataDiNascita}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'SESSO' | translate | titlecase}}</ion-label>
-      <ion-label>{{element.sesso}}</ion-label>
+      <ion-label>{{utente.sesso}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'TIPO_DIETA' | translate | titlecase}}</ion-label>
-      <ion-label>PLACE HOLDER</ion-label>
+      <ion-label>{{utente.diete[utente.diete.length - 1].obiettivo}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'PESO' | translate | titlecase}}</ion-label>
-      <ion-label>PLACE HOLDER</ion-label>
+      <ion-label>{{utente.informazioniFisiche[utente.informazioniFisiche.length - 1].altezza}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'ALTEZZA' | translate | titlecase}}</ion-label>
-      <ion-label>PLACE HOLDER</ion-label>
+      <ion-label>{{utente.informazioniFisiche[utente.informazioniFisiche.length - 1].peso}}</ion-label>
     </ion-item>
     <form [formGroup]="profiloFormModel">
       <ion-item>

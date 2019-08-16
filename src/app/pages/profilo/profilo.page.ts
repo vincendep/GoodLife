@@ -17,6 +17,7 @@ export class ProfiloPage implements OnInit {
   private lingue: Lingua[];
   private profiloFormModel: FormGroup;
   private utente$: Observable<Utente>;
+  private utente: Utente;
 
   constructor(private formBuilder: FormBuilder,
               private translateService: TranslateService,
@@ -24,7 +25,8 @@ export class ProfiloPage implements OnInit {
               private utenteService: UtenteService,
               private navController: NavController) {
 
-    this.utente$ = this.utenteService.getUtente();
+    //this.utente$ = this.utenteService.getUtente();
+    this.utente = new Utente();
   }
 
   ngOnInit() {
@@ -37,6 +39,18 @@ export class ProfiloPage implements OnInit {
 
     this.linguaService.getLinguaAttuale().subscribe((lingua) => {
       this.profiloFormModel.patchValue({linguaPreferita: lingua});
+    });
+
+    this.utenteService.getUtente().subscribe((utente) => {
+      this.utente.nome = utente.nome;
+      this.utente.cognome = utente.cognome;
+      this.utente.sesso = utente.sesso;
+      this.utente.email = utente.email;
+      alert(utente.email);
+      this.utente.dataDiNascita = utente.dataDiNascita;
+      alert(utente.diete.length);
+      this.utente.diete = utente.diete;
+      this.utente.informazioniFisiche = utente.informazioniFisiche;
     });
   }
 

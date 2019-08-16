@@ -5,14 +5,15 @@ export class Dieta {
     caloriePranzo: number;
     calorieSnack: number;
     calorieCena: number;
-    carboidratiGiornalieri: number;
-    proteineGiornaliere: number;
-    grassiGiornalieri: number;
-    dataInizioDieta: Date;
-    dataFineDieta: Date;
+    carboidrati: number;
+    proteine: number;
+    grassi: number;
+    inizioDieta: Date;
+    fineDieta: Date;
 
     constructor() {
-        this.dataInizioDieta = new Date();
+        this.inizioDieta = new Date();
+        this.fineDieta = new Date();
     }
 
     public calorieGiornaliere(): number {

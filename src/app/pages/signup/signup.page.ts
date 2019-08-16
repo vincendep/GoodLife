@@ -75,7 +75,7 @@ export class SignupPage implements OnInit {
 
     onConfirmStepOne(event) {
         const dieta: Dieta = new Dieta();
-        dieta.dataInizioDieta = new Date();
+        dieta.inizioDieta = new Date();
         switch (event.srcElement.id) {
           case 'obiettivoDimagrimento':
             dieta.obiettivo = Obiettivo.DIMAGRIRE;
