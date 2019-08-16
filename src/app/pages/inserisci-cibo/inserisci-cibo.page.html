@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-      <ion-title>{{ 'ALIMENTI' | translate }}</ion-title>
       <ion-buttons slot="start">
           <ion-back-button color="dark"></ion-back-button>
       </ion-buttons>
+      <ion-searchbar [(ngModel)]="ricerca" (ionChange)="reset()" animated="true"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -28,7 +28,7 @@
         <div >
     <ion-list>
         <div *ngFor="let alimento of alimenti$ | async">
-        <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata" (click)="onClick(alimento)">
+        <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))" (click)="onClick(alimento)">
             {{alimento.nome}}
         </ion-item>
         </div>

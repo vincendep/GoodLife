@@ -23,6 +23,7 @@ export class InserisciCiboPage implements OnInit {
     private diarioAlimentare: DiarioAlimentare;
     private pasto: Array<{alimento: Alimento, quantita: number}>;
     private categoriaSelezionata: string;
+    private ricerca = '';
 
     constructor(private translateService: TranslateService,
                 private diarioService: DiarioService,
@@ -84,5 +85,8 @@ export class InserisciCiboPage implements OnInit {
             ],
         });
         await alert.present();
+    }
+    reset() {
+        this.categoriaSelezionata = '';
     }
 }
