@@ -24,7 +24,6 @@ export class RicettePage implements OnInit {private deleteTitle: string;
   }
 
   ngOnInit() {
-    console.log(1);
     this.ricette$ = this.ricettaService.listRicette();
   }
 

@@ -33,7 +33,10 @@ export class DettagliPastoPage implements OnInit {
     this.pasto = this.pastoService.getPasto();
   }
 
-  onAdd() {
+  addCibo() {
     this.navController.navigateForward('inserisci-cibo');
+  }
+  addRicetta() {
+    this.navController.navigateForward('inserisci-ricetta');
   }
 }

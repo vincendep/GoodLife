@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Pasto} from '../../model/pasto.model';
 import {AlimentoService} from '../../services/alimento.service';
 import {Alimento} from '../../model/alimento.model';
 import {AlertController, NavController} from '@ionic/angular';
@@ -41,7 +39,6 @@ export class InserisciCiboPage implements OnInit {
         this.alimenti$ = this.alimentoService.listAlimenti();
         this.diarioAlimentare = this.diarioService.getDiario();
         this.pasto = this.pastoService.getPasto();
-        console.log(this.alimenti$);
     }
 
     onClick(alimento: Alimento): void {

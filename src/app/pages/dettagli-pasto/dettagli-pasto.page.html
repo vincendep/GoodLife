@@ -13,13 +13,25 @@
     <ion-card *ngFor="let alimento of this.pasto">
       <ion-card-header>
         <h2>{{alimento.alimento.nome}}</h2>
-        <p>{{alimento.quantita}}</p>
+        <p>{{alimento.quantita}} g</p>
       </ion-card-header>
     </ion-card>
   </ion-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="onAdd()">
+    <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="addCibo()" color="secondary">
+        <ion-icon name="pizza" size="large" color="light"></ion-icon>
+      </ion-fab-button>
+      {{'ALIMENTI' | translate | titlecase}}
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      <ion-fab-button (click)="addRicetta()" color="secondary">
+        <ion-icon name="book" size="large" color="light" ></ion-icon>
+      </ion-fab-button>
+      {{'RICETTE' | translate | titlecase}}
+    </ion-fab-list>
   </ion-fab>
 </ion-content>
