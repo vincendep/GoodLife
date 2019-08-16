@@ -45,11 +45,11 @@ export class DettagliAlimentoPage implements OnInit {
     });
   }
 
-  async closeModal() {
+  async onCancel() {
     await this.modalController.dismiss();
   }
 
-  async saveModal() {
+  async onConfirm() {
     this.alimento.nome = this.form.get('nome').value;
     this.alimento.calorie = this.form.get('calorie').value;
     this.alimento.carboidrati = this.form.get('carboidrati').value;
