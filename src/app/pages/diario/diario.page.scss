@@ -1,10 +1,17 @@
 
 /* Caratteristiche della data */
 
-.date{
-//margin-left: auto;
-  //margin-right: auto;
-  //background-color: var(--ion-color-secondary);
+.calendar{
+  display: flex;
+  justify-content: center;
+}
+
+.calendar1{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background-color: white;
+  width: 40%
 }
 
 /* Caratteristiche del bottone circolare */
@@ -54,10 +61,13 @@
   border-bottom: 2px solid white;
   z-index: 1000;
 }
+.text{
+  font-size: smaller;
+}
 
 /* Caratteristiche del contenitore dei bottoni  */
 .box{
-  height: 60%;
+  height: 61%;
   position:relative;
 }
 
@@ -69,29 +79,6 @@
 .space{
   margin-top: 1%;
   margin-bottom: 1%;
-}
-
-/* Caratteristiche delle barre di progresso */
-.colorBar{
-  --progress-background: var(--ion-color-dark-contrast);
-  --buffer-background: var(--ion-color-secondary-shade)
-}
-.calorieBar{
-  width: 80%;
-  border-radius: 50px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.valueBar{
-  border-radius: 50px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.dimensionBar{
-  width: 60%;
 }
 
 /* Caratteristiche dei bottoni per aumentare e diminuire quantità d'acqua */
@@ -122,6 +109,10 @@
   justify-content: space-evenly;
   height: 7%;
 }
+.labelSize{
+  text-align: center;
+  font-size: 2em;
+}
 
 /* Caratteristiche immagini */
 .imageDimension{
@@ -131,20 +122,4 @@
   margin-right: auto;
 }
 
-.labelSize{
-  text-align: center;
-  font-size: 2em;
-}
-.calendar{
-  display: flex;
-  justify-content: center;
-}
-
-.calendar1{
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  background-color: white;
-  width: 40%
-}
 

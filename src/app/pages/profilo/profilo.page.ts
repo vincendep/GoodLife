@@ -46,9 +46,7 @@ export class ProfiloPage implements OnInit {
       this.utente.cognome = utente.cognome;
       this.utente.sesso = utente.sesso;
       this.utente.email = utente.email;
-      alert(utente.email);
       this.utente.dataDiNascita = utente.dataDiNascita;
-      alert(utente.diete.length);
       this.utente.diete = utente.diete;
       this.utente.informazioniFisiche = utente.informazioniFisiche;
     });
