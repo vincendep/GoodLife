@@ -15,19 +15,19 @@
   <ion-grid fixed="true" text-center="true">
     <ion-row>
       <ion-col>{{'CALORIE' | translate}}</ion-col>
-      <ion-col>{{ newRicetta.getTotCalorie()}} kcal</ion-col>
+      <ion-col>{{ newRicetta.getTotCalorie().toFixed(0)}} kcal</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>{{'PROTEINE' | translate}}</ion-col>
-      <ion-col>{{newRicetta.getTotProteine()}} g</ion-col>
+      <ion-col>{{newRicetta.getTotProteine().toFixed(0)}} g</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>{{'GRASSI' | translate}}</ion-col>
-      <ion-col>{{newRicetta.getTotGrassi()}} g</ion-col>
+      <ion-col>{{newRicetta.getTotGrassi().toFixed(0)}} g</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>{{'CARBOIDRATI' | translate}}</ion-col>
-      <ion-col>{{newRicetta.getTotCarboidrati()}} g</ion-col>
+      <ion-col>{{newRicetta.getTotCarboidrati().toFixed(0)}} g</ion-col>
     </ion-row>
   </ion-grid>
 

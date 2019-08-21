@@ -26,13 +26,13 @@
     </ion-item>
     <ion-content class="slideHeight">
         <div >
-    <ion-list>
-        <div *ngFor="let alimento of alimenti$ | async">
-        <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))" (click)="onClick(alimento)">
-            {{alimento.nome}}
-        </ion-item>
-        </div>
-    </ion-list>
+            <ion-list>
+                <div *ngFor="let alimento of alimenti$ | async">
+                <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))" (click)="onClick(alimento)">
+                    {{alimento.nome}}
+                </ion-item>
+                </div>
+            </ion-list>
         </div>
     </ion-content>
 </ion-content>

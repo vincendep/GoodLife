@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {DiarioAlimentare} from '../../model/diario.model';
 import {TranslateService} from '@ngx-translate/core';
-import {NavController} from '@ionic/angular';
-import {Router} from '@angular/router';
+import {AlertController, NavController} from '@ionic/angular';
 import {DiarioService} from '../../services/diario.service';
-import {Alimento} from '../../model/alimento.model';
 import {PastoService} from '../../services/pasto.service';
+import {Pasto} from '../../model/pasto.model';
 
 @Component({
   selector: 'app-dettagli-pasto',
@@ -15,22 +14,23 @@ import {PastoService} from '../../services/pasto.service';
 export class DettagliPastoPage implements OnInit {
 
   diarioAlimentare: DiarioAlimentare;
-  tipoPasto: string;
-  pasto: Array<{alimento: Alimento, quantita: number}>;
+  pasto: Pasto;
+  private deleteTitle: string;
+  private deleteMessage: string;
 
   constructor(private translateService: TranslateService,
               private navController: NavController,
-              private router: Router,
               private diarioService: DiarioService,
-              private pastoService: PastoService) {
+              private pastoService: PastoService,
+              private alertController: AlertController) {
 
     this.diarioAlimentare = new DiarioAlimentare();
-    this.pasto = new Array<{alimento: Alimento, quantita: number}>();
+    this.pasto = new Pasto();
   }
 
   ngOnInit() {
     this.diarioAlimentare = this.diarioService.getDiario();
-    this.pasto = this.pastoService.getPasto();
+    this.pasto.alimenti = this.pastoService.getPasto();
   }
 
   addCibo() {
@@ -38,5 +38,37 @@ export class DettagliPastoPage implements OnInit {
   }
   addRicetta() {
     this.navController.navigateForward('inserisci-ricetta');
+  }
+
+  eliminaAlimento(alimento: any) {
+    this.showDeleteAlert(alimento);
+  }
+
+  async showDeleteAlert(alimento: any) {
+    this.initTranslate();
+    const alert = await this.alertController.create({
+      header: this.deleteTitle,
+      message: this.deleteMessage + ' ' + alimento.alimento.nome + '?',
+      buttons: [{
+        text: 'OK',
+        handler: (data) => {
+          let index = this.pasto.alimenti.indexOf(alimento);
+          if (index > -1) {
+            this.pasto.alimenti.splice(index, 1);
+          }
+          this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
+        }
+      }, this.translateService.instant('CANCEL_BUTTON')]
+    });
+    await alert.present();
+  }
+
+  initTranslate() {
+    this.translateService.get('DELETE_TITLE').subscribe((data) => {
+      this.deleteTitle = data;
+    });
+    this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
+      this.deleteMessage = data;
+    });
   }
 }
