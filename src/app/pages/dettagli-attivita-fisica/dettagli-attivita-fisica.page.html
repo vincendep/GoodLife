@@ -8,6 +8,13 @@
 </ion-header>
 
 <ion-content>
+    <ion-item lines="full">
+        <ion-grid fixed="true" text-center="true">
+            <ion-col>{{'CONSUMO_ENERGETICO' | translate}}</ion-col>
+            <ion-col>{{this.diarioAlimentare.getConsumoTotale().toFixed(0)}} kcal</ion-col>
+        </ion-grid>
+    </ion-item>
+
     <h2 *ngIf="attivitaFisica.length == 0" text-center>{{'INSERISCI_ESERCIZIO' | translate}}</h2>
     <ion-list>
         <ion-card *ngFor="let attivita of this.attivitaFisica">
