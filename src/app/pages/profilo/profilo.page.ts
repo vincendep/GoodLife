@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Lingua, LinguaService} from '../../services/lingua.service';
 import {UtenteService} from '../../services/utente.service';
 import {Observable} from 'rxjs';
 import {Utente} from '../../model/utente.model';
-import {NavController} from '@ionic/angular';
+import {NavController, PopoverController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {ProfiloMenuComponent} from '../../menues/profilo-menu/profilo-menu.component';
 
 @Component({
   selector: 'app-profilo',
@@ -14,33 +13,18 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class ProfiloPage implements OnInit {
 
-  private lingue: Lingua[];
-  private profiloFormModel: FormGroup;
   private utente$: Observable<Utente>;
   private utente: Utente;
 
-  constructor(private formBuilder: FormBuilder,
-              private translateService: TranslateService,
-              private linguaService: LinguaService,
+  constructor(private translateService: TranslateService,
               private utenteService: UtenteService,
-              private navController: NavController) {
+              private navController: NavController,
+              public popoverController: PopoverController) {
 
-    //this.utente$ = this.utenteService.getUtente();
     this.utente = new Utente();
   }
 
   ngOnInit() {
-    this.lingue = this.linguaService.getLingue();
-    this.profiloFormModel = this.formBuilder.group({
-      linguaPreferita: ['', Validators.compose([
-        Validators.required
-      ])]
-    });
-
-    this.linguaService.getLinguaAttuale().subscribe((lingua) => {
-      this.profiloFormModel.patchValue({linguaPreferita: lingua});
-    });
-
     this.utenteService.getUtente().subscribe((utente) => {
       this.utente.nome = utente.nome;
       this.utente.cognome = utente.cognome;
@@ -52,15 +36,12 @@ export class ProfiloPage implements OnInit {
     });
   }
 
-  onChangeLanguage(): void {
-    if (this.profiloFormModel.value.linguaPreferita != '') {
-      this.linguaService.updateLingua(this.profiloFormModel.value.linguaPreferita);
-      this.translateService.use(this.profiloFormModel.value.linguaPreferita);
-    }
-  }
-
-  logout() {
-    this.utenteService.logout();
-    this.navController.navigateRoot('login');
+  async presentMenu(ev: any) {
+    const popover = await this.popoverController.create({
+      component: ProfiloMenuComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 }

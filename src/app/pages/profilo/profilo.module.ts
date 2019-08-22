@@ -9,6 +9,7 @@ import { ProfiloPage } from './profilo.page';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http';
 import {createTranslateLoader} from '../../app.module';
+import {ProfiloMenuComponent} from '../../menues/profilo-menu/profilo-menu.component';
 
 const routes: Routes = [
   {
@@ -29,8 +30,8 @@ const routes: Routes = [
     }),
     IonicModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
   ],
-  declarations: [ProfiloPage]
+  declarations: [ProfiloPage, ProfiloMenuComponent],
+  entryComponents: [ProfiloMenuComponent]
 })
 export class ProfiloPageModule {}

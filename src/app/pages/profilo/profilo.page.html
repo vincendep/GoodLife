@@ -1,8 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title color="dark">
+    <ion-title slot="start" color="dark">
       {{ 'PROFILE' | translate }}
     </ion-title>
+    <ion-icon slot="end" name="more" size="large" (click)="presentMenu($event)"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -41,18 +42,5 @@
       <ion-label color="secondary">{{'ALTEZZA' | translate | titlecase}}</ion-label>
       <ion-label>{{utente.informazioniFisiche[utente.informazioniFisiche.length - 1].peso}}</ion-label>
     </ion-item>
-    <form [formGroup]="profiloFormModel">
-      <ion-item>
-        <ion-label position="fixed" color="secondary">{{ 'LANGUAGE' | translate }}</ion-label>
-        <ion-select formControlName="linguaPreferita" okText="{{ 'SAVE_BUTTON' | translate }}" cancelText="{{ 'CANCEL_BUTTON' | translate }}" (ionChange)="this.onChangeLanguage()" >
-          <ion-select-option *ngFor="let lingua of lingue" [value]="lingua.valore">{{lingua.etichetta}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </form>
   </ion-list>
-  <div align="center" margin="10px">
-    <ion-button icon-left size="medium" shape="round" color="primary"  (click)="logout()" tappable>
-      <ion-icon slot="start" name="exit"></ion-icon>
-      {{ 'LOGOUT_MENU' | translate }}
-    </ion-button></div>
 </ion-content>
