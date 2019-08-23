@@ -8,6 +8,7 @@ import {DiarioService} from '../../services/diario.service';
 import {PastoService} from '../../services/pasto.service';
 import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
 import {Alimento} from '../../model/alimento.model';
+import {UtenteService} from '../../services/utente.service';
 
 @Component({
   selector: 'app-diario',
@@ -24,7 +25,8 @@ export class DiarioPage implements OnInit {
               private router: Router,
               private diarioService: DiarioService,
               private pastoService: PastoService,
-              private attivitaFisicaService: AttivitaFisicaService) {
+              private attivitaFisicaService: AttivitaFisicaService,
+              private utenteService: UtenteService) {
 
     this.diarioAlimentare = new DiarioAlimentare();
     this.dieta = new Dieta();
@@ -34,14 +36,17 @@ export class DiarioPage implements OnInit {
     this.getDiario();
 
     // TODO dietaService
-    this.dieta = new Dieta();
-    this.dieta.calorieColazione = 60;
-    this.dieta.caloriePranzo = 100;
-    this.dieta.calorieSnack = 40;
-    this.dieta.calorieCena = 120;
-    this.dieta.proteine = 200;
-    this.dieta.grassi = 300;
-    this.dieta.carboidrati = 400;
+    this.utenteService.getUtente().subscribe( (utente) => {
+      const d = utente.diete[utente.diete.length - 1];
+      this.dieta.obiettivo = d.obiettivo;
+      this.dieta.calorieColazione = d.calorieColazione;
+      this.dieta.caloriePranzo = d.caloriePranzo;
+      this.dieta.calorieSnack = d.calorieSnack;
+      this.dieta.calorieCena = d.calorieCena;
+      this.dieta.carboidrati = d.carboidrati;
+      this.dieta.proteine = d.proteine;
+      this.dieta.grassi = d.grassi;
+    });
   }
 
   incrementAcqua() {

@@ -13,7 +13,6 @@ export class Dieta {
 
     constructor() {
         this.inizioDieta = new Date();
-        this.fineDieta = new Date();
     }
 
     public calorieGiornaliere(): number {
