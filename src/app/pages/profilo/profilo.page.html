@@ -28,19 +28,19 @@
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'SESSO' | translate | titlecase}}</ion-label>
-      <ion-label>{{utente.sesso}}</ion-label>
+      <ion-label>{{utente.sesso.toString() | translate | titlecase}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'TIPO_DIETA' | translate | titlecase}}</ion-label>
-      <ion-label>{{utente.diete[utente.diete.length - 1].obiettivo}}</ion-label>
+      <ion-label>{{utente.diete[utente.diete.length - 1].obiettivo.toString() | translate}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'PESO' | translate | titlecase}}</ion-label>
-      <ion-label>{{utente.informazioniFisiche[utente.informazioniFisiche.length - 1].altezza}}</ion-label>
+      <ion-label>{{utente.informazioniFisiche[utente.informazioniFisiche.length - 1].altezza}} cm</ion-label>
     </ion-item>
     <ion-item>
       <ion-label color="secondary">{{'ALTEZZA' | translate | titlecase}}</ion-label>
-      <ion-label>{{utente.informazioniFisiche[utente.informazioniFisiche.length - 1].peso}}</ion-label>
+      <ion-label>{{utente.informazioniFisiche[utente.informazioniFisiche.length - 1].peso}} kg</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

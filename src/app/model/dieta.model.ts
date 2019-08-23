@@ -23,6 +23,6 @@ export class Dieta {
 
 export enum Obiettivo {
     DIMAGRIRE,
-    MANGIARE_SANO,
-    MASSA_MUSCOLARE
+    MASSA_MUSCOLARE,
+    MANGIARE_SANO
 }
