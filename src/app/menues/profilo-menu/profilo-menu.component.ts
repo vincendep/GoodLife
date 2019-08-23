@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController} from '@ionic/angular';
+import {NavController, PopoverController} from '@ionic/angular';
 import {UtenteService} from '../../services/utente.service';
 
 @Component({
@@ -10,16 +10,19 @@ import {UtenteService} from '../../services/utente.service';
 export class ProfiloMenuComponent implements OnInit {
 
   constructor(private navController: NavController,
-              private utenteService: UtenteService) { }
+              private utenteService: UtenteService,
+              public popoverController: PopoverController) { }
 
   ngOnInit() {}
 
   showSettings() {
     this.navController.navigateForward('impostazioni');
+    this.popoverController.dismiss();
   }
 
   logout() {
     this.utenteService.logout();
     this.navController.navigateRoot('login');
+    this.popoverController.dismiss();
   }
 }
