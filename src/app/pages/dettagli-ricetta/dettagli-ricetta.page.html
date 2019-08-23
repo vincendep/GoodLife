@@ -57,6 +57,6 @@
 <ion-footer>
   <ion-toolbar align="center">
     <ion-button fill="clear" size="medium" color="dark" class="dimension" (click)="onCancel()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
-    <ion-button fill="clear" size="medium" color="dark" class="dimension" (click)="onUpdate()" [disabled]="!form.valid">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
+    <ion-button fill="clear" size="medium" color="dark" class="dimension" (click)="onUpdate()" [disabled]="!form.valid || newRicetta.ingredienti.length == 0">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
   </ion-toolbar>
 </ion-footer>

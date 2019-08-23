@@ -48,8 +48,9 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
   }
   onUpdate() {
     this.newRicetta.nome = this.form.get('nome').value;
-    this.ricettaService.createRicetta(this.newRicetta).subscribe();
-    this.navController.navigateBack('tabs/preferiti/ricette');
+    this.ricettaService.createRicetta(this.newRicetta).subscribe((a) => {
+      this.navController.back();
+    });
   }
 
   eliminaAlimento(alimento: any) {
