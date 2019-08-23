@@ -42,21 +42,21 @@
             <ion-row>
               <ion-col>
                 <p>{{'CALORIE' | translate}}:
-                {{alimento.alimento.calorie}} kcal</p>
+                {{(alimento.alimento.calorie*alimento.quantita/100).toFixed(0)}} kcal</p>
               </ion-col>
               <ion-col>
                 <p>{{'PROTEINE' | translate}}:
-                {{alimento.alimento.proteine}} g</p>
+                {{(alimento.alimento.proteine*alimento.quantita/100).toFixed(0)}} g</p>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col>
                 <p>{{'GRASSI' | translate}}:
-                {{alimento.alimento.grassi}} g</p>
+                {{(alimento.alimento.grassi*alimento.quantita/100).toFixed(0)}} g</p>
               </ion-col>
               <ion-col>
                 <p>{{'CARBOIDRATI' | translate}}:
-                {{alimento.alimento.carboidrati}} g</p>
+                {{(alimento.alimento.carboidrati*alimento.quantita/100).toFixed(0)}} g</p>
               </ion-col>
             </ion-row>
           </ion-grid>
