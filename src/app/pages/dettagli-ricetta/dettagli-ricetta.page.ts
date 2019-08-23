@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {PastoService} from '../../services/pasto.service';
 import {Router} from '@angular/router';
-import {DataService} from '../../services/data.service';
 import {AlertController, NavController} from '@ionic/angular';
 import {Ricetta} from '../../model/ricetta.model';
 import {RicettaService} from '../../services/ricetta.service';
@@ -21,7 +20,6 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
   constructor(private translateService: TranslateService,
               private pastoService: PastoService,
               private router: Router,
-              private dataService: DataService,
               private alertController: AlertController,
               private formBuilder: FormBuilder,
               private ricettaService: RicettaService,

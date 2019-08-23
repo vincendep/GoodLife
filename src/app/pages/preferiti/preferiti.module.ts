@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { PreferitiPage } from './preferiti.page';
 import {TranslateModule} from '@ngx-translate/core';
-import {DataResolverService} from '../../services/data-resolver.service';
 
 const routes: Routes = [
   {

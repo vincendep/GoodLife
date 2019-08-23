@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { TabsPage } from './tabs.page';
 import {TranslateModule} from '@ngx-translate/core';
-import {DataResolverService} from '../../services/data-resolver.service';
 import {AuthGuard} from '../../guard/auth.guard';
 
 const routes: Routes = [
@@ -60,19 +59,6 @@ const routes: Routes = [
             loadChildren: '../statistiche/statistiche.module#StatistichePageModule'
           }
         ]
-      },
-        // TODO ma che è sta robba?!
-      {path: 'diario/4',
-        resolve: {
-          special: DataResolverService
-        },
-        loadChildren: '../inserisci-attivita/inserisci-attivita.module#InserisciAttivitaPageModule'
-      },
-      {path: 'diario/:id',
-        resolve: {
-          special: DataResolverService
-        },
-        loadChildren: '../inserisci-cibo/inserisci-cibo.module#InserisciCiboPageModule'
       },
       {
         path: '',
