@@ -54,7 +54,7 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar align="center">
+  <ion-toolbar text-center="true">
     <ion-button fill="clear" size="large" color="dark" class="dimension" (click)="onCancel()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
     <ion-button fill="clear" size="large" color="dark" class="dimension" [disabled]="!form.valid" (click)="onConfirm()">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
   </ion-toolbar>
