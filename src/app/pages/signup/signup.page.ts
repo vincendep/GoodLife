@@ -53,7 +53,6 @@ export class SignupPage implements OnInit {
             ])],
             dataDiNascita: ['', Validators.compose([
                 Validators.required,
-                // TODO signup data validators
             ])],
             sesso: ['', Validators.compose([
                 Validators.required

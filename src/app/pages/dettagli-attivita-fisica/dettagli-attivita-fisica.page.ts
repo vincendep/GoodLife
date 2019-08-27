@@ -31,4 +31,6 @@ export class DettagliAttivitaFisicaPage implements OnInit {
   public onAdd() {
     this.navController.navigateForward('inserisci-attivita');
   }
+
+  // TODO remove exercise from diary
 }

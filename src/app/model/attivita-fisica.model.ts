@@ -1,6 +1,6 @@
 import {EsercizioFisico} from './esercizio-fisico.model';
 
-// TODO refactor
+// TODO delete
 export class AttivitaFisica {
     esercizi: Array<{esercizio: EsercizioFisico, durata: number}>;
 

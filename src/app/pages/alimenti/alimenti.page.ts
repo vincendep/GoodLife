@@ -31,7 +31,6 @@ export class AlimentiPage implements OnInit {
   }
 
   async creaAlimento() {
-    // TODO provare come il prof
     const modal = await this.modalController.create({
       component: DettagliAlimentoPage,
     });

@@ -1,6 +1,5 @@
 import {Alimento} from './alimento.model';
 
-// TODO modify
 export class Pasto {
     alimenti: Array<{alimento: Alimento, quantita: number}>;
 
