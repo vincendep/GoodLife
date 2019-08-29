@@ -1,17 +1,14 @@
-
-/* Caratteristiche della data */
-
 .calendar{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  background-color: white;
 }
+/* Caratteristiche della data */
 
 .calendar1{
   display: flex;
   justify-content: center;
   align-items:center;
-  background-color: white;
-  width: 40%
 }
 
 /* Caratteristiche del bottone circolare */
@@ -75,6 +72,8 @@
 .stats{
   height: 32%;
 }
+
+
 
 .space{
   margin-top: 1%;

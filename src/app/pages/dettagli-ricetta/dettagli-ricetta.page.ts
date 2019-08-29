@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {PastoService} from '../../services/pasto.service';
@@ -12,7 +12,7 @@ import {RicettaService} from '../../services/ricetta.service';
   templateUrl: './dettagli-ricetta.page.html',
   styleUrls: ['./dettagli-ricetta.page.scss'],
 })
-export class DettagliRicettaPage implements OnInit {private form: FormGroup;
+export class DettagliRicettaPage implements OnInit, OnDestroy {private form: FormGroup;
   private newRicetta: Ricetta;
   private a: string;
   private deleteTitle: string;
@@ -30,9 +30,22 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      nome: ['', Validators.required], });
+    if (this.ricettaService.getRicetta() != null ) {
+      this.form = this.formBuilder.group({
+        nome: [this.ricettaService.getRicetta().nome, Validators.required],
+      });
+      this.newRicetta.id = this.ricettaService.getRicetta().id;
+      this.newRicetta.nome = this.ricettaService.getRicetta().nome;
+      this.newRicetta.ingredienti = this.ricettaService.getRicetta().ingredienti;
+    } else {
+        this.form = this.formBuilder.group({
+          nome: ['', Validators.required],
+        });
+    }
     this.a = this.translateService.instant('NUOVO-NOME');
+  }
+  ngOnDestroy(): void {
+    this.ricettaService.setRicette(null);
   }
 
   addFood() {
@@ -44,6 +57,7 @@ export class DettagliRicettaPage implements OnInit {private form: FormGroup;
   onCancel() {
     this.navController.navigateBack('tabs/preferiti/ricette');
   }
+
   onUpdate() {
     this.newRicetta.nome = this.form.get('nome').value;
     this.ricettaService.createRicetta(this.newRicetta).subscribe((a) => {

@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-  <ion-content>
+
     <ion-item lines="full">
       <ion-grid fixed="true" text-center="true">
         <ion-row>
@@ -28,6 +28,7 @@
         </ion-row>
       </ion-grid>
     </ion-item>
+<ion-content>
     <h2 *ngIf="pasto.alimenti.length == 0" text-center>{{'INSERISCI_ALIMENTO' | translate}}</h2>
     <ion-list>
       <ion-card *ngFor="let alimento of this.pasto.alimenti">

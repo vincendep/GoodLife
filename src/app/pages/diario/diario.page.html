@@ -7,13 +7,16 @@
 </ion-header>
 
 <ion-content>
-  <div class="stats color" text-center="true" >
-    <div class="calendar">
-      <ion-card class="calendar1">
-      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.diarioAlimentare.data" pickerFormat="DD MMM YYYY" (ionChange)="getDiario()"></ion-datetime>
-      <ion-icon name="calendar" size="large"></ion-icon>
-      </ion-card>
+
+  <div class="color stats">
+    <div  class="calendar">
+      <div class="calendar1">
+        <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.diarioAlimentare.data" pickerFormat="DD MMM YYYY" (ionChange)="getDiario()"></ion-datetime>
+        <ion-icon name="arrow-dropdown" size="large"></ion-icon>
+      </div>
     </div>
+
+    <div text-center="true" margin-vertical="auto">
     <div>{{ 'CALORIE' | translate }}</div>
     <p class="space"> {{this.diarioAlimentare.getTotCalorie().toFixed(0)}}/{{this.dieta.calorieGiornaliere()}} kcal</p>
 
@@ -30,9 +33,9 @@
         <ion-col>{{ 'CARBOIDRATI' | translate }}
           <p  class="space"> {{this.diarioAlimentare.getTotCarboidrati().toFixed(0)}}/{{dieta.carboidrati}} g</p>
         </ion-col>
-
       </ion-row>
     </ion-grid>
+    </div>
   </div>
 
   <div class="divWater">

@@ -32,10 +32,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'ricette/dettagli-ricetta',
-        loadChildren: '../dettagli-ricetta/dettagli-ricetta.module#DettagliRicettaPageModule'
-      },
-      {
         path: '',
         redirectTo: '/tabs/preferiti/alimenti',
         pathMatch: 'full'

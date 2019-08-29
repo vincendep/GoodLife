@@ -49,9 +49,9 @@ export class InserisciCiboPage implements OnInit {
         const alert = await this.alertController.create({
             header: a.nome,
             message: this.translateService.instant('CALORIE') +
-                ': ' + a.calorie + ' kcal <br/>' + this.translateService.instant('PROTEINE') +
-                ': ' + a.proteine + ' g <br/>' + this.translateService.instant('GRASSI') +
-                ': ' + a.grassi + ' g <br/>' + this.translateService.instant('CARBOIDRATI') +
+                ': ' + a.calorie + ' kcal <br/><br/>' + this.translateService.instant('PROTEINE') +
+                ': ' + a.proteine + ' g <br/><br/>' + this.translateService.instant('GRASSI') +
+                ': ' + a.grassi + ' g <br/><br/>' + this.translateService.instant('CARBOIDRATI') +
                 ': ' +  a.carboidrati + ' g',
             inputs: [
                 {

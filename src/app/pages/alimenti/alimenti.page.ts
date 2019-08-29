@@ -13,7 +13,9 @@ import {Observable} from 'rxjs';
 })
 export class AlimentiPage implements OnInit {
 
-  private alimenti$: Observable<Alimento[]>
+  // TODO aggiustare nome alimento
+
+  private alimenti$: Observable<Alimento[]>;
   private alimenti: Alimento[];
   private deleteTitle: string;
   private deleteMessage: string;

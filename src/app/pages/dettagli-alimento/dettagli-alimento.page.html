@@ -12,6 +12,22 @@
             {{ 'NOME' | translate | titlecase }}</ion-label>
           <ion-input color="secondary" type="text" inputmode="text" formControlName="nome"></ion-input>
         </ion-item>
+        <ion-item no-padding>
+          <ion-label>{{ 'CATEGORIA_ALIMENTARE' | translate }}</ion-label>
+          <ion-select interface="popover" color="secondary" formControlName="categoriaAlimentare">
+            <ion-select-option value="CARNE">{{ 'CARNE' | translate }}</ion-select-option>
+            <ion-select-option value="LATTICINI">{{ 'LATTICINI' | translate }}</ion-select-option>
+            <ion-select-option value="FRUTTA">{{ 'FRUTTA' | translate }}</ion-select-option>
+            <ion-select-option value="LEGUMI">{{ 'LEGUMI' | translate }}</ion-select-option>
+            <ion-select-option value="CEREALI">{{ 'CEREALI' | translate }}</ion-select-option>
+            <ion-select-option value="ALCOOL">{{ 'ALCOOL' | translate }}</ion-select-option>
+            <ion-select-option value="CONDIMENTO">{{ 'CONDIMENTO' | translate }}</ion-select-option>
+            <ion-select-option value="VERDURA">{{ 'VERDURA' | translate }}</ion-select-option>
+            <ion-select-option value="PESCE">{{ 'PESCE' | translate }}</ion-select-option>
+            <ion-select-option value="UOVA">{{ 'UOVA' | translate }}</ion-select-option>
+            <ion-select-option value="DOLCE">{{ 'DOLCE' | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>
         <ion-item no-padding class="animated fadeInUp">
           <ion-label position="floating">
             {{ 'CALORIE' | translate | titlecase }}/ 100 g</ion-label>
@@ -32,22 +48,7 @@
             {{ 'CARBOIDRATI' | translate | titlecase }} / 100 g</ion-label>
           <ion-input color="secondary" type="number" inputmode="numeric" formControlName="carboidrati" placeholder="0 g" min="0" max="100"></ion-input>
         </ion-item>
-        <ion-item>
-          <ion-label>{{ 'CATEGORIA_ALIMENTARE' | translate }}</ion-label>
-          <ion-select interface="popover" color="secondary" formControlName="categoriaAlimentare">
-            <ion-select-option value="CARNE">{{ 'CARNE' | translate }}</ion-select-option>
-            <ion-select-option value="LATTICINI">{{ 'LATTICINI' | translate }}</ion-select-option>
-            <ion-select-option value="FRUTTA">{{ 'FRUTTA' | translate }}</ion-select-option>
-            <ion-select-option value="LEGUMI">{{ 'LEGUMI' | translate }}</ion-select-option>
-            <ion-select-option value="CEREALI">{{ 'CEREALI' | translate }}</ion-select-option>
-            <ion-select-option value="ALCOOL">{{ 'ALCOOL' | translate }}</ion-select-option>
-            <ion-select-option value="CONDIMENTO">{{ 'CONDIMENTO' | translate }}</ion-select-option>
-            <ion-select-option value="VERDURA">{{ 'VERDURA' | translate }}</ion-select-option>
-            <ion-select-option value="PESCE">{{ 'PESCE' | translate }}</ion-select-option>
-            <ion-select-option value="UOVA">{{ 'UOVA' | translate }}</ion-select-option>
-            <ion-select-option value="DOLCE">{{ 'DOLCE' | translate }}</ion-select-option>
-          </ion-select>
-        </ion-item>
+
       </ion-list>
     </form>
   </div>

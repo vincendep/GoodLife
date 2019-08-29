@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {PastoService} from '../../services/pasto.service';
-import {AlertController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {Ricetta} from '../../model/ricetta.model';
 import {Observable} from 'rxjs';
@@ -16,10 +16,13 @@ export class RicettePage implements OnInit {private deleteTitle: string;
   private deleteMessage: string;
   private ricette$: Observable<Ricetta[]>;
 
+  // TODO aggiungere calorie totali
+
   constructor(private translateService: TranslateService,
               private pastoService: PastoService,
               private alertController: AlertController,
               private router: Router,
+              private navController: NavController,
               private ricettaService: RicettaService) {
   }
 
@@ -27,10 +30,13 @@ export class RicettePage implements OnInit {private deleteTitle: string;
     this.ricette$ = this.ricettaService.listRicette();
   }
 
-
-
   addPasto() {
-    this.router.navigateByUrl('tabs/preferiti/ricette/dettagli-ricetta');
+    this.navController.navigateRoot('dettagli-ricetta');
+  }
+
+  modificaRicetta(ricetta: Ricetta) {
+    this.ricettaService.setRicette(ricetta);
+    this.navController.navigateRoot('dettagli-ricetta');
   }
 
   eliminaPasto(ricetta: Ricetta) {

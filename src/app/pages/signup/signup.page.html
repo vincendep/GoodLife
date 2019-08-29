@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="animated fadeIn login auth-page">
+<ion-content padding class="animated fadeIn login auth-page">
   <!-- aim choice -->
   <ion-slides id="slider" pager="true" [options]="slideOpts">
     <ion-slide>
@@ -31,13 +31,13 @@
           <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">
               {{ 'ALTEZZA' | translate | titlecase }}</ion-label>
-            <ion-input color="secondary" type="number" inputmode="numeric" min="120" max="250" formControlName="altezza"></ion-input>
+            <ion-input color="secondary" type="number" inputmode="numeric" min="120" max="250" formControlName="altezza" placeholder="0cm"></ion-input>
           </ion-item>
 
           <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">
               {{ 'PESO' | translate | titlecase }}</ion-label>
-            <ion-input color="secondary" type="number" inputmode="numeric" min="30" max="200" formControlName="peso"></ion-input>
+            <ion-input color="secondary" type="number" inputmode="numeric" min="30" max="200" formControlName="peso" placeholder="0kg"></ion-input>
           </ion-item>
 
           <ion-item no-padding class="animated fadeInUp">
@@ -47,7 +47,7 @@
           </ion-item>
           <ion-item no-padding class="animated fadeInUp">
             <ion-label>{{'SESSO' | translate | titlecase}}</ion-label>
-            <ion-select formControlName="sesso">
+            <ion-select formControlName="sesso" interface="popover">
               <ion-select-option value="maschio">{{'MASCHIO' | translate}}</ion-select-option>
               <ion-select-option value="femmina">{{'FEMMINA' | translate}}</ion-select-option>
             </ion-select>
@@ -106,8 +106,10 @@
       </ion-grid>
     </ion-slide>
   </ion-slides>
+</ion-content>
+
+<ion-footer>
   <nav position="absolute" margin="auto" text-center>
     <a routerLink="/login" routerLinkActive="active">{{ 'ACCEDI' | translate }}</a>
   </nav>
-</ion-content>
-
+</ion-footer>

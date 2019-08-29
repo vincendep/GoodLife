@@ -9,7 +9,19 @@ import {URL} from '../constants';
 })
 
 export class RicettaService {
-    constructor(private http: HttpClient) {}
+    private ricetta: Ricetta;
+
+    constructor(private http: HttpClient) {
+        this.ricetta = null;
+    }
+
+    public getRicetta(): Ricetta {
+        return this.ricetta;
+    }
+
+    public setRicette(ricetta: Ricetta) {
+        this.ricetta = ricetta;
+    }
 
     public listRicette(): Observable<Ricetta[]> {
         return this.http.get<Ricetta[]>(URL.RICETTE);
