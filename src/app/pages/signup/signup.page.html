@@ -6,7 +6,7 @@
 
 <ion-content padding class="animated fadeIn login auth-page">
   <!-- aim choice -->
-  <ion-slides id="slider" pager="true" [options]="slideOpts">
+  <ion-slides id="slider" [options]="slideOpts">
     <ion-slide>
       <div>
         <div margin="10px">
@@ -24,9 +24,8 @@
 
     <!-- personal info -->
     <ion-slide>
-      <ion-grid>
-        <ion-col>
-      <form [formGroup]="stepTwoForm" class="list-form">
+      <ion-content>
+      <form [formGroup]="stepTwoForm" class="list-form slideWidth">
         <ion-list>
           <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">
@@ -58,58 +57,50 @@
             <ion-icon name="arrow-round-forward"></ion-icon>
             {{ 'CONFERMA' | translate }}
           </ion-button>
-
       </form>
-        </ion-col>
-      </ion-grid>
+      </ion-content>
     </ion-slide>
 
     <!-- account info -->
     <ion-slide>
-      <ion-grid>
-        <ion-col>
-      <form [formGroup]="stepThreeForm" class="list-form">
+      <ion-content>
+      <form [formGroup]="stepThreeForm" class="list-form slideWidth">
         <ion-list>
-          <ion-item>
+          <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">{{'EMAIL' | translate | titlecase }}</ion-label>
             <ion-input formControlName="email"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">{{'NOME' | translate | titlecase }}</ion-label>
             <ion-input formControlName="nome"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">{{'COGNOME' | translate | titlecase}}</ion-label>
             <ion-input formControlName="cognome"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">{{'PASSWORD' | translate | titlecase }}</ion-label>
             <ion-input formControlName="password" type="password"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">{{'CONFERMA_PASSWORD' | translate | titlecase }}</ion-label>
             <ion-input formControlName="passwordCheck" type="password"></ion-input>
           </ion-item>
+
         </ion-list>
-        <div margin-top="20px">
           <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="onConfirmStepThree()" [disabled]="!stepThreeForm.valid" tappable>
             <ion-icon name="create"></ion-icon>
             {{ 'CREA_ACCOUNT' | translate}}
           </ion-button>
-        </div>
       </form>
-      </ion-col>
-      </ion-grid>
+      </ion-content>
     </ion-slide>
   </ion-slides>
-</ion-content>
-
-<ion-footer>
   <nav position="absolute" margin="auto" text-center>
     <a routerLink="/login" routerLinkActive="active">{{ 'ACCEDI' | translate }}</a>
   </nav>
-</ion-footer>
+</ion-content>

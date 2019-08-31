@@ -9,12 +9,11 @@
 <ion-content>
 
   <div class="color stats">
-    <div  class="calendar">
-      <div class="calendar1">
+
+      <div class="calendar">
         <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.diarioAlimentare.data" pickerFormat="DD MMM YYYY" (ionChange)="getDiario()"></ion-datetime>
         <ion-icon name="arrow-dropdown" size="large"></ion-icon>
       </div>
-    </div>
 
     <div text-center="true" margin-vertical="auto">
     <div>{{ 'CALORIE' | translate }}</div>

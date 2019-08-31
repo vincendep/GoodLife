@@ -29,7 +29,7 @@
         <ion-label class="kcal-label">kcal/100 gr</ion-label>
     </ion-item>
     <ion-content class="slideHeight">
-        <div >
+        <div>
             <ion-list>
                 <div *ngFor="let alimento of alimenti$ | async">
                 <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))" (click)="onClick(alimento)">
