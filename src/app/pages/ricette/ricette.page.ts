@@ -4,8 +4,9 @@ import {PastoService} from '../../services/pasto.service';
 import {AlertController, NavController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {Ricetta} from '../../model/ricetta.model';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {RicettaService} from '../../services/ricetta.service';
+import {forEach} from '@angular-devkit/schematics';
 
 @Component({
   selector: 'ricette',
@@ -14,7 +15,7 @@ import {RicettaService} from '../../services/ricetta.service';
 })
 export class RicettePage implements OnInit {private deleteTitle: string;
   private deleteMessage: string;
-  private ricette$: Observable<Ricetta[]>;
+  private ricette: Ricetta[] = []
 
   // TODO aggiungere calorie totali
 
@@ -27,7 +28,7 @@ export class RicettePage implements OnInit {private deleteTitle: string;
   }
 
   ngOnInit() {
-    this.ricette$ = this.ricettaService.listRicette();
+    this.getRicette();
   }
 
   addPasto() {
@@ -57,7 +58,7 @@ export class RicettePage implements OnInit {private deleteTitle: string;
          , this.translateService.instant('CANCEL_BUTTON')]
      });
     alert.onDidDismiss().then(() => {
-      this.ricette$ = this.ricettaService.listRicette();
+      this.getRicette();
     });
     await alert.present();
   }
@@ -68,6 +69,19 @@ export class RicettePage implements OnInit {private deleteTitle: string;
     });
     this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
       this.deleteMessage = data;
+    });
+  }
+
+  getRicette() {
+    this.ricette = [];
+    this.ricettaService.listRicette().subscribe((next: Ricetta[]) => {
+      for (const r of next) {
+        const ricetta: Ricetta = new Ricetta();
+        ricetta.id = r.id;
+        ricetta.nome = r.nome;
+        ricetta.ingredienti = r.ingredienti;
+        this.ricette.push(ricetta);
+      }
     });
   }
 }

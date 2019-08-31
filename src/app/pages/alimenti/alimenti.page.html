@@ -2,9 +2,9 @@
   <ion-list>
     <ion-item lines="full" *ngFor="let alimento of alimenti$ | async" button=true>
       <ion-grid fixed="true" text-center="true">
-        <ion-row>
-          <ion-col><ion-text>{{alimento.nome}}</ion-text></ion-col>
-          <ion-col><ion-text>{{alimento.calorie.toString()}} kcal</ion-text></ion-col>
+        <ion-row align-items-center>
+          <ion-col size="7" text-left>{{alimento.nome}}</ion-col>
+          <ion-col size="5">{{alimento.calorie.toString()}} kcal/100gr</ion-col>
         </ion-row>
       </ion-grid>
       <ion-icon slot="end" name="close" (click)="eliminaAlimento(alimento)"></ion-icon>
