@@ -7,27 +7,26 @@
   </ion-toolbar>
 </ion-header>
 
-
-    <ion-item lines="full">
-      <ion-grid fixed="true" text-center="true">
-        <ion-row>
-          <ion-col>{{'CALORIE' | translate}}</ion-col>
-          <ion-col>{{ pasto.getTotCalorie().toFixed(0)}} kcal</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>{{'PROTEINE' | translate}}</ion-col>
-          <ion-col>{{pasto.getTotProteine().toFixed(0)}} g</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>{{'GRASSI' | translate}}</ion-col>
-          <ion-col>{{pasto.getTotGrassi().toFixed(0)}} g</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>{{'CARBOIDRATI' | translate}}</ion-col>
-          <ion-col>{{pasto.getTotCarboidrati().toFixed(0)}} g</ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
+<ion-item lines="full" class="bg-white">
+  <ion-grid fixed="true" text-center="true">
+    <ion-row>
+      <ion-col>{{'CALORIE' | translate}}</ion-col>
+      <ion-col>{{ pasto.getTotCalorie().toFixed(0)}} kcal</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>{{'PROTEINE' | translate}}</ion-col>
+      <ion-col>{{pasto.getTotProteine().toFixed(0)}} g</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>{{'GRASSI' | translate}}</ion-col>
+      <ion-col>{{pasto.getTotGrassi().toFixed(0)}} g</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>{{'CARBOIDRATI' | translate}}</ion-col>
+      <ion-col>{{pasto.getTotCarboidrati().toFixed(0)}} g</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>
 <ion-content>
     <h2 *ngIf="pasto.alimenti.length == 0" text-center>{{'INSERISCI_ALIMENTO' | translate}}</h2>
     <ion-list>
