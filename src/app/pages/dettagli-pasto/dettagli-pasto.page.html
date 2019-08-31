@@ -30,37 +30,16 @@
 <ion-content>
     <h2 *ngIf="pasto.alimenti.length == 0" text-center>{{'INSERISCI_ALIMENTO' | translate}}</h2>
     <ion-list>
-      <ion-card *ngFor="let alimento of this.pasto.alimenti">
-        <ion-card-header>
-          <ion-item lines="none">
-            <ion-icon slot="end" name="close" (click)="eliminaAlimento(alimento)"></ion-icon>
-            <h2>{{alimento.alimento.nome}}</h2>
-          </ion-item>
-            <h3>{{alimento.quantita}} g</h3>
-        </ion-card-header>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <p>{{'CALORIE' | translate}}:
-                {{(alimento.alimento.calorie*alimento.quantita/100).toFixed(0)}} kcal</p>
-              </ion-col>
-              <ion-col>
-                <p>{{'PROTEINE' | translate}}:
-                {{(alimento.alimento.proteine*alimento.quantita/100).toFixed(0)}} g</p>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <p>{{'GRASSI' | translate}}:
-                {{(alimento.alimento.grassi*alimento.quantita/100).toFixed(0)}} g</p>
-              </ion-col>
-              <ion-col>
-                <p>{{'CARBOIDRATI' | translate}}:
-                {{(alimento.alimento.carboidrati*alimento.quantita/100).toFixed(0)}} g</p>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-      </ion-card>
+      <ion-item *ngFor="let alimento of this.pasto.alimenti">
+        <ion-grid>
+          <ion-row>
+            <ion-col align-self-center size="6">{{alimento.alimento.nome}}</ion-col>
+            <ion-col align-self-center size="3" text-end>{{(alimento.alimento.calorie * alimento.quantita / 100).toFixed(0)}} kcal</ion-col>
+            <ion-col align-self-center size="3" text-end>{{alimento.quantita}} gr</ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-icon slot="end" name="close" (click)="eliminaAlimento(alimento)"></ion-icon>
+      </ion-item>
     </ion-list>
   </ion-content>
 
