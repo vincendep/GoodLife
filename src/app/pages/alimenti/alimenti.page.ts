@@ -47,6 +47,7 @@ export class AlimentiPage implements OnInit {
 
   async showDeleteAlert(alimento: Alimento) {
     this.initTranslate();
+    let flag = false;
     const alert = await this.alertController.create({
       header: this.deleteTitle,
       message: this.deleteMessage + ' ' + alimento.nome + '?',
@@ -54,12 +55,15 @@ export class AlimentiPage implements OnInit {
         text: 'OK',
         handler: (data) => {
           this.alimentoService.deleteAlimento(alimento).subscribe();
+          flag = true;
         }
       }
         , this.translateService.instant('CANCEL_BUTTON')]
     });
     alert.onDidDismiss().then(() => {
-      this.alimenti$ = this.alimentoService.listAlimentiCreati();
+      if (flag) {
+        this.alimenti$ = this.alimentoService.listAlimentiCreati();
+      }
     });
     await alert.present();
   }
