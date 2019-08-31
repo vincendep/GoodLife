@@ -8,3 +8,17 @@
 .slideHeight{
   height: 90%;
 }
+
+ion-col {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ion-label {
+  font-weight: bold;
+}
+
+.kcal-label {
+  text-align: right;
+}

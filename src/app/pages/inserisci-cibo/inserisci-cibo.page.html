@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-item>
+    <ion-item lines="none">
         <ion-label>{{ 'CATEGORIA_ALIMENTARE' | translate }}</ion-label>
         <ion-select [(ngModel)]="categoriaSelezionata" interface="popover">
             <ion-select-option value="CARNE">{{ 'CARNE' | translate }}</ion-select-option>
@@ -24,12 +24,21 @@
             <ion-select-option value="DOLCE">{{ 'DOLCE' | translate }}</ion-select-option>
         </ion-select>
     </ion-item>
+    <ion-item lines="full">
+        <ion-label>{{"ALIMENTO" | translate | titlecase}}</ion-label>
+        <ion-label class="kcal-label">kcal/100 gr</ion-label>
+    </ion-item>
     <ion-content class="slideHeight">
         <div >
             <ion-list>
                 <div *ngFor="let alimento of alimenti$ | async">
                 <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))" (click)="onClick(alimento)">
-                    {{alimento.nome}}
+                    <ion-grid fixed="true">
+                        <ion-row align-items-center>
+                            <ion-col size="9">{{alimento.nome}}</ion-col>
+                            <ion-col text-end size="3" justify-content-end>{{alimento.calorie}} kcal</ion-col>
+                        </ion-row>
+                    </ion-grid>
                 </ion-item>
                 </div>
             </ion-list>

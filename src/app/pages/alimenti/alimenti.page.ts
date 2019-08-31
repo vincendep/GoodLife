@@ -16,7 +16,6 @@ export class AlimentiPage implements OnInit {
   // TODO aggiustare nome alimento
 
   private alimenti$: Observable<Alimento[]>;
-  private alimenti: Alimento[];
   private deleteTitle: string;
   private deleteMessage: string;
 
