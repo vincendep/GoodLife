@@ -33,6 +33,7 @@ export class InserisciAttivitaPage implements OnInit {
   }
 
   ngOnInit() {
+    this.initTranslate();
     this.esercizi = this.esercizioService.listEsercizi();
     this.diarioAlimentare = this.diarioService.getDiario();
     this.attivitaFisica = this.attivitaFisicaService.getAttivitaFisica();

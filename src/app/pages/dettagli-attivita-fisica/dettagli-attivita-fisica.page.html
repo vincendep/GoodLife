@@ -6,24 +6,26 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-
-    <ion-item lines="full">
-        <ion-grid fixed="true" text-center="true">
-            <ion-col>{{'CONSUMO_ENERGETICO' | translate}}</ion-col>
-            <ion-col>{{this.diarioAlimentare.getConsumoTotale().toFixed(0)}} kcal</ion-col>
-        </ion-grid>
-    </ion-item>
+<ion-item class="bg-white" lines="full">
+    <ion-grid fixed="true" text-center="true">
+        <ion-col>{{'CONSUMO_ENERGETICO' | translate}}</ion-col>
+        <ion-col>{{this.diarioAlimentare.getConsumoTotale().toFixed(0)}} kcal</ion-col>
+    </ion-grid>
+</ion-item>
 
 <ion-content>
     <h2 *ngIf="attivitaFisica.length == 0" text-center>{{'INSERISCI_ESERCIZIO' | translate}}</h2>
     <ion-list>
-        <ion-card *ngFor="let attivita of this.attivitaFisica">
-            <ion-card-header>
-                <h2>{{attivita.esercizio.nome}}</h2>
-                <p>{{attivita.durata}}</p>
-            </ion-card-header>
-        </ion-card>
+        <ion-item *ngFor="let attivita of this.attivitaFisica">
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="6">{{attivita.esercizio.nome}}</ion-col>
+                    <ion-col size="3">{{(attivita.esercizio.consumoPerMinuto * attivita.durata).toFixed(0)}} kcal</ion-col>
+                    <ion-col size="3" text-end>{{attivita.durata}} min</ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-icon slot="end" name="close" (click)="eliminaAttivita(attivita)"></ion-icon>
+        </ion-item>
     </ion-list>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="onAdd()">

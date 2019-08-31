@@ -74,7 +74,7 @@ export class RicettePage implements OnInit {private deleteTitle: string;
 
   getRicette() {
     this.ricette = [];
-    this.ricettaService.listRicette().subscribe((next: Ricetta[]) => {
+    const o = this.ricettaService.listRicette().subscribe((next: Ricetta[]) => {
       for (const r of next) {
         const ricetta: Ricetta = new Ricetta();
         ricetta.id = r.id;
@@ -82,6 +82,7 @@ export class RicettePage implements OnInit {private deleteTitle: string;
         ricetta.ingredienti = r.ingredienti;
         this.ricette.push(ricetta);
       }
+      o.unsubscribe();
     });
   }
 }

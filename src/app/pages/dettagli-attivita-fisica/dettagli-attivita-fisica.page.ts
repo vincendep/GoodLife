@@ -4,6 +4,7 @@ import {EsercizioFisico} from '../../model/esercizio-fisico.model';
 import {DiarioService} from '../../services/diario.service';
 import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
 import {NavController} from '@ionic/angular';
+import {AttivitaFisica} from '../../model/attivita-fisica.model';
 
 @Component({
   selector: 'app-dettagli-attivita-fisica',
@@ -32,5 +33,8 @@ export class DettagliAttivitaFisicaPage implements OnInit {
     this.navController.navigateForward('inserisci-attivita');
   }
 
-  // TODO remove exercise from diary
+
+  public eliminaAttivita(attivita: any) {
+    // TODO remove exercise from diary
+  }
 }
