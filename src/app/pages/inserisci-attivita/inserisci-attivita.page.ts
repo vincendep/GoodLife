@@ -64,7 +64,7 @@ export class InserisciAttivitaPage implements OnInit {
           handler: (data) => {
             if (data.durata > 0) {
               this.attivitaFisica.push({esercizio: esercizioFisico, durata: data.durata});
-              this.diarioService.updateDiario(this.diarioAlimentare);
+              this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
               this.navController.back();
             }
           }
@@ -73,28 +73,6 @@ export class InserisciAttivitaPage implements OnInit {
     });
     await alert.present();
   }
-
-  // eliminaEsercizio(esercizio: any) {
-  //   this.showDeleteAlert(esercizio);
-  // }
-  //
-  // async showDeleteAlert(esercizio: any) {
-  //   this.initTranslate();
-  //   const alert = await this.alertController.create({
-  //     header: this.deleteTitle,
-  //     message: this.deleteMessage + ' ' + esercizio.esercizio.nome + '?',
-  //     buttons: [{
-  //       text: 'OK',
-  //       handler: (data) => {
-  //         let index = this.temp.esercizi.indexOf(esercizio);
-  //         if (index > -1) {
-  //           this.temp.esercizi.splice(index, 1);
-  //         }
-  //       }
-  //     }, this.translateService.instant('CANCEL_BUTTON')]
-  //   });
-  //   await alert.present();
-  // }
 
   initTranslate() {
     this.translateService.get('DELETE_TITLE').subscribe((data) => {

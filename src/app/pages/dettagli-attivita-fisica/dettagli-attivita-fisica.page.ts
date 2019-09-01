@@ -3,8 +3,9 @@ import {DiarioAlimentare} from '../../model/diario.model';
 import {EsercizioFisico} from '../../model/esercizio-fisico.model';
 import {DiarioService} from '../../services/diario.service';
 import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
-import {NavController} from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import {AttivitaFisica} from '../../model/attivita-fisica.model';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dettagli-attivita-fisica',
@@ -15,10 +16,14 @@ export class DettagliAttivitaFisicaPage implements OnInit {
 
   private diarioAlimentare: DiarioAlimentare;
   private attivitaFisica: Array<{esercizio: EsercizioFisico, durata: number}>;
+  private deleteTitle: string;
+  private deleteMessage: string;
 
   constructor(private diarioService: DiarioService,
               private attivitaFisicaService: AttivitaFisicaService,
-              private navController: NavController) {
+              private navController: NavController,
+              private alertController: AlertController,
+              private translateService: TranslateService) {
 
     this.diarioAlimentare = new DiarioAlimentare();
     this.attivitaFisica = new Array<{esercizio: EsercizioFisico, durata: number}>();
@@ -35,6 +40,34 @@ export class DettagliAttivitaFisicaPage implements OnInit {
 
 
   public eliminaAttivita(attivita: any) {
-    // TODO remove exercise from diary
+    this.showDeleteAlert(attivita);
+  }
+
+  async showDeleteAlert(attivita: any) {
+    this.initTranslate();
+    const alert = await this.alertController.create({
+      header: this.deleteTitle,
+      message: this.deleteMessage + ' ' + attivita.esercizio.nome + '?',
+      buttons: [{
+        text: 'OK',
+        handler: (data) => {
+          let index = this.attivitaFisica.indexOf(attivita);
+          if (index > -1) {
+            this.attivitaFisica.splice(index, 1);
+          }
+          this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
+        }
+      }, this.translateService.instant('CANCEL_BUTTON')]
+    });
+    await alert.present();
+  }
+
+  initTranslate() {
+    this.translateService.get('DELETE_TITLE').subscribe((data) => {
+      this.deleteTitle = data;
+    });
+    this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
+      this.deleteMessage = data;
+    });
   }
 }
