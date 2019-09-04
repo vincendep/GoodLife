@@ -32,7 +32,7 @@
         <div>
             <ion-list>
                 <div *ngFor="let alimento of alimenti$ | async">
-                <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))" (click)="onClick(alimento)">
+                <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))" (click)="onClick(alimento)" button="true">
                     <ion-grid fixed="true">
                         <ion-row align-items-center>
                             <ion-col size="9">{{alimento.nome}}</ion-col>

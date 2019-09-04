@@ -48,6 +48,8 @@ export class InserisciCiboPage implements OnInit {
     async selezionaDose(a: Alimento) {
         const alert = await this.alertController.create({
             header: a.nome,
+            animated: true,
+            cssClass: 'alertFixing',
             message: this.translateService.instant('CALORIE') +
                 ': ' + a.calorie + ' kcal <br/><br/>' + this.translateService.instant('PROTEINE') +
                 ': ' + a.proteine + ' g <br/><br/>' + this.translateService.instant('GRASSI') +

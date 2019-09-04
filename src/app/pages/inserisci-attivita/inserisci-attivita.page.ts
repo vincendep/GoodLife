@@ -47,6 +47,7 @@ export class InserisciAttivitaPage implements OnInit {
     const alert = await this.alertController.create({
       header: esercizioFisico.nome,
       message: this.translateService.instant('CALMIN') + ': ' + esercizioFisico.consumoPerMinuto + ' kcal',
+      cssClass: 'alertFixing',
       inputs: [
         {
           name: 'durata',
