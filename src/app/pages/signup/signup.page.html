@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color="dark" text-center>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+    <ion-title color="dark" text-center>{{ 'SIGNUP_TITLE' | translate | uppercase}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,8 +15,8 @@
         <ion-img src="../../../assets/images/trophy.png" class="img-dim"></ion-img>
 
           <div margin="20px">
-            <ion-button (click)="onConfirmStepOne($event)" id="obiettivoDimagrimento" size="large" expand="block" shape="round" color="primary" >{{ 'DIMAGRIRE' | translate }}</ion-button>
-            <ion-button (click)="onConfirmStepOne($event)" id="obiettivoMassa" size="large" expand="block" shape="round" color="primary" >{{ 'MASSA_MUSCOLARE' | translate }}</ion-button>
+            <ion-button margin-bottom="5px" (click)="onConfirmStepOne($event)" id="obiettivoDimagrimento" size="large" expand="block" shape="round" color="primary" >{{ 'DIMAGRIRE' | translate }}</ion-button>
+            <ion-button margin-bottom="5px" (click)="onConfirmStepOne($event)" id="obiettivoMassa" size="large" expand="block" shape="round" color="primary" >{{ 'MASSA_MUSCOLARE' | translate }}</ion-button>
             <ion-button (click)="onConfirmStepOne($event)" id="obiettivoSano" size="large" expand="block" shape="round" color="primary">{{ 'MANGIARE_SANO' | translate }}</ion-button>
           </div>
       </div>
@@ -30,13 +30,13 @@
           <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">
               {{ 'ALTEZZA' | translate | titlecase }}</ion-label>
-            <ion-input color="secondary" type="number" inputmode="numeric" min="120" max="250" formControlName="altezza" placeholder="0cm"></ion-input>
+            <ion-input color="secondary" type="number" inputmode="numeric" min="120" max="250" formControlName="altezza" placeholder="0 cm"></ion-input>
           </ion-item>
 
           <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating">
               {{ 'PESO' | translate | titlecase }}</ion-label>
-            <ion-input color="secondary" type="number" inputmode="numeric" min="30" max="200" formControlName="peso" placeholder="0kg"></ion-input>
+            <ion-input color="secondary" type="number" inputmode="numeric" min="30" max="200" formControlName="peso" placeholder="0 kg"></ion-input>
           </ion-item>
 
           <ion-item no-padding class="animated fadeInUp">
