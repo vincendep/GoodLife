@@ -16,10 +16,13 @@
       </div>
 
     <div text-center="true" margin-vertical="auto">
-    <div>{{ 'CALORIE' | translate }}</div>
-    <p class="space"> {{this.diarioAlimentare.getTotCalorie().toFixed(0)}}/{{this.dieta.calorieGiornaliere()}} kcal</p>
 
     <ion-grid fixed="true" text-center="true" >
+      <ion-row>
+        <ion-col>{{ 'CALORIE' | translate }}
+          <p class="space"> {{this.diarioAlimentare.getTotCalorie().toFixed(0)}}/{{this.dieta.calorieGiornaliere()}} kcal</p>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col>{{ 'PROTEINE' | translate }}
           <p class="space">{{this.diarioAlimentare.getTotProteine().toFixed(0)}}/{{dieta.proteine}} g</p>

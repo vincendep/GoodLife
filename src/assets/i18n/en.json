@@ -101,5 +101,8 @@
   "DOLCE": "DESSERT",
   "RICETTA": "Recipe",
   "RICETTE": "Recipes",
-  "IMPOSTAZIONI": "Settings"
+  "IMPOSTAZIONI": "Settings",
+
+  "ALIMENTI_AGGIUNT": "Added aliments",
+  "ESERCIZI_AGGIUNTI": "Added exercises"
 }
