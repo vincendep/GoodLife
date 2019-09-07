@@ -13,7 +13,6 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private credenziali: {email: string, password: string} = {email: '', password: ''};
   private loginFormModel: FormGroup;
   private loginTitle: string;
   private loginSubTitle: string;

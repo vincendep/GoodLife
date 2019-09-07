@@ -4,7 +4,6 @@ import {EsercizioFisico} from '../../model/esercizio-fisico.model';
 import {DiarioService} from '../../services/diario.service';
 import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
 import {AlertController, NavController} from '@ionic/angular';
-import {AttivitaFisica} from '../../model/attivita-fisica.model';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({

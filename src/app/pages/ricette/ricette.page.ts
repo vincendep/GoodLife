@@ -4,9 +4,7 @@ import {PastoService} from '../../services/pasto.service';
 import {AlertController, NavController} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {Ricetta} from '../../model/ricetta.model';
-import {Observable, of} from 'rxjs';
 import {RicettaService} from '../../services/ricetta.service';
-import {forEach} from '@angular-devkit/schematics';
 
 @Component({
   selector: 'ricette',

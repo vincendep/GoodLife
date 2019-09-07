@@ -4,7 +4,7 @@ import {AlimentoService} from '../../services/alimento.service';
 import {AlertController, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {DettagliAlimentoPage} from '../dettagli-alimento/dettagli-alimento.page';
-import {Observable} from 'rxjs';
+
 
 @Component({
   selector: 'app-alimenti',
