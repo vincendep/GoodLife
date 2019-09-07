@@ -10,7 +10,19 @@ import {Observable} from 'rxjs';
 })
 export class AlimentoService {
 
-  constructor(private http: HttpClient) {}
+  private alimento: Alimento;
+
+  constructor(private http: HttpClient) {
+    this.alimento = null;
+  }
+
+  public getAlimento(): Alimento {
+    return this.alimento;
+  }
+
+  public setAlimento(alimento: Alimento) {
+    this.alimento = alimento;
+  }
 
   public listAlimenti(): Observable<Alimento[]> {
     return this.http.get<Alimento[]>(URL.ALIMENTI);

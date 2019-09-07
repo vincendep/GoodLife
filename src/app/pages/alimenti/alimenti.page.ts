@@ -40,6 +40,17 @@ export class AlimentiPage implements OnInit {
     modal.present();
   }
 
+  async modificaAlimento(alimento: Alimento) {
+    this.alimentoService.setAlimento(alimento);
+    const modal = await this.modalController.create({
+      component: DettagliAlimentoPage,
+    });
+    modal.onDidDismiss().then(() => {
+      this.getAlimenti();
+    });
+    modal.present();
+  }
+
   eliminaAlimento(alimento: Alimento) {
     this.showDeleteAlert(alimento);
   }

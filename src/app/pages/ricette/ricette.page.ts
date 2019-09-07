@@ -13,7 +13,7 @@ import {RicettaService} from '../../services/ricetta.service';
 })
 export class RicettePage implements OnInit {private deleteTitle: string;
   private deleteMessage: string;
-  private ricette: Ricetta[] = []
+  private ricette: Ricetta[] = [];
 
   // TODO aggiungere calorie totali
 
