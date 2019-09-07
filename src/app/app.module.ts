@@ -15,6 +15,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {httpInterceptorProviders} from './interceptors';
 import {DettagliAlimentoPageModule} from './pages/dettagli-alimento/dettagli-alimento.module';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 
 // The translate loader needs to know where to load i18n files
@@ -46,6 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
     providers: [
         StatusBar,
         SplashScreen,
+        ScreenOrientation,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
         httpInterceptorProviders
     ],
