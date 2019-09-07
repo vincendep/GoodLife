@@ -10,7 +10,7 @@
           <ion-col size="5">{{alimento.calorie.toString()}} kcal/100gr</ion-col>
         </ion-row>
       </ion-grid>
-      <ion-icon slot="end" name="close" (click)="eliminaAlimento(alimento)"></ion-icon>
+      <ion-icon slot="end" class="delete-icon" name="close" (click)="eliminaAlimento(alimento)"></ion-icon>
     </ion-item>
   </ion-list>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">

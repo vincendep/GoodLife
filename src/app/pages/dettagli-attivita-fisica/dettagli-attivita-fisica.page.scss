@@ -5,6 +5,7 @@
 
 ion-list {
   width: 100%;
+  margin-bottom: 15%;
 }
 
 h2 {
@@ -14,4 +15,8 @@ h2 {
 
 ion-list-header {
   font-weight: bold;
+}
+
+.delete-icon {
+  color: red;
 }
