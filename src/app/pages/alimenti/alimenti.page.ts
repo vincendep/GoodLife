@@ -15,7 +15,7 @@ export class AlimentiPage implements OnInit {
 
   // TODO aggiustare nome alimento
 
-  private alimenti$: Observable<Alimento[]>;
+  private alimenti: Alimento[] = new Array();
   private deleteTitle: string;
   private deleteMessage: string;
 
@@ -23,11 +23,10 @@ export class AlimentiPage implements OnInit {
               private alertController: AlertController,
               private translateService: TranslateService,
               private modalController: ModalController) {
-    this.alimenti$ = new Observable<Alimento[]>();
   }
 
   ngOnInit() {
-    this.alimenti$ = this.alimentoService.listAlimentiCreati();
+    this.getAlimenti();
     this.initTranslate();
   }
 
@@ -36,7 +35,7 @@ export class AlimentiPage implements OnInit {
       component: DettagliAlimentoPage,
     });
     modal.onDidDismiss().then(() => {
-      this.alimenti$ = this.alimentoService.listAlimentiCreati();
+      this.getAlimenti();
     });
     modal.present();
   }
@@ -62,7 +61,7 @@ export class AlimentiPage implements OnInit {
     });
     alert.onDidDismiss().then(() => {
       if (flag) {
-        this.alimenti$ = this.alimentoService.listAlimentiCreati();
+        this.getAlimenti();
       }
     });
     await alert.present();
@@ -74,6 +73,15 @@ export class AlimentiPage implements OnInit {
     });
     this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
       this.deleteMessage = data;
+    });
+  }
+
+  public getAlimenti() {
+    this.alimentoService.listAlimentiCreati().subscribe(next => {
+      this.alimenti = [];
+      for (const a of next) {
+        this.alimenti.push(a);
+      }
     });
   }
 }

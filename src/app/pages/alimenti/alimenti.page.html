@@ -1,9 +1,9 @@
 <ion-content>
-  <div class="info" *ngIf="(alimenti$ | async).length == 0">
+  <div class="info" *ngIf="alimenti.length == 0">
     <h2 text-center="">{{'CREA_ALIMENTO' | translate}}</h2>
   </div>
-  <ion-list *ngIf="(alimenti$ | async).length > 0">
-    <ion-item lines="full" *ngFor="let alimento of alimenti$ | async" button=true>
+  <ion-list *ngIf="alimenti.length > 0">
+    <ion-item lines="full" *ngFor="let alimento of alimenti" button=true>
       <ion-grid fixed="true" text-center="true">
         <ion-row align-items-center>
           <ion-col size="7" text-left>{{alimento.nome}}</ion-col>
