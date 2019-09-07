@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {Ricetta} from '../../model/ricetta.model';
 import {RicettaService} from '../../services/ricetta.service';
 
+
 @Component({
   selector: 'ricette',
   templateUrl: './ricette.page.html',
