@@ -1,5 +1,8 @@
 <ion-content>
-  <ion-list>
+  <div class="info" *ngIf="ricette.length == 0">
+    <h2 text-center="">{{'CREA_RICETTA' | translate}}</h2>
+  </div>
+  <ion-list *ngIf="ricette.length > 0">
     <ion-item lines="full" *ngFor="let ricetta of ricette" button=true>
       <ion-grid fixed="true" text-center="true" (click)="modificaRicetta(ricetta)">
         <ion-row align-items-center>
