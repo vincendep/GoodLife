@@ -39,30 +39,17 @@
             </ion-grid>
         </div>
     </div>
-    <div class="divWater">
-        <div class="imageWater">
-            <ion-img src="assets/images/glass.png"></ion-img>
-        </div>
-        <ion-label color="tertiary" class="labelSize">{{this.diarioAlimentare.acqua}}</ion-label>
-        <div>
-            <div class="divWater1">
-                <ion-button class="waterButton color" fill="clear" (click)="this.incrementAcqua()">
-                    <p>
-                        <ion-icon name="add" size="large"></ion-icon>
-                    </p>
-                </ion-button>
-            </div>
-        </div>
-        <div>
-            <div class="divWater1">
-                <ion-button class="waterButton color" fill="clear" (click)="this.decrementAcqua()">
-                    <p>
-                        <ion-icon name="remove" size="large"></ion-icon>
-                    </p>
-                </ion-button>
-            </div>
-        </div>
-    </div>
+
+    <ion-item lines="full" class="water-item">
+        <ion-img src="assets/images/glass.png" class="imageWater"></ion-img>
+        <ion-label color="tertiary" class="water-count">{{this.diarioAlimentare.acqua}}</ion-label>
+        <ion-fab-button size="small" (click)="this.incrementAcqua()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button size="small" (click)="this.decrementAcqua()">
+            <ion-icon name="remove"></ion-icon>
+        </ion-fab-button>
+    </ion-item>
 
         <div class="divSquareButton">
             <ion-button expand="full" class="squareButton color" fill="clear"

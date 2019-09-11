@@ -71,37 +71,20 @@
 }
 
 /* Caratteristiche dei bottoni per aumentare e diminuire quantità d'acqua */
-.waterButton{
-  --color: white;
-  border-radius: 100%;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 1px solid white;
-  z-index: 1000;
-}
-
-.divWater1{
-  position: absolute;
-  width: 10%;
-}
-
-.divWater1:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
+ion-fab-button{
+  --box-shadow: none;
+  z-index: 1001;
 }
 
 /* Caratteristiche del contenitore dell'acqua */
-.divWater{
+.water-item{
   display: flex;
   justify-content: space-evenly;
+  height: 8%;
 }
-.labelSize{
+.water-count{
   text-align: center;
   font-size: 2em;
-  margin-bottom: auto;
-  margin-top: auto;
 }
 
 /* Caratteristiche immagini */
@@ -111,10 +94,9 @@
   margin-left: auto;
   margin-right: auto;
 }
-.imageWater {
-  height: 8%;
-  width: 8%;
-  margin-top: 2%;
+
+.imageWater{
+  height: 70%;
 }
 
 
