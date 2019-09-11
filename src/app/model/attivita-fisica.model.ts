@@ -1,7 +1,7 @@
 import {EsercizioFisico} from './esercizio-fisico.model';
 
-// TODO delete
 export class AttivitaFisica {
+
     esercizi: Array<{esercizio: EsercizioFisico, durata: number}>;
 
     constructor() {

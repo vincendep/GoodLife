@@ -24,6 +24,10 @@ export class AlimentoService {
     this.alimento = alimento;
   }
 
+  public findAlimentoById(id: number) {
+    return this.http.get<Alimento>(URL.ALIMENTI);
+  }
+
   public listAlimenti(): Observable<Alimento[]> {
     return this.http.get<Alimento[]>(URL.ALIMENTI);
   }

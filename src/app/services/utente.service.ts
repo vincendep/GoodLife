@@ -66,8 +66,8 @@ export class UtenteService {
         return this.http.post<Utente>(URL.SIGNUP, utente);
     }
 
-    getUtente(): BehaviorSubject<Utente> {
-        return this.utente$;
+    getUtente(): Observable<Utente> {
+        return this.utente$.asObservable();
     }
 
     getAuthToken(): string {

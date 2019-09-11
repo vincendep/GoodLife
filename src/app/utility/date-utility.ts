@@ -1,4 +1,3 @@
-
 export class DateUtility {
 
     public static fromDatetoIsoDateString(date: Date): string {

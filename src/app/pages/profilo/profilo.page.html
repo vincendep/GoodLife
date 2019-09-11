@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="utente$ | async as utente">
   <ion-list text-center="true">
     <ion-icon name="contact" class="iocon"  color="secondary"></ion-icon>
     <ion-item>

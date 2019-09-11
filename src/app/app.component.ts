@@ -6,7 +6,7 @@ import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {TranslateService} from '@ngx-translate/core';
 import {LinguaService} from './services/lingua.service';
 import {Utente} from './model/utente.model';
-import {BehaviorSubject} from 'rxjs';
+import {Observable} from 'rxjs';
 import {UtenteService} from './services/utente.service';
 
 @Component({
@@ -14,7 +14,9 @@ import {UtenteService} from './services/utente.service';
     templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
-    private utente$: BehaviorSubject<Utente>;
+
+    private utente$: Observable<Utente>;
+
     constructor(private platform: Platform,
                 private splashScreen: SplashScreen,
                 private statusBar: StatusBar,

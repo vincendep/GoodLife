@@ -5,6 +5,8 @@ import {DiarioService} from '../../services/diario.service';
 import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
 import {AlertController, NavController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
+import {Observable} from 'rxjs';
+import {AttivitaFisica} from '../../model/attivita-fisica.model';
 
 @Component({
   selector: 'app-dettagli-attivita-fisica',
@@ -12,6 +14,8 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./dettagli-attivita-fisica.page.scss'],
 })
 export class DettagliAttivitaFisicaPage implements OnInit {
+
+  private attivitaFisica$: Observable<AttivitaFisica>;
 
   private diarioAlimentare: DiarioAlimentare;
   private attivitaFisica: Array<{esercizio: EsercizioFisico, durata: number}>;
@@ -50,7 +54,7 @@ export class DettagliAttivitaFisicaPage implements OnInit {
       buttons: [{
         text: 'OK',
         handler: (data) => {
-          let index = this.attivitaFisica.indexOf(attivita);
+          const index = this.attivitaFisica.indexOf(attivita);
           if (index > -1) {
             this.attivitaFisica.splice(index, 1);
           }

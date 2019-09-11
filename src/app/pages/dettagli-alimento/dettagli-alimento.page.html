@@ -1,62 +1,72 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>{{ 'CREA_ALIMENTO' | translate | uppercase }}</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>{{ 'CREA_ALIMENTO' | translate | uppercase }}</ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div padding-horizontal="2px">
-    <form [formGroup]="form" class="list-form">
-      <ion-list>
-        <ion-item no-padding class="animated fadeInUp">
-          <ion-label position="floating">
-            {{ 'NOME' | translate | titlecase }}</ion-label>
-          <ion-input color="secondary" type="text" inputmode="text" formControlName="nome"></ion-input>
-        </ion-item>
-        <ion-item no-padding>
-          <ion-label>{{ 'CATEGORIA_ALIMENTARE' | translate }}</ion-label>
-          <ion-select interface="popover" color="secondary" formControlName="categoriaAlimentare">
-            <ion-select-option value="CARNE">{{ 'CARNE' | translate }}</ion-select-option>
-            <ion-select-option value="LATTICINI">{{ 'LATTICINI' | translate }}</ion-select-option>
-            <ion-select-option value="FRUTTA">{{ 'FRUTTA' | translate }}</ion-select-option>
-            <ion-select-option value="LEGUMI">{{ 'LEGUMI' | translate }}</ion-select-option>
-            <ion-select-option value="CEREALI">{{ 'CEREALI' | translate }}</ion-select-option>
-            <ion-select-option value="ALCOOL">{{ 'ALCOOL' | translate }}</ion-select-option>
-            <ion-select-option value="CONDIMENTO">{{ 'CONDIMENTO' | translate }}</ion-select-option>
-            <ion-select-option value="VERDURA">{{ 'VERDURA' | translate }}</ion-select-option>
-            <ion-select-option value="PESCE">{{ 'PESCE' | translate }}</ion-select-option>
-            <ion-select-option value="UOVA">{{ 'UOVA' | translate }}</ion-select-option>
-            <ion-select-option value="DOLCE">{{ 'DOLCE' | translate }}</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-item no-padding class="animated fadeInUp">
-          <ion-label position="floating">
-            {{ 'CALORIE' | translate | titlecase }}/ 100 g</ion-label>
-          <ion-input color="secondary" type="number" inputmode="numeric" formControlName="calorie" placeholder="0 kcal" min="0" max="2000"></ion-input>
-        </ion-item>
-        <ion-item no-padding class="animated fadeInUp">
-          <ion-label position="floating">
-            {{ 'PROTEINE' | translate | titlecase }}/ 100 g</ion-label>
-          <ion-input color="secondary" type="number" inputmode="numeric" formControlName="proteine" placeholder="0 g" min="0" max="100"></ion-input>
-        </ion-item>
-        <ion-item no-padding class="animated fadeInUp">
-          <ion-label position="floating">
-            {{ 'GRASSI' | translate | titlecase }} / 100 g</ion-label>
-          <ion-input color="secondary" type="number" inputmode="numeric" formControlName="grassi" placeholder="0 g" min="0" max="100"></ion-input>
-        </ion-item>
-        <ion-item no-padding class="animated fadeInUp">
-          <ion-label position="floating">
-            {{ 'CARBOIDRATI' | translate | titlecase }} / 100 g</ion-label>
-          <ion-input color="secondary" type="number" inputmode="numeric" formControlName="carboidrati" placeholder="0 g" min="0" max="100"></ion-input>
-        </ion-item>
+    <div padding-horizontal="2px">
+        <form [formGroup]="alimentoFormModel" class="list-form">
+            <ion-list>
+                <ion-item no-padding class="animated fadeInUp">
+                    <ion-label position="floating">
+                        {{ 'NOME' | translate | titlecase }}</ion-label>
+                    <ion-input color="secondary" type="text" inputmode="text" formControlName="nome"></ion-input>
+                </ion-item>
+                <ion-item no-padding>
+                    <ion-label>{{ 'CATEGORIA_ALIMENTARE' | translate }}</ion-label>
+                    <ion-select interface="popover" color="secondary" formControlName="categoriaAlimentare">
+                        <ion-select-option value="CARNE">{{ 'CARNE' | translate }}</ion-select-option>
+                        <ion-select-option value="LATTICINI">{{ 'LATTICINI' | translate }}</ion-select-option>
+                        <ion-select-option value="FRUTTA">{{ 'FRUTTA' | translate }}</ion-select-option>
+                        <ion-select-option value="LEGUMI">{{ 'LEGUMI' | translate }}</ion-select-option>
+                        <ion-select-option value="CEREALI">{{ 'CEREALI' | translate }}</ion-select-option>
+                        <ion-select-option value="ALCOOL">{{ 'ALCOOL' | translate }}</ion-select-option>
+                        <ion-select-option value="CONDIMENTO">{{ 'CONDIMENTO' | translate }}</ion-select-option>
+                        <ion-select-option value="VERDURA">{{ 'VERDURA' | translate }}</ion-select-option>
+                        <ion-select-option value="PESCE">{{ 'PESCE' | translate }}</ion-select-option>
+                        <ion-select-option value="UOVA">{{ 'UOVA' | translate }}</ion-select-option>
+                        <ion-select-option value="DOLCE">{{ 'DOLCE' | translate }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item no-padding class="animated fadeInUp">
+                    <ion-label position="floating">
+                        {{ 'CALORIE' | translate | titlecase }}/ 100 g
+                    </ion-label>
+                    <ion-input color="secondary" type="number" inputmode="numeric" formControlName="calorie"
+                               placeholder="0 kcal" min="0" max="2000"></ion-input>
+                </ion-item>
+                <ion-item no-padding class="animated fadeInUp">
+                    <ion-label position="floating">
+                        {{ 'PROTEINE' | translate | titlecase }}/ 100 g
+                    </ion-label>
+                    <ion-input color="secondary" type="number" inputmode="numeric" formControlName="proteine"
+                               placeholder="0 g" min="0" max="100"></ion-input>
+                </ion-item>
+                <ion-item no-padding class="animated fadeInUp">
+                    <ion-label position="floating">
+                        {{ 'GRASSI' | translate | titlecase }} / 100 g
+                    </ion-label>
+                    <ion-input color="secondary" type="number" inputmode="numeric" formControlName="grassi"
+                               placeholder="0 g" min="0" max="100"></ion-input>
+                </ion-item>
+                <ion-item no-padding class="animated fadeInUp">
+                    <ion-label position="floating">
+                        {{ 'CARBOIDRATI' | translate | titlecase }} / 100 g
+                    </ion-label>
+                    <ion-input color="secondary" type="number" inputmode="numeric" formControlName="carboidrati"
+                               placeholder="0 g" min="0" max="100"></ion-input>
+                </ion-item>
 
-      </ion-list>
-    </form>
-  </div>
+            </ion-list>
+        </form>
+    </div>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar text-center="true">
-    <ion-button fill="clear" size="large" color="dark" class="dimension" (click)="onCancel()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
-    <ion-button fill="clear" size="large" color="dark" class="dimension" [disabled]="!form.valid" (click)="onConfirm()">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
-  </ion-toolbar>
+    <ion-toolbar text-center="true">
+        <ion-button fill="clear" size="large" color="dark" class="dimension"
+                    (click)="onCancel()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
+        <ion-button fill="clear" size="large" color="dark" class="dimension" [disabled]="!alimentoFormModel.valid"
+                    (click)="onConfirm()">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
+    </ion-toolbar>
 </ion-footer>
