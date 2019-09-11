@@ -1,21 +1,20 @@
-
 /* Caratteristiche della data */
 
-.calendar{
+.calendar {
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   background-color: white;
   border-bottom: 1px solid var(--ion-color-secondary);
 }
 
 /* Caratteristiche del bottone circolare */
-.divRoundButton{
+.divRoundButton {
   display: flex;
   justify-content: center;
 }
 
-.divRoundButton1{
+.divRoundButton1 {
   position: absolute;
   width: 30%;
   max-width: 300px;
@@ -43,12 +42,13 @@
 }
 
 /* Caratteristiche dei bottoni rettangolari */
-.divSquareButton{
- display: flex;
- justify-content: space-around;
-  height: 30%;
+.divSquareButton {
+  display: flex;
+  justify-content: space-around;
+  height: 29%;
 }
-.squareButton{
+
+.squareButton {
   --color: black;
   width: 50%;
   height: 100%;
@@ -56,46 +56,47 @@
   border-bottom: 2px solid white;
   z-index: 1000;
 }
-.text{
+
+.text {
   font-size: smaller;
 }
 
 /* Caratteristiche del contenitore delle statistiche */
-.stats{
-  height: 29%;
+.stats {
+  //height: 29%;
 }
 
-.space{
+.space {
   margin-top: 1%;
   margin-bottom: 1%;
 }
 
 /* Caratteristiche dei bottoni per aumentare e diminuire quantità d'acqua */
-ion-fab-button{
+ion-fab-button {
   --box-shadow: none;
   z-index: 1001;
 }
 
 /* Caratteristiche del contenitore dell'acqua */
-.water-item{
+.water-item {
   display: flex;
   justify-content: space-evenly;
-  height: 8%;
 }
-.water-count{
+
+.water-count {
   text-align: center;
   font-size: 2em;
 }
 
 /* Caratteristiche immagini */
-.imageDimension{
+.imageDimension {
   height: 50%;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.imageWater{
+.imageWater {
   height: 70%;
 }
 
