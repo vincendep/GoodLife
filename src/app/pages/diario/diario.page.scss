@@ -17,8 +17,8 @@
 
 .divRoundButton1{
   position: absolute;
-  width: 35%;
-
+  width: 30%;
+  max-width: 300px;
 }
 
 .divRoundButton1:after {
@@ -44,9 +44,9 @@
 
 /* Caratteristiche dei bottoni rettangolari */
 .divSquareButton{
-  display: flex;
-  justify-content: space-around;
-  height: 48%;
+ display: flex;
+ justify-content: space-around;
+  height: 30%;
 }
 .squareButton{
   --color: black;
@@ -60,18 +60,10 @@
   font-size: smaller;
 }
 
-/* Caratteristiche del contenitore dei bottoni  */
-.box{
-  height: 61%;
-  position:relative;
-}
-
 /* Caratteristiche del contenitore delle statistiche */
 .stats{
-  height: 32%;
+  height: 29%;
 }
-
-
 
 .space{
   margin-top: 1%;
@@ -86,7 +78,7 @@
   width: 100%;
   height: 100%;
   border: 1px solid white;
-  z-index: 1001;
+  z-index: 1000;
 }
 
 .divWater1{
@@ -104,11 +96,12 @@
 .divWater{
   display: flex;
   justify-content: space-evenly;
-  height: 7%;
 }
 .labelSize{
   text-align: center;
   font-size: 2em;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 /* Caratteristiche immagini */

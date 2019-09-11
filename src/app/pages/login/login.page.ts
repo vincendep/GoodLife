@@ -5,7 +5,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {Account, UtenteService} from '../../services/utente.service';
 import {Utente} from '../../model/utente.model';
 import {HttpErrorResponse} from '@angular/common/http';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +20,7 @@ export class LoginPage implements OnInit {
               private alertController: AlertController,
               private translateService: TranslateService,
               private navController: NavController,
-              private utenteService: UtenteService,
-              private screenOrientation: ScreenOrientation) {
+              private utenteService: UtenteService) {
   }
 
   ngOnInit() {
@@ -35,7 +33,6 @@ export class LoginPage implements OnInit {
       ])]
     });
     this.initTranslate();
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   onLogin() {

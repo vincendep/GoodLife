@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {DiarioAlimentare} from '../../model/diario.model';
 import {Dieta} from '../../model/dieta.model';
 import {TranslateService} from '@ngx-translate/core';
@@ -9,7 +9,6 @@ import {PastoService} from '../../services/pasto.service';
 import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
 import {Alimento} from '../../model/alimento.model';
 import {UtenteService} from '../../services/utente.service';
-import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-diario',
@@ -27,8 +26,7 @@ export class DiarioPage implements OnInit {
               private diarioService: DiarioService,
               private pastoService: PastoService,
               private attivitaFisicaService: AttivitaFisicaService,
-              private utenteService: UtenteService,
-              private screenOrientation: ScreenOrientation) {
+              private utenteService: UtenteService) {
 
     this.diarioAlimentare = new DiarioAlimentare();
     this.dieta = new Dieta();
@@ -48,7 +46,6 @@ export class DiarioPage implements OnInit {
       this.dieta.proteine = d.proteine;
       this.dieta.grassi = d.grassi;
     });
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   incrementAcqua() {
