@@ -4,17 +4,17 @@
     </div>
     <ion-list *ngIf="ricette.length > 0">
         <ion-item lines="full" *ngFor="let ricetta of ricette" button=true>
-            <ion-grid fixed="true" text-center="true" (click)="modificaRicetta(ricetta)">
+            <ion-grid fixed="true" text-center="true" [routerLink]="['/dettagli-ricetta', ricetta.id]" routerDirection="root">
                 <ion-row align-items-center>
                     <ion-col size="7" text-left>{{ricetta.nome}}</ion-col>
                     <ion-col size="5">{{ricetta.getTotCalorie().toFixed(0)}} kcal</ion-col>
                 </ion-row>
             </ion-grid>
-            <ion-icon slot="end" class="delete-icon" name="close" (click)="eliminaPasto(ricetta)"></ion-icon>
+            <ion-icon slot="end" class="delete-icon" name="close" (click)="eliminaRicetta(ricetta)"></ion-icon>
         </ion-item>
     </ion-list>
     <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button (click)="addPasto()">
+        <ion-fab-button [routerLink]="['/dettagli-ricetta/nuovo']" routerDirection="root">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>

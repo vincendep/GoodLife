@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {AlertController, NavController} from '@ionic/angular';
+import {AlertController, ModalController, NavController, NavParams} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {RicettaService} from '../../services/ricetta.service';
 import {Ricetta} from '../../model/ricetta.model';
 import {DiarioAlimentare} from '../../model/diario.model';
 import {DiarioService} from '../../services/diario.service';
 import {Alimento} from '../../model/alimento.model';
-import {PastoService} from '../../services/pasto.service';
 
 @Component({
     selector: 'app-inserisci-ricetta',
@@ -23,24 +22,27 @@ export class InserisciRicettaPage implements OnInit {
                 private alertController: AlertController,
                 private ricettaService: RicettaService,
                 private diarioService: DiarioService,
-                private pastoService: PastoService,
-                private navController: NavController) {
+                private navController: NavController,
+                private modalController: ModalController,
+                private navParams: NavParams) {
         this.diarioAlimentare = new DiarioAlimentare();
         this.pasto = new Array<{ alimento: Alimento, quantita: number }>();
     }
 
     ngOnInit() {
         this.ricette$ = this.ricettaService.listRicette();
-        this.diarioAlimentare = this.diarioService.getDiario();
-        this.pasto = this.pastoService.getPasto();
+        this.pasto = this.navParams.data.appParam;
     }
 
-    onClick(ricetta: Ricetta) {
+    async onClick(ricetta: Ricetta) {
         for (const value of ricetta.ingredienti) {
             this.pasto.push({alimento: value.alimento, quantita: value.quantita});
         }
-        this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
-        this.navController.back();
+        await this.modalController.dismiss();
+    }
+
+    async back() {
+        await this.modalController.dismiss();
     }
 
 }

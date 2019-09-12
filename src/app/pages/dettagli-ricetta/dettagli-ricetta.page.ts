@@ -1,11 +1,11 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {PastoService} from '../../services/pasto.service';
-import {Router} from '@angular/router';
-import {AlertController, NavController} from '@ionic/angular';
+import {AlertController, ModalController, NavController} from '@ionic/angular';
 import {Ricetta} from '../../model/ricetta.model';
 import {RicettaService} from '../../services/ricetta.service';
+import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
     selector: 'app-dettagli-ricetta',
@@ -14,47 +14,53 @@ import {RicettaService} from '../../services/ricetta.service';
 })
 export class DettagliRicettaPage implements OnInit, OnDestroy {
     private form: FormGroup;
-    private newRicetta: Ricetta;
-    private a: string;
+    private ricetta: Ricetta;
+    private nome: string;
     private deleteTitle: string;
     private deleteMessage: string;
 
     constructor(private translateService: TranslateService,
-                private pastoService: PastoService,
-                private router: Router,
+                private route: ActivatedRoute,
                 private alertController: AlertController,
                 private formBuilder: FormBuilder,
                 private ricettaService: RicettaService,
-                private navController: NavController) {
+                private navController: NavController,
+                private modalController: ModalController) {
 
-        this.newRicetta = new Ricetta();
+        this.ricetta = new Ricetta();
 
     }
 
     ngOnInit() {
-        if (this.ricettaService.getRicetta() != null) {
-            this.form = this.formBuilder.group({
-                nome: [this.ricettaService.getRicetta().nome, Validators.required],
-            });
-            this.newRicetta.id = this.ricettaService.getRicetta().id;
-            this.newRicetta.nome = this.ricettaService.getRicetta().nome;
-            this.newRicetta.ingredienti = this.ricettaService.getRicetta().ingredienti;
-        } else {
-            this.form = this.formBuilder.group({
-                nome: ['', Validators.required],
-            });
-        }
-        this.a = this.translateService.instant('NUOVO-NOME');
+        this.route.paramMap.subscribe((params: ParamMap) => {
+            if (params.get('id') === 'nuovo') {
+                this.form = this.formBuilder.group({
+                    nome: ['', Validators.required],
+                });
+            } else {
+                this.ricettaService.findById(parseInt(params.get('id'), 0)).subscribe((ricetta: Ricetta) => {
+                    this.ricetta.id = ricetta.id;
+                    this.ricetta.nome = ricetta.nome;
+                    this.ricetta.ingredienti = ricetta.ingredienti;
+                });
+                this.form = this.formBuilder.group({
+                    nome: [this.ricetta.nome, Validators.required],
+                });
+            }
+        });
+        this.nome = this.translateService.instant('NUOVO-NOME');
     }
 
     ngOnDestroy(): void {
         this.ricettaService.setRicette(null);
     }
 
-    addFood() {
-        this.pastoService.setTipoPasto('nuovaRicetta');
-        this.pastoService.setPasto(this.newRicetta.ingredienti);
-        this.navController.navigateForward('inserisci-cibo');
+    async addFood() {
+        const modal = await this.modalController.create({
+            component: InserisciCiboPage,
+            componentProps: {appParam: this.ricetta.ingredienti}
+        });
+        await modal.present();
     }
 
     onCancel() {
@@ -62,8 +68,8 @@ export class DettagliRicettaPage implements OnInit, OnDestroy {
     }
 
     onUpdate() {
-        this.newRicetta.nome = this.form.get('nome').value;
-        this.ricettaService.createRicetta(this.newRicetta).subscribe((a) => {
+        this.ricetta.nome = this.form.get('nome').value;
+        this.ricettaService.createRicetta(this.ricetta).subscribe((a) => {
             this.navController.back();
         });
     }
@@ -80,9 +86,9 @@ export class DettagliRicettaPage implements OnInit, OnDestroy {
             buttons: [{
                 text: 'OK',
                 handler: (data) => {
-                    let index = this.newRicetta.ingredienti.indexOf(alimento);
+                    let index = this.ricetta.ingredienti.indexOf(alimento);
                     if (index > -1) {
-                        this.newRicetta.ingredienti.splice(index, 1);
+                        this.ricetta.ingredienti.splice(index, 1);
                     }
                 }
             }, this.translateService.instant('CANCEL_BUTTON')]

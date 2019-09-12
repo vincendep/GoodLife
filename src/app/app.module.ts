@@ -17,6 +17,7 @@ import {httpInterceptorProviders} from './interceptors';
 import {DettagliAlimentoPageModule} from './pages/dettagli-alimento/dettagli-alimento.module';
 import {DettagliPastoPageModule} from './pages/dettagli-pasto/dettagli-pasto.module';
 import {InserisciCiboPageModule} from './pages/inserisci-cibo/inserisci-cibo.module';
+import {InserisciRicettaPageModule} from './pages/inserisci-ricetta/inserisci-ricetta.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -45,7 +46,8 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule,
         DettagliAlimentoPageModule,
         DettagliPastoPageModule,
-        InserisciCiboPageModule],
+        InserisciCiboPageModule,
+        InserisciRicettaPageModule],
     providers: [
         StatusBar,
         SplashScreen,

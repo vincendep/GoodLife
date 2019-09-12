@@ -31,16 +31,7 @@ export class RicettePage implements OnInit {
         this.getRicette();
     }
 
-    addPasto() {
-        this.navController.navigateRoot('dettagli-ricetta');
-    }
-
-    modificaRicetta(ricetta: Ricetta) {
-        this.ricettaService.setRicette(ricetta);
-        this.navController.navigateRoot('dettagli-ricetta');
-    }
-
-    eliminaPasto(ricetta: Ricetta) {
+    eliminaRicetta(ricetta: Ricetta) {
         this.showDeleteAlert(ricetta);
     }
 

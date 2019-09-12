@@ -9,26 +9,26 @@
         <ion-item class="animated fadeInUp">
             <ion-label position="floating">
                 {{ 'NOME' | translate | titlecase }}</ion-label>
-            <ion-input color="secondary" type="text" inputmode="text" [placeholder]=a
+            <ion-input color="secondary" type="text" inputmode="text" [placeholder]=nome
                        formControlName="nome"></ion-input>
         </ion-item>
     </form>
     <ion-grid fixed="true" text-center="true">
         <ion-row>
             <ion-col>{{'CALORIE' | translate}}</ion-col>
-            <ion-col>{{ newRicetta.getTotCalorie().toFixed(0)}} kcal</ion-col>
+            <ion-col>{{ ricetta.getTotCalorie().toFixed(0)}} kcal</ion-col>
         </ion-row>
         <ion-row>
             <ion-col>{{'PROTEINE' | translate}}</ion-col>
-            <ion-col>{{newRicetta.getTotProteine().toFixed(0)}} g</ion-col>
+            <ion-col>{{ricetta.getTotProteine().toFixed(0)}} g</ion-col>
         </ion-row>
         <ion-row>
             <ion-col>{{'GRASSI' | translate}}</ion-col>
-            <ion-col>{{newRicetta.getTotGrassi().toFixed(0)}} g</ion-col>
+            <ion-col>{{ricetta.getTotGrassi().toFixed(0)}} g</ion-col>
         </ion-row>
         <ion-row>
             <ion-col>{{'CARBOIDRATI' | translate}}</ion-col>
-            <ion-col>{{newRicetta.getTotCarboidrati().toFixed(0)}} g</ion-col>
+            <ion-col>{{ricetta.getTotCarboidrati().toFixed(0)}} g</ion-col>
         </ion-row>
     </ion-grid>
 
@@ -37,7 +37,7 @@
     </ion-item>
 
     <ion-list>
-        <ion-item *ngFor="let element of newRicetta.ingredienti" lines="full">
+        <ion-item *ngFor="let element of ricetta.ingredienti" lines="full">
             <ion-grid fixed="true" text-center="true">
                 <ion-row>
                     <ion-col>
@@ -64,6 +64,6 @@
         <ion-button fill="clear" size="large" color="dark" class="dimension"
                     (click)="onCancel()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
         <ion-button fill="clear" size="large" color="dark" class="dimension" (click)="onUpdate()"
-                    [disabled]="!form.valid || newRicetta.ingredienti.length == 0">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
+                    [disabled]="!form.valid || ricetta.ingredienti.length == 0">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
     </ion-toolbar>
 </ion-footer>

@@ -5,6 +5,7 @@ import {AlertController, ModalController, NavController, NavParams} from '@ionic
 import {DiarioService} from '../../services/diario.service';
 import {Pasto} from '../../model/pasto.model';
 import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
+import {InserisciRicettaPage} from '../inserisci-ricetta/inserisci-ricetta.page';
 
 @Component({
     selector: 'app-dettagli-pasto',
@@ -41,8 +42,12 @@ export class DettagliPastoPage implements OnInit {
         await modal.present();
     }
 
-    addRicetta() {
-        this.navController.navigateForward('inserisci-ricetta');
+    async addRicetta() {
+        const modal = await this.modalController.create({
+            component: InserisciRicettaPage,
+            componentProps: {appParam: this.pasto.alimenti}
+        });
+        await modal.present();
     }
 
     eliminaAlimento(alimento: any) {
