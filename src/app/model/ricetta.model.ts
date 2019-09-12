@@ -19,23 +19,25 @@ export class Ricetta {
         let sum = 0;
         for (const value of this.ingredienti) {
 
-            sum += (value.alimento.calorie * value.quantita) / 100 ;
+            sum += (value.alimento.calorie * value.quantita) / 100;
         }
         return sum;
     }
+
     getTotProteine(): number {
         let sum = 0;
         for (const value of this.ingredienti) {
 
-            sum += (value.alimento.proteine * value.quantita) / 100 ;
+            sum += (value.alimento.proteine * value.quantita) / 100;
         }
         return sum;
     }
+
     getTotGrassi(): number {
         let sum = 0;
         for (const value of this.ingredienti) {
 
-            sum += (value.alimento.grassi * value.quantita) / 100 ;
+            sum += (value.alimento.grassi * value.quantita) / 100;
         }
         return sum;
     }
@@ -44,7 +46,7 @@ export class Ricetta {
         let sum = 0;
         for (const value of this.ingredienti) {
 
-            sum += (value.alimento.carboidrati * value.quantita) / 100 ;
+            sum += (value.alimento.carboidrati * value.quantita) / 100;
         }
         return sum;
     }

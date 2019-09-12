@@ -6,37 +6,37 @@ import {Observable} from 'rxjs';
 import {fromPromise} from 'rxjs/internal-compatibility';
 
 export class Lingua {
-  etichetta: string;
-  valore: string;
+    etichetta: string;
+    valore: string;
 
 }
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LinguaService {
 
-  italiano: Lingua = {etichetta: 'Italiano', valore: 'it'};
-  inglese: Lingua = {etichetta: 'English', valore: 'en'};
-  lingue: Lingua[] = [this.italiano, this.inglese];
+    italiano: Lingua = {etichetta: 'Italiano', valore: 'it'};
+    inglese: Lingua = {etichetta: 'English', valore: 'en'};
+    lingue: Lingua[] = [this.italiano, this.inglese];
 
-  constructor(private storage: Storage) {
+    constructor(private storage: Storage) {
 
-  }
+    }
 
-  getLinguaAttuale(): Observable<string> {
-    return fromPromise(this.storage.get(LINGUA));
-  }
+    getLinguaAttuale(): Observable<string> {
+        return fromPromise(this.storage.get(LINGUA));
+    }
 
-  getLinguaPreferita(): string {
-    return this.italiano.valore;
-  }
+    getLinguaPreferita(): string {
+        return this.italiano.valore;
+    }
 
-  getLingue(): Lingua[] {
-    return this.lingue;
-  }
+    getLingue(): Lingua[] {
+        return this.lingue;
+    }
 
-  updateLingua(nuovaLingua: string) {
-    this.storage.set(LINGUA, nuovaLingua);
-  }
+    updateLingua(nuovaLingua: string) {
+        this.storage.set(LINGUA, nuovaLingua);
+    }
 }

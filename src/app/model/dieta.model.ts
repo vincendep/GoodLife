@@ -1,4 +1,3 @@
-
 export class Dieta {
     obiettivo: Obiettivo;
     calorieColazione: number;

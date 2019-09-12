@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { ImpostazioniPage } from './impostazioni.page';
+import {ImpostazioniPage} from './impostazioni.page';
 import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ImpostazioniPage
-  }
+    {
+        path: '',
+        component: ImpostazioniPage
+    }
 ];
 
 @NgModule({
@@ -24,6 +24,7 @@ const routes: Routes = [
         TranslateModule,
         ReactiveFormsModule
     ],
-  declarations: [ImpostazioniPage]
+    declarations: [ImpostazioniPage]
 })
-export class ImpostazioniPageModule {}
+export class ImpostazioniPageModule {
+}

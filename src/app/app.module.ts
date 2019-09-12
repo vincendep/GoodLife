@@ -15,6 +15,8 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {httpInterceptorProviders} from './interceptors';
 import {DettagliAlimentoPageModule} from './pages/dettagli-alimento/dettagli-alimento.module';
+import {DettagliPastoPageModule} from './pages/dettagli-pasto/dettagli-pasto.module';
+import {InserisciCiboPageModule} from './pages/inserisci-cibo/inserisci-cibo.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -41,7 +43,9 @@ export function createTranslateLoader(http: HttpClient) {
             driverOrder: ['indexeddb', 'sqlite', 'websql']
         }),
         AppRoutingModule,
-        DettagliAlimentoPageModule],
+        DettagliAlimentoPageModule,
+        DettagliPastoPageModule,
+        InserisciCiboPageModule],
     providers: [
         StatusBar,
         SplashScreen,
@@ -50,4 +54,5 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

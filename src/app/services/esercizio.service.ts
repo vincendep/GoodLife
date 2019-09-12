@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {URL} from '../constants';
 import {EsercizioFisico} from '../model/esercizio-fisico.model';
 import {HttpClient} from '@angular/common/http';
@@ -9,7 +9,8 @@ import {Observable} from 'rxjs';
 })
 export class EsercizioService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+    }
 
     listEsercizi(): Observable<EsercizioFisico[]> {
         return this.http.get<EsercizioFisico[]>(URL.ESERCIZI);

@@ -2,10 +2,10 @@ import {EsercizioFisico} from './esercizio-fisico.model';
 
 export class AttivitaFisica {
 
-    esercizi: Array<{esercizio: EsercizioFisico, durata: number}>;
+    esercizi: Array<{ esercizio: EsercizioFisico, durata: number }>;
 
     constructor() {
-        this.esercizi = new Array<{esercizio: EsercizioFisico, durata: number}>();
+        this.esercizi = new Array<{ esercizio: EsercizioFisico, durata: number }>();
     }
 
     addAll(attivita: AttivitaFisica) {
@@ -15,7 +15,7 @@ export class AttivitaFisica {
     }
 
     replaceAll(attivita: AttivitaFisica) {
-        this.esercizi = new Array<{esercizio: EsercizioFisico, durata: number}>();
+        this.esercizi = new Array<{ esercizio: EsercizioFisico, durata: number }>();
         this.addAll(attivita);
     }
 

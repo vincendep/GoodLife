@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { InserisciCiboPage } from './inserisci-cibo.page';
+import {InserisciCiboPage} from './inserisci-cibo.page';
 import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: InserisciCiboPage
-  }
+    {
+        path: '',
+        component: InserisciCiboPage
+    }
 ];
 
 @NgModule({
@@ -23,6 +23,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         TranslateModule.forChild()
     ],
-  declarations: [InserisciCiboPage]
+    declarations: [InserisciCiboPage]
 })
-export class InserisciCiboPageModule {}
+export class InserisciCiboPageModule {
+}

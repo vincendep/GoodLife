@@ -1,28 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavController, PopoverController} from '@ionic/angular';
 import {UtenteService} from '../../services/utente.service';
 
 @Component({
-  selector: 'app-profilo-menu',
-  templateUrl: './profilo-menu.component.html',
-  styleUrls: ['./profilo-menu.component.scss'],
+    selector: 'app-profilo-menu',
+    templateUrl: './profilo-menu.component.html',
+    styleUrls: ['./profilo-menu.component.scss'],
 })
 export class ProfiloMenuComponent implements OnInit {
 
-  constructor(private navController: NavController,
-              private utenteService: UtenteService,
-              public popoverController: PopoverController) { }
+    constructor(private navController: NavController,
+                private utenteService: UtenteService,
+                public popoverController: PopoverController) {
+    }
 
-  ngOnInit() {}
+    ngOnInit() {
+    }
 
-  showSettings() {
-    this.navController.navigateForward('impostazioni');
-    this.popoverController.dismiss();
-  }
+    showSettings() {
+        this.navController.navigateForward('impostazioni');
+        this.popoverController.dismiss();
+    }
 
-  logout() {
-    this.utenteService.logout();
-    this.navController.navigateRoot('login');
-    this.popoverController.dismiss();
-  }
+    logout() {
+        this.utenteService.logout();
+        this.navController.navigateRoot('login');
+        this.popoverController.dismiss();
+    }
 }

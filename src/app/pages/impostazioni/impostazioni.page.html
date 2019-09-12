@@ -1,20 +1,22 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button color="dark"></ion-back-button>
-    </ion-buttons>
-    <ion-title color="dark">{{"IMPOSTAZIONI" | translate | uppercase}}</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button color="dark"></ion-back-button>
+        </ion-buttons>
+        <ion-title color="dark">{{"IMPOSTAZIONI" | translate | uppercase}}</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="profiloFormModel">
-    <ion-item>
-      <ion-label position="fixed" color="secondary">{{ 'LANGUAGE' | translate }}</ion-label>
-      <ion-label></ion-label>
-      <ion-select formControlName="linguaPreferita" okText="{{ 'SAVE_BUTTON' | translate }}" cancelText="{{ 'CANCEL_BUTTON' | translate }}" (ionChange)="this.onChangeLanguage()" >
-        <ion-select-option *ngFor="let lingua of lingue" [value]="lingua.valore">{{lingua.etichetta}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </form>
+    <form [formGroup]="profiloFormModel">
+        <ion-item>
+            <ion-label position="fixed" color="secondary">{{ 'LANGUAGE' | translate }}</ion-label>
+            <ion-label></ion-label>
+            <ion-select formControlName="linguaPreferita" okText="{{ 'SAVE_BUTTON' | translate }}"
+                        cancelText="{{ 'CANCEL_BUTTON' | translate }}" (ionChange)="this.onChangeLanguage()">
+                <ion-select-option *ngFor="let lingua of lingue"
+                                   [value]="lingua.valore">{{lingua.etichetta}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+    </form>
 </ion-content>

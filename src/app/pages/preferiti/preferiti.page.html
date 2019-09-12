@@ -1,23 +1,23 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title color="dark">
-      {{ 'FAVORITE' | translate }}: {{currentTab | translate | uppercase }}
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title color="dark">
+            {{ 'FAVORITE' | translate }}: {{currentTab | translate | uppercase }}
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-tabs (ionTabsWillChange)="changeCurrentTab()">
-    <ion-tab-bar color="primary" slot="top">
-      <ion-tab-button tab="preferiti/alimenti">
-        <ion-icon name="calendar"></ion-icon>
-        <ion-label>{{'ALIMENTI' | translate | titlecase}}</ion-label>
-      </ion-tab-button>
+    <ion-tabs (ionTabsWillChange)="changeCurrentTab()">
+        <ion-tab-bar color="primary" slot="top">
+            <ion-tab-button tab="preferiti/alimenti">
+                <ion-icon name="calendar"></ion-icon>
+                <ion-label>{{'ALIMENTI' | translate | titlecase}}</ion-label>
+            </ion-tab-button>
 
-      <ion-tab-button tab="preferiti/ricette">
-        <ion-icon name="contacts"></ion-icon>
-        <ion-label>{{'RICETTE' | translate | titlecase}}</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+            <ion-tab-button tab="preferiti/ricette">
+                <ion-icon name="contacts"></ion-icon>
+                <ion-label>{{'RICETTE' | translate | titlecase}}</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
 </ion-content>

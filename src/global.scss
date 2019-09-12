@@ -9,22 +9,25 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
 ion-item {
   --ion-item-background: transparent;
 }
 
-.color{
+.color {
 
-  background-color: var(--ion-color-primary); background-image: -webkit-gradient(linear, left top, left bottom, from(var(--ion-color-primary)), to(var(--ion-color-secondary)));
+  background-color: var(--ion-color-primary);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--ion-color-primary)), to(var(--ion-color-secondary)));
   background-image: -webkit-linear-gradient(top, var(--ion-color-primary), var(--ion-color-secondary));
   background-image: -moz-linear-gradient(top, var(--ion-color-primary), var(--ion-color-secondary));
   background-image: -ms-linear-gradient(top, var(--ion-color-primary), var(--ion-color-secondary));
   background-image: -o-linear-gradient(top, var(--ion-color-primary), var(--ion-color-secondary));
-  background-image: linear-gradient(to bottom, var(--ion-color-primary), var(--ion-color-secondary));filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=var(--ion-color-primary), endColorstr=var(--ion-color-secondary));
+  background-image: linear-gradient(to bottom, var(--ion-color-primary), var(--ion-color-secondary));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=var(--ion-color-primary), endColorstr=var(--ion-color-secondary));
 
 }
 
-.alertDimension{
+.alertDimension {
 
   --width: 100%;
 }
@@ -40,19 +43,14 @@ ion-item {
   src: url('/assets/fonts/Lato2OFL/Lato-Regular.ttf');
 }
 
-*{
+* {
   --ion-font-family: 'Lato';
 }
 
-.alertFixing{
+.alertFixing {
   padding-bottom: 60%;
 
 }
-
-
-
-
-
 
 
 // backgrounds //
@@ -146,6 +144,7 @@ ion-toolbar.user-profile {
     width: 68px;
     height: 68px;
   }
+
   .item-inner {
     border-width: 0;
   }
@@ -157,7 +156,7 @@ ion-toolbar.user-profile {
 // Android card shadow
 ion-card {
   &.sc-ion-card-md-h {
-    box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb),.24);
+    box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb), .24);
   }
 }
 
@@ -167,6 +166,7 @@ ion-card {
 
   .grid {
     padding: 0;
+
     .col {
       padding: 0;
     }
@@ -176,9 +176,11 @@ ion-card {
     .button-ios,
     .button-md {
       border-radius: 0;
+
       &:first-of-type {
         border-radius: 2px 0 0 2px;
       }
+
       &:last-of-type {
         border-radius: 0 2px 2px 0;
       }

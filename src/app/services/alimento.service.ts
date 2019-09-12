@@ -6,43 +6,43 @@ import {Observable} from 'rxjs';
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AlimentoService {
 
-  private alimento: Alimento;
+    private alimento: Alimento;
 
-  constructor(private http: HttpClient) {
-    this.alimento = null;
-  }
+    constructor(private http: HttpClient) {
+        this.alimento = null;
+    }
 
-  public getAlimento(): Alimento {
-    return this.alimento;
-  }
+    public getAlimento(): Alimento {
+        return this.alimento;
+    }
 
-  public setAlimento(alimento: Alimento) {
-    this.alimento = alimento;
-  }
+    public setAlimento(alimento: Alimento) {
+        this.alimento = alimento;
+    }
 
-  public findAlimentoById(id: number) {
-    return this.http.get<Alimento>(URL.ALIMENTI);
-  }
+    public findAlimentoById(id: number) {
+        return this.http.get<Alimento>(URL.ALIMENTI);
+    }
 
-  public listAlimenti(): Observable<Alimento[]> {
-    return this.http.get<Alimento[]>(URL.ALIMENTI);
-  }
+    public listAlimenti(): Observable<Alimento[]> {
+        return this.http.get<Alimento[]>(URL.ALIMENTI);
+    }
 
-  public createAlimento(alimento: Alimento) {
-    return this.http.post<Alimento>(URL.ALIMENTI, alimento);
-  }
+    public createAlimento(alimento: Alimento) {
+        return this.http.post<Alimento>(URL.ALIMENTI, alimento);
+    }
 
-  public listAlimentiCreati(): Observable<Alimento[]> {
-    return this.http.get<Alimento[]>(URL.ALIMENTI + '/creati');
-  }
+    public listAlimentiCreati(): Observable<Alimento[]> {
+        return this.http.get<Alimento[]>(URL.ALIMENTI + '/creati');
+    }
 
-  public deleteAlimento(alimento: Alimento) {
-     return this.http.delete<Alimento>(URL.ALIMENTI + '/' + alimento.id);
-}
+    public deleteAlimento(alimento: Alimento) {
+        return this.http.delete<Alimento>(URL.ALIMENTI + '/' + alimento.id);
+    }
 }
 
 

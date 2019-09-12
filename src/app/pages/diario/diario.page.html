@@ -51,53 +51,53 @@
         </ion-fab-button>
     </ion-item>
 
-        <div class="divSquareButton">
-            <ion-button expand="full" class="squareButton color" fill="clear"
-                        (click)="goToDettagliPasto(this.diarioAlimentare.alimentiColazione, 'colazione')">
-                <div>{{ 'COLAZIONE' | translate }}
-                    <ion-img src="assets/images/colazione.png" class="imageDimension"></ion-img>
-                    <p class="text">{{this.diarioAlimentare.getCalorieColazione().toFixed(0)}}
-                        /{{dieta.calorieColazione}} kcal</p>
-                </div>
-            </ion-button>
-            <ion-button expand="full" class="squareButton color" fill="clear"
-                        (click)="goToDettagliPasto(this.diarioAlimentare.alimentiPranzo, 'pranzo')">
-                <div>{{ 'PRANZO' | translate }}
-                    <ion-img src="assets/images/pranzo.png" class="imageDimension"></ion-img>
-                    <p class="text">{{this.diarioAlimentare.getCaloriePranzo().toFixed(0)}}/{{dieta.caloriePranzo}}
-                        kcal</p>
-                </div>
-            </ion-button>
-        </div>
-
-        <div class="divRoundButton">
-            <div class="divRoundButton1">
-                <ion-button class="roundButton color" fill="clear" (click)="goToDettagliAttivitaFisica()">
-                    <div>
-                        <ion-img src="assets/images/attivita.png" class="imageDimension"></ion-img>
-                        <p class="text">{{this.diarioAlimentare.getConsumoTotale().toFixed(0)}}</p>
-                    </div>
-                </ion-button>
+    <div class="divSquareButton">
+        <ion-button expand="full" class="squareButton color" fill="clear"
+                    (click)="goToDettagliPasto(this.diarioAlimentare.alimentiColazione, 'colazione')">
+            <div>{{ 'COLAZIONE' | translate }}
+                <ion-img src="assets/images/colazione.png" class="imageDimension"></ion-img>
+                <p class="text">{{this.diarioAlimentare.getCalorieColazione().toFixed(0)}}
+                    /{{dieta.calorieColazione}} kcal</p>
             </div>
-        </div>
+        </ion-button>
+        <ion-button expand="full" class="squareButton color" fill="clear"
+                    (click)="goToDettagliPasto(this.diarioAlimentare.alimentiPranzo, 'pranzo')">
+            <div>{{ 'PRANZO' | translate }}
+                <ion-img src="assets/images/pranzo.png" class="imageDimension"></ion-img>
+                <p class="text">{{this.diarioAlimentare.getCaloriePranzo().toFixed(0)}}/{{dieta.caloriePranzo}}
+                    kcal</p>
+            </div>
+        </ion-button>
+    </div>
 
-
-        <div class="divSquareButton">
-            <ion-button expand="full" class="squareButton color" fill="clear"
-                        (click)="goToDettagliPasto(this.diarioAlimentare.alimentiSnack, 'snack')">
-                <div>{{ 'SNACKS' | translate }}
-                    <ion-img src="assets/images/snacks.png" class="imageDimension"></ion-img>
-                    <p class="text">{{this.diarioAlimentare.getCalorieSnack().toFixed(0)}}/{{dieta.calorieSnack}}
-                        kcal</p>
+    <div class="divRoundButton">
+        <div class="divRoundButton1">
+            <ion-button class="roundButton color" fill="clear" (click)="goToDettagliAttivitaFisica()">
+                <div>
+                    <ion-img src="assets/images/attivita.png" class="imageDimension"></ion-img>
+                    <p class="text">{{this.diarioAlimentare.getConsumoTotale().toFixed(0)}}</p>
                 </div>
             </ion-button>
-            <ion-button expand="full" class="squareButton color" fill="clear"
-                        (click)="goToDettagliPasto(this.diarioAlimentare.alimentiCena, 'cena')">
-                <div>{{ 'CENA' | translate }}
-                    <ion-img src="assets/images/cena.png" class="imageDimension dimensionBar dimensionBar"></ion-img>
-                    <p class="text">{{this.diarioAlimentare.getCalorieCena().toFixed(0)}}/{{dieta.calorieCena}} kcal</p>
-                </div>
-            </ion-button>
         </div>
+    </div>
+
+
+    <div class="divSquareButton">
+        <ion-button expand="full" class="squareButton color" fill="clear"
+                    (click)="goToDettagliPasto(this.diarioAlimentare.alimentiSnack, 'snack')">
+            <div>{{ 'SNACKS' | translate }}
+                <ion-img src="assets/images/snacks.png" class="imageDimension"></ion-img>
+                <p class="text">{{this.diarioAlimentare.getCalorieSnack().toFixed(0)}}/{{dieta.calorieSnack}}
+                    kcal</p>
+            </div>
+        </ion-button>
+        <ion-button expand="full" class="squareButton color" fill="clear"
+                    (click)="goToDettagliPasto(this.diarioAlimentare.alimentiCena, 'cena')">
+            <div>{{ 'CENA' | translate }}
+                <ion-img src="assets/images/cena.png" class="imageDimension dimensionBar dimensionBar"></ion-img>
+                <p class="text">{{this.diarioAlimentare.getCalorieCena().toFixed(0)}}/{{dieta.calorieCena}} kcal</p>
+            </div>
+        </ion-button>
+    </div>
 
 </ion-content>

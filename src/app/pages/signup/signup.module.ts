@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
 import {TranslateModule} from '@ngx-translate/core';
 
-import { SignupPage } from './signup.page';
+import {SignupPage} from './signup.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: SignupPage
-  }
+    {
+        path: '',
+        component: SignupPage
+    }
 ];
 
 @NgModule({
@@ -26,6 +26,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         TranslateModule
     ],
-  declarations: [SignupPage]
+    declarations: [SignupPage]
 })
-export class SignupPageModule {}
+export class SignupPageModule {
+}

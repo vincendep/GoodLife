@@ -1,28 +1,29 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { RicettePage } from './ricette.page';
+import {RicettePage} from './ricette.page';
 import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: RicettePage
-  }
+    {
+        path: '',
+        component: RicettePage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes),
-    TranslateModule.forChild()
-  ],
-  declarations: [RicettePage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes),
+        TranslateModule.forChild()
+    ],
+    declarations: [RicettePage]
 })
-export class RicettePageModule {}
+export class RicettePageModule {
+}

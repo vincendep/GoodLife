@@ -1,74 +1,82 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DiarioAlimentare} from '../../model/diario.model';
 import {TranslateService} from '@ngx-translate/core';
-import {AlertController, NavController} from '@ionic/angular';
+import {AlertController, ModalController, NavController, NavParams} from '@ionic/angular';
 import {DiarioService} from '../../services/diario.service';
-import {PastoService} from '../../services/pasto.service';
 import {Pasto} from '../../model/pasto.model';
+import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
 
 @Component({
-  selector: 'app-dettagli-pasto',
-  templateUrl: './dettagli-pasto.page.html',
-  styleUrls: ['./dettagli-pasto.page.scss'],
+    selector: 'app-dettagli-pasto',
+    templateUrl: './dettagli-pasto.page.html',
+    styleUrls: ['./dettagli-pasto.page.scss'],
 })
 export class DettagliPastoPage implements OnInit {
 
-  diarioAlimentare: DiarioAlimentare;
-  pasto: Pasto;
-  private deleteTitle: string;
-  private deleteMessage: string;
+    diarioAlimentare: DiarioAlimentare;
+    pasto: Pasto;
+    private deleteTitle: string;
+    private deleteMessage: string;
 
-  constructor(private translateService: TranslateService,
-              private navController: NavController,
-              private diarioService: DiarioService,
-              private pastoService: PastoService,
-              private alertController: AlertController) {
+    constructor(private translateService: TranslateService,
+                private navController: NavController,
+                private diarioService: DiarioService,
+                private alertController: AlertController,
+                private navParams: NavParams,
+                private modalController: ModalController) {
 
-    this.diarioAlimentare = new DiarioAlimentare();
-    this.pasto = new Pasto();
-  }
+        this.diarioAlimentare = new DiarioAlimentare();
+        this.pasto = new Pasto();
+    }
 
-  ngOnInit() {
-    this.diarioAlimentare = this.diarioService.getDiario();
-    this.pasto.alimenti = this.pastoService.getPasto();
-  }
+    ngOnInit() {
+        this.pasto.alimenti = this.navParams.data.appParam;
+    }
 
-  addCibo() {
-    this.navController.navigateForward('inserisci-cibo');
-  }
-  addRicetta() {
-    this.navController.navigateForward('inserisci-ricetta');
-  }
+    async addCibo() {
+        const modal = await this.modalController.create({
+            component: InserisciCiboPage,
+            componentProps: {appParam: this.pasto.alimenti}
+        });
+        await modal.present();
+    }
 
-  eliminaAlimento(alimento: any) {
-    this.showDeleteAlert(alimento);
-  }
+    addRicetta() {
+        this.navController.navigateForward('inserisci-ricetta');
+    }
 
-  async showDeleteAlert(alimento: any) {
-    this.initTranslate();
-    const alert = await this.alertController.create({
-      header: this.deleteTitle,
-      message: this.deleteMessage + ' ' + alimento.alimento.nome + '?',
-      buttons: [{
-        text: 'OK',
-        handler: (data) => {
-          let index = this.pasto.alimenti.indexOf(alimento);
-          if (index > -1) {
-            this.pasto.alimenti.splice(index, 1);
-          }
-          this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
-        }
-      }, this.translateService.instant('CANCEL_BUTTON')]
-    });
-    await alert.present();
-  }
+    eliminaAlimento(alimento: any) {
+        this.showDeleteAlert(alimento);
+    }
 
-  initTranslate() {
-    this.translateService.get('DELETE_TITLE').subscribe((data) => {
-      this.deleteTitle = data;
-    });
-    this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
-      this.deleteMessage = data;
-    });
-  }
+    async showDeleteAlert(alimento: any) {
+        this.initTranslate();
+        const alert = await this.alertController.create({
+            header: this.deleteTitle,
+            message: this.deleteMessage + ' ' + alimento.alimento.nome + '?',
+            buttons: [{
+                text: 'OK',
+                handler: (data) => {
+                    let index = this.pasto.alimenti.indexOf(alimento);
+                    if (index > -1) {
+                        this.pasto.alimenti.splice(index, 1);
+                    }
+                }
+            }, this.translateService.instant('CANCEL_BUTTON')]
+        });
+        await alert.present();
+    }
+
+    initTranslate() {
+        this.translateService.get('DELETE_TITLE').subscribe((data) => {
+            this.deleteTitle = data;
+        });
+        this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
+            this.deleteMessage = data;
+        });
+    }
+
+    async back() {
+        await this.modalController.dismiss();
+    }
 }

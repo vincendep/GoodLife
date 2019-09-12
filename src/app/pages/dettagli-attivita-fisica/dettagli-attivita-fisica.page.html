@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title color="dark">{{ 'ATTIVITA' | translate }}</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button color="dark"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title color="dark">{{ 'ATTIVITA' | translate }}</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button color="dark"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 <ion-item color="primary" class="bg-white" lines="full">
     <ion-grid fixed="true" text-center="true">
@@ -15,7 +15,7 @@
 
 <ion-content>
     <div *ngIf="attivitaFisica.length == 0" class="content">
-    <h2 text-center>{{'INSERISCI_ESERCIZIO' | translate}}</h2>
+        <h2 text-center>{{'INSERISCI_ESERCIZIO' | translate}}</h2>
     </div>
     <ion-list *ngIf="attivitaFisica.length > 0">
         <ion-list-header>
@@ -25,7 +25,8 @@
             <ion-grid>
                 <ion-row>
                     <ion-col size="5">{{attivita.esercizio.nome}}</ion-col>
-                    <ion-col size="4">{{(attivita.esercizio.consumoPerMinuto * attivita.durata).toFixed(0)}} kcal</ion-col>
+                    <ion-col size="4">{{(attivita.esercizio.consumoPerMinuto * attivita.durata).toFixed(0)}}kcal
+                    </ion-col>
                     <ion-col size="3" text-end>{{attivita.durata}} min</ion-col>
                 </ion-row>
             </ion-grid>

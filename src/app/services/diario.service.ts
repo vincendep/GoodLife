@@ -10,13 +10,13 @@ import {Alimento} from '../model/alimento.model';
 })
 
 
-
 export class DiarioService {
 
     diario: DiarioAlimentare;
-    pastoSelezionato: Array<{alimento: Alimento, quantita: number}>;
+    pastoSelezionato: Array<{ alimento: Alimento, quantita: number }>;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+    }
 
     public getDiario() {
         return this.diario;
@@ -30,7 +30,7 @@ export class DiarioService {
         return this.pastoSelezionato;
     }
 
-    public setPastoSelezionato(a: Array<{alimento: Alimento, quantita: number}>) {
+    public setPastoSelezionato(a: Array<{ alimento: Alimento, quantita: number }>) {
         this.pastoSelezionato = a;
     }
 

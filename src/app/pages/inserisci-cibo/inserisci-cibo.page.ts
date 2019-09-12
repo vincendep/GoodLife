@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {AlimentoService} from '../../services/alimento.service';
 import {Alimento} from '../../model/alimento.model';
-import {AlertController, NavController} from '@ionic/angular';
+import {AlertController, ModalController, NavController, NavParams} from '@ionic/angular';
 import {PastoService} from '../../services/pasto.service';
 import {Observable} from 'rxjs';
 import {DiarioAlimentare} from '../../model/diario.model';
@@ -10,16 +10,16 @@ import {DiarioService} from '../../services/diario.service';
 
 
 @Component({
-  selector: 'app-inserisci-cibo',
-  templateUrl: './inserisci-cibo.page.html',
-  styleUrls: ['./inserisci-cibo.page.scss'],
+    selector: 'app-inserisci-cibo',
+    templateUrl: './inserisci-cibo.page.html',
+    styleUrls: ['./inserisci-cibo.page.scss'],
 })
 
 export class InserisciCiboPage implements OnInit {
 
     private alimenti$: Observable<Alimento[]>;
     private diarioAlimentare: DiarioAlimentare;
-    private pasto: Array<{alimento: Alimento, quantita: number}>;
+    private pasto: Array<{ alimento: Alimento, quantita: number }>;
     private categoriaSelezionata: string;
     private ricerca = '';
 
@@ -28,17 +28,19 @@ export class InserisciCiboPage implements OnInit {
                 private alimentoService: AlimentoService,
                 private pastoService: PastoService,
                 private alertController: AlertController,
-                private navController: NavController) {
+                private navController: NavController,
+                private navParams: NavParams,
+                private modalController: ModalController
+    ) {
         this.diarioAlimentare = new DiarioAlimentare();
-        this.pasto = new Array<{alimento: Alimento, quantita: number}>();
+        this.pasto = new Array<{ alimento: Alimento, quantita: number }>();
         this.categoriaSelezionata = 'CARNE';
     }
 
 
     ngOnInit() {
         this.alimenti$ = this.alimentoService.listAlimenti();
-        this.diarioAlimentare = this.diarioService.getDiario();
-        this.pasto = this.pastoService.getPasto();
+        this.pasto = this.navParams.data.appParam;
     }
 
     onClick(alimento: Alimento): void {
@@ -54,7 +56,7 @@ export class InserisciCiboPage implements OnInit {
                 ': ' + a.calorie + ' kcal <br/><br/>' + this.translateService.instant('PROTEINE') +
                 ': ' + a.proteine + ' g <br/><br/>' + this.translateService.instant('GRASSI') +
                 ': ' + a.grassi + ' g <br/><br/>' + this.translateService.instant('CARBOIDRATI') +
-                ': ' +  a.carboidrati + ' g',
+                ': ' + a.carboidrati + ' g',
             inputs: [
                 {
                     name: 'quantita',
@@ -75,8 +77,7 @@ export class InserisciCiboPage implements OnInit {
                             if (this.pastoService.tipoPasto === 'nuovaRicetta') {
                                 this.navController.back();
                             } else {
-                            this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
-                            this.navController.back();
+                                this.modalController.dismiss();
                             }
                         }
                     }
@@ -85,7 +86,12 @@ export class InserisciCiboPage implements OnInit {
         });
         await alert.present();
     }
+
     reset() {
         this.categoriaSelezionata = '';
+    }
+
+    async back() {
+        await this.modalController.dismiss();
     }
 }

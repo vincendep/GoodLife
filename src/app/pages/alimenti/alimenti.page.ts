@@ -33,11 +33,11 @@ export class AlimentiPage implements OnInit {
     async creaAlimento() {
         const alimento: Alimento = new Alimento();
         alimento.nome = '';
-        alimento.calorie = 0;
-        alimento.proteine = 0;
-        alimento.grassi = 0;
-        alimento.carboidrati = 0;
-        alimento.categoriaAlimentare = 'CARNE';
+        alimento.calorie = null;
+        alimento.proteine = null;
+        alimento.grassi = null;
+        alimento.carboidrati = null;
+        alimento.categoriaAlimentare = null;
         const modal = await this.modalController.create({
             component: DettagliAlimentoPage,
             componentProps: {appParam: alimento}

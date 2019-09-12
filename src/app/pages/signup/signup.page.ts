@@ -10,9 +10,9 @@ import {Account, UtenteService} from '../../services/utente.service';
 import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.page.html',
-  styleUrls: ['./signup.page.scss']
+    selector: 'app-signup',
+    templateUrl: './signup.page.html',
+    styleUrls: ['./signup.page.scss']
 })
 export class SignupPage implements OnInit {
     stepTwoForm: FormGroup;
@@ -59,14 +59,14 @@ export class SignupPage implements OnInit {
             ])]
         });
         this.stepThreeForm = this.formBuilder.group({
-            email: ['', Validators.compose([
-                Validators.required,
-                Validators.email
-            ])],
-            nome: ['', Validators.required],
-            cognome: ['', Validators.required],
-            password: ['', Validators.required],
-            passwordCheck: ['', Validators.required]
+                email: ['', Validators.compose([
+                    Validators.required,
+                    Validators.email
+                ])],
+                nome: ['', Validators.required],
+                cognome: ['', Validators.required],
+                password: ['', Validators.required],
+                passwordCheck: ['', Validators.required]
             }
         );
         this.initTranslate();
@@ -76,14 +76,14 @@ export class SignupPage implements OnInit {
         const dieta: Dieta = new Dieta();
         dieta.inizioDieta = new Date();
         switch (event.srcElement.id) {
-          case 'obiettivoDimagrimento':
-            dieta.obiettivo = Obiettivo.DIMAGRIRE;
-            break;
-          case 'obiettivoMassa':
-            dieta.obiettivo = Obiettivo.MASSA_MUSCOLARE;
-            break;
-          case 'obiettivoSano':
-            dieta.obiettivo = Obiettivo.MANGIARE_SANO;
+            case 'obiettivoDimagrimento':
+                dieta.obiettivo = Obiettivo.DIMAGRIRE;
+                break;
+            case 'obiettivoMassa':
+                dieta.obiettivo = Obiettivo.MASSA_MUSCOLARE;
+                break;
+            case 'obiettivoSano':
+                dieta.obiettivo = Obiettivo.MANGIARE_SANO;
         }
         this.nuovoUtente.diete.push(dieta);
         this.goToNextStep();
@@ -116,11 +116,13 @@ export class SignupPage implements OnInit {
         this.utenteService.signup(this.nuovoUtente).subscribe((utente: Utente) => {
                 const account: Account = {
                     username: this.stepThreeForm.get('email').value,
-                    password: this.stepThreeForm.get('password').value};
+                    password: this.stepThreeForm.get('password').value
+                };
                 this.utenteService.login(account).subscribe((u: Utente) => {
-                   this.navController.navigateRoot('tabs');
-                }); }
-           ,
+                    this.navController.navigateRoot('tabs');
+                });
+            }
+            ,
             (err: HttpErrorResponse) => {
                 if (err.status === 500) {
                     console.error('login request error: ' + err.status);

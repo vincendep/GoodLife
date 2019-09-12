@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { InserisciAttivitaPage } from './inserisci-attivita.page';
+import {InserisciAttivitaPage} from './inserisci-attivita.page';
 import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: InserisciAttivitaPage
-  }
+    {
+        path: '',
+        component: InserisciAttivitaPage
+    }
 ];
 
 @NgModule({
@@ -23,6 +23,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         TranslateModule.forChild()
     ],
-  declarations: [InserisciAttivitaPage]
+    declarations: [InserisciAttivitaPage]
 })
-export class InserisciAttivitaPageModule {}
+export class InserisciAttivitaPageModule {
+}

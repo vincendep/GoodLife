@@ -1,31 +1,31 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Alimento} from '../model/alimento.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PastoService {
 
-  tipoPasto: string;
-  pasto: Array<{alimento: Alimento, quantita: number}>;
+    tipoPasto: string;
+    pasto: Array<{ alimento: Alimento, quantita: number }>;
 
-  constructor() {
-    this.pasto = [];
-  }
+    constructor() {
+        this.pasto = [];
+    }
 
-  getTipoPasto(): string {
-    return this.tipoPasto;
-  }
+    getTipoPasto(): string {
+        return this.tipoPasto;
+    }
 
-  setTipoPasto(tp: string) {
-    this.tipoPasto = tp;
-  }
+    setTipoPasto(tp: string) {
+        this.tipoPasto = tp;
+    }
 
-  getPasto(): Array<{alimento: Alimento; quantita: number}> {
-    return this.pasto;
-  }
+    getPasto(): Array<{ alimento: Alimento; quantita: number }> {
+        return this.pasto;
+    }
 
-  setPasto(pasto: Array<{alimento: Alimento, quantita: number}>) {
-    this.pasto = pasto;
-  }
+    setPasto(pasto: Array<{ alimento: Alimento, quantita: number }>) {
+        this.pasto = pasto;
+    }
 }

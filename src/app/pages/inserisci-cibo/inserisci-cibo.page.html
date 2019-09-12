@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button color="dark"></ion-back-button>
-      </ion-buttons>
-      <ion-searchbar [(ngModel)]="ricerca" (ionChange)="reset()" animated="true"></ion-searchbar>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-button slot="start" fill="clear" color="dark" (click)="back()">
+            <ion-icon name="arrow-back" size="large"></ion-icon>
+        </ion-button>
+        <ion-searchbar [(ngModel)]="ricerca" (ionChange)="reset()" animated="true"></ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -32,14 +32,16 @@
         <div>
             <ion-list>
                 <div *ngFor="let alimento of alimenti$ | async">
-                <ion-item *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))" (click)="onClick(alimento)" button="true">
-                    <ion-grid fixed="true">
-                        <ion-row align-items-center>
-                            <ion-col size="9">{{alimento.nome}}</ion-col>
-                            <ion-col text-end size="3" justify-content-end>{{alimento.calorie}} kcal</ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-item>
+                    <ion-item
+                            *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))"
+                            (click)="onClick(alimento)" button="true">
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">{{alimento.nome}}</ion-col>
+                                <ion-col text-end size="3" justify-content-end>{{alimento.calorie}} kcal</ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
                 </div>
             </ion-list>
         </div>
