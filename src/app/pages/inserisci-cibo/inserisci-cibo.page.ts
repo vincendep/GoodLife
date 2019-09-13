@@ -45,10 +45,10 @@ export class InserisciCiboPage implements OnInit {
             animated: true,
             cssClass: 'alertFixing',
             message: this.translateService.instant('CALORIE') +
-                ': ' + a.calorie + ' kcal <br/><br/>' + this.translateService.instant('PROTEINE') +
-                ': ' + a.proteine + ' g <br/><br/>' + this.translateService.instant('GRASSI') +
-                ': ' + a.grassi + ' g <br/><br/>' + this.translateService.instant('CARBOIDRATI') +
-                ': ' + a.carboidrati + ' g',
+                ': ' + a.calorie + ' kcal/100 g <br/><br/>' + this.translateService.instant('PROTEINE') +
+                ': ' + a.proteine + ' g/100 g <br/><br/>' + this.translateService.instant('GRASSI') +
+                ': ' + a.grassi + ' g/100 g <br/><br/>' + this.translateService.instant('CARBOIDRATI') +
+                ': ' + a.carboidrati + ' g/100 g',
             inputs: [
                 {
                     name: 'quantita',

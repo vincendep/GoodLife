@@ -7,19 +7,22 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-item lines="full" class="bg-white" color="primary">
+<ion-item lines="full" color="secondary" class="recap">
     <ion-grid fixed="true" text-center="true">
         <ion-row>
             <ion-col>{{'CALORIE' | translate | titlecase}}</ion-col>
             <ion-col>{{ pasto.getTotaleCalorie().toFixed(0)}} kcal</ion-col>
+            <br/><br/>
         </ion-row>
         <ion-row>
             <ion-col>{{'PROTEINE' | translate | titlecase}}</ion-col>
             <ion-col>{{pasto.getTotProteine().toFixed(0)}} g</ion-col>
+            <br/><br/>
         </ion-row>
         <ion-row>
             <ion-col>{{'GRASSI' | translate | titlecase}}</ion-col>
             <ion-col>{{pasto.getTotGrassi().toFixed(0)}} g</ion-col>
+            <br/><br/>
         </ion-row>
         <ion-row>
             <ion-col>{{'CARBOIDRATI' | translate | titlecase}}</ion-col>
