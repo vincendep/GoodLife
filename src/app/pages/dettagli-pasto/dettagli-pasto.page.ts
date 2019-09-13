@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {AlertController, ModalController, NavParams} from '@ionic/angular';
+import {AlertController, IonItemSliding, ModalController, NavParams} from '@ionic/angular';
 import {Pasto} from '../../model/pasto.model';
 import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
 import {InserisciRicettaPage} from '../inserisci-ricetta/inserisci-ricetta.page';
+import {Alimento} from '../../model/alimento.model';
 
 @Component({
     selector: 'app-dettagli-pasto',
@@ -73,5 +74,54 @@ export class DettagliPastoPage implements OnInit {
 
     async back() {
         await this.modalController.dismiss();
+    }
+
+    showItemOptions(sliding: IonItemSliding) {
+        sliding.closeOpened().then(() => {
+            sliding.open('end');
+        });
+    }
+
+    modificaAlimento(ingrediente: { alimento: Alimento, quantita: number }, sliding: IonItemSliding) {
+        sliding.close();
+        this.selezionaDose(ingrediente);
+    }
+
+    async selezionaDose(ingrediente: { alimento: Alimento, quantita: number }) {
+        const alert = await this.alertController.create({
+            header: ingrediente.alimento.nome,
+            animated: true,
+            cssClass: 'alertFixing',
+            message: this.translateService.instant('CALORIE') +
+                ': ' + ingrediente.alimento.calorie + ' kcal/100 g <br/><br/>' + this.translateService.instant('PROTEINE') +
+                ': ' + ingrediente.alimento.proteine + ' g/100 g <br/><br/>' + this.translateService.instant('GRASSI') +
+                ': ' + ingrediente.alimento.grassi + ' g/100 g <br/><br/>' + this.translateService.instant('CARBOIDRATI') +
+                ': ' + ingrediente.alimento.carboidrati + ' g/100 g',
+            inputs: [
+                {
+                    name: 'quantita',
+                    type: 'number',
+                    placeholder: '0 g',
+                }
+            ],
+            buttons: [
+                {
+                    text: this.translateService.instant('CANCEL_BUTTON'),
+                    role: 'cancel',
+                },
+                {
+                    text: 'OK',
+                    handler: (data) => {
+                        if (data.quantita > 0) {
+                            const index = this.pasto.ingredienti.indexOf(ingrediente);
+                            if (index > -1) {
+                                this.pasto.ingredienti[index].quantita = data.quantita;
+                            }
+                        }
+                    }
+                }
+            ],
+        });
+        await alert.present();
     }
 }
