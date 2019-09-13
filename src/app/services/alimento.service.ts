@@ -10,19 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class AlimentoService {
 
-    private alimento: Alimento;
-
-    constructor(private http: HttpClient) {
-        this.alimento = null;
-    }
-
-    public getAlimento(): Alimento {
-        return this.alimento;
-    }
-
-    public setAlimento(alimento: Alimento) {
-        this.alimento = alimento;
-    }
+    constructor(private http: HttpClient) {}
 
     public findAlimentoById(id: number) {
         return this.http.get<Alimento>(URL.ALIMENTI);
@@ -40,8 +28,9 @@ export class AlimentoService {
         return this.http.get<Alimento[]>(URL.ALIMENTI + '/creati');
     }
 
-    public deleteAlimento(alimento: Alimento) {
-        return this.http.delete<Alimento>(URL.ALIMENTI + '/' + alimento.id);
+    public deleteAlimento(idAlimento: number) {
+        const apiURL = `${URL.ALIMENTI}/${idAlimento}`;
+        return this.http.delete<Alimento>(apiURL);
     }
 }
 

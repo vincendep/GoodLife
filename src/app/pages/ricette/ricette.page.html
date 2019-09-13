@@ -1,20 +1,29 @@
-<ion-content>
+<ion-content *ngIf="ricette$ | async as ricette">
     <div class="info" *ngIf="ricette.length == 0">
         <h2 text-center="">{{'CREA_RICETTA' | translate}}</h2>
     </div>
     <ion-list *ngIf="ricette.length > 0">
-        <ion-item lines="full" *ngFor="let ricetta of ricette" button=true>
-            <ion-grid fixed="true" text-center="true" [routerLink]="['/dettagli-ricetta', ricetta.id]" routerDirection="root">
-                <ion-row align-items-center>
-                    <ion-col size="7" text-left>{{ricetta.nome}}</ion-col>
-                    <ion-col size="5">{{ricetta.getTotCalorie().toFixed(0)}} kcal</ion-col>
-                </ion-row>
-            </ion-grid>
-            <ion-icon slot="end" class="delete-icon" name="close" (click)="eliminaRicetta(ricetta)"></ion-icon>
-        </ion-item>
+        <ion-item-sliding *ngFor="let ricetta of ricette" #sliding>
+            <ion-item class="bg-white" (click)="showItemOptions(sliding)">
+                <ion-grid fixed="true" text-center="true">
+                    <ion-row align-items-center>
+                        <ion-col size="7" text-left>{{ricetta.nome}}</ion-col>
+                        <ion-col size="5">{{calorieTotaliRicetta(ricetta)}} kcal</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option color="secondary" (click)="modificaRicetta(ricetta, sliding)">
+                    <ion-icon slot="icon-only" name="create"></ion-icon>
+                </ion-item-option>
+                <ion-item-option color="danger" (click)="eliminaRicetta(ricetta, sliding)">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
     </ion-list>
     <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button [routerLink]="['/dettagli-ricetta/nuovo']" routerDirection="root">
+        <ion-fab-button (click)="creaRicetta()">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>

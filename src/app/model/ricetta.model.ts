@@ -15,7 +15,7 @@ export class Ricetta {
         this.ingredienti = new Array<Ingrediente>();
     }
 
-    getTotCalorie(): number {
+    getTotaleCalorie(): number {
         let sum = 0;
         for (const value of this.ingredienti) {
 
@@ -24,7 +24,7 @@ export class Ricetta {
         return sum;
     }
 
-    getTotProteine(): number {
+    getTotaleProteine(): number {
         let sum = 0;
         for (const value of this.ingredienti) {
 
@@ -33,7 +33,7 @@ export class Ricetta {
         return sum;
     }
 
-    getTotGrassi(): number {
+    getTotaleGrassi(): number {
         let sum = 0;
         for (const value of this.ingredienti) {
 
@@ -42,7 +42,7 @@ export class Ricetta {
         return sum;
     }
 
-    getTotCarboidrati(): number {
+    getTotaleCarboidrati(): number {
         let sum = 0;
         for (const value of this.ingredienti) {
 

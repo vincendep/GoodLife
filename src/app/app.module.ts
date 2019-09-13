@@ -18,6 +18,7 @@ import {DettagliAlimentoPageModule} from './pages/dettagli-alimento/dettagli-ali
 import {DettagliPastoPageModule} from './pages/dettagli-pasto/dettagli-pasto.module';
 import {InserisciCiboPageModule} from './pages/inserisci-cibo/inserisci-cibo.module';
 import {InserisciRicettaPageModule} from './pages/inserisci-ricetta/inserisci-ricetta.module';
+import {DettagliRicettaPageModule} from './pages/dettagli-ricetta/dettagli-ricetta.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -45,6 +46,7 @@ export function createTranslateLoader(http: HttpClient) {
         }),
         AppRoutingModule,
         DettagliAlimentoPageModule,
+        DettagliRicettaPageModule,
         DettagliPastoPageModule,
         InserisciCiboPageModule,
         InserisciRicettaPageModule],

@@ -3,15 +3,24 @@
         <h2 text-center="">{{'CREA_ALIMENTO' | translate}}</h2>
     </div>
     <ion-list *ngIf="alimenti.length > 0">
-        <ion-item lines="full" *ngFor="let alimento of alimenti" button=true>
-            <ion-grid fixed="true" text-center="true" (click)="modificaAlimento(alimento)">
-                <ion-row align-items-center>
-                    <ion-col size="7" text-left>{{alimento.nome}}</ion-col>
-                    <ion-col size="5">{{alimento.calorie.toString()}} kcal/100gr</ion-col>
-                </ion-row>
-            </ion-grid>
-            <ion-icon slot="end" class="delete-icon" name="close" (click)="eliminaAlimento(alimento)"></ion-icon>
-        </ion-item>
+        <ion-item-sliding *ngFor="let alimento of alimenti" #sliding>
+            <ion-item class="bg-white" (click)="showItemOptions(sliding)">
+                <ion-grid fixed="true" text-center="true">
+                    <ion-row align-items-center>
+                        <ion-col size="7" text-left>{{alimento.nome}}</ion-col>
+                        <ion-col size="5">{{alimento.calorie.toString()}} kcal/100gr</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item-options side="end">
+                <ion-item-option color="secondary" (click)="modificaAlimento(alimento, sliding)">
+                    <ion-icon slot="icon-only" name="create"></ion-icon>
+                </ion-item-option>
+                <ion-item-option color="danger" (click)="eliminaAlimento(alimento, sliding)">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
     </ion-list>
     <ion-fab vertical="bottom" horizontal="center" slot="fixed">
         <ion-fab-button (click)="creaAlimento()">

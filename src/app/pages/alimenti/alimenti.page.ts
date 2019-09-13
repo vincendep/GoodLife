@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Alimento} from '../../model/alimento.model';
 import {AlimentoService} from '../../services/alimento.service';
-import {AlertController, ModalController} from '@ionic/angular';
+import {AlertController, IonItemSliding, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {DettagliAlimentoPage} from '../dettagli-alimento/dettagli-alimento.page';
 import {Observable} from 'rxjs';
@@ -54,7 +54,8 @@ export class AlimentiPage implements OnInit {
         await modal.present();
     }
 
-    async modificaAlimento(alimento: Alimento) {
+    async modificaAlimento(alimento: Alimento, sliding: IonItemSliding) {
+        sliding.close();
         const modal = await this.modalController.create({
             component: DettagliAlimentoPage,
             componentProps: {appParam: alimento}
@@ -71,35 +72,33 @@ export class AlimentiPage implements OnInit {
         await modal.present();
     }
 
-    eliminaAlimento(alimento: Alimento) {
-        this.showDeleteAlert(alimento);
-    }
-
-    async showDeleteAlert(alimento: Alimento) {
+    async eliminaAlimento(alimento: Alimento, sliding: IonItemSliding) {
+        sliding.close();
         this.initTranslate();
-        let flag = false;
         const alert = await this.alertController.create({
             header: this.deleteTitle,
             message: this.deleteMessage + ' ' + alimento.nome + '?',
             buttons: [{
                 text: 'OK',
                 handler: () => {
-                    this.alimentoService.deleteAlimento(alimento).subscribe();
-                    flag = true;
+                    this.alimentoService.deleteAlimento(alimento.id).subscribe(() => {
+                        this.listAlimentiCreati();
+                    });
                 }
             }
                 , this.translateService.instant('CANCEL_BUTTON')]
-        });
-        alert.onDidDismiss().then(() => {
-            if (flag) {
-                this.listAlimentiCreati();
-            }
         });
         await alert.present();
     }
 
     public listAlimentiCreati() {
         this.alimenti$ = this.alimentoService.listAlimentiCreati();
+    }
+
+    showItemOptions(sliding: IonItemSliding) {
+        sliding.closeOpened().then(() => {
+            sliding.open('end');
+        });
     }
 
     initTranslate() {

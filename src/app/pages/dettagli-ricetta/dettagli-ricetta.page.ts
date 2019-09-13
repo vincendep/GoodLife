@@ -1,61 +1,49 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {AlertController, ModalController, NavController} from '@ionic/angular';
+import {AlertController, ModalController, NavParams} from '@ionic/angular';
 import {Ricetta} from '../../model/ricetta.model';
 import {RicettaService} from '../../services/ricetta.service';
 import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
-import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
     selector: 'app-dettagli-ricetta',
     templateUrl: './dettagli-ricetta.page.html',
     styleUrls: ['./dettagli-ricetta.page.scss'],
 })
-export class DettagliRicettaPage implements OnInit, OnDestroy {
-    private form: FormGroup;
+export class DettagliRicettaPage implements OnInit {
+    private ricettaFormModel: FormGroup;
     private ricetta: Ricetta;
-    private nome: string;
+    private placeholder: string;
     private deleteTitle: string;
     private deleteMessage: string;
 
     constructor(private translateService: TranslateService,
-                private route: ActivatedRoute,
                 private alertController: AlertController,
                 private formBuilder: FormBuilder,
                 private ricettaService: RicettaService,
-                private navController: NavController,
-                private modalController: ModalController) {
-
-        this.ricetta = new Ricetta();
-
-    }
+                private modalController: ModalController,
+                private navParams: NavParams) {}
 
     ngOnInit() {
-        this.route.paramMap.subscribe((params: ParamMap) => {
-            if (params.get('id') === 'nuovo') {
-                this.form = this.formBuilder.group({
-                    nome: ['', Validators.required],
-                });
-            } else {
-                this.ricettaService.findById(parseInt(params.get('id'), 0)).subscribe((ricetta: Ricetta) => {
-                    this.ricetta.id = ricetta.id;
-                    this.ricetta.nome = ricetta.nome;
-                    this.ricetta.ingredienti = ricetta.ingredienti;
-                });
-                this.form = this.formBuilder.group({
-                    nome: [this.ricetta.nome, Validators.required],
-                });
-            }
+        this.ricetta = this.navParams.data.appParam;
+        this.ricettaFormModel = this.formBuilder.group({
+            nome: [this.ricetta.nome, Validators.required]
         });
-        this.nome = this.translateService.instant('NUOVO-NOME');
+
+        this.placeholder = this.translateService.instant('NUOVO-NOME');
     }
 
-    ngOnDestroy(): void {
-        this.ricettaService.setRicette(null);
+    async onConfirm() {
+        this.ricetta.nome = this.ricettaFormModel.get('nome').value;
+        await this.modalController.dismiss(this.ricetta);
     }
 
-    async addFood() {
+    async onCancel() {
+        await this.modalController.dismiss();
+    }
+
+    async aggiungiAlimento() {
         const modal = await this.modalController.create({
             component: InserisciCiboPage,
             componentProps: {appParam: this.ricetta.ingredienti}
@@ -63,30 +51,15 @@ export class DettagliRicettaPage implements OnInit, OnDestroy {
         await modal.present();
     }
 
-    onCancel() {
-        this.navController.navigateBack('tabs/preferiti/ricette');
-    }
-
-    onUpdate() {
-        this.ricetta.nome = this.form.get('nome').value;
-        this.ricettaService.createRicetta(this.ricetta).subscribe((a) => {
-            this.navController.back();
-        });
-    }
-
-    eliminaAlimento(alimento: any) {
-        this.showDeleteAlert(alimento);
-    }
-
-    async showDeleteAlert(alimento: any) {
+    async eliminaAlimento(ingrediente: any) {
         this.initTranslate();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
-            message: this.deleteMessage + ' ' + alimento.alimento.nome + '?',
+            message: this.deleteMessage + ' ' + ingrediente.alimento.nome + '?',
             buttons: [{
                 text: 'OK',
-                handler: (data) => {
-                    let index = this.ricetta.ingredienti.indexOf(alimento);
+                handler: () => {
+                    const index = this.ricetta.ingredienti.indexOf(ingrediente);
                     if (index > -1) {
                         this.ricetta.ingredienti.splice(index, 1);
                     }
