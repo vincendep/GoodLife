@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {URL} from '../constants';
 import {Observable} from 'rxjs';
 import {DiarioAlimentare} from '../model/diario.model';
-import {Alimento} from '../model/alimento.model';
 
 @Injectable({
     providedIn: 'root'
@@ -11,8 +10,6 @@ import {Alimento} from '../model/alimento.model';
 
 
 export class DiarioService {
-
-    diario: DiarioAlimentare;
 
     constructor(private http: HttpClient) {
     }

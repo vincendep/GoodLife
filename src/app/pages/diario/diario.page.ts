@@ -52,7 +52,7 @@ export class DiarioPage implements OnInit {
             component: DettagliPastoPage,
             componentProps: {appParam: pastoSelezionato}
         });
-        modal.onDidDismiss().then((detail: OverlayEventDetail) => {
+        modal.onDidDismiss().then(() => {
             this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
         });
         await modal.present();

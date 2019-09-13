@@ -9,6 +9,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http';
 import {createTranslateLoader} from '../../app.module';
 import {ProfiloMenuComponent} from '../../components/profilo-menu/profilo-menu.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
     {
@@ -28,6 +29,7 @@ const routes: Routes = [
             }
         }),
         IonicModule,
+        ReactiveFormsModule,
         RouterModule.forChild(routes),
     ],
     declarations: [ProfiloPage, ProfiloMenuComponent],
