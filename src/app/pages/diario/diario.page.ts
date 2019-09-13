@@ -32,9 +32,6 @@ export class DiarioPage implements OnInit {
                 private modalController: ModalController) {
 
         this.data = DateUtility.fromDatetoIsoDateString(new Date());
-        // TODO remove
-        this.diarioAlimentare = new DiarioAlimentare();
-        this.dieta = new Dieta();
     }
 
     ngOnInit() {
@@ -77,6 +74,7 @@ export class DiarioPage implements OnInit {
 
     getDiarioByDate() {
         this.diarioService.getDiarioByDate(this.data).subscribe((response: DiarioAlimentare) => {
+            this.diarioAlimentare = new DiarioAlimentare();
             this.diarioAlimentare.id = response.id;
             this.diarioAlimentare.acqua = response.acqua;
             this.diarioAlimentare.alimentiSnack = response.alimentiSnack;
@@ -90,6 +88,7 @@ export class DiarioPage implements OnInit {
     getDietaCorrenteUtente() {
         this.utenteService.getUtente().subscribe((utente) => {
             const d = utente.diete[utente.diete.length - 1];
+            this.dieta = new Dieta();
             this.dieta.obiettivo = d.obiettivo;
             this.dieta.calorieColazione = d.calorieColazione;
             this.dieta.caloriePranzo = d.caloriePranzo;
