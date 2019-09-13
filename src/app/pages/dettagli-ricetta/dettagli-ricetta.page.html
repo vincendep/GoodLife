@@ -9,7 +9,7 @@
         <ion-item class="animated fadeInUp">
             <ion-label position="floating">
                 {{ 'NOME' | translate | titlecase }}</ion-label>
-            <ion-input color="secondary" type="text" inputmode="text" [placeholder]=placeholder
+            <ion-input color="secondary" type="text" inputmode="text" placeholder="{{'NUOVO-NOME' | translate}}"
                        formControlName="nome"></ion-input>
         </ion-item>
     </form>
@@ -41,12 +41,12 @@
             <ion-item class="bg-white" (click)="showItemOptions(sliding)">
                 <ion-grid fixed="true" text-center="true">
                     <ion-row align-items-center>
-                    <ion-col>
-                        <ion-text>{{ingrediente.alimento.nome}}</ion-text>
-                    </ion-col>
-                    <ion-col>
-                        <ion-text>{{ingrediente.quantita}} g</ion-text>
-                    </ion-col>
+                        <ion-col>
+                            <ion-text>{{ingrediente.alimento.nome}}</ion-text>
+                        </ion-col>
+                        <ion-col>
+                            <ion-text>{{ingrediente.quantita}} g</ion-text>
+                        </ion-col>
                     </ion-row>
                 </ion-grid>
             </ion-item>

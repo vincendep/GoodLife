@@ -15,7 +15,6 @@ import {Alimento} from '../../model/alimento.model';
 export class DettagliRicettaPage implements OnInit {
     private ricettaFormModel: FormGroup;
     private ricetta: Ricetta;
-    private placeholder: string;
     private deleteTitle: string;
     private deleteMessage: string;
 
@@ -31,8 +30,6 @@ export class DettagliRicettaPage implements OnInit {
         this.ricettaFormModel = this.formBuilder.group({
             nome: [this.ricetta.nome, Validators.required]
         });
-
-        this.placeholder = this.translateService.instant('NUOVO-NOME');
     }
 
     async onConfirm() {
