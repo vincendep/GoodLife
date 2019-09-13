@@ -81,13 +81,12 @@ export class AlimentiPage implements OnInit {
             buttons: [{
                 text: 'OK',
                 handler: () => {
-                    this.alimentoService.deleteAlimento(alimento.id).subscribe(() => {
-                        this.listAlimentiCreati();
-                    });
+                    this.alimentoService.deleteAlimento(alimento.id).subscribe();
                 }
             }
                 , this.translateService.instant('CANCEL_BUTTON')]
         });
+        alert.onDidDismiss().then(() => this.listAlimentiCreati());
         await alert.present();
     }
 
