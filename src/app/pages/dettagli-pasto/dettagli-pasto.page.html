@@ -37,17 +37,18 @@
     <ion-list *ngIf="pasto.ingredienti.length > 0">
         <ion-list-header>{{'ALIMENTI_AGGIUNTI' | translate}}</ion-list-header>
         <ion-item-sliding *ngFor="let ingrediente of this.pasto.ingredienti" #sliding>
-        <ion-item class="bg-white" (click)="showItemOptions(sliding)">
-            <ion-grid fixed="true" text-center="true">
-                <ion-row align-items-center>
-                    <ion-col align-self-center size="6">{{ingrediente.alimento.nome}}</ion-col>
-                    <ion-col align-self-center size="3"
-                             text-end>{{(ingrediente.alimento.calorie * ingrediente.quantita / 100).toFixed(0)}} kcal
-                    </ion-col>
-                    <ion-col align-self-center size="3" text-end>{{ingrediente.quantita}} gr</ion-col>
-                </ion-row>
-            </ion-grid>
-        </ion-item>
+            <ion-item class="bg-white" (click)="showItemOptions(sliding)">
+                <ion-grid fixed="true" text-center="true">
+                    <ion-row align-items-center>
+                        <ion-col align-self-center size="6">{{ingrediente.alimento.nome}}</ion-col>
+                        <ion-col align-self-center size="3"
+                                 text-end>{{(ingrediente.alimento.calorie * ingrediente.quantita / 100).toFixed(0)}}
+                            kcal
+                        </ion-col>
+                        <ion-col align-self-center size="3" text-end>{{ingrediente.quantita}} gr</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
             <ion-item-options side="end">
                 <ion-item-option color="secondary" (click)="modificaAlimento(ingrediente, sliding)">
                     <ion-icon slot="icon-only" name="create"></ion-icon>

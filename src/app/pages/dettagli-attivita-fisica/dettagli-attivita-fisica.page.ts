@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertController, ModalController, NavController, NavParams} from '@ionic/angular';
+import {AlertController, IonItemSliding, ModalController, NavController, NavParams} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {AttivitaFisica} from '../../model/attivita-fisica.model';
 import {InserisciAttivitaPage} from '../inserisci-attivita/inserisci-attivita.page';
+import {EsercizioFisico} from '../../model/esercizio-fisico.model';
 
 @Component({
     selector: 'app-dettagli-attivita-fisica',
@@ -69,5 +70,48 @@ export class DettagliAttivitaFisicaPage implements OnInit {
 
     async back() {
         await this.modalController.dismiss();
+    }
+
+    showItemOptions(sliding: IonItemSliding) {
+        sliding.closeOpened().then(() => {
+            sliding.open('end');
+        });
+    }
+
+    modificaAttivita(attivita: {esercizio: EsercizioFisico, durata: number}, sliding: IonItemSliding) {
+        this.selezionaDurata(attivita);
+    }
+
+    async selezionaDurata(attivita: {esercizio: EsercizioFisico, durata: number}) {
+        const alert = await this.alertController.create({
+            header: attivita.esercizio.nome,
+            message: this.translateService.instant('CALMIN') + ': ' + attivita.esercizio.consumoPerMinuto + ' kcal',
+            cssClass: 'alertFixing',
+            inputs: [
+                {
+                    name: 'durata',
+                    type: 'number',
+                    placeholder: '0 min',
+                }
+            ],
+            buttons: [
+                {
+                    text: this.translateService.instant('CANCEL_BUTTON'),
+                    role: 'cancel',
+                },
+                {
+                    text: 'OK',
+                    handler: (data) => {
+                        if (data.durata > 0) {
+                            const index = this.attivitaFisica.esercizi.indexOf(attivita);
+                            if (index > -1) {
+                                this.attivitaFisica.esercizi[index].durata = data.durata;
+                            }
+                        }
+                    }
+                }
+            ],
+        });
+        await alert.present();
     }
 }
