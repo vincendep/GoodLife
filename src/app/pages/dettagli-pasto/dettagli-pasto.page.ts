@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DiarioAlimentare} from '../../model/diario.model';
 import {TranslateService} from '@ngx-translate/core';
 import {AlertController, ModalController, NavController, NavParams} from '@ionic/angular';
-import {DiarioService} from '../../services/diario.service';
 import {Pasto} from '../../model/pasto.model';
 import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
 import {InserisciRicettaPage} from '../inserisci-ricetta/inserisci-ricetta.page';
@@ -14,57 +12,50 @@ import {InserisciRicettaPage} from '../inserisci-ricetta/inserisci-ricetta.page'
 })
 export class DettagliPastoPage implements OnInit {
 
-    diarioAlimentare: DiarioAlimentare;
-    pasto: Pasto;
+    private pasto: Pasto;
     private deleteTitle: string;
     private deleteMessage: string;
 
     constructor(private translateService: TranslateService,
                 private navController: NavController,
-                private diarioService: DiarioService,
                 private alertController: AlertController,
                 private navParams: NavParams,
                 private modalController: ModalController) {
 
-        this.diarioAlimentare = new DiarioAlimentare();
         this.pasto = new Pasto();
     }
 
     ngOnInit() {
-        this.pasto.alimenti = this.navParams.data.appParam;
+        this.pasto.ingredienti = this.navParams.data.appParam;
     }
 
-    async addCibo() {
+    async aggiungiAlimento() {
         const modal = await this.modalController.create({
             component: InserisciCiboPage,
-            componentProps: {appParam: this.pasto.alimenti}
+            componentProps: {appParam: this.pasto.ingredienti}
         });
         await modal.present();
     }
 
-    async addRicetta() {
+    async aggiungiRicetta() {
         const modal = await this.modalController.create({
             component: InserisciRicettaPage,
-            componentProps: {appParam: this.pasto.alimenti}
+            componentProps: {appParam: this.pasto.ingredienti}
         });
         await modal.present();
     }
 
-    eliminaAlimento(alimento: any) {
-        this.showDeleteAlert(alimento);
-    }
-
-    async showDeleteAlert(alimento: any) {
+    async eliminaAlimento(alimento: any) {
         this.initTranslate();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
             message: this.deleteMessage + ' ' + alimento.alimento.nome + '?',
             buttons: [{
                 text: 'OK',
-                handler: (data) => {
-                    let index = this.pasto.alimenti.indexOf(alimento);
+                handler: () => {
+                    const index = this.pasto.ingredienti.indexOf(alimento);
                     if (index > -1) {
-                        this.pasto.alimenti.splice(index, 1);
+                        this.pasto.ingredienti.splice(index, 1);
                     }
                 }
             }, this.translateService.instant('CANCEL_BUTTON')]

@@ -11,7 +11,7 @@
     <ion-grid fixed="true" text-center="true">
         <ion-row>
             <ion-col>{{'CALORIE' | translate | titlecase}}</ion-col>
-            <ion-col>{{ pasto.getTotCalorie().toFixed(0)}} kcal</ion-col>
+            <ion-col>{{ pasto.getTotaleCalorie().toFixed(0)}} kcal</ion-col>
         </ion-row>
         <ion-row>
             <ion-col>{{'PROTEINE' | translate | titlecase}}</ion-col>
@@ -28,22 +28,22 @@
     </ion-grid>
 </ion-item>
 <ion-content>
-    <div *ngIf="pasto.alimenti.length == 0" class="content">
+    <div *ngIf="pasto.ingredienti.length == 0" class="content">
         <h2 text-center>{{'INSERISCI_ALIMENTO' | translate}}</h2>
     </div>
-    <ion-list *ngIf="pasto.alimenti.length > 0">
+    <ion-list *ngIf="pasto.ingredienti.length > 0">
         <ion-list-header>{{'ALIMENTI_AGGIUNTI' | translate}}</ion-list-header>
-        <ion-item *ngFor="let alimento of this.pasto.alimenti">
+        <ion-item *ngFor="let ingrediente of this.pasto.ingredienti">
             <ion-grid>
                 <ion-row>
-                    <ion-col align-self-center size="6">{{alimento.alimento.nome}}</ion-col>
+                    <ion-col align-self-center size="6">{{ingrediente.alimento.nome}}</ion-col>
                     <ion-col align-self-center size="3"
-                             text-end>{{(alimento.alimento.calorie * alimento.quantita / 100).toFixed(0)}} kcal
+                             text-end>{{(ingrediente.alimento.calorie * ingrediente.quantita / 100).toFixed(0)}} kcal
                     </ion-col>
-                    <ion-col align-self-center size="3" text-end>{{alimento.quantita}} gr</ion-col>
+                    <ion-col align-self-center size="3" text-end>{{ingrediente.quantita}} gr</ion-col>
                 </ion-row>
             </ion-grid>
-            <ion-icon slot="end" class="delete-icon" name="close" (click)="eliminaAlimento(alimento)"></ion-icon>
+            <ion-icon slot="end" class="delete-icon" name="close" (click)="eliminaAlimento(ingrediente)"></ion-icon>
         </ion-item>
     </ion-list>
 </ion-content>
@@ -53,13 +53,13 @@
         <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-        <ion-fab-button (click)="addCibo()" color="secondary">
+        <ion-fab-button (click)="aggiungiAlimento()" color="secondary">
             <ion-icon name="pizza" size="large" color="light"></ion-icon>
         </ion-fab-button>
         {{'ALIMENTI' | translate | titlecase}}
     </ion-fab-list>
     <ion-fab-list side="start">
-        <ion-fab-button (click)="addRicetta()" color="secondary">
+        <ion-fab-button (click)="aggiungiRicetta()" color="secondary">
             <ion-icon name="book" size="large" color="light"></ion-icon>
         </ion-fab-button>
         {{'RICETTE' | translate | titlecase}}
