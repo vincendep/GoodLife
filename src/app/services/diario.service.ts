@@ -13,7 +13,6 @@ import {Alimento} from '../model/alimento.model';
 export class DiarioService {
 
     diario: DiarioAlimentare;
-    pastoSelezionato: Array<{ alimento: Alimento, quantita: number }>;
 
     constructor(private http: HttpClient) {
     }
@@ -26,16 +25,13 @@ export class DiarioService {
         this.diario = diario;
     }
 
-    public getPastoSelezionato() {
-        return this.pastoSelezionato;
-    }
-
-    public setPastoSelezionato(a: Array<{ alimento: Alimento, quantita: number }>) {
-        this.pastoSelezionato = a;
-    }
-
     public getDiarioByDate(data: string): Observable<DiarioAlimentare> {
         return this.http.get<DiarioAlimentare>(URL.DIARIO + '?data=' + data);
+    }
+
+    public updateAcqua(idDiario: number, acqua: number) {
+        const apiURL = `${URL.DIARIO}/${idDiario}/acqua`;
+        return this.http.post<DiarioAlimentare>(apiURL, acqua);
     }
 
     public updateDiario(diario: DiarioAlimentare) {

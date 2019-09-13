@@ -10,6 +10,7 @@ import {Alimento} from '../../model/alimento.model';
 import {UtenteService} from '../../services/utente.service';
 import {OverlayEventDetail} from '@ionic/core';
 import {DettagliPastoPage} from '../dettagli-pasto/dettagli-pasto.page';
+import {DateUtility} from '../../utility/date-utility';
 
 @Component({
     selector: 'app-diario',
@@ -18,6 +19,7 @@ import {DettagliPastoPage} from '../dettagli-pasto/dettagli-pasto.page';
 })
 export class DiarioPage implements OnInit {
 
+    private data: string;
     private diarioAlimentare: DiarioAlimentare;
     private dieta: Dieta;
 
@@ -29,37 +31,30 @@ export class DiarioPage implements OnInit {
                 private utenteService: UtenteService,
                 private modalController: ModalController) {
 
+        this.data = DateUtility.fromDatetoIsoDateString(new Date());
+        // TODO remove
         this.diarioAlimentare = new DiarioAlimentare();
         this.dieta = new Dieta();
     }
 
     ngOnInit() {
-        this.getDiario();
-        // TODO dietaService
-        this.utenteService.getUtente().subscribe((utente) => {
-            const d = utente.diete[utente.diete.length - 1];
-            this.dieta.obiettivo = d.obiettivo;
-            this.dieta.calorieColazione = d.calorieColazione;
-            this.dieta.caloriePranzo = d.caloriePranzo;
-            this.dieta.calorieSnack = d.calorieSnack;
-            this.dieta.calorieCena = d.calorieCena;
-            this.dieta.carboidrati = d.carboidrati;
-            this.dieta.proteine = d.proteine;
-            this.dieta.grassi = d.grassi;
-        });
+        this.getDiarioByDate();
+        this.getDietaCorrenteUtente();
     }
 
     incrementAcqua() {
         this.diarioAlimentare.incrementAcqua();
-        this.updateDiario();
+        this.diarioService.updateAcqua(this.diarioAlimentare.id, this.diarioAlimentare.acqua).subscribe();
     }
 
     decrementAcqua() {
-        this.diarioAlimentare.decrementAcqua();
-        this.updateDiario();
+        if (this.diarioAlimentare.acqua > 0) {
+            this.diarioAlimentare.decrementAcqua();
+            this.diarioService.updateAcqua(this.diarioAlimentare.id, this.diarioAlimentare.acqua).subscribe();
+        }
     }
 
-    async goToDettagliPasto(pastoSelezionato: Array<{ alimento: Alimento, quantita: number }>, pasto: string) {
+    async showDettagliPasto(pastoSelezionato: Array<{ alimento: Alimento, quantita: number }>, pasto: string) {
         const modal = await this.modalController.create({
             component: DettagliPastoPage,
             componentProps: {appParam: pastoSelezionato}
@@ -70,7 +65,7 @@ export class DiarioPage implements OnInit {
         await modal.present();
     }
 
-    goToDettagliAttivitaFisica() {
+    showDettagliAttivitaFisica() {
         this.diarioService.setDiario(this.diarioAlimentare);
         this.attivitaFisicaService.setAttivitaFisica(this.diarioAlimentare.eserciziFisici);
         this.navController.navigateForward('dettagli-attivita-fisica');
@@ -80,8 +75,8 @@ export class DiarioPage implements OnInit {
         this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
     }
 
-    getDiario() {
-        this.diarioService.getDiarioByDate(this.diarioAlimentare.data).subscribe((response: DiarioAlimentare) => {
+    getDiarioByDate() {
+        this.diarioService.getDiarioByDate(this.data).subscribe((response: DiarioAlimentare) => {
             this.diarioAlimentare.id = response.id;
             this.diarioAlimentare.acqua = response.acqua;
             this.diarioAlimentare.alimentiSnack = response.alimentiSnack;
@@ -89,6 +84,20 @@ export class DiarioPage implements OnInit {
             this.diarioAlimentare.eserciziFisici = response.eserciziFisici;
             this.diarioAlimentare.alimentiColazione = response.alimentiColazione;
             this.diarioAlimentare.alimentiPranzo = response.alimentiPranzo;
+        });
+    }
+
+    getDietaCorrenteUtente() {
+        this.utenteService.getUtente().subscribe((utente) => {
+            const d = utente.diete[utente.diete.length - 1];
+            this.dieta.obiettivo = d.obiettivo;
+            this.dieta.calorieColazione = d.calorieColazione;
+            this.dieta.caloriePranzo = d.caloriePranzo;
+            this.dieta.calorieSnack = d.calorieSnack;
+            this.dieta.calorieCena = d.calorieCena;
+            this.dieta.carboidrati = d.carboidrati;
+            this.dieta.proteine = d.proteine;
+            this.dieta.grassi = d.grassi;
         });
     }
 }
