@@ -2,11 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {AlimentoService} from '../../services/alimento.service';
 import {Alimento} from '../../model/alimento.model';
-import {AlertController, ModalController, NavController, NavParams} from '@ionic/angular';
-import {PastoService} from '../../services/pasto.service';
+import {AlertController, ModalController, NavParams} from '@ionic/angular';
 import {Observable} from 'rxjs';
-import {DiarioAlimentare} from '../../model/diario.model';
-import {DiarioService} from '../../services/diario.service';
 
 
 @Component({
@@ -18,21 +15,16 @@ import {DiarioService} from '../../services/diario.service';
 export class InserisciCiboPage implements OnInit {
 
     private alimenti$: Observable<Alimento[]>;
-    private diarioAlimentare: DiarioAlimentare;
     private pasto: Array<{ alimento: Alimento, quantita: number }>;
     private categoriaSelezionata: string;
     private ricerca = '';
 
     constructor(private translateService: TranslateService,
-                private diarioService: DiarioService,
                 private alimentoService: AlimentoService,
-                private pastoService: PastoService,
                 private alertController: AlertController,
-                private navController: NavController,
                 private navParams: NavParams,
-                private modalController: ModalController
-    ) {
-        this.diarioAlimentare = new DiarioAlimentare();
+                private modalController: ModalController) {
+
         this.pasto = new Array<{ alimento: Alimento, quantita: number }>();
         this.categoriaSelezionata = 'CARNE';
     }
@@ -74,11 +66,7 @@ export class InserisciCiboPage implements OnInit {
                     handler: (data) => {
                         if (data.quantita > 0) {
                             this.pasto.push({alimento: a, quantita: data.quantita});
-                            if (this.pastoService.tipoPasto === 'nuovaRicetta') {
-                                this.navController.back();
-                            } else {
-                                this.modalController.dismiss();
-                            }
+                            this.modalController.dismiss();
                         }
                     }
                 }

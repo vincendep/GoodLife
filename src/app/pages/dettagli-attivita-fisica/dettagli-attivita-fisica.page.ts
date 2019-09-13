@@ -1,12 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {DiarioAlimentare} from '../../model/diario.model';
-import {EsercizioFisico} from '../../model/esercizio-fisico.model';
-import {DiarioService} from '../../services/diario.service';
-import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
-import {AlertController, NavController} from '@ionic/angular';
+import {AlertController, ModalController, NavController, NavParams} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable} from 'rxjs';
 import {AttivitaFisica} from '../../model/attivita-fisica.model';
+import {InserisciAttivitaPage} from '../inserisci-attivita/inserisci-attivita.page';
 
 @Component({
     selector: 'app-dettagli-attivita-fisica',
@@ -15,30 +11,28 @@ import {AttivitaFisica} from '../../model/attivita-fisica.model';
 })
 export class DettagliAttivitaFisicaPage implements OnInit {
 
-    private attivitaFisica$: Observable<AttivitaFisica>;
 
-    private diarioAlimentare: DiarioAlimentare;
-    private attivitaFisica: Array<{ esercizio: EsercizioFisico, durata: number }>;
+    private attivitaFisica: AttivitaFisica;
     private deleteTitle: string;
     private deleteMessage: string;
 
-    constructor(private diarioService: DiarioService,
-                private attivitaFisicaService: AttivitaFisicaService,
-                private navController: NavController,
-                private alertController: AlertController,
-                private translateService: TranslateService) {
-
-        this.diarioAlimentare = new DiarioAlimentare();
-        this.attivitaFisica = new Array<{ esercizio: EsercizioFisico, durata: number }>();
+    constructor(private alertController: AlertController,
+                private translateService: TranslateService,
+                private navParams: NavParams,
+                private modalController: ModalController) {
+        this.attivitaFisica = new AttivitaFisica();
     }
 
     ngOnInit() {
-        this.diarioAlimentare = this.diarioService.getDiario();
-        this.attivitaFisica = this.attivitaFisicaService.getAttivitaFisica();
+        this.attivitaFisica.esercizi = this.navParams.data.appParam;
     }
 
-    public onAdd() {
-        this.navController.navigateForward('inserisci-attivita');
+    async onAdd() {
+        const modal = await this.modalController.create({
+            component: InserisciAttivitaPage,
+            componentProps: {appParam: this.attivitaFisica.esercizi}
+        });
+        await modal.present();
     }
 
 
@@ -54,11 +48,10 @@ export class DettagliAttivitaFisicaPage implements OnInit {
             buttons: [{
                 text: 'OK',
                 handler: (data) => {
-                    const index = this.attivitaFisica.indexOf(attivita);
+                    const index = this.attivitaFisica.esercizi.indexOf(attivita);
                     if (index > -1) {
-                        this.attivitaFisica.splice(index, 1);
+                        this.attivitaFisica.esercizi.splice(index, 1);
                     }
-                    this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
                 }
             }, this.translateService.instant('CANCEL_BUTTON')]
         });
@@ -72,5 +65,9 @@ export class DettagliAttivitaFisicaPage implements OnInit {
         this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
             this.deleteMessage = data;
         });
+    }
+
+    async back() {
+        await this.modalController.dismiss();
     }
 }

@@ -1,27 +1,27 @@
 <ion-header>
     <ion-toolbar>
         <ion-title color="dark">{{ 'ATTIVITA' | translate }}</ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button color="dark"></ion-back-button>
-        </ion-buttons>
+        <ion-button slot="start" fill="clear" color="dark" (click)="back()">
+            <ion-icon name="arrow-back" size="large"></ion-icon>
+        </ion-button>
     </ion-toolbar>
 </ion-header>
 <ion-item color="primary" class="bg-white" lines="full">
     <ion-grid fixed="true" text-center="true">
         <ion-col>{{'CONSUMO_ENERGETICO' | translate}}:</ion-col>
-        <ion-col>{{this.diarioAlimentare.getConsumoTotale().toFixed(0)}} kcal</ion-col>
+        <ion-col>{{this.attivitaFisica.consumoTotale().toFixed(0)}} kcal</ion-col>
     </ion-grid>
 </ion-item>
 
 <ion-content>
-    <div *ngIf="attivitaFisica.length == 0" class="content">
+    <div *ngIf="attivitaFisica.esercizi.length == 0" class="content">
         <h2 text-center>{{'INSERISCI_ESERCIZIO' | translate}}</h2>
     </div>
-    <ion-list *ngIf="attivitaFisica.length > 0">
+    <ion-list *ngIf="attivitaFisica.esercizi.length > 0">
         <ion-list-header>
             {{'ESERCIZI_AGGIUNTI' | translate}}
         </ion-list-header>
-        <ion-item *ngFor="let attivita of this.attivitaFisica">
+        <ion-item *ngFor="let attivita of this.attivitaFisica.esercizi">
             <ion-grid>
                 <ion-row>
                     <ion-col size="5">{{attivita.esercizio.nome}}</ion-col>

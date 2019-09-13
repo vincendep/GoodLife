@@ -2,15 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {DiarioAlimentare} from '../../model/diario.model';
 import {Dieta} from '../../model/dieta.model';
 import {TranslateService} from '@ngx-translate/core';
-import {ModalController, NavController} from '@ionic/angular';
-import {Router} from '@angular/router';
+import {ModalController} from '@ionic/angular';
 import {DiarioService} from '../../services/diario.service';
-import {AttivitaFisicaService} from '../../services/attivita-fisica.service';
 import {Alimento} from '../../model/alimento.model';
 import {UtenteService} from '../../services/utente.service';
 import {OverlayEventDetail} from '@ionic/core';
 import {DettagliPastoPage} from '../dettagli-pasto/dettagli-pasto.page';
 import {DateUtility} from '../../utility/date-utility';
+import {DettagliAttivitaFisicaPage} from '../dettagli-attivita-fisica/dettagli-attivita-fisica.page';
 
 @Component({
     selector: 'app-diario',
@@ -24,10 +23,7 @@ export class DiarioPage implements OnInit {
     private dieta: Dieta;
 
     constructor(private translateService: TranslateService,
-                private navController: NavController,
-                private router: Router,
                 private diarioService: DiarioService,
-                private attivitaFisicaService: AttivitaFisicaService,
                 private utenteService: UtenteService,
                 private modalController: ModalController) {
 
@@ -65,14 +61,15 @@ export class DiarioPage implements OnInit {
         await modal.present();
     }
 
-    showDettagliAttivitaFisica() {
-        this.diarioService.setDiario(this.diarioAlimentare);
-        this.attivitaFisicaService.setAttivitaFisica(this.diarioAlimentare.eserciziFisici);
-        this.navController.navigateForward('dettagli-attivita-fisica');
-    }
-
-    updateDiario() {
-        this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
+    async showDettagliAttivitaFisica() {
+        const modal = await this.modalController.create({
+            component: DettagliAttivitaFisicaPage,
+            componentProps: {appParam: this.diarioAlimentare.eserciziFisici}
+        });
+        modal.onDidDismiss().then((detail: OverlayEventDetail) => {
+            this.diarioService.updateDiario(this.diarioAlimentare).subscribe();
+        });
+        await modal.present();
     }
 
     getDiarioByDate() {
