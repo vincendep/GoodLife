@@ -64,6 +64,7 @@ export class RicettePage implements OnInit {
                     this.listRicetteCreate();
                 });
             } else {
+                this.listRicetteCreate();
                 console.log('cancel pressed');
             }
         });
