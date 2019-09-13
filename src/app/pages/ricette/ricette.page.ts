@@ -64,6 +64,7 @@ export class RicettePage implements OnInit {
                     this.listRicetteCreate();
                 });
             } else {
+                this.listRicetteCreate();
                 console.log('cancel pressed');
             }
         });
@@ -79,13 +80,12 @@ export class RicettePage implements OnInit {
             buttons: [{
                 text: 'OK',
                 handler: () => {
-                    this.ricettaService.deleteRicetta(ricetta).subscribe(() => {
-                        this.listRicetteCreate();
-                    });
+                    this.ricettaService.deleteRicetta(ricetta).subscribe();
                 }
-            }
-                , this.translateService.instant('CANCEL_BUTTON')]
+            },
+                this.translateService.instant('CANCEL_BUTTON')]
         });
+        alert.onDidDismiss().then(() => this.listRicetteCreate());
         await alert.present();
     }
 

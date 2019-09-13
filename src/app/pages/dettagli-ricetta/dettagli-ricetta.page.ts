@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {AlertController, ModalController, NavParams} from '@ionic/angular';
-import {Ricetta} from '../../model/ricetta.model';
+import {AlertController, IonItemSliding, ModalController, NavParams} from '@ionic/angular';
+import {Ingrediente, Ricetta} from '../../model/ricetta.model';
 import {RicettaService} from '../../services/ricetta.service';
 import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
+import {Alimento} from '../../model/alimento.model';
 
 @Component({
     selector: 'app-dettagli-ricetta',
@@ -14,7 +15,6 @@ import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
 export class DettagliRicettaPage implements OnInit {
     private ricettaFormModel: FormGroup;
     private ricetta: Ricetta;
-    private placeholder: string;
     private deleteTitle: string;
     private deleteMessage: string;
 
@@ -30,8 +30,6 @@ export class DettagliRicettaPage implements OnInit {
         this.ricettaFormModel = this.formBuilder.group({
             nome: [this.ricetta.nome, Validators.required]
         });
-
-        this.placeholder = this.translateService.instant('NUOVO-NOME');
     }
 
     async onConfirm() {
@@ -76,5 +74,54 @@ export class DettagliRicettaPage implements OnInit {
         this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
             this.deleteMessage = data;
         });
+    }
+
+    showItemOptions(sliding: IonItemSliding) {
+        sliding.closeOpened().then(() => {
+            sliding.open('end');
+        });
+    }
+
+    modificaAlimento(ingrediente: Ingrediente, sliding: IonItemSliding) {
+        sliding.close();
+        this.selezionaDose(ingrediente);
+    }
+
+    async selezionaDose(ingrediente: Ingrediente) {
+        const alert = await this.alertController.create({
+            header: ingrediente.alimento.nome,
+            animated: true,
+            cssClass: 'alertFixing',
+            message: this.translateService.instant('CALORIE') +
+                ': ' + ingrediente.alimento.calorie + ' kcal/100 g <br/><br/>' + this.translateService.instant('PROTEINE') +
+                ': ' + ingrediente.alimento.proteine + ' g/100 g <br/><br/>' + this.translateService.instant('GRASSI') +
+                ': ' + ingrediente.alimento.grassi + ' g/100 g <br/><br/>' + this.translateService.instant('CARBOIDRATI') +
+                ': ' + ingrediente.alimento.carboidrati + ' g/100 g',
+            inputs: [
+                {
+                    name: 'quantita',
+                    type: 'number',
+                    placeholder: '0 g',
+                }
+            ],
+            buttons: [
+                {
+                    text: this.translateService.instant('CANCEL_BUTTON'),
+                    role: 'cancel',
+                },
+                {
+                    text: 'OK',
+                    handler: (data) => {
+                        if (data.quantita > 0) {
+                            const index = this.ricetta.ingredienti.indexOf(ingrediente);
+                            if (index > -1) {
+                                this.ricetta.ingredienti[index].quantita = data.quantita;
+                            }
+                        }
+                    }
+                }
+            ],
+        });
+        await alert.present();
     }
 }
