@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {AlertController, ModalController, NavController, NavParams} from '@ionic/angular';
+import {AlertController, ModalController, NavParams} from '@ionic/angular';
 import {Pasto} from '../../model/pasto.model';
 import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
 import {InserisciRicettaPage} from '../inserisci-ricetta/inserisci-ricetta.page';
@@ -17,7 +17,6 @@ export class DettagliPastoPage implements OnInit {
     private deleteMessage: string;
 
     constructor(private translateService: TranslateService,
-                private navController: NavController,
                 private alertController: AlertController,
                 private navParams: NavParams,
                 private modalController: ModalController) {

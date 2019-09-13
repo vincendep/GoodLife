@@ -15,14 +15,6 @@ export class RicettaService {
         this.ricetta = null;
     }
 
-    public getRicetta(): Ricetta {
-        return this.ricetta;
-    }
-
-    public setRicette(ricetta: Ricetta) {
-        this.ricetta = ricetta;
-    }
-
     public listRicette(): Observable<Ricetta[]> {
         return this.http.get<Ricetta[]>(URL.RICETTE);
     }

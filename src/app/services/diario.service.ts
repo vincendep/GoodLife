@@ -17,14 +17,6 @@ export class DiarioService {
     constructor(private http: HttpClient) {
     }
 
-    public getDiario() {
-        return this.diario;
-    }
-
-    public setDiario(diario: DiarioAlimentare) {
-        this.diario = diario;
-    }
-
     public getDiarioByDate(data: string): Observable<DiarioAlimentare> {
         return this.http.get<DiarioAlimentare>(URL.DIARIO + '?data=' + data);
     }
