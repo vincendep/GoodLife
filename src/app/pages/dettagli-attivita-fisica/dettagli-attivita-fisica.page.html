@@ -6,11 +6,9 @@
         </ion-button>
     </ion-toolbar>
 </ion-header>
-<ion-item color="secondary" class="recap" lines="full">
-    <ion-grid fixed="true" text-center="true">
-        <ion-col>{{'CONSUMO_ENERGETICO' | translate}}:</ion-col>
-        <ion-col>{{this.attivitaFisica.consumoTotale().toFixed(0)}} kcal</ion-col>
-    </ion-grid>
+<ion-item justify-content-center color="secondary" class="recap" lines="full">
+    <ion-icon margin-end="10px" size="large" src="assets/images/calorie.svg"></ion-icon>
+    <p>{{'CONSUMO_ENERGETICO' | translate}}: {{this.attivitaFisica.consumoTotale().toFixed(0)}} kcal</p>
 </ion-item>
 
 <ion-content>
