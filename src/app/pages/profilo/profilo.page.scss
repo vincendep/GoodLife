@@ -1,12 +1,12 @@
-.iocon {
-  font-size: 128px;
-}
-
 ion-label {
   --color: var(--ion-color-secondary)!important;
   opacity: 100%!important;
 }
 
-ion-input {
-  text-align: right;
+ion-list {
+  margin-top: 10px;
+}
+
+.profile-photo {
+  font-size: 128px;
 }

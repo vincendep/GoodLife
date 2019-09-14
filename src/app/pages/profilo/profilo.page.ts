@@ -15,6 +15,7 @@ export class ProfiloPage implements OnInit {
 
     private utente: Utente;
     private profiloFormModel: FormGroup;
+    private showSelect = true;
 
     constructor(private translateService: TranslateService,
                 private utenteService: UtenteService,
@@ -31,7 +32,8 @@ export class ProfiloPage implements OnInit {
                 Validators.required
             ])],
             email: ['', Validators.compose([
-                Validators.required
+                Validators.required,
+                Validators.email
             ])],
             dataDiNascita: ['', Validators.compose([
                 Validators.required
@@ -43,17 +45,41 @@ export class ProfiloPage implements OnInit {
                 Validators.required
             ])],
             altezza: ['', Validators.compose([
-                Validators.required
+                Validators.required,
+                Validators.min(100),
+                Validators.max(299)
             ])],
             peso: ['', Validators.compose([
-                Validators.required
+                Validators.required,
+                Validators.min(30),
+                Validators.max(299)
             ])]
         });
+    }
+
+    // TODO le select non si aggiornano automaticamente al cambio di lingua
+    ionViewWillEnter() {
+        this.resetFormFields();
+    }
+
+    submitForm() {
+        this.utente.nome = this.profiloFormModel.value.nome;
+        this.utente.cognome = this.profiloFormModel.value.cognome;
+        this.utente.email = this.profiloFormModel.value.email;
+        this.utente.dataDiNascita = this.profiloFormModel.value.dataDiNascita;
+        this.utente.sesso = this.profiloFormModel.value.sesso;
+        this.utente.diete[this.utente.diete.length - 1].obiettivo = this.profiloFormModel.value.tipoDieta;
+        this.utente.informazioniFisiche[this.utente.informazioniFisiche.length - 1].altezza = this.profiloFormModel.value.altezza;
+        this.utente.informazioniFisiche[this.utente.informazioniFisiche.length - 1].peso = this.profiloFormModel.value.peso;
+
+        this.utenteService.updateProfilo(this.utente).subscribe();
+    }
+
+    resetFormFields() {
         this.utenteService.getUtente().subscribe((utente) => {
             this.utente = utente;
-            this.profiloFormModel.disable();
             this.profiloFormModel.patchValue({
-                nome: utente.nome,
+                nome: this.utente.nome,
                 cognome: utente.cognome,
                 email: utente.email,
                 dataDiNascita: utente.dataDiNascita,
@@ -62,6 +88,7 @@ export class ProfiloPage implements OnInit {
                 altezza: utente.informazioniFisiche[utente.informazioniFisiche.length - 1].altezza,
                 peso: utente.informazioniFisiche[utente.informazioniFisiche.length - 1].peso
             });
+            this.profiloFormModel.markAsUntouched({onlySelf: true});
         });
     }
 
@@ -71,6 +98,7 @@ export class ProfiloPage implements OnInit {
             event: ev,
             translucent: true
         });
+
         return await popover.present();
     }
 }

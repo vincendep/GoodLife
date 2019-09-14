@@ -9,49 +9,53 @@
 
 <ion-content *ngIf="utente">
     <form [formGroup]="profiloFormModel">
-        <ion-list no-lines>
-            <ion-icon name="contact" class="iocon" color="secondary"></ion-icon>
+        <ion-list no-lines margin>
+            <ion-icon text-center name="contact" class="profile-photo" color="secondary"></ion-icon>
             <ion-item class="animated fadeInUp">
-                <ion-label>{{ 'NOME' | translate }}</ion-label>
-                <ion-input slot="end" type="text" formControlName="nome"></ion-input>
+                <ion-label position="stacked">{{ 'NOME' | translate }}</ion-label>
+                <ion-input type="text" formControlName="nome"></ion-input>
             </ion-item>
             <ion-item class="animated fadeInUp">
-                <ion-label>{{ 'COGNOME' | translate }}</ion-label>
-                <ion-input slot="end" type="text" formControlName="cognome"></ion-input>
+                <ion-label position="stacked">{{ 'COGNOME' | translate }}</ion-label>
+                <ion-input type="text" formControlName="cognome"></ion-input>
             </ion-item>
             <ion-item class="animated fadeInUp">
-                <ion-label>{{ 'EMAIL' | translate }}</ion-label>
-                <ion-input slot="end" type="email" formControlName="email"></ion-input>
+                <ion-label position="stacked">{{ 'EMAIL' | translate }}</ion-label>
+                <ion-input type="email" formControlName="email" disabled></ion-input>
             </ion-item>
             <ion-item class="animated fadeInUp">
-                <ion-label>{{ 'DATA_DI_NASCITA' | translate }}</ion-label>
-                <ion-input slot="end" type="date" formControlName="dataDiNascita"></ion-input>
+                <ion-label position="stacked">{{ 'DATA_DI_NASCITA' | translate }}</ion-label>
+                <ion-input type="date" formControlName="dataDiNascita"></ion-input>
             </ion-item>
             <ion-item class="animated fadeInUp">
-                <ion-label>{{ 'SESSO' | translate }}</ion-label>
-                <ion-select slot="end" formControlName="sesso" placeholder="Select One">
+                <ion-label position="stacked">{{ 'SESSO' | translate }}</ion-label>
+                <ion-select *ngIf="showSelect" formControlName="sesso" placeholder="Select One">
                     <ion-select-option value="FEMMINA">{{'FEMMINA' | translate}}</ion-select-option>
                     <ion-select-option value="MASCHIO">{{'MASCHIO' | translate}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item class="animated fadeInUp">
-                <ion-label>{{ 'TIPO_DIETA' | translate }}</ion-label>
-                <ion-select slot="end" formControlName="tipoDieta" placeholder="Select One">
+                <ion-label position="stacked">{{ 'TIPO_DIETA' | translate }}</ion-label>
+                <ion-select *ngIf="showSelect" formControlName="tipoDieta" placeholder="Select One">
                     <ion-select-option value="DIMAGRIRE">{{'DIMAGRIRE' | translate}}</ion-select-option>
                     <ion-select-option value="MANGIARE_SANO">{{'MANGIARE_SANO' | translate}}</ion-select-option>
                     <ion-select-option value="MASSA_MUSCOLARE">{{'MASSA_MUSCOLARE' | translate}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item class="animated fadeInUp">
-                <ion-label>{{ 'PESO' | translate }}</ion-label>
+                <ion-label position="stacked">{{ 'PESO' | translate }}</ion-label>
                 <ion-input type="number" formControlName="peso"></ion-input>
                 <p slot="end">kg</p>
             </ion-item>
             <ion-item class="animated fadeInUp">
-                <ion-label>{{ 'ALTEZZA' | translate }}</ion-label>
+                <ion-label position="stacked">{{ 'ALTEZZA' | translate }}</ion-label>
                 <ion-input type="number" formControlName="altezza"></ion-input>
                 <p slot="end">cm</p>
             </ion-item>
         </ion-list>
+        <ion-buttons justify-content-center margin="10px">
+            <ion-button size="default" fill="solid" color="primary" shape="round" type="submit" [disabled]="!profiloFormModel.valid || profiloFormModel.untouched" (click)="submitForm()" margin="10px">aggiorna</ion-button>
+            <ion-button size="default" fill="solid" color="primary" shape="round" [disabled]="profiloFormModel.untouched" (click)="resetFormFields()" margin-start="10px">annulla</ion-button>
+        </ion-buttons>
     </form>
 </ion-content>

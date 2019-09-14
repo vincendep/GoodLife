@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {AlertController, IonItemSliding, ModalController} from '@ionic/angular';
+import {AlertController, IonItemSliding, IonList, ModalController} from '@ionic/angular';
 import {Ricetta} from '../../model/ricetta.model';
 import {RicettaService} from '../../services/ricetta.service';
 import {Observable} from 'rxjs';
@@ -15,6 +15,7 @@ import {OverlayEventDetail} from '@ionic/core';
 export class RicettePage implements OnInit {
 
     private ricette$: Observable<Ricetta[]>;
+    @ViewChild(IonList) list: IonList;
     private deleteTitle: string;
     private deleteMessage: string;
 
@@ -26,6 +27,12 @@ export class RicettePage implements OnInit {
 
     ngOnInit() {
         this.listRicetteCreate();
+    }
+
+    ionViewWillLeave() {
+        if (this.list !== undefined) {
+            this.list.closeSlidingItems();
+        }
     }
 
     async creaRicetta() {
@@ -93,6 +100,7 @@ export class RicettePage implements OnInit {
         this.ricette$ = this.ricettaService.listRicette();
     }
 
+    // necessario per calcolare le calorie della ricetta nel template
     calorieTotaliRicetta(r: Ricetta) {
         const ricetta = new Ricetta();
         ricetta.ingredienti = r.ingredienti;

@@ -4,7 +4,6 @@ import {AlimentoService} from '../../services/alimento.service';
 import {Alimento} from '../../model/alimento.model';
 import {AlertController, ModalController, NavParams} from '@ionic/angular';
 import {Observable} from 'rxjs';
-import {tryCatch} from 'rxjs/internal-compatibility';
 
 
 @Component({
@@ -19,8 +18,7 @@ export class InserisciCiboPage implements OnInit {
     private pasto: Array<{ alimento: Alimento, quantita: number }>;
     private categoriaSelezionata: string;
     private ricerca = '';
-    private skeletonFlag = false;
-    private skeletons = [null, null, null, null, null, null, null, null, null, null];
+    private hideSkeletonText = false;
 
     constructor(private translateService: TranslateService,
                 private alimentoService: AlimentoService,
@@ -36,7 +34,7 @@ export class InserisciCiboPage implements OnInit {
     ngOnInit() {
         this.alimenti$ = this.alimentoService.listAlimenti();
         setTimeout(() => {
-            this.skeletonFlag = true;
+            this.hideSkeletonText = true;
         }, 1000);
         this.pasto = this.navParams.data.appParam;
     }

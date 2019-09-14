@@ -31,29 +31,261 @@
     <ion-content class="slideHeight">
         <div>
             <ion-list>
-                <div *ngIf="!skeletonFlag">
-                    <ion-item *ngFor="let skeleton of skeletons">
-                        <ion-grid fixed="true">
-                            <ion-row align-items-center>
-                                <ion-col size="9"><ion-skeleton-text animated></ion-skeleton-text></ion-col>
-                                <ion-col text-end size="3" justify-content-end><ion-skeleton-text animated></ion-skeleton-text></ion-col>
-                            </ion-row>
-                        </ion-grid>
-                    </ion-item>
-                </div>
                 <div *ngFor="let alimento of alimenti$ | async">
-                <div *ngIf="skeletonFlag">
-                    <ion-item
-                            *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))"
-                            (click)="onClick(alimento)" button="true">
+                    <div *ngIf="hideSkeletonText">
+                        <ion-item
+                                *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))"
+                                (click)="onClick(alimento)" button="true">
+                            <ion-grid fixed="true">
+                                <ion-row align-items-center>
+                                    <ion-col size="9">{{alimento.nome}}</ion-col>
+                                    <ion-col text-end size="3" justify-content-end>{{alimento.calorie}} kcal</ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-item>
+                    </div>
+                </div>
+                <div *ngIf="!hideSkeletonText">
+                    <ion-item>
                         <ion-grid fixed="true">
                             <ion-row align-items-center>
-                                <ion-col size="9">{{alimento.nome}}</ion-col>
-                                <ion-col text-end size="3" justify-content-end>{{alimento.calorie}} kcal</ion-col>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
                             </ion-row>
                         </ion-grid>
                     </ion-item>
-                </div>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed="true">
+                            <ion-row align-items-center>
+                                <ion-col size="9">
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col text-end size="3" justify-content-end>
+                                    <ion-skeleton-text animated></ion-skeleton-text>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
                 </div>
             </ion-list>
         </div>
