@@ -2,7 +2,7 @@
     <div class="info" *ngIf="ricette.length == 0">
         <h2 text-center="">{{'CREA_RICETTA' | translate}}</h2>
     </div>
-    <ion-list *ngIf="ricette.length > 0">
+    <ion-list *ngIf="ricette.length > 0" id="list">
         <ion-item-sliding *ngFor="let ricetta of ricette" #sliding>
             <ion-item class="bg-white" (click)="showItemOptions(sliding)">
                 <ion-grid fixed="true" text-center="true">
