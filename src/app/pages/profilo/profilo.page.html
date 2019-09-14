@@ -9,8 +9,8 @@
 
 <ion-content *ngIf="utente">
     <form [formGroup]="profiloFormModel">
-        <ion-list no-lines margin>
-            <ion-icon text-center name="contact" class="profile-photo" color="secondary"></ion-icon>
+        <ion-list no-lines margin text-center>
+            <ion-icon name="contact" class="profile-photo" color="secondary"></ion-icon>
             <ion-item class="animated fadeInUp">
                 <ion-label position="stacked">{{ 'NOME' | translate }}</ion-label>
                 <ion-input type="text" formControlName="nome"></ion-input>
