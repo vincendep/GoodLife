@@ -31,8 +31,9 @@
     </ion-grid>
 </ion-item>
 <ion-content>
-    <div *ngIf="pasto.ingredienti.length == 0" class="content">
-        <h2 text-center>{{'INSERISCI_ALIMENTO' | translate}}</h2>
+    <div *ngIf="pasto.ingredienti.length == 0" class="info">
+        <h3>{{'LISTA_VUOTA' | translate | uppercase}}</h3>
+        <p text-center="">{{'AGGIUNGI_ALIMENTO' | translate}}</p>
     </div>
     <ion-list *ngIf="pasto.ingredienti.length > 0">
         <ion-list-header>{{'ALIMENTI_AGGIUNTI' | translate}}</ion-list-header>

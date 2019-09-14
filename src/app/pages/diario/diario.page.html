@@ -7,14 +7,15 @@
 </ion-header>
 
 <ion-content *ngIf="this.diarioAlimentare && this.dieta">
-    <div class="stats">
+    <div>
         <div class="calendar">
             <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="this.data"
                           pickerFormat="DD MMM YYYY" (ionChange)="getDiarioByDate()"></ion-datetime>
             <ion-icon name="arrow-dropdown" size="large"></ion-icon>
         </div>
 
-        <div text-center="true">
+
+        <div text-center="true" class="stats">
             <ion-grid fixed="true" text-center="true">
                 <ion-row>
                     <ion-col>{{ 'CALORIE' | translate }}
@@ -24,7 +25,8 @@
                 </ion-row>
                 <ion-row>
                     <ion-col>{{ 'PROTEINE' | translate }}
-                        <p class="space">{{this.diarioAlimentare.getTotProteine().toFixed(0)}}/{{dieta.proteine}} g</p>
+                        <p class="space">{{this.diarioAlimentare.getTotProteine().toFixed(0)}}/{{dieta.proteine}}
+                            g</p>
                     </ion-col>
 
                     <ion-col>{{ 'GRASSI' | translate }}
@@ -32,13 +34,15 @@
                     </ion-col>
 
                     <ion-col>{{ 'CARBOIDRATI' | translate }}
-                        <p class="space"> {{this.diarioAlimentare.getTotCarboidrati().toFixed(0)}}/{{dieta.carboidrati}}
+                        <p class="space"> {{this.diarioAlimentare.getTotCarboidrati().toFixed(0)}}
+                            /{{dieta.carboidrati}}
                             g</p>
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </div>
     </div>
+
 
     <ion-item lines="full" class="water-item">
         <ion-img src="assets/images/glass.png" class="imageWater"></ion-img>

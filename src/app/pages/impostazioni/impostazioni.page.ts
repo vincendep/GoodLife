@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Lingua, LinguaService} from '../../services/lingua.service';
 import {TranslateService} from '@ngx-translate/core';
+import {NavController} from '@ionic/angular';
 
 @Component({
     selector: 'app-impostazioni',
@@ -16,7 +17,8 @@ export class ImpostazioniPage implements OnInit {
 
     constructor(private linguaService: LinguaService,
                 private translateService: TranslateService,
-                private formBuilder: FormBuilder) {
+                private formBuilder: FormBuilder,
+                private navController: NavController) {
     }
 
     ngOnInit() {
@@ -37,5 +39,9 @@ export class ImpostazioniPage implements OnInit {
             this.linguaService.updateLingua(this.profiloFormModel.value.linguaPreferita);
             this.translateService.use(this.profiloFormModel.value.linguaPreferita);
         }
+    }
+
+    back() {
+        this.navController.navigateRoot('tabs/profilo');
     }
 }

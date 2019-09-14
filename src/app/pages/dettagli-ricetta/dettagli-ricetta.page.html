@@ -36,6 +36,10 @@
         <ion-label>{{ 'ALIMENTI_AGGIUNTI' | translate | titlecase }}</ion-label>
     </ion-item>
 
+    <div class="info" *ngIf="ricetta.ingredienti.length == 0">
+        <p text-center="">{{'AGGIUNGI_ALIMENTO' | translate}}</p>
+    </div>
+
     <ion-list>
         <ion-item-sliding *ngFor="let ingrediente of this.ricetta.ingredienti" #sliding>
             <ion-item class="bg-white" (click)="showItemOptions(sliding)">

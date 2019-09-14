@@ -1,6 +1,7 @@
 <ion-content *ngIf="ricette$ | async as ricette">
     <div class="info" *ngIf="ricette.length == 0">
-        <h2 text-center="">{{'CREA_RICETTA' | translate}}</h2>
+        <h3>{{'LISTA_VUOTA' | translate | uppercase}}</h3>
+        <p text-center="">{{'CREA_RICETTA' | translate}}</p>
     </div>
     <ion-list *ngIf="ricette.length > 0" id="list">
         <ion-item-sliding *ngFor="let ricetta of ricette" #sliding>

@@ -14,8 +14,9 @@
 </ion-item>
 
 <ion-content>
-    <div *ngIf="attivitaFisica.esercizi.length == 0" class="content">
-        <h2 text-center>{{'INSERISCI_ESERCIZIO' | translate}}</h2>
+    <div *ngIf="attivitaFisica.esercizi.length == 0" class="info">
+        <h3>{{'LISTA_VUOTA' | translate | uppercase}}</h3>
+        <p text-center="">{{'AGGIUNGI_ESERCIZIO' | translate}}</p>
     </div>
     <ion-list *ngIf="attivitaFisica.esercizi.length > 0">
         <ion-list-header>

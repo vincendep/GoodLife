@@ -4,8 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-bottom: 1px solid var(--ion-color-secondary);
+  background-color: var(--ion-color-light-tint);
+  border-bottom: 1px solid lightgrey;
 }
 
 /* Caratteristiche del bottone circolare */
@@ -62,7 +62,14 @@
 
 /* Caratteristiche del contenitore delle statistiche */
 .stats {
-  //height: 29%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid lightgrey;
+}
+
+ion-grid {
+  width: 100%;
 }
 
 .space {
@@ -78,6 +85,7 @@ ion-fab-button {
 
 /* Caratteristiche del contenitore dell'acqua */
 .water-item {
+  background-color: var(--ion-color-light);
   display: flex;
   justify-content: space-evenly;
 }
@@ -96,7 +104,7 @@ ion-fab-button {
 }
 
 .imageWater {
-  height: 70%;
+  height: 50px;
 }
 
 
