@@ -7,9 +7,13 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="ricette$ | async as ricette">
+    <div class="info" *ngIf="ricette.length == 0">
+        <h3>{{'LISTA_VUOTA' | translate | uppercase}}</h3>
+        <p text-center="">{{ 'VAI_ALLE_RICETTE' | translate }}</p>
+    </div>
     <ion-list>
-        <ion-item lines="full" *ngFor="let ricetta of ricette$ | async" button=true (click)="onClick(ricetta)">
+        <ion-item lines="full" *ngFor="let ricetta of ricette" button=true (click)="selezionaRicetta(ricetta)">
             <ion-grid fixed="true" text-center="true">
                 <ion-row>
                     <ion-col>
