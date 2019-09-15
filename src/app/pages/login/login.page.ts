@@ -68,5 +68,4 @@ export class LoginPage implements OnInit {
             this.loginTitle = data;
         });
     }
-
 }
