@@ -30,7 +30,7 @@ export class RicettePage implements OnInit {
     }
 
     ionViewWillLeave() {
-        if (this.list !== undefined) {
+        if (this.list) {
             this.list.closeSlidingItems();
         }
     }

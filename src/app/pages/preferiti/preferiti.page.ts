@@ -16,6 +16,8 @@ export class PreferitiPage implements OnInit {
     ngOnInit() {
     }
 
+    // TODO auto close list items
+
     changeCurrentTab(): void {
         this.currentTab = this.tabs.getSelected() === 'alimenti' ? 'ALIMENTI' : 'RICETTE';
     }

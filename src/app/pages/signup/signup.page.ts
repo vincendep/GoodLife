@@ -111,7 +111,6 @@ export class SignupPage implements OnInit {
         }
     }
 
-    // TODO refactor
     signup() {
         this.utenteService.signup(this.nuovoUtente).subscribe((utente: Utente) => {
                 const account: Account = {
