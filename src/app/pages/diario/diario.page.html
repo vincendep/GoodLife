@@ -16,7 +16,6 @@
         <ion-grid fixed="true" text-center="true">
             <ion-row>
                 <ion-col>
-                    <ion-icon class="stats-icon" src="assets/images/calorie.svg"></ion-icon>
                     {{ 'CALORIE' | translate }}
                     <p class="space"> {{this.diarioAlimentare.getTotCalorie().toFixed(0)}}
                         /{{this.dieta.calorieGiornaliere()}} kcal</p>
@@ -24,20 +23,17 @@
             </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-icon class="stats-icon" src="assets/images/proteine.svg"></ion-icon>
                     {{ 'PROTEINE' | translate }}
                     <p class="space">{{this.diarioAlimentare.getTotProteine().toFixed(0)}}/{{dieta.proteine}}
                         g</p>
                 </ion-col>
 
                 <ion-col>
-                    <ion-icon class="stats-icon" src="assets/images/grassi.svg"></ion-icon>
                     {{ 'GRASSI' | translate }}
                     <p class="space">{{this.diarioAlimentare.getTotGrassi().toFixed(0)}}/{{dieta.grassi}} g</p>
                 </ion-col>
 
                 <ion-col>
-                    <ion-icon class="stats-icon" src="assets/images/carboidrati.svg"></ion-icon>
                     {{ 'CARBOIDRATI' | translate }}
                     <p class="space"> {{this.diarioAlimentare.getTotCarboidrati().toFixed(0)}}
                         /{{dieta.carboidrati}}

@@ -6,9 +6,19 @@
         </ion-button>
     </ion-toolbar>
 </ion-header>
-<ion-item justify-content-center color="secondary" class="recap" lines="full">
-    <ion-icon margin-end="10px" size="large" src="assets/images/calorie.svg"></ion-icon>
-    <p>{{'CONSUMO_ENERGETICO' | translate}}: {{this.attivitaFisica.consumoTotale().toFixed(0)}} kcal</p>
+
+<ion-item color="secondary" class="recap" lines="full">
+    <ion-grid fixed="true" text-center="true" no-padding no-margin>
+        <ion-row>
+            <ion-col>
+                <ion-item lines="none">
+                    <ion-icon size="large" src="assets/images/calorie.svg" margin-end="20px"></ion-icon>
+                    <p>{{'CONSUMO_ENERGETICO' | translate}}: {{this.attivitaFisica.consumoTotale().toFixed(0)}} kcal</p>
+
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-item>
 
 <ion-content>

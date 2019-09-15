@@ -11,52 +11,69 @@
     <ion-grid fixed="true" text-center="true" no-padding no-margin>
         <ion-row>
             <ion-col>
-                <ion-item justify-content-center color="secondary" lines="none">
+                <ion-item lines="none">
                     <ion-icon size="large" src="assets/images/calorie.svg" margin-end="10px"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item lines="none">
                     <p>{{'CALORIE' | translate | titlecase}}</p>
                 </ion-item>
             </ion-col>
             <ion-col>
-                <ion-item justify-content-center lines="none">
+                <ion-item lines="none">
                     {{ pasto.getTotaleCalorie().toFixed(0)}} kcal
                 </ion-item>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-item justify-content-center color="secondary" lines="none">
+                <ion-item lines="none">
                     <ion-icon size="large" src="assets/images/proteine.svg" margin-end="10px"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item lines="none">
                     <p>{{'PROTEINE' | translate | titlecase}}</p>
                 </ion-item>
             </ion-col>
             <ion-col>
-                <ion-item justify-content-center lines="none">
+                <ion-item lines="none">
                     {{ pasto.getTotProteine().toFixed(0)}} g
                 </ion-item>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-item justify-content-center color="secondary" lines="none">
+                <ion-item lines="none">
                     <ion-icon size="large" src="assets/images/grassi.svg" margin-end="10px"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item lines="none">
                     <p>{{'GRASSI' | translate | titlecase}}</p>
                 </ion-item>
             </ion-col>
             <ion-col>
-                <ion-item justify-content-center lines="none">
+                <ion-item lines="none">
                     {{ pasto.getTotGrassi().toFixed(0)}} g
                 </ion-item>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col>
-                <ion-item justify-content-center color="secondary" lines="none">
+                <ion-item lines="none">
                     <ion-icon size="large" src="assets/images/carboidrati.svg" margin-end="10px"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col>
+                <ion-item lines="none">
+
                     <p>{{'CARBOIDRATI' | translate | titlecase}}</p>
                 </ion-item>
             </ion-col>
             <ion-col>
-                <ion-item justify-content-center lines="none">
+                <ion-item lines="none">
                     {{ pasto.getTotCarboidrati().toFixed(0)}} g
                 </ion-item>
             </ion-col>
