@@ -46,4 +46,10 @@ export class InserisciRicettaPage implements OnInit {
     async back() {
         await this.modalController.dismiss();
     }
+
+    getCalorieRicetta(r: Ricetta) {
+        const ricetta: Ricetta = new Ricetta();
+        ricetta.ingredienti = r.ingredienti;
+        return ricetta.getTotaleCalorie().toFixed(0);
+    }
 }
