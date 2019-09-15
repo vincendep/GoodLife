@@ -17,6 +17,9 @@ ion-list-header {
 }
 
 .recap {
+  text-align: center;
+  --inner-padding-end:auto;
+  --inner-padding-start:7% ;
   --inner-padding-top: 5%;
   --inner-padding-bottom: 5%;
 }

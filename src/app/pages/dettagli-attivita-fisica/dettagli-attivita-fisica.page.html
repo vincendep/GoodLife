@@ -8,17 +8,9 @@
 </ion-header>
 
 <ion-item color="secondary" class="recap" lines="full">
-    <ion-grid fixed="true" text-center="true" no-padding no-margin>
-        <ion-row>
-            <ion-col>
-                <ion-item lines="none">
-                    <ion-icon size="large" src="assets/images/calorie.svg" margin-end="20px"></ion-icon>
-                    <p>{{'CONSUMO_ENERGETICO' | translate}}: {{this.attivitaFisica.consumoTotale().toFixed(0)}} kcal</p>
-
-                </ion-item>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-icon size="large" src="assets/images/calorie.svg" margin-end="20px"></ion-icon>
+    <p>{{'CONSUMO_ENERGETICO' | translate}}</p>
+    <ion-label> {{this.attivitaFisica.consumoTotale().toFixed(0)}} kcal</ion-label>
 </ion-item>
 
 <ion-content>

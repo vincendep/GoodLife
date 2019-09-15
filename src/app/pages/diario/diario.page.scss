@@ -39,10 +39,23 @@
 }
 
 /* Caratteristiche dei bottoni rettangolari */
+.box{
+  display: flex;
+  flex-flow: column;
+  height: 98%;
+}
+.box .box1{
+  flex: 1 1 auto;
+}
+.box .box2{
+  flex: 0 1 auto;
+}
+
 .squareButtonDiv {
   display: flex;
   justify-content: space-around;
-  height: 29%;
+  height: 50%;
+  width:100%;
 }
 
 .squareButton {
