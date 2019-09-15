@@ -34,6 +34,9 @@
 
     <ion-item color="primary">
         <ion-label>{{ 'ALIMENTI_AGGIUNTI' | translate | titlecase }}</ion-label>
+        <ion-fab-button  slot="end" size="small" color="secondary" (click)="aggiungiAlimento()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
     </ion-item>
 
     <div class="info" *ngIf="ricetta.ingredienti.length == 0">
@@ -55,7 +58,7 @@
                 </ion-grid>
             </ion-item>
             <ion-item-options side="end">
-                <ion-item-option color="secondary" (click)="modificaAlimento(ingrediente, sliding)">
+                <ion-item-option color="tertiary" (click)="modificaAlimento(ingrediente, sliding)">
                     <ion-icon slot="icon-only" name="create"></ion-icon>
                 </ion-item-option>
                 <ion-item-option color="danger" (click)="eliminaAlimento(ingrediente)">
@@ -64,13 +67,6 @@
             </ion-item-options>
         </ion-item-sliding>
     </ion-list>
-
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button (click)="aggiungiAlimento()">
-            <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-
 </ion-content>
 <ion-footer>
     <ion-toolbar text-center="true">
