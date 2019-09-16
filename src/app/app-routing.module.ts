@@ -8,7 +8,7 @@ const routes: Routes = [
     {path: 'login', loadChildren: './pages/login/login.module#LoginPageModule'},
     {path: 'signup', loadChildren: './pages/signup/signup.module#SignupPageModule'},
     {path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule', canActivateChild: [AuthGuard]},
-    {path: 'impostazioni', loadChildren: './pages/impostazioni/impostazioni.module#ImpostazioniPageModule'},
+    {path: 'impostazioni', loadChildren: './pages/impostazioni/impostazioni.module#ImpostazioniPageModule', canActivateChild: [AuthGuard]},
 
 ];
 
