@@ -25,10 +25,11 @@ export class DettagliAttivitaFisicaPage implements OnInit {
     }
 
     ngOnInit() {
+        this.initTranslate();
         this.attivitaFisica.esercizi = this.navParams.data.appParam;
     }
 
-    async onAdd() {
+    async aggiungiAttivita() {
         const modal = await this.modalController.create({
             component: InserisciAttivitaPage,
             componentProps: {appParam: this.attivitaFisica.esercizi}
@@ -36,53 +37,8 @@ export class DettagliAttivitaFisicaPage implements OnInit {
         await modal.present();
     }
 
-
-    public eliminaAttivita(attivita: any) {
-        this.showDeleteAlert(attivita);
-    }
-
-    async showDeleteAlert(attivita: any) {
-        this.initTranslate();
-        const alert = await this.alertController.create({
-            header: this.deleteTitle,
-            message: this.deleteMessage + ' ' + attivita.esercizio.nome + '?',
-            buttons: [{
-                text: 'OK',
-                handler: (data) => {
-                    const index = this.attivitaFisica.esercizi.indexOf(attivita);
-                    if (index > -1) {
-                        this.attivitaFisica.esercizi.splice(index, 1);
-                    }
-                }
-            }, this.translateService.instant('CANCEL_BUTTON')]
-        });
-        await alert.present();
-    }
-
-    initTranslate() {
-        this.translateService.get('DELETE_TITLE').subscribe((data) => {
-            this.deleteTitle = data;
-        });
-        this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
-            this.deleteMessage = data;
-        });
-    }
-
-    async back() {
-        await this.modalController.dismiss();
-    }
-
-    showItemOptions(sliding: IonItemSliding) {
-        sliding.closeOpened().then(() => {
-            sliding.open('end');
-        });
-    }
-
-    modificaAttivita(attivita: {esercizio: EsercizioFisico, durata: number}, sliding: IonItemSliding) {
-        this.selezionaDurata(attivita);
-    }
-
-    async selezionaDurata(attivita: {esercizio: EsercizioFisico, durata: number}) {
+    async modificaAttivita(attivita: {esercizio: EsercizioFisico, durata: number}, sliding: IonItemSliding) {
+        sliding.close();
         const alert = await this.alertController.create({
             header: attivita.esercizio.nome,
             message: this.translateService.instant('CALMIN') + ': ' + attivita.esercizio.consumoPerMinuto + ' kcal',
@@ -113,5 +69,42 @@ export class DettagliAttivitaFisicaPage implements OnInit {
             ],
         });
         await alert.present();
+    }
+
+    async eliminaAttivita(attivita: any, sliding: IonItemSliding) {
+        sliding.close();
+        const alert = await this.alertController.create({
+            header: this.deleteTitle,
+            message: this.deleteMessage + ' ' + attivita.esercizio.nome + '?',
+            buttons: [{
+                text: 'OK',
+                handler: () => {
+                    const index = this.attivitaFisica.esercizi.indexOf(attivita);
+                    if (index > -1) {
+                        this.attivitaFisica.esercizi.splice(index, 1);
+                    }
+                }
+            }, this.translateService.instant('CANCEL_BUTTON')]
+        });
+        await alert.present();
+    }
+
+    initTranslate() {
+        this.translateService.get('DELETE_TITLE').subscribe((data) => {
+            this.deleteTitle = data;
+        });
+        this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
+            this.deleteMessage = data;
+        });
+    }
+
+    async back() {
+        await this.modalController.dismiss();
+    }
+
+    showItemOptions(sliding: IonItemSliding) {
+        sliding.closeOpened().then(() => {
+            sliding.open('end');
+        });
     }
 }

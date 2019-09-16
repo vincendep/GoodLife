@@ -45,7 +45,8 @@ export class DettagliPastoPage implements OnInit {
         await modal.present();
     }
 
-    async eliminaAlimento(alimento: any) {
+    async eliminaAlimento(alimento: any, sliding: IonItemSliding) {
+        sliding.close();
         this.initTranslate();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
@@ -63,31 +64,8 @@ export class DettagliPastoPage implements OnInit {
         await alert.present();
     }
 
-    initTranslate() {
-        this.translateService.get('DELETE_TITLE').subscribe((data) => {
-            this.deleteTitle = data;
-        });
-        this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
-            this.deleteMessage = data;
-        });
-    }
-
-    async back() {
-        await this.modalController.dismiss();
-    }
-
-    showItemOptions(sliding: IonItemSliding) {
-        sliding.closeOpened().then(() => {
-            sliding.open('end');
-        });
-    }
-
-    modificaAlimento(ingrediente: { alimento: Alimento, quantita: number }, sliding: IonItemSliding) {
+    async modificaAlimento(ingrediente: { alimento: Alimento, quantita: number }, sliding: IonItemSliding) {
         sliding.close();
-        this.selezionaDose(ingrediente);
-    }
-
-    async selezionaDose(ingrediente: { alimento: Alimento, quantita: number }) {
         const alert = await this.alertController.create({
             header: ingrediente.alimento.nome,
             animated: true,
@@ -123,5 +101,24 @@ export class DettagliPastoPage implements OnInit {
             ],
         });
         await alert.present();
+    }
+
+    initTranslate() {
+        this.translateService.get('DELETE_TITLE').subscribe((data) => {
+            this.deleteTitle = data;
+        });
+        this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
+            this.deleteMessage = data;
+        });
+    }
+
+    async back() {
+        await this.modalController.dismiss();
+    }
+
+    showItemOptions(sliding: IonItemSliding) {
+        sliding.closeOpened().then(() => {
+            sliding.open('end');
+        });
     }
 }
