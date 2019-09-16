@@ -3,7 +3,7 @@ import {UtenteService} from '../../services/utente.service';
 import {Utente} from '../../model/utente.model';
 import {PopoverController, ToastController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
-import {ProfiloMenuComponent} from '../../components/profilo-menu/profilo-menu.component';
+import {ProfiloMenuComponent} from './profilo-menu/profilo-menu.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({

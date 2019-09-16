@@ -7,18 +7,19 @@ import {IonTabs} from '@ionic/angular';
     styleUrls: ['./preferiti.page.scss'],
 })
 export class PreferitiPage implements OnInit {
-    private currentTab: string;
+
     @ViewChild(IonTabs) tabs: IonTabs;
 
-    constructor() {
+    constructor() {}
+
+    ngOnInit() {}
+
+    // TODO trovare un metodo per chiudere propriamente gli ion-item-sliding nella tab alimenti
+    ionViewWillEnter() {
+        this.tabs.select('ricette');
     }
 
-    ngOnInit() {
-    }
-
-    // TODO auto close list items
-
-    changeCurrentTab(): void {
-        this.currentTab = this.tabs.getSelected() === 'alimenti' ? 'ALIMENTI' : 'RICETTE';
+    getCurrentTabName(): string {
+        return this.tabs.getSelected() === 'alimenti' ? 'ALIMENTI' : 'RICETTE';
     }
 }

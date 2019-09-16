@@ -1,13 +1,13 @@
 <ion-header>
     <ion-toolbar color="primary">
         <ion-title color="dark">
-            {{ 'FAVORITE' | translate }}: {{currentTab | translate | uppercase }}
+            {{ 'FAVORITE' | translate | uppercase }}: {{getCurrentTabName() | translate | uppercase }}
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-tabs (ionTabsWillChange)="changeCurrentTab()">
+    <ion-tabs>
         <ion-tab-bar color="secondary" slot="top">
             <ion-tab-button tab="preferiti/alimenti">
                 <ion-icon name="calendar"></ion-icon>

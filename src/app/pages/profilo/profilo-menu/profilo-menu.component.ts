@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavController, PopoverController} from '@ionic/angular';
-import {UtenteService} from '../../services/utente.service';
+import {UtenteService} from '../../../services/utente.service';
 
 @Component({
     selector: 'app-profilo-menu',
