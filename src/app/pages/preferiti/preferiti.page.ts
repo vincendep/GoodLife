@@ -14,11 +14,6 @@ export class PreferitiPage implements OnInit {
 
     ngOnInit() {}
 
-    // TODO trovare un metodo per chiudere propriamente gli ion-item-sliding nella tab alimenti
-    ionViewWillEnter() {
-        this.tabs.select('ricette');
-    }
-
     getCurrentTabName(): string {
         return this.tabs.getSelected() === 'alimenti' ? 'ALIMENTI' : 'RICETTE';
     }
