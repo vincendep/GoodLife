@@ -14,19 +14,23 @@
         </ion-item>
     </form>
     <ion-grid fixed="true" text-center="true">
-        <ion-row>
+        <ion-row align-items-center>
+            <ion-col><ion-icon size="large" src="assets/images/calorie.svg" margin-end="10px"></ion-icon></ion-col>
             <ion-col>{{'CALORIE' | translate}}</ion-col>
             <ion-col>{{ ricetta.getTotaleCalorie().toFixed(0)}} kcal</ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row align-items-center>
+            <ion-col><ion-icon size="large" src="assets/images/proteine.svg" margin-end="10px"></ion-icon></ion-col>
             <ion-col>{{'PROTEINE' | translate}}</ion-col>
             <ion-col>{{ricetta.getTotaleProteine().toFixed(0)}} g</ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row align-items-center>
+            <ion-col><ion-icon size="large" src="assets/images/grassi.svg" margin-end="10px"></ion-icon></ion-col>
             <ion-col>{{'GRASSI' | translate}}</ion-col>
             <ion-col>{{ricetta.getTotaleGrassi().toFixed(0)}} g</ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row align-items-center>
+            <ion-col><ion-icon size="large" src="assets/images/carboidrati.svg" margin-end="10px"></ion-icon></ion-col>
             <ion-col>{{'CARBOIDRATI' | translate}}</ion-col>
             <ion-col>{{ricetta.getTotaleCarboidrati().toFixed(0)}} g</ion-col>
         </ion-row>
@@ -34,7 +38,7 @@
 
     <ion-item color="primary">
         <ion-label>{{ 'ALIMENTI_AGGIUNTI' | translate | titlecase }}</ion-label>
-        <ion-fab-button slot="end" size="small" color="secondary" (click)="aggiungiAlimento()">
+        <ion-fab-button slot="end" size="small" color="light" (click)="aggiungiAlimento()">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-item>
