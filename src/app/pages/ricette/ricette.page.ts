@@ -55,7 +55,11 @@ export class RicettePage implements OnInit {
         await modal.present();
     }
 
-    async modificaRicetta(ricetta: Ricetta, sliding: IonItemSliding) {
+    async modificaRicetta(r: Ricetta, sliding: IonItemSliding) {
+        const ricetta: Ricetta = new Ricetta();
+        ricetta.id = r.id;
+        ricetta.nome = r.nome;
+        ricetta.ingredienti = r.ingredienti;
         sliding.close();
         const modal = await this.modalController.create({
             component: DettagliRicettaPage,
