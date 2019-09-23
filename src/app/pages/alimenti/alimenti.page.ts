@@ -75,7 +75,7 @@ export class AlimentiPage implements OnInit {
 
     async eliminaAlimento(alimento: Alimento, sliding: IonItemSliding) {
         sliding.close();
-        this.initTranslate();
+        this.iniziaTraduzione();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
             message: this.deleteMessage + ' ' + alimento.nome + '?',
@@ -97,7 +97,7 @@ export class AlimentiPage implements OnInit {
         });
     }
 
-    initTranslate() {
+    iniziaTraduzione() {
         this.translateService.get('DELETE_TITLE').subscribe((data) => {
             this.deleteTitle = data;
         });

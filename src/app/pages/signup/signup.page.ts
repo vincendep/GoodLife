@@ -70,7 +70,7 @@ export class SignupPage implements OnInit {
                 passwordCheck: ['', Validators.required]
             }
         );
-        this.initTranslate();
+        this.iniziaTraduzione();
     }
 
     onConfirmStepOne(event) {
@@ -150,7 +150,7 @@ export class SignupPage implements OnInit {
         await alert.present();
     }
 
-    initTranslate() {
+    iniziaTraduzione() {
         this.translateService.get('SIGNUP_ERROR_TITLE').subscribe((data) => {
             this.signupErrorTitle = data;
         });

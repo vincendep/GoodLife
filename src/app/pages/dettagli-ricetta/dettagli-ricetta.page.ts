@@ -50,7 +50,7 @@ export class DettagliRicettaPage implements OnInit {
     }
 
     async eliminaAlimento(ingrediente: any) {
-        this.initTranslate();
+        this.iniziaTraduzione();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
             message: this.deleteMessage + ' ' + ingrediente.alimento.nome + '?',
@@ -67,7 +67,7 @@ export class DettagliRicettaPage implements OnInit {
         await alert.present();
     }
 
-    initTranslate() {
+    iniziaTraduzione() {
         this.translateService.get('DELETE_TITLE').subscribe((data) => {
             this.deleteTitle = data;
         });

@@ -80,7 +80,7 @@ export class RicettePage implements OnInit {
 
     async eliminaRicetta(ricetta: Ricetta, sliding: IonItemSliding) {
         sliding.close();
-        this.initTranslate();
+        this.iniziaTraduzione();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
             message: this.deleteMessage + ' ' + ricetta.nome + '?',
@@ -109,7 +109,7 @@ export class RicettePage implements OnInit {
         });
     }
 
-    initTranslate() {
+    iniziaTraduzione() {
         this.translateService.get('DELETE_TITLE').subscribe((data) => {
             this.deleteTitle = data;
         });

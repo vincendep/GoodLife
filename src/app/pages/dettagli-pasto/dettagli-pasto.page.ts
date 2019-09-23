@@ -47,7 +47,7 @@ export class DettagliPastoPage implements OnInit {
 
     async eliminaAlimento(alimento: any, sliding: IonItemSliding) {
         sliding.close();
-        this.initTranslate();
+        this.iniziaTraduzione();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
             message: this.deleteMessage + ' ' + alimento.alimento.nome + '?',
@@ -103,7 +103,7 @@ export class DettagliPastoPage implements OnInit {
         await alert.present();
     }
 
-    initTranslate() {
+    iniziaTraduzione() {
         this.translateService.get('DELETE_TITLE').subscribe((data) => {
             this.deleteTitle = data;
         });

@@ -25,7 +25,7 @@ export class ProfiloPage implements OnInit {
     }
 
     ngOnInit() {
-        this.initTranslate();
+        this.iniziaTraduzione();
         this.profiloFormModel = this.formBuilder.group({
             nome: ['', Validators.compose([
                 Validators.required
@@ -60,7 +60,7 @@ export class ProfiloPage implements OnInit {
     }
 
     ionViewWillEnter() {
-        this.annullaModifiche();
+        this.resetForm();
     }
 
     confermaModifiche() {
@@ -78,7 +78,7 @@ export class ProfiloPage implements OnInit {
         });
     }
 
-    annullaModifiche() {
+    resetForm() {
         this.utenteService.getUtente().subscribe((utente) => {
             this.utente = utente;
             this.profiloFormModel.patchValue({
@@ -113,7 +113,7 @@ export class ProfiloPage implements OnInit {
         return await popover.present();
     }
 
-    private initTranslate() {
+    private iniziaTraduzione() {
         this.translateService.get('PROFILO_AGGIORNATO').subscribe((data) => {
             this.messaggioToast = data;
         });

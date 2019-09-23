@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
                 Validators.required
             ])]
         });
-        this.initTranslate();
+        this.iniziaTraduzione();
     }
 
     onLogin() {
@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
     }
 
 
-    private initTranslate() {
+    private iniziaTraduzione() {
         this.translateService.get('LOGIN_ERROR_SUB_TITLE').subscribe((data) => {
             this.loginSubTitle = data;
         });

@@ -71,7 +71,7 @@ export class DettagliAttivitaFisicaPage implements OnInit {
 
     async eliminaAttivita(attivita: any, sliding: IonItemSliding) {
         sliding.close();
-        this.initTranslate();
+        this.iniziaTraduzione();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
             message: this.deleteMessage + ' ' + attivita.esercizio.nome + '?',
@@ -88,7 +88,7 @@ export class DettagliAttivitaFisicaPage implements OnInit {
         await alert.present();
     }
 
-    initTranslate() {
+    iniziaTraduzione() {
         this.translateService.get('DELETE_TITLE').subscribe((data) => {
             this.deleteTitle = data;
         });

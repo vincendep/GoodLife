@@ -58,7 +58,7 @@
                         [disabled]="!profiloFormModel.valid || profiloFormModel.untouched" (click)="confermaModifiche()"
                         margin="10px">{{'AGGIORNA' | translate}}</ion-button>
             <ion-button size="default" fill="solid" color="primary" shape="round"
-                        [disabled]="profiloFormModel.untouched" (click)="annullaModifiche()"
+                        [disabled]="profiloFormModel.untouched" (click)="resetForm()"
                         margin-start="10px">{{'CANCEL_BUTTON' | translate}}</ion-button>
         </ion-buttons>
     </form>
