@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Alimento} from '../../model/alimento.model';
 import {AlimentoService} from '../../services/alimento.service';
-import {AlertController, IonItemSliding, ModalController} from '@ionic/angular';
+import {AlertController, IonItemSliding, IonList, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {DettagliAlimentoPage} from '../dettagli-alimento/dettagli-alimento.page';
 import {Observable} from 'rxjs';
@@ -16,6 +16,7 @@ import {OverlayEventDetail} from '@ionic/core';
 export class AlimentiPage implements OnInit {
 
     private alimenti$: Observable<Alimento[]>;
+    @ViewChild(IonList) list: IonList;
     private deleteTitle: string;
     private deleteMessage: string;
 
@@ -27,6 +28,12 @@ export class AlimentiPage implements OnInit {
 
     ngOnInit() {
         this.alimenti$ = this.alimentoService.listAlimentiCreati();
+    }
+
+    ionViewWillLeave() {
+        if (this.list) {
+            this.list.closeSlidingItems();
+        }
     }
 
     async creaAlimento() {
