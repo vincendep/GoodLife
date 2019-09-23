@@ -25,11 +25,11 @@ export class DiarioAlimentare {
         this.eserciziFisici = [];
     }
 
-    public incrementAcqua() {
+    public incrementoAcqua() {
         this.acqua++;
     }
 
-    public decrementAcqua() {
+    public decrementoAcqua() {
         if (this.acqua > 0) {
             this.acqua--;
         }

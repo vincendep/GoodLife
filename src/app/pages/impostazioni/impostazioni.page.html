@@ -13,7 +13,7 @@
             <ion-label position="fixed" color="secondary">{{ 'LANGUAGE' | translate }}</ion-label>
             <ion-label></ion-label>
             <ion-select formControlName="linguaPreferita" okText="{{ 'SAVE_BUTTON' | translate }}"
-                        cancelText="{{ 'CANCEL_BUTTON' | translate }}" (ionChange)="this.onChangeLanguage()">
+                        cancelText="{{ 'CANCEL_BUTTON' | translate }}" (ionChange)="this.cambioLingua()">
                 <ion-select-option *ngFor="let lingua of lingue"
                                    [value]="lingua.valore">{{lingua.etichetta}}</ion-select-option>
             </ion-select>

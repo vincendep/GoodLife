@@ -35,19 +35,19 @@ export class DiarioPage implements OnInit {
         this.getDietaCorrenteUtente();
     }
 
-    incrementAcqua() {
-        this.diarioAlimentare.incrementAcqua();
+    incrementoAcqua() {
+        this.diarioAlimentare.incrementoAcqua();
         this.diarioService.updateAcqua(this.diarioAlimentare.id, this.diarioAlimentare.acqua).subscribe();
     }
 
-    decrementAcqua() {
+    decrementoAcqua() {
         if (this.diarioAlimentare.acqua > 0) {
-            this.diarioAlimentare.decrementAcqua();
+            this.diarioAlimentare.decrementoAcqua();
             this.diarioService.updateAcqua(this.diarioAlimentare.id, this.diarioAlimentare.acqua).subscribe();
         }
     }
 
-    async showDettagliPasto(pastoSelezionato: Array<{ alimento: Alimento, quantita: number }>, pasto: string) {
+    async mostraDettagliPasto(pastoSelezionato: Array<{ alimento: Alimento, quantita: number }>) {
         const modal = await this.modalController.create({
             component: DettagliPastoPage,
             componentProps: {appParam: pastoSelezionato}
@@ -58,7 +58,7 @@ export class DiarioPage implements OnInit {
         await modal.present();
     }
 
-    async showDettagliAttivitaFisica() {
+    async mostraDettagliAttivitaFisica() {
         const modal = await this.modalController.create({
             component: DettagliAttivitaFisicaPage,
             componentProps: {appParam: this.diarioAlimentare.eserciziFisici}

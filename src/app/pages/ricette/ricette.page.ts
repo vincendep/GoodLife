@@ -26,7 +26,7 @@ export class RicettePage implements OnInit {
     }
 
     ngOnInit() {
-        this.listRicetteCreate();
+        this.ricette$ = this.ricettaService.listRicette();
     }
 
     ionViewWillLeave() {
@@ -46,7 +46,7 @@ export class RicettePage implements OnInit {
         modal.onDidDismiss().then((detail: OverlayEventDetail) => {
             if (detail !== null && detail.data !== undefined) {
                 this.ricettaService.createRicetta(detail.data).subscribe(() => {
-                    this.listRicetteCreate();
+                    this.ricette$ = this.ricettaService.listRicette();
                 });
             } else {
                 console.log('cancel pressed');
@@ -55,11 +55,7 @@ export class RicettePage implements OnInit {
         await modal.present();
     }
 
-    async modificaRicetta(r: Ricetta, sliding: IonItemSliding) {
-        const ricetta: Ricetta = new Ricetta();
-        ricetta.id = r.id;
-        ricetta.nome = r.nome;
-        ricetta.ingredienti = r.ingredienti;
+    async modificaRicetta(ricetta: Ricetta, sliding: IonItemSliding) {
         sliding.close();
         const modal = await this.modalController.create({
             component: DettagliRicettaPage,
@@ -68,10 +64,10 @@ export class RicettePage implements OnInit {
         modal.onDidDismiss().then((detail: OverlayEventDetail) => {
             if (detail !== null && detail.data !== undefined) {
                 this.ricettaService.createRicetta(detail.data).subscribe(() => {
-                    this.listRicetteCreate();
+                    this.ricette$ = this.ricettaService.listRicette();
                 });
             } else {
-                this.listRicetteCreate();
+                this.ricette$ = this.ricettaService.listRicette();
                 console.log('cancel pressed');
             }
         });
@@ -92,12 +88,8 @@ export class RicettePage implements OnInit {
             },
                 this.translateService.instant('CANCEL_BUTTON')]
         });
-        alert.onDidDismiss().then(() => this.listRicetteCreate());
+        alert.onDidDismiss().then(() => this.ricette$ = this.ricettaService.listRicette());
         await alert.present();
-    }
-
-    listRicetteCreate() {
-        this.ricette$ = this.ricettaService.listRicette();
     }
 
     // necessario per calcolare le calorie della ricetta nel template
@@ -107,7 +99,7 @@ export class RicettePage implements OnInit {
         return ricetta.getTotaleCalorie().toFixed(0);
     }
 
-    showItemOptions(sliding: IonItemSliding) {
+    mostraOpzioniItem(sliding: IonItemSliding) {
         sliding.closeOpened().then(() => {
             sliding.open('end');
         });

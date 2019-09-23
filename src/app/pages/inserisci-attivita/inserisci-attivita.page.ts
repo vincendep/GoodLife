@@ -14,8 +14,6 @@ export class InserisciAttivitaPage implements OnInit {
 
     private esercizi: Observable<EsercizioFisico[]>;
     private attivitaFisica: Array<{ esercizio: EsercizioFisico, durata: number }>;
-    private deleteTitle: string;
-    private deleteMessage: string;
 
     constructor(private translateService: TranslateService,
                 private alertController: AlertController,
@@ -27,13 +25,8 @@ export class InserisciAttivitaPage implements OnInit {
     }
 
     ngOnInit() {
-        this.initTranslate();
         this.esercizi = this.esercizioService.listEsercizi();
         this.attivitaFisica = this.navParams.data.appParam;
-    }
-
-    onClick(esercizioFisico: EsercizioFisico): void {
-        this.selezionaDurata(esercizioFisico);
     }
 
     async selezionaDurata(esercizioFisico: EsercizioFisico) {
@@ -66,14 +59,6 @@ export class InserisciAttivitaPage implements OnInit {
         await alert.present();
     }
 
-    initTranslate() {
-        this.translateService.get('DELETE_TITLE').subscribe((data) => {
-            this.deleteTitle = data;
-        });
-        this.translateService.get('DELETE_MESSAGE').subscribe((data) => {
-            this.deleteMessage = data;
-        });
-    }
     async back() {
         await this.modalController.dismiss();
     }

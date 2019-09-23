@@ -7,17 +7,6 @@ export class Pasto {
         this.ingredienti = new Array<{ alimento: Alimento, quantita: number }>();
     }
 
-    addAll(pasto: Pasto) {
-        for (const alimento of pasto.ingredienti) {
-            this.ingredienti.push(alimento);
-        }
-    }
-
-    replaceAll(pasto: Pasto) {
-        this.ingredienti = new Array<{ alimento: Alimento, quantita: number }>();
-        this.addAll(pasto);
-    }
-
     getTotaleCalorie(): number {
         let sum = 0;
         for (const value of this.ingredienti) {

@@ -3,7 +3,7 @@
         <ion-button slot="start" fill="clear" color="dark" (click)="back()">
             <ion-icon name="arrow-back" size="large"></ion-icon>
         </ion-button>
-        <ion-searchbar [(ngModel)]="ricerca" (ionChange)="reset()" animated="true"></ion-searchbar>
+        <ion-searchbar [(ngModel)]="ricerca" (ionChange)="resetCategoria()" animated="true"></ion-searchbar>
     </ion-toolbar>
 </ion-header>
 
@@ -32,10 +32,10 @@
         <div>
             <ion-list>
                 <div *ngFor="let alimento of alimenti$ | async">
-                    <div *ngIf="hideSkeletonText">
+                    <div *ngIf="nascondiSkeletonText">
                         <ion-item
                                 *ngIf="alimento.categoriaAlimentare === categoriaSelezionata || (categoriaSelezionata === '' && alimento.nome.toUpperCase().includes(ricerca.toUpperCase()))"
-                                (click)="onClick(alimento)" button="true">
+                                (click)="selezionaDose(alimento)" button="true">
                             <ion-grid fixed="true">
                                 <ion-row align-items-center>
                                     <ion-col size="9">{{alimento.nome}}</ion-col>

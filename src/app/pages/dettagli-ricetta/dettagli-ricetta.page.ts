@@ -5,7 +5,6 @@ import {AlertController, IonItemSliding, ModalController, NavParams} from '@ioni
 import {Ingrediente, Ricetta} from '../../model/ricetta.model';
 import {RicettaService} from '../../services/ricetta.service';
 import {InserisciCiboPage} from '../inserisci-cibo/inserisci-cibo.page';
-import {Alimento} from '../../model/alimento.model';
 
 @Component({
     selector: 'app-dettagli-ricetta',
@@ -23,7 +22,8 @@ export class DettagliRicettaPage implements OnInit {
                 private formBuilder: FormBuilder,
                 private ricettaService: RicettaService,
                 private modalController: ModalController,
-                private navParams: NavParams) {}
+                private navParams: NavParams) {
+    }
 
     ngOnInit() {
         this.ricetta = this.navParams.data.appParam;
@@ -32,12 +32,12 @@ export class DettagliRicettaPage implements OnInit {
         });
     }
 
-    async onConfirm() {
+    async conferma() {
         this.ricetta.nome = this.ricettaFormModel.get('nome').value;
         await this.modalController.dismiss(this.ricetta);
     }
 
-    async onCancel() {
+    async cancella() {
         await this.modalController.dismiss();
     }
 
@@ -76,18 +76,14 @@ export class DettagliRicettaPage implements OnInit {
         });
     }
 
-    showItemOptions(sliding: IonItemSliding) {
+    mostraOpzioniItem(sliding: IonItemSliding) {
         sliding.closeOpened().then(() => {
             sliding.open('end');
         });
     }
 
-    modificaAlimento(ingrediente: Ingrediente, sliding: IonItemSliding) {
+    async modificaAlimento(ingrediente: Ingrediente, sliding: IonItemSliding) {
         sliding.close();
-        this.selezionaDose(ingrediente);
-    }
-
-    async selezionaDose(ingrediente: Ingrediente) {
         const alert = await this.alertController.create({
             header: ingrediente.alimento.nome,
             animated: true,

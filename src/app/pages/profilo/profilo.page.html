@@ -3,7 +3,7 @@
         <ion-title slot="start" color="dark">
             {{ 'PROFILE' | translate | uppercase }}
         </ion-title>
-        <ion-icon slot="end" name="more" size="large" (click)="presentMenu($event)"></ion-icon>
+        <ion-icon slot="end" name="more" size="large" (click)="mostraMenu($event)"></ion-icon>
     </ion-toolbar>
 </ion-header>
 
@@ -29,14 +29,14 @@
             </ion-item>
             <ion-item class="animated fadeInUp">
                 <ion-label position="stacked">{{ 'SESSO' | translate }}</ion-label>
-                <ion-select *ngIf="showSelect" formControlName="sesso" placeholder="Select One">
+                <ion-select formControlName="sesso" placeholder="Select One">
                     <ion-select-option value="FEMMINA">{{'FEMMINA' | translate}}</ion-select-option>
                     <ion-select-option value="MASCHIO">{{'MASCHIO' | translate}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item class="animated fadeInUp">
                 <ion-label position="stacked">{{ 'TIPO_DIETA' | translate }}</ion-label>
-                <ion-select *ngIf="showSelect" formControlName="tipoDieta" placeholder="Select One">
+                <ion-select formControlName="tipoDieta" placeholder="Select One">
                     <ion-select-option value="DIMAGRIRE">{{'DIMAGRIRE' | translate}}</ion-select-option>
                     <ion-select-option value="MANGIARE_SANO">{{'MANGIARE_SANO' | translate}}</ion-select-option>
                     <ion-select-option value="MASSA_MUSCOLARE">{{'MASSA_MUSCOLARE' | translate}}</ion-select-option>
@@ -54,8 +54,12 @@
             </ion-item>
         </ion-list>
         <ion-buttons justify-content-center margin="10px">
-            <ion-button size="default" fill="solid" color="primary" shape="round" type="submit" [disabled]="!profiloFormModel.valid || profiloFormModel.untouched" (click)="submitForm()" margin="10px">aggiorna</ion-button>
-            <ion-button size="default" fill="solid" color="primary" shape="round" [disabled]="profiloFormModel.untouched" (click)="resetFormFields()" margin-start="10px">annulla</ion-button>
+            <ion-button size="default" fill="solid" color="primary" shape="round" type="submit"
+                        [disabled]="!profiloFormModel.valid || profiloFormModel.untouched" (click)="confermaModifiche()"
+                        margin="10px">{{'AGGIORNA' | translate}}</ion-button>
+            <ion-button size="default" fill="solid" color="primary" shape="round"
+                        [disabled]="profiloFormModel.untouched" (click)="annullaModifiche()"
+                        margin-start="10px">{{'CANCEL_BUTTON' | translate}}</ion-button>
         </ion-buttons>
     </form>
 </ion-content>

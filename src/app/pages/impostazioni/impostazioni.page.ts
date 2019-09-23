@@ -34,7 +34,7 @@ export class ImpostazioniPage implements OnInit {
         });
     }
 
-    onChangeLanguage(): void {
+    cambioLingua(): void {
         if (this.profiloFormModel.value.linguaPreferita !== '') {
             this.linguaService.updateLingua(this.profiloFormModel.value.linguaPreferita);
             this.translateService.use(this.profiloFormModel.value.linguaPreferita);

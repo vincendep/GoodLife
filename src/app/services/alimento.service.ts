@@ -12,10 +12,6 @@ export class AlimentoService {
 
     constructor(private http: HttpClient) {}
 
-    public findAlimentoById(id: number) {
-        return this.http.get<Alimento>(URL.ALIMENTI);
-    }
-
     public listAlimenti(): Observable<Alimento[]> {
         return this.http.get<Alimento[]>(URL.ALIMENTI);
     }

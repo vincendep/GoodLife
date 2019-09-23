@@ -15,8 +15,7 @@ export class ProfiloPage implements OnInit {
 
     private utente: Utente;
     private profiloFormModel: FormGroup;
-    private showSelect = true;
-    private toastMessage: string;
+    private messaggioToast: string;
 
     constructor(private translateService: TranslateService,
                 private utenteService: UtenteService,
@@ -61,10 +60,10 @@ export class ProfiloPage implements OnInit {
     }
 
     ionViewWillEnter() {
-        this.resetFormFields();
+        this.annullaModifiche();
     }
 
-    submitForm() {
+    confermaModifiche() {
         this.utente.nome = this.profiloFormModel.value.nome;
         this.utente.cognome = this.profiloFormModel.value.cognome;
         this.utente.email = this.profiloFormModel.value.email;
@@ -75,11 +74,11 @@ export class ProfiloPage implements OnInit {
         this.utente.informazioniFisiche[this.utente.informazioniFisiche.length - 1].peso = this.profiloFormModel.value.peso;
 
         this.utenteService.updateProfilo(this.utente).subscribe(() => {
-            this.showToastConfirmation();
+            this.toastModifica();
         });
     }
 
-    resetFormFields() {
+    annullaModifiche() {
         this.utenteService.getUtente().subscribe((utente) => {
             this.utente = utente;
             this.profiloFormModel.patchValue({
@@ -96,15 +95,15 @@ export class ProfiloPage implements OnInit {
         });
     }
 
-    async showToastConfirmation() {
+    async toastModifica() {
         const toast = await this.toastController.create({
-            message: this.toastMessage,
+            message: this.messaggioToast,
             duration: 2000
         });
         toast.present();
     }
 
-    async presentMenu(ev: any) {
+    async mostraMenu(ev: any) {
         const popover = await this.popoverController.create({
             component: ProfiloMenuComponent,
             event: ev,
@@ -116,7 +115,7 @@ export class ProfiloPage implements OnInit {
 
     private initTranslate() {
         this.translateService.get('PROFILO_AGGIORNATO').subscribe((data) => {
-            this.toastMessage = data;
+            this.messaggioToast = data;
         });
     }
 }

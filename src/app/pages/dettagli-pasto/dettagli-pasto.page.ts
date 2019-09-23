@@ -116,7 +116,7 @@ export class DettagliPastoPage implements OnInit {
         await this.modalController.dismiss();
     }
 
-    showItemOptions(sliding: IonItemSliding) {
+    mostraOpzioniItem(sliding: IonItemSliding) {
         sliding.closeOpened().then(() => {
             sliding.open('end');
         });

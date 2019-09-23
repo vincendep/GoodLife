@@ -7,7 +7,7 @@ import {Ricetta} from '../../model/ricetta.model';
 import {DiarioAlimentare} from '../../model/diario.model';
 import {DiarioService} from '../../services/diario.service';
 import {Alimento} from '../../model/alimento.model';
-import {Router} from '@angular/router';
+
 
 @Component({
     selector: 'app-inserisci-ricetta',
@@ -25,8 +25,7 @@ export class InserisciRicettaPage implements OnInit {
                 private diarioService: DiarioService,
                 private navController: NavController,
                 private modalController: ModalController,
-                private navParams: NavParams,
-                private router: Router) {
+                private navParams: NavParams) {
         this.diarioAlimentare = new DiarioAlimentare();
         this.pasto = new Array<{ alimento: Alimento, quantita: number }>();
     }

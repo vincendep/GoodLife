@@ -16,11 +16,6 @@ export class RicettaService {
         return this.http.get<Ricetta[]>(URL.RICETTE);
     }
 
-    public findById(ricettaId: number): Observable<Ricetta> {
-        const apiURL = `${URL.RICETTE}/${ricettaId}`;
-        return this.http.get<Ricetta>(apiURL);
-    }
-
     public createRicetta(ricetta: Ricetta) {
         return this.http.post<Ricetta>(URL.RICETTE, ricetta);
     }

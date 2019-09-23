@@ -41,7 +41,7 @@
     <ion-list *ngIf="pasto.ingredienti.length > 0" class="alimentList">
         <ion-list-header>{{'ALIMENTI_AGGIUNTI' | translate}}</ion-list-header>
         <ion-item-sliding *ngFor="let ingrediente of this.pasto.ingredienti" #sliding>
-            <ion-item class="bg-white" (click)="showItemOptions(sliding)">
+            <ion-item class="bg-white" (click)="mostraOpzioniItem(sliding)">
                 <ion-grid fixed="true" text-center="true">
                     <ion-row align-items-center>
                         <ion-col align-self-center size="6">{{ingrediente.alimento.nome}}</ion-col>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertController, IonItemSliding, ModalController, NavController, NavParams} from '@ionic/angular';
+import {AlertController, IonItemSliding, ModalController, NavParams} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {AttivitaFisica} from '../../model/attivita-fisica.model';
 import {InserisciAttivitaPage} from '../inserisci-attivita/inserisci-attivita.page';
@@ -11,7 +11,6 @@ import {EsercizioFisico} from '../../model/esercizio-fisico.model';
     styleUrls: ['./dettagli-attivita-fisica.page.scss'],
 })
 export class DettagliAttivitaFisicaPage implements OnInit {
-
 
     private attivitaFisica: AttivitaFisica;
     private deleteTitle: string;
@@ -25,7 +24,6 @@ export class DettagliAttivitaFisicaPage implements OnInit {
     }
 
     ngOnInit() {
-        this.initTranslate();
         this.attivitaFisica.esercizi = this.navParams.data.appParam;
     }
 
@@ -37,7 +35,7 @@ export class DettagliAttivitaFisicaPage implements OnInit {
         await modal.present();
     }
 
-    async modificaAttivita(attivita: {esercizio: EsercizioFisico, durata: number}, sliding: IonItemSliding) {
+    async modificaAttivita(attivita: { esercizio: EsercizioFisico, durata: number }, sliding: IonItemSliding) {
         sliding.close();
         const alert = await this.alertController.create({
             header: attivita.esercizio.nome,
@@ -73,6 +71,7 @@ export class DettagliAttivitaFisicaPage implements OnInit {
 
     async eliminaAttivita(attivita: any, sliding: IonItemSliding) {
         sliding.close();
+        this.initTranslate();
         const alert = await this.alertController.create({
             header: this.deleteTitle,
             message: this.deleteMessage + ' ' + attivita.esercizio.nome + '?',
@@ -102,7 +101,7 @@ export class DettagliAttivitaFisicaPage implements OnInit {
         await this.modalController.dismiss();
     }
 
-    showItemOptions(sliding: IonItemSliding) {
+    mostraOpzioniItem(sliding: IonItemSliding) {
         sliding.closeOpened().then(() => {
             sliding.open('end');
         });

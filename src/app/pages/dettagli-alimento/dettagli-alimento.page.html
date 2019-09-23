@@ -65,8 +65,8 @@
 <ion-footer>
     <ion-toolbar text-center="true">
         <ion-button fill="clear" size="large" color="dark" class="dimension"
-                    (click)="onCancel()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
+                    (click)="cancella()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
         <ion-button fill="clear" size="large" color="dark" class="dimension" [disabled]="!alimentoFormModel.valid"
-                    (click)="onConfirm()">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
+                    (click)="conferma()">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
     </ion-toolbar>
 </ion-footer>

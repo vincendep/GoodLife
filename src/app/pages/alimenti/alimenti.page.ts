@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Alimento} from '../../model/alimento.model';
 import {AlimentoService} from '../../services/alimento.service';
-import {AlertController, IonItemSliding, IonList, ModalController} from '@ionic/angular';
+import {AlertController, IonItemSliding, ModalController} from '@ionic/angular';
 import {TranslateService} from '@ngx-translate/core';
 import {DettagliAlimentoPage} from '../dettagli-alimento/dettagli-alimento.page';
 import {Observable} from 'rxjs';
@@ -26,18 +26,12 @@ export class AlimentiPage implements OnInit {
     }
 
     ngOnInit() {
-        this.listAlimentiCreati();
-        this.initTranslate();
+        this.alimenti$ = this.alimentoService.listAlimentiCreati();
     }
 
     async creaAlimento() {
         const alimento: Alimento = new Alimento();
-        alimento.nome = '';
-        alimento.calorie = null;
-        alimento.proteine = null;
-        alimento.grassi = null;
-        alimento.carboidrati = null;
-        alimento.categoriaAlimentare = null;
+
         const modal = await this.modalController.create({
             component: DettagliAlimentoPage,
             componentProps: {appParam: alimento}
@@ -45,7 +39,7 @@ export class AlimentiPage implements OnInit {
         modal.onDidDismiss().then((detail: OverlayEventDetail) => {
             if (detail !== null && detail.data !== undefined) {
                 this.alimentoService.createAlimento(detail.data).subscribe(() => {
-                    this.listAlimentiCreati();
+                    this.alimenti$ = this.alimentoService.listAlimentiCreati();
                 });
             } else {
                 console.log('cancel pressed');
@@ -63,7 +57,7 @@ export class AlimentiPage implements OnInit {
         modal.onDidDismiss().then((detail: OverlayEventDetail) => {
             if (detail !== null && detail.data !== undefined) {
                 this.alimentoService.createAlimento(detail.data).subscribe(() => {
-                    this.listAlimentiCreati();
+                    this.alimenti$ = this.alimentoService.listAlimentiCreati();
                 });
             } else {
                 console.log('cancel pressed');
@@ -86,15 +80,11 @@ export class AlimentiPage implements OnInit {
             }
                 , this.translateService.instant('CANCEL_BUTTON')]
         });
-        alert.onDidDismiss().then(() => this.listAlimentiCreati());
+        alert.onDidDismiss().then(() => this.alimenti$ = this.alimentoService.listAlimentiCreati());
         await alert.present();
     }
 
-    public listAlimentiCreati() {
-        this.alimenti$ = this.alimentoService.listAlimentiCreati();
-    }
-
-    showItemOptions(sliding: IonItemSliding) {
+    mostraOpzioniItem(sliding: IonItemSliding) {
         sliding.closeOpened().then(() => {
             sliding.open('end');
         });

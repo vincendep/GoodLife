@@ -34,7 +34,7 @@
 
     <ion-item color="primary">
         <ion-label>{{ 'ALIMENTI_AGGIUNTI' | translate | titlecase }}</ion-label>
-        <ion-fab-button  slot="end" size="small" color="secondary" (click)="aggiungiAlimento()">
+        <ion-fab-button slot="end" size="small" color="secondary" (click)="aggiungiAlimento()">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-item>
@@ -45,7 +45,7 @@
 
     <ion-list>
         <ion-item-sliding *ngFor="let ingrediente of this.ricetta.ingredienti" #sliding>
-            <ion-item class="bg-white" (click)="showItemOptions(sliding)">
+            <ion-item class="bg-white" (click)="mostraOpzioniItem(sliding)">
                 <ion-grid fixed="true" text-center="true">
                     <ion-row align-items-center>
                         <ion-col>
@@ -71,8 +71,8 @@
 <ion-footer>
     <ion-toolbar text-center="true">
         <ion-button fill="clear" size="large" color="dark" class="dimension"
-                    (click)="onCancel()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
-        <ion-button fill="clear" size="large" color="dark" class="dimension" (click)="onConfirm()"
+                    (click)="cancella()">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
+        <ion-button fill="clear" size="large" color="dark" class="dimension" (click)="conferma()"
                     [disabled]="!ricettaFormModel.valid || ricetta.ingredienti.length == 0">{{ 'CONFERMA' | translate | uppercase }}</ion-button>
     </ion-toolbar>
 </ion-footer>

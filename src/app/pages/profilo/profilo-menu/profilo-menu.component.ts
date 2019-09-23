@@ -17,7 +17,7 @@ export class ProfiloMenuComponent implements OnInit {
     ngOnInit() {
     }
 
-    showSettings() {
+    mostraImpostazioni() {
         this.navController.navigateRoot('impostazioni');
         this.popoverController.dismiss();
     }

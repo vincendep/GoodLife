@@ -5,7 +5,7 @@
     </div>
     <ion-list *ngIf="alimenti.length > 0">
         <ion-item-sliding *ngFor="let alimento of alimenti" #sliding>
-            <ion-item class="bg-white" (click)="showItemOptions(sliding)">
+            <ion-item class="bg-white" (click)="mostraOpzioniItem(sliding)">
                 <ion-grid fixed="true" text-center="true">
                     <ion-row align-items-center>
                         <ion-col size="7" text-left>{{alimento.nome}}</ion-col>

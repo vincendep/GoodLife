@@ -15,14 +15,15 @@ import {HttpErrorResponse} from '@angular/common/http';
     styleUrls: ['./signup.page.scss']
 })
 export class SignupPage implements OnInit {
-    stepTwoForm: FormGroup;
-    stepThreeForm: FormGroup;
+
+    formStepDue: FormGroup;
+    formStepTre: FormGroup;
     @ViewChild(IonSlides) slides: IonSlides;
     slideOpts = {
         initialSlide: 0,
         speed: 400
     };
-    nuovoUtente: Utente;
+    utente: Utente;
     informazioni: InformazioniFisiche;
     signupErrorTitle: string;
     signupErrorEmail: string;
@@ -33,14 +34,14 @@ export class SignupPage implements OnInit {
                 private navController: NavController,
                 private alertController: AlertController,
                 private utenteService: UtenteService) {
-        this.nuovoUtente = new Utente();
+        this.utente = new Utente();
         this.informazioni = new InformazioniFisiche();
-        this.nuovoUtente.informazioniFisiche.push(this.informazioni);
+        this.utente.informazioniFisiche.push(this.informazioni);
     }
 
     ngOnInit() {
         this.slides.lockSwipes(true);
-        this.stepTwoForm = this.formBuilder.group({
+        this.formStepDue = this.formBuilder.group({
             altezza: ['', Validators.compose([
                 Validators.required,
                 Validators.min(100),
@@ -58,7 +59,7 @@ export class SignupPage implements OnInit {
                 Validators.required
             ])]
         });
-        this.stepThreeForm = this.formBuilder.group({
+        this.formStepTre = this.formBuilder.group({
                 email: ['', Validators.compose([
                     Validators.required,
                     Validators.email
@@ -85,37 +86,37 @@ export class SignupPage implements OnInit {
             case 'obiettivoSano':
                 dieta.obiettivo = Obiettivo.MANGIARE_SANO;
         }
-        this.nuovoUtente.diete.push(dieta);
+        this.utente.diete.push(dieta);
         this.goToNextStep();
     }
 
     onConfirmStepTwo() {
-        this.informazioni.altezza = this.stepTwoForm.get('altezza').value;
-        this.informazioni.peso = this.stepTwoForm.get('peso').value;
-        this.nuovoUtente.dataDiNascita = this.stepTwoForm.get('dataDiNascita').value;
-        this.nuovoUtente.sesso = this.stepTwoForm.get('sesso').value === 'maschio' ? Sesso.MASCHIO : Sesso.FEMMINA;
+        this.informazioni.altezza = this.formStepDue.get('altezza').value;
+        this.informazioni.peso = this.formStepDue.get('peso').value;
+        this.utente.dataDiNascita = this.formStepDue.get('dataDiNascita').value;
+        this.utente.sesso = this.formStepDue.get('sesso').value === 'maschio' ? Sesso.MASCHIO : Sesso.FEMMINA;
         this.goToNextStep();
     }
 
     onConfirmStepThree() {
-        if (this.stepThreeForm.get('password').value === this.stepThreeForm.get('passwordCheck').value) {
-            this.nuovoUtente.email = this.stepThreeForm.get('email').value;
-            this.nuovoUtente.password = this.stepThreeForm.get('password').value;
-            this.nuovoUtente.nome = this.stepThreeForm.get('nome').value;
-            this.nuovoUtente.cognome = this.stepThreeForm.get('cognome').value;
+        if (this.formStepTre.get('password').value === this.formStepTre.get('passwordCheck').value) {
+            this.utente.email = this.formStepTre.get('email').value;
+            this.utente.password = this.formStepTre.get('password').value;
+            this.utente.nome = this.formStepTre.get('nome').value;
+            this.utente.cognome = this.formStepTre.get('cognome').value;
             this.signup();
         } else {
             this.showErrorPassword();
-            this.stepThreeForm.get('password').setValue('');
-            this.stepThreeForm.get('passwordCheck').setValue('');
+            this.formStepTre.get('password').setValue('');
+            this.formStepTre.get('passwordCheck').setValue('');
         }
     }
 
     signup() {
-        this.utenteService.signup(this.nuovoUtente).subscribe((utente: Utente) => {
+        this.utenteService.signup(this.utente).subscribe((utente: Utente) => {
                 const account: Account = {
-                    username: this.stepThreeForm.get('email').value,
-                    password: this.stepThreeForm.get('password').value
+                    username: this.formStepTre.get('email').value,
+                    password: this.formStepTre.get('password').value
                 };
                 this.utenteService.login(account).subscribe((u: Utente) => {
                     this.navController.navigateRoot('tabs');
@@ -125,7 +126,7 @@ export class SignupPage implements OnInit {
             (err: HttpErrorResponse) => {
                 if (err.status === 500) {
                     console.error('login request error: ' + err.status);
-                    this.stepThreeForm.reset();
+                    this.formStepTre.reset();
                     this.showErrorEmail();
                 }
             });
@@ -164,12 +165,6 @@ export class SignupPage implements OnInit {
     goToNextStep() {
         this.slides.lockSwipes(false);
         this.slides.slideNext();
-        this.slides.lockSwipes(true);
-    }
-
-    goToPreviousStep() {
-        this.slides.lockSwipes(false);
-        this.slides.slidePrev();
         this.slides.lockSwipes(true);
     }
 }

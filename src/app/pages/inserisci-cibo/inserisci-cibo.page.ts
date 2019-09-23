@@ -18,7 +18,7 @@ export class InserisciCiboPage implements OnInit {
     private pasto: Array<{ alimento: Alimento, quantita: number }>;
     private categoriaSelezionata: string;
     private ricerca = '';
-    private hideSkeletonText = false;
+    private nascondiSkeletonText = false;
 
     constructor(private translateService: TranslateService,
                 private alimentoService: AlimentoService,
@@ -34,13 +34,9 @@ export class InserisciCiboPage implements OnInit {
     ngOnInit() {
         this.alimenti$ = this.alimentoService.listAlimenti();
         setTimeout(() => {
-            this.hideSkeletonText = true;
+            this.nascondiSkeletonText = true;
         }, 1000);
         this.pasto = this.navParams.data.appParam;
-    }
-
-    onClick(alimento: Alimento): void {
-        this.selezionaDose(alimento);
     }
 
     async selezionaDose(a: Alimento) {
@@ -78,7 +74,7 @@ export class InserisciCiboPage implements OnInit {
         await alert.present();
     }
 
-    reset() {
+    resetCategoria() {
         this.categoriaSelezionata = '';
     }
 

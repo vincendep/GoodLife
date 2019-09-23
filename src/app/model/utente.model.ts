@@ -16,14 +16,6 @@ export class Utente {
         this.diete = new Array<Dieta>();
         this.informazioniFisiche = new Array<InformazioniFisiche>();
     }
-
-    getDietaCorrente(): Dieta {
-        return this.diete[this.diete.length - 1];
-    }
-
-    getLastInformazioniFisiche(): InformazioniFisiche {
-        return this.informazioniFisiche[this.informazioniFisiche.length - 1];
-    }
 }
 
 export enum Sesso {

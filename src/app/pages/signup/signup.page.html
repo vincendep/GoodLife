@@ -30,7 +30,7 @@
         <!-- personal info -->
         <ion-slide>
             <ion-content>
-                <form [formGroup]="stepTwoForm" class="list-form slideWidth">
+                <form [formGroup]="formStepDue" class="list-form slideWidth">
                     <ion-list>
                         <ion-item no-padding class="animated fadeInUp">
                             <ion-label position="floating">
@@ -62,7 +62,7 @@
                     </ion-list>
 
                     <ion-button icon-left size="medium" expand="full" shape="round" color="primary"
-                                (click)="onConfirmStepTwo()" [disabled]="!stepTwoForm.valid" tappable>
+                                (click)="onConfirmStepTwo()" [disabled]="!formStepDue.valid" tappable>
                         <ion-icon name="arrow-round-forward"></ion-icon>
                         {{ 'CONFERMA' | translate }}
                     </ion-button>
@@ -73,7 +73,7 @@
         <!-- account info -->
         <ion-slide>
             <ion-content>
-                <form [formGroup]="stepThreeForm" class="list-form slideWidth">
+                <form [formGroup]="formStepTre" class="list-form slideWidth">
                     <ion-list>
                         <ion-item no-padding class="animated fadeInUp">
                             <ion-label position="floating">{{'EMAIL' | translate | titlecase }}</ion-label>
@@ -102,7 +102,7 @@
 
                     </ion-list>
                     <ion-button icon-left size="medium" expand="full" shape="round" color="primary"
-                                (click)="onConfirmStepThree()" [disabled]="!stepThreeForm.valid" tappable>
+                                (click)="onConfirmStepThree()" [disabled]="!formStepTre.valid" tappable>
                         <ion-icon name="create"></ion-icon>
                         {{ 'CREA_ACCOUNT' | translate}}
                     </ion-button>
