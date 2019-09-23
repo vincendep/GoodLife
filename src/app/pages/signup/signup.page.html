@@ -15,13 +15,13 @@
                 <ion-img src="../../../assets/images/trophy.png" class="img-dim"></ion-img>
 
                 <div margin="20px">
-                    <ion-button margin-bottom="5px" (click)="onConfirmStepOne($event)" id="obiettivoDimagrimento"
+                    <ion-button margin-bottom="5px" (click)="confermaStepUno($event)" id="obiettivoDimagrimento"
                                 size="large" expand="block" shape="round"
                                 color="primary">{{ 'DIMAGRIRE' | translate }}</ion-button>
-                    <ion-button margin-bottom="5px" (click)="onConfirmStepOne($event)" id="obiettivoMassa" size="large"
+                    <ion-button margin-bottom="5px" (click)="confermaStepUno($event)" id="obiettivoMassa" size="large"
                                 expand="block" shape="round"
                                 color="primary">{{ 'MASSA_MUSCOLARE' | translate }}</ion-button>
-                    <ion-button (click)="onConfirmStepOne($event)" id="obiettivoSano" size="large" expand="block"
+                    <ion-button (click)="confermaStepUno($event)" id="obiettivoSano" size="large" expand="block"
                                 shape="round" color="primary">{{ 'MANGIARE_SANO' | translate }}</ion-button>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                     </ion-list>
 
                     <ion-button icon-left size="medium" expand="full" shape="round" color="primary"
-                                (click)="onConfirmStepTwo()" [disabled]="!formStepDue.valid" tappable>
+                                (click)="confermaStepDue()" [disabled]="!formStepDue.valid" tappable>
                         <ion-icon name="arrow-round-forward"></ion-icon>
                         {{ 'CONFERMA' | translate }}
                     </ion-button>
@@ -102,7 +102,7 @@
 
                     </ion-list>
                     <ion-button icon-left size="medium" expand="full" shape="round" color="primary"
-                                (click)="onConfirmStepThree()" [disabled]="!formStepTre.valid" tappable>
+                                (click)="confermaStepTre()" [disabled]="!formStepTre.valid" tappable>
                         <ion-icon name="create"></ion-icon>
                         {{ 'CREA_ACCOUNT' | translate}}
                     </ion-button>

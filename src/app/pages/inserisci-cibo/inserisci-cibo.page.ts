@@ -78,7 +78,7 @@ export class InserisciCiboPage implements OnInit {
         this.categoriaSelezionata = '';
     }
 
-    async back() {
+    async indietro() {
         await this.modalController.dismiss();
     }
 }

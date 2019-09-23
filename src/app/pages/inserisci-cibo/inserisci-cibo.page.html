@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-        <ion-button slot="start" fill="clear" color="dark" (click)="back()">
+        <ion-button slot="start" fill="clear" color="dark" (click)="indietro()">
             <ion-icon name="arrow-back" size="large"></ion-icon>
         </ion-button>
         <ion-searchbar [(ngModel)]="ricerca" (ionChange)="resetCategoria()" animated="true"></ion-searchbar>
@@ -45,7 +45,7 @@
                         </ion-item>
                     </div>
                 </div>
-                <div *ngIf="!hideSkeletonText">
+                <div *ngIf="!nascondiSkeletonText">
                     <ion-item *ngFor="let a of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]">
                         <ion-grid fixed="true">
                             <ion-row align-items-center>

@@ -112,7 +112,7 @@ export class DettagliPastoPage implements OnInit {
         });
     }
 
-    async back() {
+    async indietro() {
         await this.modalController.dismiss();
     }
 

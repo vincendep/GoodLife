@@ -37,19 +37,19 @@ export class LoginPage implements OnInit {
 
     onLogin() {
         const account: Account = this.loginFormModel.value;
-        this.utenteService.login(account).subscribe((utente: Utente) => {
+        this.utenteService.login(account).subscribe(() => {
                 this.loginFormModel.reset();
                 this.navController.navigateRoot('tabs');
             },
             (err: HttpErrorResponse) => {
                 if (err.status === 401) {
                     console.error('login request error: ' + err.status);
-                    this.showLoginError();
+                    this.mostraErroreLogin();
                 }
             });
     }
 
-    async showLoginError() {
+    async mostraErroreLogin() {
         const alert = await this.alertController.create({
             header: this.loginTitle,
             message: this.loginSubTitle,

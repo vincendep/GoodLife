@@ -59,7 +59,7 @@ export class InserisciAttivitaPage implements OnInit {
         await alert.present();
     }
 
-    async back() {
+    async indietro() {
         await this.modalController.dismiss();
     }
 }

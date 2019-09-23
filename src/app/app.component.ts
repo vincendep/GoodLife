@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
                 private linguaService: LinguaService,
                 private utenteService: UtenteService,
     ) {
-        this.initializeApp();
+        this.inizializzaApp();
     }
 
 
@@ -34,20 +34,20 @@ export class AppComponent implements OnInit {
         this.navController.navigateRoot('tabs');
     }
 
-    initializeApp() {
+    inizializzaApp() {
         this.platform.ready().then(() => {
-            this.initTranslate();
+            this.iniziaTraduzione();
             this.statusBar.styleDefault();
             this.splashScreen.hide();
         });
     }
 
-    initTranslate() {
+    iniziaTraduzione() {
         // Set the default language for translation strings, and the current language.
         const linguaPreferita = this.linguaService.getLinguaPreferita();
         this.translate.setDefaultLang(linguaPreferita);
         this.linguaService.getLinguaAttuale().subscribe((lingua: string) => {
-            if (lingua != null && lingua != '') {
+            if (lingua != null && lingua !== '') {
                 this.translate.use(lingua);
             } else {
                 this.translate.use(linguaPreferita);

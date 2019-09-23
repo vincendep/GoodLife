@@ -42,7 +42,7 @@ export class InserisciRicettaPage implements OnInit {
         await this.modalController.dismiss();
     }
 
-    async back() {
+    async indietro() {
         await this.modalController.dismiss();
     }
 

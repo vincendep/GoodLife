@@ -97,7 +97,7 @@ export class DettagliAttivitaFisicaPage implements OnInit {
         });
     }
 
-    async back() {
+    async indietro() {
         await this.modalController.dismiss();
     }
 

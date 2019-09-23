@@ -41,7 +41,7 @@ export class ImpostazioniPage implements OnInit {
         }
     }
 
-    back() {
+    indietro() {
         this.navController.navigateRoot('tabs/profilo');
     }
 }

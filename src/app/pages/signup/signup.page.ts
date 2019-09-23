@@ -73,7 +73,7 @@ export class SignupPage implements OnInit {
         this.iniziaTraduzione();
     }
 
-    onConfirmStepOne(event) {
+    confermaStepUno(event) {
         const dieta: Dieta = new Dieta();
         dieta.inizioDieta = new Date();
         switch (event.srcElement.id) {
@@ -87,18 +87,18 @@ export class SignupPage implements OnInit {
                 dieta.obiettivo = Obiettivo.MANGIARE_SANO;
         }
         this.utente.diete.push(dieta);
-        this.goToNextStep();
+        this.vaiAlProssimoStep();
     }
 
-    onConfirmStepTwo() {
+    confermaStepDue() {
         this.informazioni.altezza = this.formStepDue.get('altezza').value;
         this.informazioni.peso = this.formStepDue.get('peso').value;
         this.utente.dataDiNascita = this.formStepDue.get('dataDiNascita').value;
         this.utente.sesso = this.formStepDue.get('sesso').value === 'maschio' ? Sesso.MASCHIO : Sesso.FEMMINA;
-        this.goToNextStep();
+        this.vaiAlProssimoStep();
     }
 
-    onConfirmStepThree() {
+    confermaStepTre() {
         if (this.formStepTre.get('password').value === this.formStepTre.get('passwordCheck').value) {
             this.utente.email = this.formStepTre.get('email').value;
             this.utente.password = this.formStepTre.get('password').value;
@@ -106,19 +106,19 @@ export class SignupPage implements OnInit {
             this.utente.cognome = this.formStepTre.get('cognome').value;
             this.signup();
         } else {
-            this.showErrorPassword();
+            this.mostraErrorePassword();
             this.formStepTre.get('password').setValue('');
             this.formStepTre.get('passwordCheck').setValue('');
         }
     }
 
     signup() {
-        this.utenteService.signup(this.utente).subscribe((utente: Utente) => {
+        this.utenteService.signup(this.utente).subscribe(() => {
                 const account: Account = {
                     username: this.formStepTre.get('email').value,
                     password: this.formStepTre.get('password').value
                 };
-                this.utenteService.login(account).subscribe((u: Utente) => {
+                this.utenteService.login(account).subscribe(() => {
                     this.navController.navigateRoot('tabs');
                 });
             }
@@ -127,12 +127,12 @@ export class SignupPage implements OnInit {
                 if (err.status === 500) {
                     console.error('login request error: ' + err.status);
                     this.formStepTre.reset();
-                    this.showErrorEmail();
+                    this.mostraErroreEmail();
                 }
             });
     }
 
-    async showErrorPassword() {
+    async mostraErrorePassword() {
         const alert = await this.alertController.create({
             header: this.signupErrorTitle,
             message: this.signupErrorPassword,
@@ -141,7 +141,7 @@ export class SignupPage implements OnInit {
         await alert.present();
     }
 
-    async showErrorEmail() {
+    async mostraErroreEmail() {
         const alert = await this.alertController.create({
             header: this.signupErrorTitle,
             message: this.signupErrorEmail,
@@ -162,7 +162,7 @@ export class SignupPage implements OnInit {
         });
     }
 
-    goToNextStep() {
+    vaiAlProssimoStep() {
         this.slides.lockSwipes(false);
         this.slides.slideNext();
         this.slides.lockSwipes(true);
